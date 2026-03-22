@@ -14,7 +14,6 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.0.8",
-    "photoswipe": "^5.4.4",
-    "tailwindcss": "^4.2.2"
+"tailwindcss": "^4.2.2"
   }
 }

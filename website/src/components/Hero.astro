@@ -302,13 +302,19 @@ const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Me%20gustar%C3%ADa%20enc
 
   /* Mobile */
   @media (max-width: 768px) {
+    .hero {
+      padding-top: 64px;
+    }
+
     .hero::before {
       display: none;
     }
 
     .hero__inner {
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: 32px;
+      padding-top: 24px;
+      padding-bottom: 32px;
     }
 
     .hero__image-wrap {
@@ -317,22 +323,65 @@ const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Me%20gustar%C3%ADa%20enc
 
     .hero__placeholder {
       aspect-ratio: 4/3;
+      max-height: 280px;
+    }
+
+    .hero__tagline {
+      font-size: 15px;
+      max-width: 100%;
     }
 
     .hero__ctas {
       flex-direction: column;
+      gap: 12px;
     }
 
     .hero__ctas .btn {
       text-align: center;
       justify-content: center;
+      width: 100%;
     }
 
     .hero__stats {
-      gap: 16px;
+      gap: 0;
+      justify-content: space-between;
+      padding-top: 24px;
+    }
+
+    .hero__stat {
+      flex: 1;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero__stat strong {
+      font-size: 18px;
+    }
+
+    .hero__stat span {
+      font-size: 10px;
+      white-space: normal;
+      text-align: center;
+    }
+
+    .hero__stat-divider {
+      width: 1px;
+      height: 28px;
     }
 
     .hero__scroll {
+      display: none;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .hero__stats {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .hero__stat-divider {
       display: none;
     }
   }

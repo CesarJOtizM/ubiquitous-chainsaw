@@ -347,23 +347,10 @@ const filters = [
 </style>
 
 <script>
-  import PhotoSwipeLightbox from 'photoswipe/lightbox';
-  import 'photoswipe/style.css';
-
-  // Initialize PhotoSwipe
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: '#pswp-gallery',
-    children: 'a.gallery-card',
-    pswpModule: () => import('photoswipe'),
-    // Use placeholder size since we don't have real images
-    errorMsg: 'La imagen no está disponible',
+  // Placeholder mode: disable PhotoSwipe, just prevent default navigation
+  document.querySelectorAll<HTMLAnchorElement>('a.gallery-card').forEach((card) => {
+    card.addEventListener('click', (e) => e.preventDefault());
   });
-
-  lightbox.on('beforeOpen', () => {
-    // For placeholder mode: replace with colored canvas
-  });
-
-  lightbox.init();
 
   // Gallery filter
   const filterBtns = document.querySelectorAll<HTMLButtonElement>('.gallery__filter-btn');
