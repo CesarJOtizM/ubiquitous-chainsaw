@@ -1,0 +1,279 @@
+---
+const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Tengo%20una%20consulta%20sobre%20un%20encargo';
+
+const faqs = [
+  {
+    q: '¿Qué necesito para encargar un retrato?',
+    a: 'Solo necesitás una buena foto de tu mascota y saber qué tamaño querés. Te guiamos en todo el proceso. Si no tenés una buena foto, también tenemos una guía con tips para sacarle la mejor foto a tu mascota.',
+    memorial: false,
+  },
+  {
+    q: '¿Cuánto tarda en estar listo?',
+    a: 'Los retratos de mascotas tardan entre 3 y 4 semanas. Las fundas de celular en 1 a 2 semanas, y los paisajes entre 4 y 5 semanas. Todo depende de la complejidad y la demanda del momento.',
+    memorial: false,
+  },
+  {
+    q: '¿Puedo pedir cambios si no me gusta el boceto?',
+    a: '¡Por supuesto! Antes de empezar a pintar te enviamos un boceto digital. Hacemos los ajustes que necesités hasta que estés completamente satisfecho/a. Sin cargo extra por revisiones.',
+    memorial: false,
+  },
+  {
+    q: '¿Cómo me llega el cuadro?',
+    a: 'Enviamos con embalaje seguro y profesional a todo Colombia. El cuadro va bien protegido para que llegue en perfectas condiciones. Te compartimos el número de seguimiento una vez despachado.',
+    memorial: false,
+  },
+  {
+    q: '¿Pintan mascotas que ya no están?',
+    a: 'Sí, y es uno de los encargos más especiales que recibimos. Si perdiste a tu compañero de vida, podemos crear un retrato en su memoria. Es una forma hermosa de tenerlo siempre cerca. Trabajamos con el mayor cuidado y respeto en estos casos.',
+    memorial: true,
+  },
+  {
+    q: '¿Qué pasa si la foto no es muy buena?',
+    a: 'Hacemos lo posible con la foto que tenés. Antes de aceptar el encargo te avisamos si la calidad puede afectar el resultado. También tenemos una guía de cómo sacarle la mejor foto a tu mascota para que el retrato quede perfecto.',
+    memorial: false,
+  },
+  {
+    q: '¿Hacen envíos fuera de Colombia?',
+    a: 'Por el momento solo enviamos dentro de Colombia. Si estás en otro país, contáctanos y vemos opciones. ¡Escribinos que lo resolvemos!',
+    memorial: false,
+  },
+  {
+    q: '¿Puedo poner más de una mascota en el mismo cuadro?',
+    a: 'Sí, podés incluir hasta 3 mascotas en un mismo cuadro. El precio varía según la cantidad. Consultanos para un presupuesto exacto.',
+    memorial: false,
+  },
+  {
+    q: '¿Cuáles son los medios de pago?',
+    a: 'Aceptamos Nequi, Daviplata, transferencia bancaria y efectivo. Pedimos un 50% de anticipo para arrancar y el resto contra entrega cuando el trabajo esté terminado.',
+    memorial: false,
+  },
+];
+---
+
+<section id="faq" class="section faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="faq__header reveal">
+      <p class="section-label">Todo lo que necesitás saber</p>
+      <h2 class="section-title" id="faq-title">Preguntas Frecuentes</h2>
+      <p class="section-subtitle">
+        Si no encontrás la respuesta que buscás, escribinos por WhatsApp.
+      </p>
+    </div>
+
+    <div class="faq__list reveal" role="list">
+      {faqs.map((item, i) => (
+        <div
+          class={`faq-item ${item.memorial ? 'faq-item--memorial' : ''}`}
+          role="listitem"
+        >
+          <button
+            class="faq-item__trigger"
+            aria-expanded="false"
+            aria-controls={`faq-answer-${i}`}
+            id={`faq-trigger-${i}`}
+          >
+            <span class="faq-item__question">{item.q}</span>
+            <span class="faq-item__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </span>
+          </button>
+          <div
+            class="faq-item__body"
+            id={`faq-answer-${i}`}
+            role="region"
+            aria-labelledby={`faq-trigger-${i}`}
+            hidden
+          >
+            <p class={`faq-item__answer ${item.memorial ? 'faq-item__answer--memorial' : ''}`}>
+              {item.memorial && (
+                <span class="faq-item__memorial-icon" aria-hidden="true">🕊️ </span>
+              )}
+              {item.a}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="faq__cta reveal">
+      <p>¿Tenés otra pregunta?</p>
+      <a href={WA_URL} class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        Preguntanos por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--color-bg-alt);
+  }
+
+  .faq__header {
+    text-align: center;
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+
+  .faq__header .section-subtitle {
+    margin: 0 auto;
+  }
+
+  .faq__list {
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* FAQ item */
+  .faq-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .faq-item--memorial .faq-item__trigger {
+    /* subtle memorial tint */
+  }
+
+  .faq-item__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .faq-item__question {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text);
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+
+  .faq-item__trigger:hover .faq-item__question {
+    color: var(--color-accent);
+  }
+
+  .faq-item__icon {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .faq-item__trigger[aria-expanded="true"] .faq-item__icon {
+    transform: rotate(180deg);
+    color: var(--color-accent);
+  }
+
+  .faq-item__trigger[aria-expanded="true"] .faq-item__question {
+    color: var(--color-accent);
+  }
+
+  /* Animated body */
+  .faq-item__body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .faq-item__body:not([hidden]) {
+    /* max-height set dynamically by JS */
+  }
+
+  .faq-item__answer {
+    padding: 0 0 20px;
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+  }
+
+  .faq-item__answer--memorial {
+    color: var(--color-memorial, #9B8AA0);
+    background: rgba(155, 138, 160, 0.06);
+    padding: 16px;
+    border-radius: 8px;
+    border-left: 3px solid var(--color-memorial, #9B8AA0);
+    margin-bottom: 4px;
+  }
+
+  .faq-item__memorial-icon {
+    font-size: 16px;
+  }
+
+  /* CTA */
+  .faq__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .faq__cta p {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-text);
+  }
+</style>
+
+<script>
+  const faqItems = document.querySelectorAll<HTMLElement>('.faq-item');
+
+  faqItems.forEach((item) => {
+    const trigger = item.querySelector<HTMLButtonElement>('.faq-item__trigger');
+    const body = item.querySelector<HTMLElement>('.faq-item__body');
+
+    if (!trigger || !body) return;
+
+    trigger.addEventListener('click', () => {
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+      // Close all
+      faqItems.forEach((otherItem) => {
+        const otherTrigger = otherItem.querySelector<HTMLButtonElement>('.faq-item__trigger');
+        const otherBody = otherItem.querySelector<HTMLElement>('.faq-item__body');
+        if (otherTrigger && otherBody && otherItem !== item) {
+          otherTrigger.setAttribute('aria-expanded', 'false');
+          otherBody.style.maxHeight = '0';
+          setTimeout(() => {
+            otherBody.setAttribute('hidden', '');
+          }, 350);
+        }
+      });
+
+      // Toggle current
+      if (isOpen) {
+        trigger.setAttribute('aria-expanded', 'false');
+        body.style.maxHeight = '0';
+        setTimeout(() => {
+          body.setAttribute('hidden', '');
+        }, 350);
+      } else {
+        body.removeAttribute('hidden');
+        trigger.setAttribute('aria-expanded', 'true');
+        // Set max-height to scrollHeight for animation
+        requestAnimationFrame(() => {
+          body.style.maxHeight = body.scrollHeight + 'px';
+        });
+      }
+    });
+  });
+</script>

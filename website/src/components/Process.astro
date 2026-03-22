@@ -1,0 +1,261 @@
+---
+const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Quiero%20empezar%20a%20encargar%20mi%20retrato';
+
+const steps = [
+  {
+    number: '01',
+    icon: '📷',
+    title: 'Enviás tu foto',
+    desc: 'Mandanos la mejor foto de tu mascota por WhatsApp o Instagram. Te ayudamos a elegir la mejor.',
+  },
+  {
+    number: '02',
+    icon: '✏️',
+    title: 'Boceto en 48 horas',
+    desc: 'Te enviamos un adelanto digital de cómo va a quedar para que tengas una idea antes de empezar.',
+  },
+  {
+    number: '03',
+    icon: '✅',
+    title: 'Aprobás el diseño',
+    desc: 'Ajustamos lo que necesites hasta que sea perfecto. Sin cargo extra por revisiones.',
+  },
+  {
+    number: '04',
+    icon: '🎨',
+    title: 'Se pinta con amor',
+    desc: 'Fotos del proceso por WhatsApp mientras trabajamos. Ves cómo va tomando vida tu obra.',
+  },
+  {
+    number: '05',
+    icon: '📦',
+    title: 'Recibís tu obra',
+    desc: 'Embalaje seguro y profesional. Envíos a todo Colombia con seguimiento en tiempo real.',
+  },
+];
+---
+
+<section id="proceso" class="section process" aria-labelledby="process-title">
+  <div class="container">
+    <div class="process__header reveal">
+      <p class="section-label">Simple y transparente</p>
+      <h2 class="section-title" id="process-title">Cómo Funciona</h2>
+      <p class="section-subtitle">
+        De tu foto a una obra de arte en 5 pasos. Sin complicaciones,
+        con comunicación constante.
+      </p>
+    </div>
+
+    <!-- Steps desktop strip -->
+    <div class="process__steps" role="list">
+      {steps.map((step, i) => (
+        <div class="process__step reveal" role="listitem" style={`transition-delay: ${i * 100}ms`}>
+          <div class="process__step-num" aria-hidden="true">{step.number}</div>
+          <div class="process__step-icon" aria-hidden="true">{step.icon}</div>
+          <h3 class="process__step-title">{step.title}</h3>
+          <p class="process__step-desc">{step.desc}</p>
+          {i < steps.length - 1 && (
+            <div class="process__connector" aria-hidden="true">
+              <svg viewBox="0 0 40 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 8 H32 M28 2 L38 8 L28 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="process__cta reveal">
+      <div class="process__cta-inner">
+        <div class="process__cta-text">
+          <h3 class="process__cta-title">¿Lista para empezar?</h3>
+          <p>Escribinos hoy y te responderemos en menos de 24 horas.</p>
+        </div>
+        <a href={WA_URL} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          Empezar ahora por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process {
+    background: var(--color-bg);
+    overflow: hidden;
+  }
+
+  .process__header {
+    text-align: center;
+    margin-bottom: clamp(48px, 6vw, 80px);
+  }
+
+  .process__header .section-subtitle {
+    margin: 0 auto;
+  }
+
+  /* Steps */
+  .process__steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin-bottom: 72px;
+    position: relative;
+  }
+
+  /* Connecting line between steps */
+  .process__steps::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: calc(10% + 24px);
+    right: calc(10% + 24px);
+    height: 1px;
+    background: var(--color-border);
+    z-index: 0;
+  }
+
+  .process__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .process__step-num {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+  }
+
+  .process__step-icon {
+    font-size: 28px;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-alt);
+    border: 1.5px solid var(--color-border);
+    border-radius: 50%;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+
+  .process__step:hover .process__step-icon {
+    background: var(--color-bg-card);
+    border-color: var(--color-accent);
+    transform: scale(1.08);
+  }
+
+  .process__step-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 8px;
+  }
+
+  .process__step-desc {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .process__connector {
+    display: none; /* handled via CSS ::before on grid */
+  }
+
+  /* CTA strip */
+  .process__cta {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: clamp(28px, 4vw, 48px);
+  }
+
+  .process__cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .process__cta-title {
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 400;
+    color: var(--color-text);
+    margin-bottom: 6px;
+  }
+
+  .process__cta-text p {
+    font-size: 15px;
+    color: var(--color-text-muted);
+  }
+
+  /* Mobile: vertical timeline */
+  @media (max-width: 900px) {
+    .process__steps {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .process__steps::before {
+      display: none;
+    }
+
+    .process__step {
+      flex-direction: row;
+      text-align: left;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 0 0 32px 0;
+      position: relative;
+    }
+
+    /* Vertical line */
+    .process__step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 64px;
+      left: 31px;
+      width: 1px;
+      height: calc(100% - 32px);
+      background: var(--color-border);
+    }
+
+    .process__step-icon {
+      flex-shrink: 0;
+    }
+
+    .process__step-num {
+      margin-bottom: 2px;
+    }
+
+    .process__cta-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .process__cta-inner .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

@@ -1,0 +1,257 @@
+---
+const testimonials = [
+  {
+    id: 1,
+    stars: 5,
+    quote: 'No puedo creer cómo quedó Toto. Es exactamente como en la foto, pero en un cuadro hermoso. Mi mamá lloró cuando lo recibió.',
+    author: 'María G.',
+    location: 'Bogotá',
+    pet: 'Schnauzer',
+    gradient: 'linear-gradient(135deg, #C4714F33, #8A9E8C22)',
+  },
+  {
+    id: 2,
+    stars: 5,
+    quote: 'Le encargué el retrato de nuestra perra Coco para Amor y Amistad. Mi novio quedó sin palabras. El proceso fue muy fácil y siempre estuvo comunicando el avance.',
+    author: 'Laura M.',
+    location: 'Medellín',
+    pet: 'Beagle',
+    gradient: 'linear-gradient(135deg, #8A9E8C33, #C4714F22)',
+  },
+  {
+    id: 3,
+    stars: 5,
+    quote: 'Tenía miedo de que no quedara bien solo con fotos, pero el resultado superó todas mis expectativas. Ya encargué la funda también.',
+    author: 'Carlos R.',
+    location: 'Cali',
+    pet: 'Golden Retriever',
+    gradient: 'linear-gradient(135deg, #D4845F33, #EDE8DF)',
+  },
+];
+---
+
+<section id="testimonios" class="section testimonials" aria-labelledby="testimonials-title">
+  <div class="container">
+    <div class="testimonials__header reveal">
+      <p class="section-label">Clientes felices</p>
+      <h2 class="section-title" id="testimonials-title">Lo que dicen nuestros clientes</h2>
+      <div class="testimonials__rating reveal">
+        <div class="testimonials__stars" aria-label="Calificación 4.9 de 5 estrellas">
+          ⭐⭐⭐⭐⭐
+        </div>
+        <span>4.9/5 basado en +200 reseñas</span>
+      </div>
+    </div>
+
+    <!-- Desktop grid / Mobile scroll -->
+    <div class="testimonials__grid" role="list">
+      {testimonials.map((t, i) => (
+        <article
+          class="testimonial-card reveal"
+          role="listitem"
+          style={`transition-delay: ${i * 120}ms`}
+          aria-label={`Testimonio de ${t.author}`}
+        >
+          <!-- Artwork placeholder -->
+          <div
+            class="testimonial-card__artwork"
+            style={`background: ${t.gradient};`}
+            aria-hidden="true"
+          >
+            <span class="testimonial-card__artwork-icon">🐾</span>
+            <span class="testimonial-card__artwork-label">{t.pet}</span>
+          </div>
+
+          <!-- Stars -->
+          <div class="testimonial-card__stars" aria-label={`${t.stars} de 5 estrellas`}>
+            {'⭐'.repeat(t.stars)}
+          </div>
+
+          <!-- Quote -->
+          <blockquote class="testimonial-card__quote">
+            <p>"{t.quote}"</p>
+          </blockquote>
+
+          <!-- Author -->
+          <footer class="testimonial-card__author">
+            <div class="testimonial-card__avatar" aria-hidden="true">
+              {t.author.charAt(0)}
+            </div>
+            <div>
+              <strong>— {t.author}</strong>
+              <span class="testimonial-card__location">· {t.location}</span>
+            </div>
+          </footer>
+        </article>
+      ))}
+    </div>
+
+    <!-- Google reviews note -->
+    <div class="testimonials__footer reveal">
+      <p>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        Reseñas verificadas de clientes reales · <a href="https://www.instagram.com/sac_artx" target="_blank" rel="noopener noreferrer">Ver más en Instagram @sac_artx</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background: var(--color-bg);
+  }
+
+  .testimonials__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .testimonials__rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--color-text-muted);
+  }
+
+  .testimonials__stars {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  /* Grid */
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  /* Card */
+  .testimonial-card {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(44, 44, 44, 0.08);
+  }
+
+  .testimonial-card__artwork {
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .testimonial-card__artwork-icon {
+    font-size: 40px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+  }
+
+  .testimonial-card__artwork-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    background: rgba(255,255,255,0.6);
+    padding: 2px 10px;
+    border-radius: 20px;
+  }
+
+  .testimonial-card__stars {
+    font-size: 14px;
+    padding: 20px 24px 0;
+    letter-spacing: 2px;
+  }
+
+  .testimonial-card__quote {
+    padding: 12px 24px;
+    flex: 1;
+  }
+
+  .testimonial-card__quote p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text);
+    font-style: italic;
+  }
+
+  .testimonial-card__author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    border-top: 1px solid var(--color-border);
+    font-size: 14px;
+    color: var(--color-text-muted);
+  }
+
+  .testimonial-card__author strong {
+    color: var(--color-text);
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .testimonial-card__location {
+    color: var(--color-text-muted);
+  }
+
+  .testimonial-card__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* Footer */
+  .testimonials__footer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--color-text-muted);
+  }
+
+  .testimonials__footer p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .testimonials__footer a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px) {
+    .testimonials__grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+</style>

@@ -1,0 +1,410 @@
+---
+// Gallery placeholder items
+// In production: replace with real image paths and dimensions
+const galleryItems = [
+  {
+    id: 1,
+    category: 'mascotas',
+    title: 'Golden Retriever "Buddy"',
+    technique: 'Acrílico sobre lienzo 30×30cm',
+    gradient: 'linear-gradient(135deg, #C4714F55, #8A9E8C55)',
+    height: 260,
+    w: 900,
+    h: 900,
+  },
+  {
+    id: 2,
+    category: 'mascotas',
+    title: 'Gato siamés "Luna"',
+    technique: 'Acrílico sobre lienzo 20×20cm',
+    gradient: 'linear-gradient(135deg, #8A9E8C44, #C4714F44)',
+    height: 200,
+    w: 800,
+    h: 800,
+  },
+  {
+    id: 3,
+    category: 'paisajes',
+    title: 'Amanecer en los Andes',
+    technique: 'Acrílico sobre lienzo 40×30cm',
+    gradient: 'linear-gradient(135deg, #D4845F55, #8A9E8C33)',
+    height: 300,
+    w: 1200,
+    h: 900,
+  },
+  {
+    id: 4,
+    category: 'mascotas',
+    title: 'Beagle "Coco"',
+    technique: 'Acrílico sobre lienzo 30×30cm',
+    gradient: 'linear-gradient(135deg, #EDE8DF, #C4714F33)',
+    height: 220,
+    w: 900,
+    h: 900,
+  },
+  {
+    id: 5,
+    category: 'fundas',
+    title: 'Funda — Labrador negro',
+    technique: 'Diseño artístico digital',
+    gradient: 'linear-gradient(135deg, #2C2C2C22, #C4714F55)',
+    height: 260,
+    w: 600,
+    h: 800,
+  },
+  {
+    id: 6,
+    category: 'mascotas',
+    title: 'Dos gatos — "Sol y Luna"',
+    technique: 'Acrílico sobre lienzo 40×40cm',
+    gradient: 'linear-gradient(135deg, #C4714F33, #D4845F55)',
+    height: 300,
+    w: 900,
+    h: 900,
+  },
+  {
+    id: 7,
+    category: 'paisajes',
+    title: 'Río Magdalena al atardecer',
+    technique: 'Acrílico sobre lienzo 50×40cm',
+    gradient: 'linear-gradient(135deg, #D4845F44, #8A9E8C44)',
+    height: 200,
+    w: 1200,
+    h: 900,
+  },
+  {
+    id: 8,
+    category: 'mascotas',
+    title: 'Pomerania "Mochi"',
+    technique: 'Acrílico sobre lienzo 20×20cm',
+    gradient: 'linear-gradient(135deg, #EDE8DF, #8A9E8C44)',
+    height: 260,
+    w: 800,
+    h: 800,
+  },
+  {
+    id: 9,
+    category: 'fundas',
+    title: 'Funda — Bulldog francés',
+    technique: 'Diseño artístico digital',
+    gradient: 'linear-gradient(135deg, #8A9E8C33, #C4714F44)',
+    height: 220,
+    w: 600,
+    h: 800,
+  },
+  {
+    id: 10,
+    category: 'mascotas',
+    title: 'Schnauzer "Toto"',
+    technique: 'Acrílico sobre lienzo 30×30cm',
+    gradient: 'linear-gradient(135deg, #C4714F44, #EDE8DF)',
+    height: 200,
+    w: 900,
+    h: 900,
+  },
+  {
+    id: 11,
+    category: 'paisajes',
+    title: 'Villa de Leyva',
+    technique: 'Acrílico sobre lienzo 60×40cm',
+    gradient: 'linear-gradient(135deg, #8A9E8C55, #D4845F33)',
+    height: 260,
+    w: 1200,
+    h: 900,
+  },
+  {
+    id: 12,
+    category: 'fundas',
+    title: 'Funda — Gato naranja',
+    technique: 'Diseño artístico digital',
+    gradient: 'linear-gradient(135deg, #D4845F55, #8A9E8C33)',
+    height: 300,
+    w: 600,
+    h: 800,
+  },
+];
+
+const filters = [
+  { key: 'all', label: 'Todos' },
+  { key: 'mascotas', label: 'Mascotas' },
+  { key: 'paisajes', label: 'Paisajes' },
+  { key: 'fundas', label: 'Fundas' },
+];
+---
+
+<section id="galeria" class="section gallery" aria-labelledby="gallery-title">
+  <div class="container">
+    <div class="gallery__header reveal">
+      <p class="section-label">Trabajos recientes</p>
+      <h2 class="section-title" id="gallery-title">Galería</h2>
+      <p class="section-subtitle">
+        Cada pieza cuenta una historia. Explorá nuestros trabajos por categoría.
+      </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="gallery__filters reveal" role="group" aria-label="Filtrar obras por categoría">
+      {filters.map((f) => (
+        <button
+          class={`gallery__filter-btn ${f.key === 'all' ? 'active' : ''}`}
+          data-filter={f.key}
+          aria-pressed={f.key === 'all' ? 'true' : 'false'}
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Masonry grid / PhotoSwipe gallery -->
+    <div
+      id="pswp-gallery"
+      class="gallery__grid"
+      aria-label="Galería de obras de SAC_ART"
+    >
+      {galleryItems.map((item) => (
+        <a
+          href="#"
+          class="gallery-card"
+          data-category={item.category}
+          data-pswp-width={item.w}
+          data-pswp-height={item.h}
+          data-pswp-src={`/images/placeholder-${item.id}.jpg`}
+          aria-label={`Ver obra: ${item.title}`}
+          role="button"
+        >
+          <div
+            class="gallery-card__img"
+            style={`background: ${item.gradient}; height: ${item.height}px;`}
+            aria-hidden="true"
+          >
+            <div class="gallery-card__placeholder-icon">🖼️</div>
+          </div>
+          <div class="gallery-card__overlay" aria-hidden="true">
+            <div class="gallery-card__info">
+              <span class="gallery-card__cat">{item.category}</span>
+              <h3 class="gallery-card__title">{item.title}</h3>
+              <span class="gallery-card__tech">{item.technique}</span>
+              <span class="gallery-card__cta">Ver obra →</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    background: var(--color-bg-alt);
+  }
+
+  .gallery__header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .gallery__header .section-subtitle {
+    margin: 0 auto;
+  }
+
+  /* Filters */
+  .gallery__filters {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .gallery__filter-btn {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 40px;
+    border: 1.5px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .gallery__filter-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .gallery__filter-btn.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
+
+  /* Masonry grid using CSS columns */
+  .gallery__grid {
+    columns: 3;
+    column-gap: 16px;
+  }
+
+  /* Cards */
+  .gallery-card {
+    display: block;
+    break-inside: avoid;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .gallery-card.hidden {
+    display: none;
+  }
+
+  .gallery-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .gallery-card__img {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-card:hover .gallery-card__img {
+    transform: scale(1.03);
+  }
+
+  .gallery-card__placeholder-icon {
+    font-size: 32px;
+    opacity: 0.4;
+  }
+
+  .gallery-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(44, 44, 44, 0.85) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .gallery-card:hover .gallery-card__overlay {
+    opacity: 1;
+  }
+
+  .gallery-card__info {
+    padding: 20px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .gallery-card__cat {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-sage);
+  }
+
+  .gallery-card__title {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .gallery-card__tech {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .gallery-card__cta {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-accent-hover);
+    margin-top: 4px;
+  }
+
+  @media (max-width: 900px) {
+    .gallery__grid {
+      columns: 2;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .gallery__grid {
+      columns: 1;
+    }
+  }
+</style>
+
+<script>
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
+
+  // Initialize PhotoSwipe
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#pswp-gallery',
+    children: 'a.gallery-card',
+    pswpModule: () => import('photoswipe'),
+    // Use placeholder size since we don't have real images
+    errorMsg: 'La imagen no está disponible',
+  });
+
+  lightbox.on('beforeOpen', () => {
+    // For placeholder mode: replace with colored canvas
+  });
+
+  lightbox.init();
+
+  // Gallery filter
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.gallery__filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.gallery-card');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter ?? 'all';
+
+      // Update active state
+      filterBtns.forEach((b) => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+
+      // Filter cards
+      cards.forEach((card) => {
+        const cat = card.dataset.category ?? '';
+        const show = filter === 'all' || cat === filter;
+
+        if (show) {
+          card.classList.remove('hidden');
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.96)';
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+              card.style.opacity = '1';
+              card.style.transform = 'scale(1)';
+            });
+          });
+        } else {
+          card.style.transition = 'opacity 0.2s ease';
+          card.style.opacity = '0';
+          setTimeout(() => {
+            card.classList.add('hidden');
+          }, 200);
+        }
+      });
+    });
+  });
+</script>

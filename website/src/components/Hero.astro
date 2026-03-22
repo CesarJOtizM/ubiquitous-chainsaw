@@ -1,0 +1,339 @@
+---
+const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Me%20gustar%C3%ADa%20encargar%20un%20retrato';
+---
+
+<section class="hero" aria-label="Hero — SAC_ART">
+  <div class="hero__inner container">
+    <!-- Left: placeholder image -->
+    <div class="hero__image-wrap reveal">
+      <div class="hero__placeholder" aria-label="Fotografía de obra de arte">
+        <div class="hero__placeholder-inner">
+          <span class="hero__placeholder-icon" aria-hidden="true">🎨</span>
+          <span class="hero__placeholder-text">Foto de obra</span>
+          <span class="hero__placeholder-sub">Retrato en acrílico</span>
+        </div>
+      </div>
+      <!-- Decorative accent -->
+      <div class="hero__deco" aria-hidden="true"></div>
+    </div>
+
+    <!-- Right: content -->
+    <div class="hero__content">
+      <p class="hero__label reveal">Arte por Encargo</p>
+      <h1 class="hero__title reveal">
+        Tu mascota,<br />
+        <em>hecha arte.</em>
+      </h1>
+      <p class="hero__tagline reveal">
+        Pintamos retratos de mascotas en acrílico, paisajes y fundas
+        personalizadas. Desde una foto, creamos algo único.
+      </p>
+      <div class="hero__ctas reveal">
+        <a href={WA_URL} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          Encargá tu retrato&nbsp;→
+        </a>
+        <a href="#galeria" class="btn btn-outline">
+          Ver galería&nbsp;↓
+        </a>
+      </div>
+
+      <!-- Stats / Social proof -->
+      <div class="hero__stats reveal">
+        <div class="hero__stat">
+          <strong>+200</strong>
+          <span>obras entregadas</span>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat">
+          <strong>4.9★</strong>
+          <span>valoración promedio</span>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat">
+          <strong>🇨🇴</strong>
+          <span>envíos a todo Colombia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll" aria-hidden="true">
+    <div class="hero__scroll-mouse">
+      <div class="hero__scroll-dot"></div>
+    </div>
+    <span>Deslizá</span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--color-bg);
+    padding-top: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Background texture */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    background: var(--color-bg-alt);
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+    z-index: 0;
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: center;
+    padding-top: clamp(40px, 6vh, 80px);
+    padding-bottom: clamp(40px, 6vh, 80px);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Image area */
+  .hero__image-wrap {
+    position: relative;
+  }
+
+  .hero__placeholder {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #C4714F 0%, #D4845F 35%, #EDE8DF 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(196, 113, 79, 0.25);
+  }
+
+  .hero__placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(44, 44, 44, 0.15) 100%);
+  }
+
+  .hero__placeholder-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.9);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__placeholder-icon {
+    font-size: 48px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+  }
+
+  .hero__placeholder-text {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  .hero__placeholder-sub {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    opacity: 0.75;
+    text-transform: uppercase;
+  }
+
+  .hero__deco {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--color-accent);
+    border-radius: 4px;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
+  /* Content */
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero__label {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-sage);
+    margin-bottom: 16px;
+    transition-delay: 0.1s;
+  }
+
+  .hero__title {
+    font-family: var(--font-heading);
+    font-size: clamp(44px, 7vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--color-text);
+    margin-bottom: 24px;
+    transition-delay: 0.2s;
+  }
+
+  .hero__title em {
+    font-style: italic;
+    color: var(--color-accent);
+  }
+
+  .hero__tagline {
+    font-size: clamp(15px, 1.5vw, 18px);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 36px;
+    transition-delay: 0.3s;
+  }
+
+  .hero__ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+    transition-delay: 0.4s;
+  }
+
+  .hero__stats {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-border);
+    transition-delay: 0.5s;
+  }
+
+  .hero__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hero__stat strong {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .hero__stat span {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+
+  .hero__stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--color-border);
+    flex-shrink: 0;
+  }
+
+  /* Scroll indicator */
+  .hero__scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-muted);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    z-index: 1;
+    animation: float 2.5s ease-in-out infinite;
+  }
+
+  .hero__scroll-mouse {
+    width: 22px;
+    height: 34px;
+    border: 1.5px solid var(--color-border);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    padding-top: 6px;
+  }
+
+  .hero__scroll-dot {
+    width: 3px;
+    height: 6px;
+    background: var(--color-accent);
+    border-radius: 2px;
+    animation: scroll-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  @keyframes scroll-dot {
+    0% { transform: translateY(0); opacity: 1; }
+    80% { transform: translateY(12px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 0; }
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .hero::before {
+      display: none;
+    }
+
+    .hero__inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .hero__image-wrap {
+      order: -1;
+    }
+
+    .hero__placeholder {
+      aspect-ratio: 4/3;
+    }
+
+    .hero__ctas {
+      flex-direction: column;
+    }
+
+    .hero__ctas .btn {
+      text-align: center;
+      justify-content: center;
+    }
+
+    .hero__stats {
+      gap: 16px;
+    }
+
+    .hero__scroll {
+      display: none;
+    }
+  }
+</style>
