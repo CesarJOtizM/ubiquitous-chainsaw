@@ -8,7 +8,7 @@ export interface Props {
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 
-const WA_BASE = 'https://wa.me/573001234567?text=';
+const WA_BASE = 'https://wa.me/573016584401?text=';
 const WA_URL = `${WA_BASE}${t('nav.cta') === 'Order via WhatsApp' ? 'Hello!%20I\'d%20like%20to%20commission%20a%20portrait' : 'Hola!%20Me%20gustar%C3%ADa%20encargar%20un%20retrato'}`;
 
 const otherLang = lang === 'es' ? 'en' : 'es';

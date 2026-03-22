@@ -26,7 +26,7 @@ export const ui = {
     'hero.label': 'Arte por Encargo',
     'hero.title': 'Tu mascota,',
     'hero.titleEm': 'hecha arte.',
-    'hero.tagline': 'Pintamos retratos de mascotas en acrílico, paisajes y fundas personalizadas. Manda la foto de tu peludo favorito y creamos algo único, pues.',
+    'hero.tagline': 'Retratos de mascotas en acrílico, paisajes y fundas personalizadas. Manda la foto de tu peludo y creamos algo único.',
     'hero.ctaPrimary': 'Encarga tu retrato →',
     'hero.ctaSecondary': 'Ver galería ↓',
     'hero.stat1Value': '+200',
