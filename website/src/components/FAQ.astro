@@ -1,62 +1,35 @@
 ---
-const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Tengo%20una%20consulta%20sobre%20un%20encargo';
+import { useTranslations } from '../i18n/utils';
+
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
+const WA_URL = `https://wa.me/573001234567?text=${t('faq.waMsg')}`;
 
 const faqs = [
-  {
-    q: '¿Qué necesito para encargar un retrato?',
-    a: 'Solo necesitás una buena foto de tu mascota y saber qué tamaño querés. Te guiamos en todo el proceso. Si no tenés una buena foto, también tenemos una guía con tips para sacarle la mejor foto a tu mascota.',
-    memorial: false,
-  },
-  {
-    q: '¿Cuánto tarda en estar listo?',
-    a: 'Los retratos de mascotas tardan entre 3 y 4 semanas. Las fundas de celular en 1 a 2 semanas, y los paisajes entre 4 y 5 semanas. Todo depende de la complejidad y la demanda del momento.',
-    memorial: false,
-  },
-  {
-    q: '¿Puedo pedir cambios si no me gusta el boceto?',
-    a: '¡Por supuesto! Antes de empezar a pintar te enviamos un boceto digital. Hacemos los ajustes que necesités hasta que estés completamente satisfecho/a. Sin cargo extra por revisiones.',
-    memorial: false,
-  },
-  {
-    q: '¿Cómo me llega el cuadro?',
-    a: 'Enviamos con embalaje seguro y profesional a todo Colombia. El cuadro va bien protegido para que llegue en perfectas condiciones. Te compartimos el número de seguimiento una vez despachado.',
-    memorial: false,
-  },
-  {
-    q: '¿Pintan mascotas que ya no están?',
-    a: 'Sí, y es uno de los encargos más especiales que recibimos. Si perdiste a tu compañero de vida, podemos crear un retrato en su memoria. Es una forma hermosa de tenerlo siempre cerca. Trabajamos con el mayor cuidado y respeto en estos casos.',
-    memorial: true,
-  },
-  {
-    q: '¿Qué pasa si la foto no es muy buena?',
-    a: 'Hacemos lo posible con la foto que tenés. Antes de aceptar el encargo te avisamos si la calidad puede afectar el resultado. También tenemos una guía de cómo sacarle la mejor foto a tu mascota para que el retrato quede perfecto.',
-    memorial: false,
-  },
-  {
-    q: '¿Hacen envíos fuera de Colombia?',
-    a: 'Por el momento solo enviamos dentro de Colombia. Si estás en otro país, contáctanos y vemos opciones. ¡Escribinos que lo resolvemos!',
-    memorial: false,
-  },
-  {
-    q: '¿Puedo poner más de una mascota en el mismo cuadro?',
-    a: 'Sí, podés incluir hasta 3 mascotas en un mismo cuadro. El precio varía según la cantidad. Consultanos para un presupuesto exacto.',
-    memorial: false,
-  },
-  {
-    q: '¿Cuáles son los medios de pago?',
-    a: 'Aceptamos Nequi, Daviplata, transferencia bancaria y efectivo. Pedimos un 50% de anticipo para arrancar y el resto contra entrega cuando el trabajo esté terminado.',
-    memorial: false,
-  },
+  { q: t('faq.q1'), a: t('faq.a1'), memorial: false },
+  { q: t('faq.q2'), a: t('faq.a2'), memorial: false },
+  { q: t('faq.q3'), a: t('faq.a3'), memorial: false },
+  { q: t('faq.q4'), a: t('faq.a4'), memorial: false },
+  { q: t('faq.q5'), a: t('faq.a5'), memorial: true },
+  { q: t('faq.q6'), a: t('faq.a6'), memorial: false },
+  { q: t('faq.q7'), a: t('faq.a7'), memorial: false },
+  { q: t('faq.q8'), a: t('faq.a8'), memorial: false },
+  { q: t('faq.q9'), a: t('faq.a9'), memorial: false },
 ];
 ---
 
 <section id="faq" class="section faq" aria-labelledby="faq-title">
   <div class="container">
     <div class="faq__header reveal">
-      <p class="section-label">Todo lo que necesitás saber</p>
-      <h2 class="section-title" id="faq-title">Preguntas Frecuentes</h2>
+      <p class="section-label">{t('faq.label')}</p>
+      <h2 class="section-title" id="faq-title">{t('faq.title')}</h2>
       <p class="section-subtitle">
-        Si no encontrás la respuesta que buscás, escribinos por WhatsApp.
+        {t('faq.subtitle')}
       </p>
     </div>
 
@@ -99,12 +72,12 @@ const faqs = [
 
     <!-- CTA -->
     <div class="faq__cta reveal">
-      <p>¿Tenés otra pregunta?</p>
+      <p>{t('faq.ctaText')}</p>
       <a href={WA_URL} class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
-        Preguntanos por WhatsApp
+        {t('faq.ctaBtn')}
       </a>
     </div>
   </div>

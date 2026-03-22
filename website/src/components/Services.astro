@@ -1,50 +1,59 @@
 ---
-const WA_URL = 'https://wa.me/573001234567?text=';
+import { useTranslations } from '../i18n/utils';
+
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
+const WA_BASE = 'https://wa.me/573001234567?text=';
 
 const services = [
   {
     icon: '🐾',
-    title: 'Retratos de Mascotas',
-    desc: 'Acrílico sobre lienzo. Cada retrato es único, pintado pelo a pelo desde la foto de tu mascota.',
+    title: t('services.s1.title'),
+    desc: t('services.s1.desc'),
     features: [
-      'Perros, gatos y más',
-      'Fondo a elección',
-      'Fotos del proceso',
-      'Envío a todo Colombia',
+      t('services.s1.f1'),
+      t('services.s1.f2'),
+      t('services.s1.f3'),
+      t('services.s1.f4'),
     ],
-    price: 'Desde $150.000 COP',
-    time: '3–4 semanas',
-    waMsg: 'Hola!%20Quiero%20encargar%20un%20retrato%20de%20mi%20mascota',
+    price: t('services.s1.price'),
+    time: t('services.s1.time'),
+    waMsg: t('services.s1.waMsg'),
     highlight: false,
   },
   {
     icon: '🌿',
-    title: 'Paisajes',
-    desc: 'Lugares que importan, pintados a mano en acrílico. Por encargo, del tamaño que necesités.',
+    title: t('services.s2.title'),
+    desc: t('services.s2.desc'),
     features: [
-      'Paisajes naturales y urbanos',
-      'Tamaño personalizable',
-      'Para regalo',
-      'Envío a todo Colombia',
+      t('services.s2.f1'),
+      t('services.s2.f2'),
+      t('services.s2.f3'),
+      t('services.s2.f4'),
     ],
-    price: 'Desde $180.000 COP',
-    time: '4–5 semanas',
-    waMsg: 'Hola!%20Quiero%20encargar%20un%20paisaje',
+    price: t('services.s2.price'),
+    time: t('services.s2.time'),
+    waMsg: t('services.s2.waMsg'),
     highlight: false,
   },
   {
     icon: '📱',
-    title: 'Fundas de Celular',
-    desc: 'Tu mascota en tu celular, siempre. Diseño artístico único, no una impresión genérica.',
+    title: t('services.s3.title'),
+    desc: t('services.s3.desc'),
     features: [
-      'iPhone y Samsung',
-      'Preview digital previo',
-      'Diseño único hecho a mano',
-      'Envío a todo Colombia',
+      t('services.s3.f1'),
+      t('services.s3.f2'),
+      t('services.s3.f3'),
+      t('services.s3.f4'),
     ],
-    price: '$80.000 COP',
-    time: '1–2 semanas',
-    waMsg: 'Hola!%20Quiero%20encargar%20una%20funda%20de%20celular%20personalizada',
+    price: t('services.s3.price'),
+    time: t('services.s3.time'),
+    waMsg: t('services.s3.waMsg'),
     highlight: true,
   },
 ];
@@ -52,18 +61,17 @@ const services = [
 const pricing = [
   { size: '20×20 cm', one: '$150.000', two: '$220.000' },
   { size: '30×30 cm', one: '$220.000', two: '$320.000' },
-  { size: '40×40 cm', one: '$320.000', two: 'Consultar' },
+  { size: '40×40 cm', one: '$320.000', two: t('services.price.inquire') },
 ];
 ---
 
 <section id="servicios" class="section services" aria-labelledby="services-title">
   <div class="container">
     <div class="services__header reveal">
-      <p class="section-label">Lo que hacemos</p>
-      <h2 class="section-title" id="services-title">Servicios</h2>
+      <p class="section-label">{t('services.label')}</p>
+      <h2 class="section-title" id="services-title">{t('services.title')}</h2>
       <p class="section-subtitle">
-        Cada pieza es única, creada a mano con amor. Elegí lo que más te
-        representa y encargalo hoy.
+        {t('services.subtitle')}
       </p>
     </div>
 
@@ -72,12 +80,12 @@ const pricing = [
       {services.map((s) => (
         <article class={`service-card reveal ${s.highlight ? 'service-card--highlight' : ''}`}>
           {s.highlight && (
-            <div class="service-card__badge">Más popular</div>
+            <div class="service-card__badge">{t('services.badge')}</div>
           )}
           <div class="service-card__icon" aria-hidden="true">{s.icon}</div>
           <h3 class="service-card__title">{s.title}</h3>
           <p class="service-card__desc">{s.desc}</p>
-          <ul class="service-card__features" aria-label={`Incluye: ${s.title}`}>
+          <ul class="service-card__features" aria-label={`${lang === 'en' ? 'Includes' : 'Incluye'}: ${s.title}`}>
             {s.features.map((f) => (
               <li>
                 <span class="service-card__check" aria-hidden="true">✓</span>
@@ -97,12 +105,12 @@ const pricing = [
               </span>
             </div>
             <a
-              href={`${WA_URL}${s.waMsg}`}
+              href={`${WA_BASE}${s.waMsg}`}
               class={`btn ${s.highlight ? 'btn-primary' : 'btn-outline'}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Encargar ahora
+              {t('services.orderNow')}
             </a>
           </div>
         </article>
@@ -111,14 +119,14 @@ const pricing = [
 
     <!-- Pricing table -->
     <div class="services__table reveal">
-      <h3 class="services__table-title">Tabla de precios — Retratos de Mascotas</h3>
+      <h3 class="services__table-title">{t('services.tableTitle')}</h3>
       <div class="table-wrap">
-        <table class="pricing-table" aria-label="Precios de retratos por tamaño y cantidad de mascotas">
+        <table class="pricing-table" aria-label={t('services.tableAriaLabel')}>
           <thead>
             <tr>
-              <th scope="col">Tamaño</th>
-              <th scope="col">1 mascota</th>
-              <th scope="col">2 mascotas</th>
+              <th scope="col">{t('services.colSize')}</th>
+              <th scope="col">{t('services.col1Pet')}</th>
+              <th scope="col">{t('services.col2Pets')}</th>
             </tr>
           </thead>
           <tbody>
@@ -133,10 +141,9 @@ const pricing = [
         </table>
       </div>
       <p class="services__table-note">
-        * Precio en pesos colombianos (COP). Incluye envío a todo Colombia.
-        Para encargos especiales o más de 2 mascotas,{' '}
-        <a href={`${WA_URL}Hola!%20Quiero%20consultar%20precios%20para%20un%20encargo%20especial`} target="_blank" rel="noopener noreferrer">
-          consultanos por WhatsApp
+        {t('services.tableNote')}{' '}
+        <a href={`${WA_BASE}${t('services.tableNoteMsg')}`} target="_blank" rel="noopener noreferrer">
+          {t('services.tableNoteLink')}
         </a>.
       </p>
     </div>

@@ -1,9 +1,18 @@
 ---
+import { useTranslations } from '../i18n/utils';
+
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
 const testimonials = [
   {
     id: 1,
     stars: 5,
-    quote: 'No puedo creer cómo quedó Toto. Es exactamente como en la foto, pero en un cuadro hermoso. Mi mamá lloró cuando lo recibió.',
+    quote: t('testimonials.t1.quote'),
     author: 'María G.',
     location: 'Bogotá',
     pet: 'Schnauzer',
@@ -12,7 +21,7 @@ const testimonials = [
   {
     id: 2,
     stars: 5,
-    quote: 'Le encargué el retrato de nuestra perra Coco para Amor y Amistad. Mi novio quedó sin palabras. El proceso fue muy fácil y siempre estuvo comunicando el avance.',
+    quote: t('testimonials.t2.quote'),
     author: 'Laura M.',
     location: 'Medellín',
     pet: 'Beagle',
@@ -21,7 +30,7 @@ const testimonials = [
   {
     id: 3,
     stars: 5,
-    quote: 'Tenía miedo de que no quedara bien solo con fotos, pero el resultado superó todas mis expectativas. Ya encargué la funda también.',
+    quote: t('testimonials.t3.quote'),
     author: 'Carlos R.',
     location: 'Cali',
     pet: 'Golden Retriever',
@@ -33,53 +42,53 @@ const testimonials = [
 <section id="testimonios" class="section testimonials" aria-labelledby="testimonials-title">
   <div class="container">
     <div class="testimonials__header reveal">
-      <p class="section-label">Clientes felices</p>
-      <h2 class="section-title" id="testimonials-title">Lo que dicen nuestros clientes</h2>
+      <p class="section-label">{t('testimonials.label')}</p>
+      <h2 class="section-title" id="testimonials-title">{t('testimonials.title')}</h2>
       <div class="testimonials__rating reveal">
-        <div class="testimonials__stars" aria-label="Calificación 4.9 de 5 estrellas">
+        <div class="testimonials__stars" aria-label={t('testimonials.ratingLabel')}>
           ⭐⭐⭐⭐⭐
         </div>
-        <span>4.9/5 basado en +200 reseñas</span>
+        <span>{t('testimonials.ratingText')}</span>
       </div>
     </div>
 
     <!-- Desktop grid / Mobile scroll -->
     <div class="testimonials__grid" role="list">
-      {testimonials.map((t, i) => (
+      {testimonials.map((testimonial, i) => (
         <article
           class="testimonial-card reveal"
           role="listitem"
           style={`transition-delay: ${i * 120}ms`}
-          aria-label={`Testimonio de ${t.author}`}
+          aria-label={`${lang === 'en' ? 'Testimonial from' : 'Testimonio de'} ${testimonial.author}`}
         >
           <!-- Artwork placeholder -->
           <div
             class="testimonial-card__artwork"
-            style={`background: ${t.gradient};`}
+            style={`background: ${testimonial.gradient};`}
             aria-hidden="true"
           >
             <span class="testimonial-card__artwork-icon">🐾</span>
-            <span class="testimonial-card__artwork-label">{t.pet}</span>
+            <span class="testimonial-card__artwork-label">{testimonial.pet}</span>
           </div>
 
           <!-- Stars -->
-          <div class="testimonial-card__stars" aria-label={`${t.stars} de 5 estrellas`}>
-            {'⭐'.repeat(t.stars)}
+          <div class="testimonial-card__stars" aria-label={`${testimonial.stars} ${lang === 'en' ? 'out of 5 stars' : 'de 5 estrellas'}`}>
+            {'⭐'.repeat(testimonial.stars)}
           </div>
 
           <!-- Quote -->
           <blockquote class="testimonial-card__quote">
-            <p>"{t.quote}"</p>
+            <p>"{testimonial.quote}"</p>
           </blockquote>
 
           <!-- Author -->
           <footer class="testimonial-card__author">
             <div class="testimonial-card__avatar" aria-hidden="true">
-              {t.author.charAt(0)}
+              {testimonial.author.charAt(0)}
             </div>
             <div>
-              <strong>— {t.author}</strong>
-              <span class="testimonial-card__location">· {t.location}</span>
+              <strong>— {testimonial.author}</strong>
+              <span class="testimonial-card__location">· {testimonial.location}</span>
             </div>
           </footer>
         </article>
@@ -93,7 +102,7 @@ const testimonials = [
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
           <polyline points="22 4 12 14.01 9 11.01"/>
         </svg>
-        Reseñas verificadas de clientes reales · <a href="https://www.instagram.com/sac_artx" target="_blank" rel="noopener noreferrer">Ver más en Instagram @sac_artx</a>
+        {t('testimonials.footerText')}<a href="https://www.instagram.com/sac_artx" target="_blank" rel="noopener noreferrer">{t('testimonials.footerLink')}</a>
       </p>
     </div>
   </div>

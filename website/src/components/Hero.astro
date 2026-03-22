@@ -1,16 +1,25 @@
 ---
-const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Me%20gustar%C3%ADa%20encargar%20un%20retrato';
+import { useTranslations } from '../i18n/utils';
+
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
+const WA_URL = `https://wa.me/573001234567?text=${t('hero.waMsg')}`;
 ---
 
 <section class="hero" aria-label="Hero — SAC_ART">
   <div class="hero__inner container">
     <!-- Left: placeholder image -->
     <div class="hero__image-wrap reveal">
-      <div class="hero__placeholder" aria-label="Fotografía de obra de arte">
+      <div class="hero__placeholder" aria-label={t('hero.imageAlt')}>
         <div class="hero__placeholder-inner">
           <span class="hero__placeholder-icon" aria-hidden="true">🎨</span>
-          <span class="hero__placeholder-text">Foto de obra</span>
-          <span class="hero__placeholder-sub">Retrato en acrílico</span>
+          <span class="hero__placeholder-text">{t('hero.imagePlaceholder')}</span>
+          <span class="hero__placeholder-sub">{t('hero.imageSub')}</span>
         </div>
       </div>
       <!-- Decorative accent -->
@@ -19,39 +28,38 @@ const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Me%20gustar%C3%ADa%20enc
 
     <!-- Right: content -->
     <div class="hero__content">
-      <p class="hero__label reveal">Arte por Encargo</p>
+      <p class="hero__label reveal">{t('hero.label')}</p>
       <h1 class="hero__title reveal">
-        Tu mascota,<br />
-        <em>hecha arte.</em>
+        {t('hero.title')}<br />
+        <em>{t('hero.titleEm')}</em>
       </h1>
       <p class="hero__tagline reveal">
-        Pintamos retratos de mascotas en acrílico, paisajes y fundas
-        personalizadas. Desde una foto, creamos algo único.
+        {t('hero.tagline')}
       </p>
       <div class="hero__ctas reveal">
         <a href={WA_URL} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-          Encargá tu retrato&nbsp;→
+          {t('hero.ctaPrimary')}
         </a>
         <a href="#galeria" class="btn btn-outline">
-          Ver galería&nbsp;↓
+          {t('hero.ctaSecondary')}
         </a>
       </div>
 
       <!-- Stats / Social proof -->
       <div class="hero__stats reveal">
         <div class="hero__stat">
-          <strong>+200</strong>
-          <span>obras entregadas</span>
+          <strong>{t('hero.stat1Value')}</strong>
+          <span>{t('hero.stat1Label')}</span>
         </div>
         <div class="hero__stat-divider" aria-hidden="true"></div>
         <div class="hero__stat">
-          <strong>4.9★</strong>
-          <span>valoración promedio</span>
+          <strong>{t('hero.stat2Value')}</strong>
+          <span>{t('hero.stat2Label')}</span>
         </div>
         <div class="hero__stat-divider" aria-hidden="true"></div>
         <div class="hero__stat">
-          <strong>🇨🇴</strong>
-          <span>envíos a todo Colombia</span>
+          <strong>{t('hero.stat3Value')}</strong>
+          <span>{t('hero.stat3Label')}</span>
         </div>
       </div>
     </div>
@@ -62,7 +70,7 @@ const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Me%20gustar%C3%ADa%20enc
     <div class="hero__scroll-mouse">
       <div class="hero__scroll-dot"></div>
     </div>
-    <span>Deslizá</span>
+    <span>{t('hero.scroll')}</span>
   </div>
 </section>
 

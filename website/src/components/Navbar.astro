@@ -1,25 +1,46 @@
 ---
-const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Me%20gustar%C3%ADa%20encargar%20un%20retrato';
+import { useTranslations } from '../i18n/utils';
+
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
+const WA_BASE = 'https://wa.me/573001234567?text=';
+const WA_URL = `${WA_BASE}${t('nav.cta') === 'Order via WhatsApp' ? 'Hello!%20I\'d%20like%20to%20commission%20a%20portrait' : 'Hola!%20Me%20gustar%C3%ADa%20encargar%20un%20retrato'}`;
+
+const otherLang = lang === 'es' ? 'en' : 'es';
+const langSwitchHref = lang === 'es' ? '/en/' : '/';
 ---
 
 <header id="navbar" class="navbar">
   <div class="navbar__inner container">
     <!-- Logo -->
-    <a href="/" class="navbar__logo" aria-label="SAC_ART — inicio">
+    <a href={lang === 'en' ? '/en/' : '/'} class="navbar__logo" aria-label="SAC_ART — {lang === 'en' ? 'home' : 'inicio'}">
       SAC_ART
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="navbar__desktop" aria-label="Navegación principal">
-      <a href="#servicios" class="navbar__link">Servicios</a>
-      <a href="#galeria" class="navbar__link">Galería</a>
-      <a href="#proceso" class="navbar__link">Proceso</a>
-      <a href="#contacto" class="navbar__link">Contacto</a>
+    <nav class="navbar__desktop" aria-label={t('nav.desktopLabel')}>
+      <a href="#servicios" class="navbar__link">{t('nav.services')}</a>
+      <a href="#galeria" class="navbar__link">{t('nav.gallery')}</a>
+      <a href="#proceso" class="navbar__link">{t('nav.process')}</a>
+      <a href="#contacto" class="navbar__link">{t('nav.contact')}</a>
+      <a
+        href={langSwitchHref}
+        class="navbar__lang-switch"
+        aria-label={t('nav.langSwitchLabel')}
+        hreflang={otherLang}
+      >
+        {t('nav.langSwitch')}
+      </a>
       <a href={WA_URL} class="btn btn-whatsapp navbar__cta" target="_blank" rel="noopener noreferrer">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
-        WhatsApp
+        {t('nav.whatsapp')}
       </a>
     </nav>
 
@@ -27,7 +48,7 @@ const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Me%20gustar%C3%ADa%20enc
     <button
       id="menu-toggle"
       class="navbar__hamburger"
-      aria-label="Abrir menú"
+      aria-label={t('nav.menuOpen')}
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
@@ -39,22 +60,30 @@ const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Me%20gustar%C3%ADa%20enc
 </header>
 
 <!-- Mobile Overlay Menu -->
-<div id="mobile-menu" class="mobile-menu" aria-hidden="true" role="dialog" aria-label="Menú móvil">
-  <button id="menu-close" class="mobile-menu__close" aria-label="Cerrar menú">
+<div id="mobile-menu" class="mobile-menu" aria-hidden="true" role="dialog" aria-label={t('nav.mobileLabel')}>
+  <button id="menu-close" class="mobile-menu__close" aria-label={t('nav.menuClose')}>
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M18 6L6 18M6 6l12 12"/>
     </svg>
   </button>
-  <nav class="mobile-menu__nav" aria-label="Navegación móvil">
-    <a href="#servicios" class="mobile-menu__link">Servicios</a>
-    <a href="#galeria" class="mobile-menu__link">Galería</a>
-    <a href="#proceso" class="mobile-menu__link">Proceso</a>
-    <a href="#contacto" class="mobile-menu__link">Contacto</a>
+  <nav class="mobile-menu__nav" aria-label={t('nav.mobileLabel')}>
+    <a href="#servicios" class="mobile-menu__link">{t('nav.services')}</a>
+    <a href="#galeria" class="mobile-menu__link">{t('nav.gallery')}</a>
+    <a href="#proceso" class="mobile-menu__link">{t('nav.process')}</a>
+    <a href="#contacto" class="mobile-menu__link">{t('nav.contact')}</a>
+    <a
+      href={langSwitchHref}
+      class="mobile-menu__lang-switch"
+      aria-label={t('nav.langSwitchLabel')}
+      hreflang={otherLang}
+    >
+      {t('nav.langSwitch')}
+    </a>
     <a href={WA_URL} class="mobile-menu__wa" target="_blank" rel="noopener noreferrer">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
       </svg>
-      Encargá por WhatsApp
+      {t('nav.waOrder')}
     </a>
   </nav>
 </div>
@@ -130,6 +159,24 @@ const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Me%20gustar%C3%ADa%20enc
 
   .navbar__link:hover::after {
     transform: scaleX(1);
+  }
+
+  /* Language switcher pill */
+  .navbar__lang-switch {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    border: 1.5px solid var(--color-border);
+    border-radius: 20px;
+    padding: 4px 12px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .navbar__lang-switch:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
   }
 
   .navbar__cta {
@@ -220,11 +267,30 @@ const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Me%20gustar%C3%ADa%20enc
     color: var(--color-accent);
   }
 
+  /* Mobile language switcher */
+  .mobile-menu__lang-switch {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    border: 1.5px solid var(--color-border);
+    border-radius: 20px;
+    padding: 6px 20px;
+    margin-top: 8px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .mobile-menu__lang-switch:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
   .mobile-menu__wa {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    margin-top: 24px;
+    margin-top: 16px;
     background: var(--color-whatsapp);
     color: #fff;
     padding: 14px 28px;

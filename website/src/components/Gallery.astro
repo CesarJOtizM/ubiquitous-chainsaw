@@ -1,12 +1,22 @@
 ---
-// Gallery placeholder items
-// In production: replace with real image paths and dimensions
+import { useTranslations } from '../i18n/utils';
+
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
+const acrylic = (size: string) => `${t('gallery.technique')} ${size}`;
+const digital = () => t('gallery.techniqueDigital');
+
 const galleryItems = [
   {
     id: 1,
     category: 'mascotas',
-    title: 'Golden Retriever "Buddy"',
-    technique: 'Acrílico sobre lienzo 30×30cm',
+    title: t('gallery.item1.title'),
+    technique: acrylic('30×30cm'),
     gradient: 'linear-gradient(135deg, #C4714F55, #8A9E8C55)',
     height: 260,
     w: 900,
@@ -15,8 +25,8 @@ const galleryItems = [
   {
     id: 2,
     category: 'mascotas',
-    title: 'Gato siamés "Luna"',
-    technique: 'Acrílico sobre lienzo 20×20cm',
+    title: t('gallery.item2.title'),
+    technique: acrylic('20×20cm'),
     gradient: 'linear-gradient(135deg, #8A9E8C44, #C4714F44)',
     height: 200,
     w: 800,
@@ -25,8 +35,8 @@ const galleryItems = [
   {
     id: 3,
     category: 'paisajes',
-    title: 'Amanecer en los Andes',
-    technique: 'Acrílico sobre lienzo 40×30cm',
+    title: t('gallery.item3.title'),
+    technique: acrylic('40×30cm'),
     gradient: 'linear-gradient(135deg, #D4845F55, #8A9E8C33)',
     height: 300,
     w: 1200,
@@ -35,8 +45,8 @@ const galleryItems = [
   {
     id: 4,
     category: 'mascotas',
-    title: 'Beagle "Coco"',
-    technique: 'Acrílico sobre lienzo 30×30cm',
+    title: t('gallery.item4.title'),
+    technique: acrylic('30×30cm'),
     gradient: 'linear-gradient(135deg, #EDE8DF, #C4714F33)',
     height: 220,
     w: 900,
@@ -45,8 +55,8 @@ const galleryItems = [
   {
     id: 5,
     category: 'fundas',
-    title: 'Funda — Labrador negro',
-    technique: 'Diseño artístico digital',
+    title: t('gallery.item5.title'),
+    technique: digital(),
     gradient: 'linear-gradient(135deg, #2C2C2C22, #C4714F55)',
     height: 260,
     w: 600,
@@ -55,8 +65,8 @@ const galleryItems = [
   {
     id: 6,
     category: 'mascotas',
-    title: 'Dos gatos — "Sol y Luna"',
-    technique: 'Acrílico sobre lienzo 40×40cm',
+    title: t('gallery.item6.title'),
+    technique: acrylic('40×40cm'),
     gradient: 'linear-gradient(135deg, #C4714F33, #D4845F55)',
     height: 300,
     w: 900,
@@ -65,8 +75,8 @@ const galleryItems = [
   {
     id: 7,
     category: 'paisajes',
-    title: 'Río Magdalena al atardecer',
-    technique: 'Acrílico sobre lienzo 50×40cm',
+    title: t('gallery.item7.title'),
+    technique: acrylic('50×40cm'),
     gradient: 'linear-gradient(135deg, #D4845F44, #8A9E8C44)',
     height: 200,
     w: 1200,
@@ -75,8 +85,8 @@ const galleryItems = [
   {
     id: 8,
     category: 'mascotas',
-    title: 'Pomerania "Mochi"',
-    technique: 'Acrílico sobre lienzo 20×20cm',
+    title: t('gallery.item8.title'),
+    technique: acrylic('20×20cm'),
     gradient: 'linear-gradient(135deg, #EDE8DF, #8A9E8C44)',
     height: 260,
     w: 800,
@@ -85,8 +95,8 @@ const galleryItems = [
   {
     id: 9,
     category: 'fundas',
-    title: 'Funda — Bulldog francés',
-    technique: 'Diseño artístico digital',
+    title: t('gallery.item9.title'),
+    technique: digital(),
     gradient: 'linear-gradient(135deg, #8A9E8C33, #C4714F44)',
     height: 220,
     w: 600,
@@ -95,8 +105,8 @@ const galleryItems = [
   {
     id: 10,
     category: 'mascotas',
-    title: 'Schnauzer "Toto"',
-    technique: 'Acrílico sobre lienzo 30×30cm',
+    title: t('gallery.item10.title'),
+    technique: acrylic('30×30cm'),
     gradient: 'linear-gradient(135deg, #C4714F44, #EDE8DF)',
     height: 200,
     w: 900,
@@ -105,8 +115,8 @@ const galleryItems = [
   {
     id: 11,
     category: 'paisajes',
-    title: 'Villa de Leyva',
-    technique: 'Acrílico sobre lienzo 60×40cm',
+    title: t('gallery.item11.title'),
+    technique: acrylic('60×40cm'),
     gradient: 'linear-gradient(135deg, #8A9E8C55, #D4845F33)',
     height: 260,
     w: 1200,
@@ -115,8 +125,8 @@ const galleryItems = [
   {
     id: 12,
     category: 'fundas',
-    title: 'Funda — Gato naranja',
-    technique: 'Diseño artístico digital',
+    title: t('gallery.item12.title'),
+    technique: digital(),
     gradient: 'linear-gradient(135deg, #D4845F55, #8A9E8C33)',
     height: 300,
     w: 600,
@@ -125,25 +135,25 @@ const galleryItems = [
 ];
 
 const filters = [
-  { key: 'all', label: 'Todos' },
-  { key: 'mascotas', label: 'Mascotas' },
-  { key: 'paisajes', label: 'Paisajes' },
-  { key: 'fundas', label: 'Fundas' },
+  { key: 'all', label: t('gallery.filterAll') },
+  { key: 'mascotas', label: t('gallery.filterPets') },
+  { key: 'paisajes', label: t('gallery.filterLandscapes') },
+  { key: 'fundas', label: t('gallery.filterCases') },
 ];
 ---
 
 <section id="galeria" class="section gallery" aria-labelledby="gallery-title">
   <div class="container">
     <div class="gallery__header reveal">
-      <p class="section-label">Trabajos recientes</p>
-      <h2 class="section-title" id="gallery-title">Galería</h2>
+      <p class="section-label">{t('gallery.label')}</p>
+      <h2 class="section-title" id="gallery-title">{t('gallery.title')}</h2>
       <p class="section-subtitle">
-        Cada pieza cuenta una historia. Explorá nuestros trabajos por categoría.
+        {t('gallery.subtitle')}
       </p>
     </div>
 
     <!-- Filters -->
-    <div class="gallery__filters reveal" role="group" aria-label="Filtrar obras por categoría">
+    <div class="gallery__filters reveal" role="group" aria-label={t('gallery.filtersAriaLabel')}>
       {filters.map((f) => (
         <button
           class={`gallery__filter-btn ${f.key === 'all' ? 'active' : ''}`}
@@ -159,7 +169,7 @@ const filters = [
     <div
       id="pswp-gallery"
       class="gallery__grid"
-      aria-label="Galería de obras de SAC_ART"
+      aria-label={t('gallery.ariaLabel')}
     >
       {galleryItems.map((item) => (
         <a
@@ -169,7 +179,7 @@ const filters = [
           data-pswp-width={item.w}
           data-pswp-height={item.h}
           data-pswp-src={`/images/placeholder-${item.id}.jpg`}
-          aria-label={`Ver obra: ${item.title}`}
+          aria-label={`${lang === 'en' ? 'View artwork' : 'Ver obra'}: ${item.title}`}
           role="button"
         >
           <div
@@ -184,7 +194,7 @@ const filters = [
               <span class="gallery-card__cat">{item.category}</span>
               <h3 class="gallery-card__title">{item.title}</h3>
               <span class="gallery-card__tech">{item.technique}</span>
-              <span class="gallery-card__cta">Ver obra →</span>
+              <span class="gallery-card__cta">{t('gallery.viewWork')}</span>
             </div>
           </div>
         </a>

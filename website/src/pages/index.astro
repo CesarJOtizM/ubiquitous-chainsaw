@@ -10,22 +10,21 @@ import FAQ from '../components/FAQ.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFAB from '../components/WhatsAppFAB.astro';
+
+const lang = 'es' as const;
 ---
 
-<BaseLayout
-  title="Retratos de Mascotas en Acrílico por Encargo · SAC_ART"
-  description="Pintamos retratos de mascotas en acrílico sobre lienzo, paisajes y fundas personalizadas. Por encargo, desde una foto. Envíos a todo Colombia."
->
-  <Navbar />
+<BaseLayout lang={lang}>
+  <Navbar lang={lang} />
   <main>
-    <Hero />
-    <Services />
-    <Process />
-    <Gallery />
-    <Testimonials />
-    <FAQ />
-    <Contact />
+    <Hero lang={lang} />
+    <Services lang={lang} />
+    <Process lang={lang} />
+    <Gallery lang={lang} />
+    <Testimonials lang={lang} />
+    <FAQ lang={lang} />
+    <Contact lang={lang} />
   </main>
-  <Footer />
-  <WhatsAppFAB />
+  <Footer lang={lang} />
+  <WhatsAppFAB lang={lang} />
 </BaseLayout>

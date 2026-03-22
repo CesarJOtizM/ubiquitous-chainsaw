@@ -1,25 +1,31 @@
 ---
 import '../styles/global.css';
+import { useTranslations } from '../i18n/utils';
 
 export interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   ogImage?: string;
   ogUrl?: string;
+  lang?: 'es' | 'en';
 }
 
 const {
-  title,
-  description,
+  lang = 'es',
   ogImage = '/images/og-image.jpg',
   ogUrl = 'https://sacart.co',
 } = Astro.props;
+
+const t = useTranslations(lang);
+
+const title = Astro.props.title ?? t('meta.title');
+const description = Astro.props.description ?? t('meta.description');
 
 const schemaOrg = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "SAC_ART",
-  "description": "Pintamos retratos de mascotas en acrílico sobre lienzo, paisajes y fundas personalizadas por encargo. Envíos a todo Colombia.",
+  "description": t('schema.description'),
   "url": ogUrl,
   "telephone": "+573001234567",
   "address": {
@@ -36,7 +42,7 @@ const schemaOrg = {
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -58,7 +64,7 @@ const schemaOrg = {
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:url" content={ogUrl} />
-    <meta property="og:locale" content="es_CO" />
+    <meta property="og:locale" content={t('meta.ogLocale')} />
     <meta property="og:site_name" content="SAC_ART" />
 
     <!-- Twitter Card -->

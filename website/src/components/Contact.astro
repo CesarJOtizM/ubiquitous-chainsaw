@@ -1,24 +1,33 @@
 ---
-const WA_URL = 'https://wa.me/573001234567?text=Hola!%20Me%20gustar%C3%ADa%20hacer%20una%20consulta';
+import { useTranslations } from '../i18n/utils';
+
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
+const WA_URL = `https://wa.me/573001234567?text=${t('contact.waMsg')}`;
 const IG_URL = 'https://www.instagram.com/sac_artx';
 ---
 
 <section id="contacto" class="section contact" aria-labelledby="contact-title">
   <div class="container">
     <div class="contact__header reveal">
-      <p class="section-label">Hablemos</p>
-      <h2 class="section-title" id="contact-title">Hablemos</h2>
+      <p class="section-label">{t('contact.label')}</p>
+      <h2 class="section-title" id="contact-title">{t('contact.title')}</h2>
       <p class="section-subtitle">
-        Estamos a un mensaje de distancia. Contanos tu idea y la hacemos realidad.
+        {t('contact.subtitle')}
       </p>
     </div>
 
     <div class="contact__grid">
       <!-- Left: direct contact -->
       <div class="contact__direct reveal">
-        <h3 class="contact__col-title">La forma más rápida</h3>
+        <h3 class="contact__col-title">{t('contact.directTitle')}</h3>
         <p class="contact__col-desc">
-          Escribinos directamente y te respondemos en 24–48 horas.
+          {t('contact.directDesc')}
         </p>
 
         <div class="contact__channels">
@@ -28,7 +37,7 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
             class="contact__channel"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Contactar por WhatsApp al +57 300 123 4567"
+            aria-label={t('contact.waAriaLabel')}
           >
             <div class="contact__channel-icon contact__channel-icon--wa">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -48,7 +57,7 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
             class="contact__channel"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Ver perfil de Instagram @sac_artx"
+            aria-label={t('contact.igAriaLabel')}
           >
             <div class="contact__channel-icon contact__channel-icon--ig">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -70,31 +79,31 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
             <circle cx="12" cy="12" r="10"/>
             <path d="M12 6v6l4 2"/>
           </svg>
-          Respondemos en 24–48 horas
+          {t('contact.responseTime')}
         </div>
 
         <!-- Trust signals -->
         <div class="contact__trust">
           <div class="contact__trust-item">
             <span>🔒</span>
-            <span>Pago seguro con 50% de anticipo</span>
+            <span>{t('contact.trust1')}</span>
           </div>
           <div class="contact__trust-item">
             <span>📦</span>
-            <span>Envíos con seguimiento a todo Colombia</span>
+            <span>{t('contact.trust2')}</span>
           </div>
           <div class="contact__trust-item">
             <span>✏️</span>
-            <span>Boceto previo antes de pintar</span>
+            <span>{t('contact.trust3')}</span>
           </div>
         </div>
       </div>
 
       <!-- Right: form -->
       <div class="contact__form-wrap reveal" style="transition-delay: 0.15s">
-        <h3 class="contact__col-title">O completá el formulario</h3>
+        <h3 class="contact__col-title">{t('contact.formTitle')}</h3>
         <p class="contact__col-desc">
-          Completá los datos y te contactamos a la brevedad.
+          {t('contact.formDesc')}
         </p>
 
         <!-- TODO: replace action with Formspree endpoint e.g. https://formspree.io/f/XXXXXXXX -->
@@ -103,19 +112,19 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
           action="mailto:sacart.colombia@gmail.com"
           method="post"
           enctype="text/plain"
-          aria-label="Formulario de contacto SAC_ART"
+          aria-label={t('contact.formAriaLabel')}
           novalidate
         >
           <div class="contact-form__field">
             <label for="cf-name" class="contact-form__label">
-              Nombre <span aria-label="requerido">*</span>
+              {t('contact.fieldName')} <span aria-label={t('contact.required')}>*</span>
             </label>
             <input
               type="text"
               id="cf-name"
               name="nombre"
               class="contact-form__input"
-              placeholder="Tu nombre"
+              placeholder={t('contact.fieldNamePlaceholder')}
               required
               autocomplete="name"
             />
@@ -123,14 +132,14 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
 
           <div class="contact-form__field">
             <label for="cf-contact" class="contact-form__label">
-              Email o WhatsApp <span aria-label="requerido">*</span>
+              {t('contact.fieldContact')} <span aria-label={t('contact.required')}>*</span>
             </label>
             <input
               type="text"
               id="cf-contact"
               name="contacto"
               class="contact-form__input"
-              placeholder="tucorreo@email.com o +57 300..."
+              placeholder={t('contact.fieldContactPlaceholder')}
               required
               autocomplete="email"
             />
@@ -138,7 +147,7 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
 
           <div class="contact-form__field">
             <label for="cf-service" class="contact-form__label">
-              Tipo de servicio <span aria-label="requerido">*</span>
+              {t('contact.fieldService')} <span aria-label={t('contact.required')}>*</span>
             </label>
             <select
               id="cf-service"
@@ -146,29 +155,29 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
               class="contact-form__select"
               required
             >
-              <option value="" disabled selected>Seleccioná un servicio</option>
-              <option value="retrato">Retrato de mascota</option>
-              <option value="paisaje">Paisaje</option>
-              <option value="funda">Funda de celular</option>
-              <option value="otro">Otro</option>
+              <option value="" disabled selected>{t('contact.fieldServicePlaceholder')}</option>
+              <option value="retrato">{t('contact.servicePortrait')}</option>
+              <option value="paisaje">{t('contact.serviceLandscape')}</option>
+              <option value="funda">{t('contact.serviceCase')}</option>
+              <option value="otro">{t('contact.serviceOther')}</option>
             </select>
           </div>
 
           <div class="contact-form__field">
-            <label for="cf-message" class="contact-form__label">Mensaje</label>
+            <label for="cf-message" class="contact-form__label">{t('contact.fieldMessage')}</label>
             <textarea
               id="cf-message"
               name="mensaje"
               class="contact-form__textarea"
-              placeholder="Contanos sobre tu mascota, el tamaño que querés, si es un regalo... ¡Todo ayuda!"
+              placeholder={t('contact.fieldMessagePlaceholder')}
               rows="4"
             ></textarea>
           </div>
 
           <div class="contact-form__field">
             <label for="cf-photo" class="contact-form__label contact-form__label--optional">
-              Adjuntar foto de tu mascota
-              <span class="contact-form__label-hint">(opcional, máx. 5 fotos)</span>
+              {t('contact.fieldPhoto')}
+              <span class="contact-form__label-hint">{t('contact.fieldPhotoHint')}</span>
             </label>
             <div class="contact-form__upload">
               <input
@@ -178,7 +187,7 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
                 class="contact-form__file"
                 accept="image/*"
                 multiple
-                aria-label="Adjuntar fotos de tu mascota"
+                aria-label={t('contact.fieldPhotoAriaLabel')}
               />
               <label for="cf-photo" class="contact-form__upload-label">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -186,16 +195,16 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
                   <polyline points="17 8 12 3 7 8"/>
                   <line x1="12" y1="3" x2="12" y2="15"/>
                 </svg>
-                <span>Elegir fotos</span>
+                <span>{t('contact.choosePhotos')}</span>
               </label>
               <p class="contact-form__upload-hint" id="file-hint" aria-live="polite">
-                JPG, PNG — máx. 5 archivos
+                {t('contact.fileHint')}
               </p>
             </div>
           </div>
 
           <button type="submit" class="btn btn-primary contact-form__submit">
-            Enviar consulta&nbsp;→
+            {t('contact.submit')}
           </button>
         </form>
       </div>
@@ -350,7 +359,7 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
     color: var(--color-text);
   }
 
-  .contact-form__label span[aria-label="requerido"] {
+  .contact-form__label span[aria-label] {
     color: var(--color-accent);
     margin-left: 2px;
   }
