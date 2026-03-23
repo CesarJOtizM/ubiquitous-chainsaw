@@ -1,6 +1,6 @@
 # Research Complementario: Portfolio para Artista de Retratos de Mascotas y Merchandise
 
-> Este documento complementa `artist-portfolio-research.md`. Se enfoca específicamente en el perfil de **SAC_ART**: pintora de mascotas en acrílico, paisajes, y merchandise (fundas de celular). El target es un sitio de **Landing Page + Servicios + Galería**.
+> Este documento complementa `artist-portfolio-research.md`. Se enfoca específicamente en el perfil de **SAC_ARTX**: pintora de mascotas en acrílico, paisajes, y merchandise (fundas de celular). El target es un sitio de **Landing Page + Servicios + Galería**.
 
 ---
 
@@ -15,15 +15,15 @@
 7. [Sección Merchandise / Fundas de Celular](#sección-merchandise)
 8. [Patrones de Conversión Críticos](#patrones-de-conversión)
 9. [Referencias Visuales Específicas](#referencias-visuales-específicas)
-10. [Decisiones de Diseño Recomendadas para SAC_ART](#decisiones-finales)
+10. [Decisiones de Diseño Recomendadas para SAC_ARTX](#decisiones-finales)
 
 ---
 
 ## Por qué este perfil es diferente
 
-El research anterior asume un portfolio de **fine art** (galería, exposiciones, coleccionistas). SAC_ART tiene un modelo completamente diferente:
+El research anterior asume un portfolio de **fine art** (galería, exposiciones, coleccionistas). SAC_ARTX tiene un modelo completamente diferente:
 
-| Aspecto | Fine Art Portfolio | SAC_ART (Comisiones + Merchandise) |
+| Aspecto | Fine Art Portfolio | SAC_ARTX (Comisiones + Merchandise) |
 |---------|--------------------|------------------------------------|
 | **Objetivo principal** | Mostrar obra, generar reputación | Convertir visita en comisión/venta |
 | **Audiencia** | Coleccionistas, galeristas | Dueños de mascotas, regaladores |
@@ -39,7 +39,7 @@ El research anterior asume un portfolio de **fine art** (galería, exposiciones,
 
 ## Paleta de Colores
 
-### ❌ Qué NO usar para SAC_ART
+### ❌ Qué NO usar para SAC_ARTX
 
 El minimalismo oscuro (`#0A0A0A` + oro) del research anterior es INCORRECTO para este perfil.
 
@@ -111,7 +111,7 @@ Bordes:                  #EAE4DC   (beige muy suave)
 Layout recomendado: Split Screen
 ┌─────────────────────────┬──────────────────────────┐
 │                         │                          │
-│   [OBRA DE MASCOTA]     │  SAC_ART                 │
+│   [OBRA DE MASCOTA]     │  SAC_ARTX                 │
 │   (acuarela/acrílico    │  Retratos · Paisajes      │
 │    de perro o gato      │  Fundas Personalizadas    │
 │    en formato portrait) │                          │
@@ -132,7 +132,7 @@ CTA prominente
 Scroll indicator
 ```
 
-**Tagline options para SAC_ART:**
+**Tagline options para SAC_ARTX:**
 - "Retratos de mascotas en acrílico · Únicos como ellas"
 - "Arte que preserve los momentos que más querés"
 - "Tu mascota, hecha arte"
@@ -166,7 +166,7 @@ Esta es la sección MÁS IMPORTANTE para un modelo de comisiones. Los artistas e
 └─────────────────────────────┘
 ```
 
-### Los 3 Servicios de SAC_ART
+### Los 3 Servicios de SAC_ARTX
 
 #### 1. Retratos de Mascotas
 ```
@@ -417,7 +417,7 @@ Página o sección con "cómo sacarle la mejor foto a tu mascota". Beneficios:
 
 ### 5. Memorial Portrait — Sección / Copy Especial
 
-Si SAC_ART hace retratos de mascotas fallecidas (muy común en este nicho):
+Si SAC_ARTX hace retratos de mascotas fallecidas (muy común en este nicho):
 
 ```
 Nota visual diferenciada — con borde delicado, copy emocional:
@@ -461,7 +461,7 @@ Never: negro puro, blanco frío, azules fríos
 
 ---
 
-## Decisiones de Diseño Recomendadas para SAC_ART
+## Decisiones de Diseño Recomendadas para SAC_ARTX
 
 | Aspecto | Recomendación | Razón |
 |---------|--------------|-------|

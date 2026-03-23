@@ -106,12 +106,9 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
           {t('contact.formDesc')}
         </p>
 
-        <!-- TODO: replace action with Formspree endpoint e.g. https://formspree.io/f/XXXXXXXX -->
         <form
+          id="contact-form"
           class="contact-form"
-          action="mailto:sacart.colombia@gmail.com"
-          method="post"
-          enctype="text/plain"
           aria-label={t('contact.formAriaLabel')}
           novalidate
         >
@@ -141,7 +138,6 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
               class="contact-form__input"
               placeholder={t('contact.fieldContactPlaceholder')}
               required
-              autocomplete="email"
             />
           </div>
 
@@ -174,38 +170,16 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
             ></textarea>
           </div>
 
-          <div class="contact-form__field">
-            <label for="cf-photo" class="contact-form__label contact-form__label--optional">
-              {t('contact.fieldPhoto')}
-              <span class="contact-form__label-hint">{t('contact.fieldPhotoHint')}</span>
-            </label>
-            <div class="contact-form__upload">
-              <input
-                type="file"
-                id="cf-photo"
-                name="fotos"
-                class="contact-form__file"
-                accept="image/*"
-                multiple
-                aria-label={t('contact.fieldPhotoAriaLabel')}
-              />
-              <label for="cf-photo" class="contact-form__upload-label">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                  <polyline points="17 8 12 3 7 8"/>
-                  <line x1="12" y1="3" x2="12" y2="15"/>
-                </svg>
-                <span>{t('contact.choosePhotos')}</span>
-              </label>
-              <p class="contact-form__upload-hint" id="file-hint" aria-live="polite">
-                {t('contact.fileHint')}
-              </p>
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-primary contact-form__submit">
+          <button type="submit" class="btn btn-primary contact-form__submit" id="cf-submit">
             {t('contact.submit')}
           </button>
+
+          <div id="cf-success" class="contact-form__feedback contact-form__feedback--success" hidden>
+            {t('contact.successMsg')}
+          </div>
+          <div id="cf-error" class="contact-form__feedback contact-form__feedback--error" hidden>
+            {t('contact.errorMsg')}
+          </div>
         </form>
       </div>
     </div>
@@ -463,6 +437,30 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
     margin-top: 4px;
   }
 
+  .contact-form__submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .contact-form__feedback {
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .contact-form__feedback--success {
+    background: #f0faf4;
+    color: #1a6b3a;
+    border: 1px solid #a8d5b5;
+  }
+
+  .contact-form__feedback--error {
+    background: #fdf3f2;
+    color: #9b2a1a;
+    border: 1px solid #f0b4ae;
+  }
+
   @media (max-width: 900px) {
     .contact__grid {
       grid-template-columns: 1fr;
@@ -471,15 +469,34 @@ const IG_URL = 'https://www.instagram.com/sac_artx';
 </style>
 
 <script>
-  // File input label update
-  const fileInput = document.getElementById('cf-photo') as HTMLInputElement;
-  const fileHint = document.getElementById('file-hint');
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('cf-submit') as HTMLButtonElement | null;
+  const successEl = document.getElementById('cf-success');
+  const errorEl = document.getElementById('cf-error');
 
-  fileInput?.addEventListener('change', () => {
-    const files = fileInput.files;
-    if (files && files.length > 0 && fileHint) {
-      const names = Array.from(files).map((f) => f.name).join(', ');
-      fileHint.textContent = `${files.length} archivo${files.length > 1 ? 's' : ''} seleccionado${files.length > 1 ? 's' : ''}: ${names}`;
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (submitBtn) submitBtn.disabled = true;
+    successEl?.setAttribute('hidden', '');
+    errorEl?.setAttribute('hidden', '');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+
+      if (res.ok) {
+        form.reset();
+        successEl?.removeAttribute('hidden');
+      } else {
+        errorEl?.removeAttribute('hidden');
+      }
+    } catch {
+      errorEl?.removeAttribute('hidden');
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
     }
   });
 </script>

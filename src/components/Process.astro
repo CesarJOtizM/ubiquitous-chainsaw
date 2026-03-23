@@ -56,19 +56,18 @@ const steps = [
 
     <!-- Steps desktop strip -->
     <div class="process__steps" role="list">
+      <!-- Animated progress line (desktop) -->
+      <div class="process__line" aria-hidden="true">
+        <div class="process__line-bg"></div>
+        <div class="process__line-fill"></div>
+      </div>
+
       {steps.map((step, i) => (
-        <div class="process__step reveal" role="listitem" style={`transition-delay: ${i * 100}ms`}>
+        <div class="process__step reveal" role="listitem" style={`transition-delay: ${i * 100}ms`} data-step={i}>
           <div class="process__step-num" aria-hidden="true">{step.number}</div>
           <div class="process__step-icon" aria-hidden="true">{step.icon}</div>
           <h3 class="process__step-title">{step.title}</h3>
           <p class="process__step-desc">{step.desc}</p>
-          {i < steps.length - 1 && (
-            <div class="process__connector" aria-hidden="true">
-              <svg viewBox="0 0 40 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 8 H32 M28 2 L38 8 L28 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          )}
         </div>
       ))}
     </div>
@@ -115,16 +114,35 @@ const steps = [
     position: relative;
   }
 
-  /* Connecting line between steps */
-  .process__steps::before {
-    content: '';
+  /* Animated progress line (desktop) */
+  .process__line {
     position: absolute;
     top: 32px;
     left: calc(10% + 24px);
     right: calc(10% + 24px);
-    height: 1px;
-    background: var(--color-border);
+    height: 2px;
     z-index: 0;
+  }
+
+  .process__line-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--color-border);
+    border-radius: 2px;
+  }
+
+  .process__line-fill {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
+    border-radius: 2px;
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .process__steps.animated .process__line-fill {
+    transform: scaleX(1);
   }
 
   .process__step {
@@ -144,6 +162,7 @@ const steps = [
     letter-spacing: 0.1em;
     color: var(--color-text-muted);
     margin-bottom: 4px;
+    transition: color 0.3s ease;
   }
 
   .process__step-icon {
@@ -159,7 +178,19 @@ const steps = [
     margin-bottom: 16px;
     position: relative;
     z-index: 1;
-    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    transition: background 0.4s ease, border-color 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+  }
+
+  /* Completed state — triggered by JS */
+  .process__step.step-done .process__step-icon {
+    background: var(--color-bg-card);
+    border-color: var(--color-accent);
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px rgba(196, 113, 79, 0.15);
+  }
+
+  .process__step.step-done .process__step-num {
+    color: var(--color-accent);
   }
 
   .process__step:hover .process__step-icon {
@@ -180,10 +211,6 @@ const steps = [
     font-size: 14px;
     color: var(--color-text-muted);
     line-height: 1.6;
-  }
-
-  .process__connector {
-    display: none; /* handled via CSS ::before on grid */
   }
 
   /* CTA strip */
@@ -217,15 +244,15 @@ const steps = [
 
   /* Mobile: vertical timeline */
   @media (max-width: 900px) {
+    .process__line {
+      display: none;
+    }
+
     .process__steps {
       grid-template-columns: 1fr;
       max-width: 480px;
       margin-left: auto;
       margin-right: auto;
-    }
-
-    .process__steps::before {
-      display: none;
     }
 
     .process__step {
@@ -237,15 +264,36 @@ const steps = [
       position: relative;
     }
 
-    /* Vertical line */
+    /* Vertical line bg track */
+    .process__step:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      top: 64px;
+      left: 31px;
+      width: 2px;
+      height: calc(100% - 32px);
+      background: var(--color-border);
+      border-radius: 2px;
+    }
+
+    /* Vertical line fill — animates with scaleY */
     .process__step:not(:last-child)::after {
       content: '';
       position: absolute;
       top: 64px;
       left: 31px;
-      width: 1px;
+      width: 2px;
       height: calc(100% - 32px);
-      background: var(--color-border);
+      background: linear-gradient(180deg, var(--color-accent), var(--color-accent-hover));
+      border-radius: 2px;
+      transform-origin: top center;
+      transform: scaleY(0);
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Each step's line fills after the step is done */
+    .process__step.step-done:not(:last-child)::after {
+      transform: scaleY(1);
     }
 
     .process__step-icon {
@@ -266,4 +314,46 @@ const steps = [
       justify-content: center;
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .process__line-fill {
+      transition: none !important;
+      transform: scaleX(1) !important;
+    }
+    .process__step-icon {
+      transition: none !important;
+    }
+  }
 </style>
+
+<script>
+  const stepsEl = document.querySelector<HTMLElement>('.process__steps');
+  if (stepsEl) {
+    const steps = Array.from(stepsEl.querySelectorAll<HTMLElement>('[data-step]'));
+    const STEP_DELAY = 360; // ms between each step completing
+
+    const activate = () => {
+      stepsEl.classList.add('animated');
+      steps.forEach((step, i) => {
+        setTimeout(() => step.classList.add('step-done'), i * STEP_DELAY + 200);
+      });
+    };
+
+    // Skip animation if user prefers reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      stepsEl.classList.add('animated');
+      steps.forEach(s => s.classList.add('step-done'));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            activate();
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.25 }
+      );
+      observer.observe(stepsEl);
+    }
+  }
+</script>

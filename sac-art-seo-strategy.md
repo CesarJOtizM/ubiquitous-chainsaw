@@ -1,9 +1,9 @@
-# Estrategia SEO y Posicionamiento — SAC_ART
+# Estrategia SEO y Posicionamiento — SAC_ARTX
 ### v1.0 · Marzo 2026
 
 ---
 
-> **Objetivo**: Que cuando alguien en Colombia busque "retratos de mascotas", "cuadros de perros por encargo" o "funda personalizada con foto de mi mascota", SAC_ART aparezca en los primeros resultados — orgánicamente y sin pagar publicidad.
+> **Objetivo**: Que cuando alguien en Colombia busque "retratos de mascotas", "cuadros de perros por encargo" o "funda personalizada con foto de mi mascota", SAC_ARTX aparezca en los primeros resultados — orgánicamente y sin pagar publicidad.
 
 ---
 
@@ -25,7 +25,7 @@
 ## 1. Situación Actual y Oportunidad
 
 ### Problema
-SAC_ART hoy solo existe en Instagram. Instagram tiene algoritmo propio y no indexa contenido en Google. Cualquier persona que busque "retratos de mascotas Bogotá" en Google no va a encontrar a SAC_ART.
+SAC_ARTX hoy solo existe en Instagram. Instagram tiene algoritmo propio y no indexa contenido en Google. Cualquier persona que busque "retratos de mascotas Bogotá" en Google no va a encontrar a SAC_ARTX.
 
 ### Oportunidad
 El nicho de retratos de mascotas en Colombia tiene:
@@ -89,7 +89,7 @@ Búsquedas donde la persona quiere un artista cerca o de su país.
 | retratos de mascotas Barranquilla | Barranquilla |
 | pintora de perros online Colombia | Nacional (sin límite geográfico) |
 
-> **Nota estratégica**: Aunque SAC_ART trabaja 100% online (no es necesario ir al estudio), las búsquedas locales siguen teniendo búsquedas. Capturar las de Bogotá primero, luego expandir a otras ciudades con contenido.
+> **Nota estratégica**: Aunque SAC_ARTX trabaja 100% online (no es necesario ir al estudio), las búsquedas locales siguen teniendo búsquedas. Capturar las de Bogotá primero, luego expandir a otras ciudades con contenido.
 
 ### 2.4 Keywords de Pregunta (Para FAQ y Contenido)
 
@@ -110,7 +110,7 @@ Estas alimentan el FAQ del sitio y futuros artículos de blog.
 
 ### 2.5 Keywords Negativas (No Apuntar)
 
-Estas atraen tráfico que no convierte para SAC_ART.
+Estas atraen tráfico que no convierte para SAC_ARTX.
 
 | Keyword | Por qué evitar |
 |---------|---------------|
@@ -156,7 +156,7 @@ Keyword principal: "retratos de mascotas por encargo Colombia"
   → Schema FAQPage para rich snippets
 
 [FOOTER]
-  → "SAC_ART · Retratos de mascotas en acrílico · Bogotá, Colombia"
+  → "SAC_ARTX · Retratos de mascotas en acrílico · Bogotá, Colombia"
 ```
 
 ---
@@ -167,7 +167,7 @@ Keyword principal: "retratos de mascotas por encargo Colombia"
 
 ```html
 <!-- Title tag — máximo 60 caracteres -->
-<title>Retratos de Mascotas en Acrílico por Encargo · SAC_ART</title>
+<title>Retratos de Mascotas en Acrílico por Encargo · SAC_ARTX</title>
 
 <!-- Meta description — 150-160 caracteres -->
 <meta name="description" content="Retratos de mascotas pintados a mano en acrílico.
@@ -175,7 +175,7 @@ Desde una foto de tu perro o gato, creamos un cuadro único. Envíos a todo Colo
 ¡Consultá sin compromiso!">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Retratos de Mascotas en Acrílico · SAC_ART" />
+<meta property="og:title" content="Retratos de Mascotas en Acrílico · SAC_ARTX" />
 <meta property="og:description" content="Cuadros personalizados de mascotas pintados a mano. Envianos la foto de tu perro o gato y lo inmortalizamos en un cuadro único." />
 <meta property="og:image" content="https://sacart.com.co/og-image.jpg" /> <!-- 1200×630px -->
 <meta property="og:url" content="https://sacart.com.co" />
@@ -194,7 +194,7 @@ Desde una foto de tu perro o gato, creamos un cuadro único. Envíos a todo Colo
     {
       "@type": ["LocalBusiness", "ArtGallery"],
       "@id": "https://sacart.com.co/#business",
-      "name": "SAC_ART",
+      "name": "SAC_ARTX",
       "description": "Retratos de mascotas en acrílico por encargo. Cuadros personalizados pintados a mano desde una foto.",
       "url": "https://sacart.com.co",
       "telephone": "+57 3XX XXXXXXX",
@@ -268,14 +268,14 @@ El alt text de cada imagen es crítico — Google Image Search puede generar tr�
 
 **Fórmula:**
 ```
-[técnica] de [animal] [raza si se puede] · [tamaño] · SAC_ART
+[técnica] de [animal] [raza si se puede] · [tamaño] · SAC_ARTX
 
 Ejemplos:
-alt="Retrato de golden retriever en acrílico sobre lienzo 30x30 cm - SAC_ART"
-alt="Pintura de gato negro durmiendo en acrílico - SAC_ART"
-alt="Retrato de dos perros border collie en acrílico 40x40 cm - SAC_ART"
-alt="Funda de celular personalizada con retrato de labrador - SAC_ART"
-alt="Paisaje de mar en acrílico sobre lienzo 40x30 cm - SAC_ART"
+alt="Retrato de golden retriever en acrílico sobre lienzo 30x30 cm - SAC_ARTX"
+alt="Pintura de gato negro durmiendo en acrílico - SAC_ARTX"
+alt="Retrato de dos perros border collie en acrílico 40x40 cm - SAC_ARTX"
+alt="Funda de celular personalizada con retrato de labrador - SAC_ARTX"
+alt="Paisaje de mar en acrílico sobre lienzo 40x30 cm - SAC_ARTX"
 ```
 
 ---
@@ -300,7 +300,7 @@ Crear y optimizar el perfil de Google Business es **la acción de mayor impacto*
 
 **Descripción sugerida para GBP:**
 ```
-SAC_ART - Retratos de mascotas en acrílico pintados a mano por encargo.
+SAC_ARTX - Retratos de mascotas en acrílico pintados a mano por encargo.
 Desde una foto de tu perro, gato u otra mascota, creamos un cuadro único en acrílico
 sobre lienzo. También realizamos paisajes y fundas de celular personalizadas.
 Envíos a todo Colombia. ¡Consultanos por WhatsApp!
@@ -320,7 +320,7 @@ El Nombre, Dirección y Teléfono/contacto debe ser **idéntico** en todos los l
 
 **Formato NAP estándar a usar en todos lados:**
 ```
-SAC_ART
+SAC_ARTX
 Bogotá, Colombia
 +57 3XX XXXXXXX
 @sac_artx
@@ -379,7 +379,7 @@ Pinterest es un buscador visual. Las imágenes de Pinterest se indexan en Google
 
 **Ejemplo de pin optimizado:**
 ```
-Título: Retrato de golden retriever pintado en acrílico - SAC_ART
+Título: Retrato de golden retriever pintado en acrílico - SAC_ARTX
 Descripción: ¿Querés inmortalizar a tu mascota en un cuadro?
 Pintamos retratos de perros, gatos y más animales en acrílico sobre lienzo,
 por encargo, desde una foto. Envíos a todo Colombia.
@@ -461,19 +461,19 @@ Instagram implementó búsqueda semántica. Optimizar el perfil impacta en la vi
 Actual (hipotética): "@sac_artx — pintora 🎨"
 
 Optimizada:
-SAC_ART 🐾🎨
+SAC_ARTX 🐾🎨
 Retratos de mascotas en acrílico
 📦 Envíos a todo Colombia
 👇 Encargá el tuyo
 sacart.com.co  ← link siempre presente
 ```
 
-**Por qué importa:** El nombre y bio de Instagram aparecen indexados en Google cuando alguien busca "SAC_ART" o "retratos de mascotas [ciudad]" si hay suficiente autoridad.
+**Por qué importa:** El nombre y bio de Instagram aparecen indexados en Google cuando alguien busca "SAC_ARTX" o "retratos de mascotas [ciudad]" si hay suficiente autoridad.
 
 ### Nombre de usuario y nombre de cuenta
 
 - **Username**: @sac_artx (ya establecido, mantener)
-- **Nombre de cuenta** (el que aparece en negrita): Considerar "SAC_ART · Retratos de Mascotas" — incluye keyword en el nombre visible
+- **Nombre de cuenta** (el que aparece en negrita): Considerar "SAC_ARTX · Retratos de Mascotas" — incluye keyword en el nombre visible
 
 ---
 
@@ -498,7 +498,7 @@ sacart.com.co  ← link siempre presente
 - [ ] Core Web Vitals en verde
 
 **Mes 3 (Primeros resultados):**
-- [ ] Aparecer en Google para búsquedas de marca ("SAC_ART")
+- [ ] Aparecer en Google para búsquedas de marca ("SAC_ARTX")
 - [ ] Posición 1–3 para keyword de marca
 - [ ] Primeras impresiones orgánicas en Search Console para keywords objetivo
 - [ ] 50+ clics orgánicos/mes desde Google
@@ -588,7 +588,7 @@ sacart.com.co  ← link siempre presente
 
 ---
 
-> **Conclusión clave**: El SEO para SAC_ART no requiere nada técnicamente complejo. El 80% del impacto viene de: (1) sitio bien construido con keywords correctas, (2) Google Business Profile activo, (3) Pinterest con obras, (4) links desde redes sociales. Todo esto es gratis y hacible en las primeras semanas.
+> **Conclusión clave**: El SEO para SAC_ARTX no requiere nada técnicamente complejo. El 80% del impacto viene de: (1) sitio bien construido con keywords correctas, (2) Google Business Profile activo, (3) Pinterest con obras, (4) links desde redes sociales. Todo esto es gratis y hacible en las primeras semanas.
 
 ---
 

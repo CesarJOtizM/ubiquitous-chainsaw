@@ -1,9 +1,9 @@
-# Propuesta de Diseño Web — SAC_ART
+# Propuesta de Diseño Web — SAC_ARTX
 ### Retratos de mascotas · Paisajes · Fundas personalizadas
 
 ---
 
-> **Documento preparado para:** SAC_ART (@sac_artx)
+> **Documento preparado para:** SAC_ARTX (@sac_artx)
 > **Tipo:** Propuesta de Diseño — Landing Page One-Page
 > **Fecha:** Marzo 2026
 > **Versión:** 1.0
@@ -26,9 +26,9 @@
 
 ### Filosofía de Diseño
 
-SAC_ART no es una galería de arte. Es un estudio de comisiones personalizadas donde el producto final tiene carga emocional enorme — la mascota de alguien, el paisaje que les recuerda algo, el celular que llevan en el bolsillo todos los días.
+SAC_ARTX no es una galería de arte. Es un estudio de comisiones personalizadas donde el producto final tiene carga emocional enorme — la mascota de alguien, el paisaje que les recuerda algo, el celular que llevan en el bolsillo todos los días.
 
-El sitio tiene que transmitir **calidez, confianza y profesionalismo artístico** — no frialdad ni distancia. Las galerías de arte contemporáneo usan fondos negros y tipografías minimalistas para crear misterio. SAC_ART necesita lo opuesto: que la persona que llega sintiéndose un poco nerviosa de "encargar algo" se sienta cómoda de arrancar.
+El sitio tiene que transmitir **calidez, confianza y profesionalismo artístico** — no frialdad ni distancia. Las galerías de arte contemporáneo usan fondos negros y tipografías minimalistas para crear misterio. SAC_ARTX necesita lo opuesto: que la persona que llega sintiéndose un poco nerviosa de "encargar algo" se sienta cómoda de arrancar.
 
 > La persona que llega al sitio tiene una foto de su perro en el celular y ganas de regalarle algo especial a alguien (o a sí misma). El sitio tiene que decirle: *"acá estás en buenas manos"*.
 
@@ -70,7 +70,7 @@ Se proponen tres direcciones. Recomendamos la **Opción A** para el MVP, con ele
 
 #### Opción A — "Estudio Cálido" *(Recomendada)*
 
-**Descripción:** Fondo crema dominante, acentos en terracota y sage. Tipografía serif elegante para títulos (Cormorant Garamond) combinada con sans-serif legible (DM Sans) para el cuerpo. Sección a sección alterna entre fondos crema y blanco roto. El hero tiene una gran fotografía del trabajo de SAC_ART.
+**Descripción:** Fondo crema dominante, acentos en terracota y sage. Tipografía serif elegante para títulos (Cormorant Garamond) combinada con sans-serif legible (DM Sans) para el cuerpo. Sección a sección alterna entre fondos crema y blanco roto. El hero tiene una gran fotografía del trabajo de SAC_ARTX.
 
 **Sensación:** Cálido, profesional, artístico sin ser pretencioso. Como entrar al estudio de alguien que sabe lo que hace.
 
@@ -95,7 +95,7 @@ Se proponen tres direcciones. Recomendamos la **Opción A** para el MVP, con ele
 **Pros:**
 - Las obras se ven muy bien sobre blanco
 - Transmite alto valor percibido
-- Funciona muy bien si SAC_ART quiere posicionarse en el segmento premium
+- Funciona muy bien si SAC_ARTX quiere posicionarse en el segmento premium
 
 **Contras:**
 - Menos cálida — puede generar más fricción al primer contacto
@@ -249,7 +249,7 @@ $18.000 - $35.000
 
 ### Justificación del One-Page
 
-Una sola página (con scroll y anclas de navegación) es la elección correcta para SAC_ART por tres razones:
+Una sola página (con scroll y anclas de navegación) es la elección correcta para SAC_ARTX por tres razones:
 
 1. **Conversión**: El visitante ideal llega desde Instagram → ve el trabajo → quiere encargar. Cada clic extra que lo aleje del WhatsApp es fricción innecesaria.
 2. **Mantenimiento**: Una sola página es más fácil de actualizar, especialmente la galería.
@@ -261,7 +261,7 @@ Una sola página (con scroll y anclas de navegación) es la elección correcta p
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  SAC_ART                                    Servicios  Galería  │
+│  SAC_ARTX                                    Servicios  Galería  │
 │                                             Proceso   Contacto  │
 │                                             [Escribime ►]       │
 └──────────────────────────────────────────────────────────────────┘
@@ -328,7 +328,7 @@ Una sola página (con scroll y anclas de navegación) es la elección correcta p
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│ NAVBAR: SAC_ART        Servicios  Galería  Proceso  Contacto    │
+│ NAVBAR: SAC_ARTX        Servicios  Galería  Proceso  Contacto    │
 │                                                    [Escribime►] │
 ├────────────────────────────────┬────────────────────────────────┤
 │                                │                                │
@@ -609,7 +609,7 @@ Una sola página (con scroll y anclas de navegación) es la elección correcta p
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                                                                 │
-│  SAC_ART                        │  Navegación                  │
+│  SAC_ARTX                        │  Navegación                  │
 │  [logo o wordmark en crema]     │  Servicios / Galería /       │
 │                                 │  Proceso / FAQ               │
 │  "¿Tenés una idea en mente?     │                              │
@@ -617,7 +617,7 @@ Una sola página (con scroll y anclas de navegación) es la elección correcta p
 │                                 │  [@sac_artx en Instagram]    │
 │  [Botón WhatsApp — verde]       │                              │
 │  Escribime por WhatsApp →       │  Legal                       │
-│                                 │  © 2026 SAC_ART              │
+│                                 │  © 2026 SAC_ARTX              │
 │  [Botón Instagram — outline]    │  Todos los derechos          │
 │  @sac_artx →                    │  reservados                  │
 │                                 │                              │
@@ -744,7 +744,7 @@ Transición: transform + box-shadow + border 200ms ease
 
 ### Decisión central: simplicidad > sofisticación
 
-SAC_ART necesita un sitio que:
+SAC_ARTX necesita un sitio que:
 1. Se pueda actualizar fácilmente (agregar fotos a la galería sin tocar código)
 2. Cargue rápido en mobile con 4G argentino (puede ser inestable)
 3. Tenga costo de hosting mínimo o cero
@@ -775,7 +775,7 @@ https://astro.build
 
 ### CMS — Contentful (plan free) o Decap CMS
 
-Para que SAC_ART pueda subir fotos nuevas a la galería sin tocar código:
+Para que SAC_ARTX pueda subir fotos nuevas a la galería sin tocar código:
 
 #### Opción A — Contentful (Recomendada para escalar)
 
@@ -786,7 +786,7 @@ Plan: Free (hasta 5 usuarios, suficiente para este caso)
 ```
 
 - Interface visual drag & drop para subir fotos
-- SAC_ART puede agregar obras desde el celular
+- SAC_ARTX puede agregar obras desde el celular
 - API REST / GraphQL que Astro consume al hacer el build
 - Tipos de contenido sugeridos: `Obra` (foto, título, categoría, descripción, destacada: boolean)
 
@@ -845,7 +845,7 @@ Plan: Free (hasta 25GB de almacenamiento)
 | Capa | Herramienta | Costo | Por qué |
 |------|-------------|-------|---------|
 | Framework | Astro 5 | Gratis | Static, rápido, simple |
-| CMS | Contentful free | Gratis | SAC_ART puede actualizar sin código |
+| CMS | Contentful free | Gratis | SAC_ARTX puede actualizar sin código |
 | Hosting | Vercel | Gratis | CI/CD automático, CDN global |
 | Imágenes | Astro Image / Cloudinary | Gratis | Optimización automática |
 | Dominio | NIC Argentina (.com.ar) | ~$1.500/año | Presencia local, confianza |
@@ -890,7 +890,7 @@ Plan: Free (hasta 25GB de almacenamiento)
 | Feature | Descripción | Valor | Complejidad |
 |---------|-------------|-------|-------------|
 | Antes/Después en galería | Toggle foto referencia ↔ pintura | Alto | Media |
-| CMS conectado | SAC_ART sube fotos desde panel | Alto | Media |
+| CMS conectado | SAC_ARTX sube fotos desde panel | Alto | Media |
 | Instagram feed automático | Últimas fotos de @sac_artx en vivo | Medio | Baja |
 | Calculadora de precios | Seleccionar tamaño → ver precio | Alto | Alta |
 | WhatsApp Business API | Mensaje pre-cargado con datos del servicio | Medio | Baja |
@@ -923,7 +923,7 @@ Setup + Base      Contenido +       QA + Deploy       Iteración
 
 ## Apéndice — Checklist de Assets Necesarios
 
-Antes de arrancar el desarrollo, SAC_ART necesita preparar estos materiales:
+Antes de arrancar el desarrollo, SAC_ARTX necesita preparar estos materiales:
 
 ### Imágenes (mínimo para lanzar)
 
@@ -956,4 +956,4 @@ Antes de arrancar el desarrollo, SAC_ART necesita preparar estos materiales:
 ---
 
 **¿Preguntas? ¿Querés ajustar alguna sección?**
-Este documento es el punto de partida — puede y debe evolucionar con el feedback de SAC_ART.
+Este documento es el punto de partida — puede y debe evolucionar con el feedback de SAC_ARTX.

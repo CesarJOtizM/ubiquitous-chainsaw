@@ -1,9 +1,9 @@
-# PRD — SAC_ART Portfolio Website
+# PRD — SAC_ARTX Portfolio Website
 ### Product Requirements Document · v1.0 · Marzo 2026
 
 ---
 
-> **Producto:** Sitio web one-page para SAC_ART
+> **Producto:** Sitio web one-page para SAC_ARTX
 > **Artista:** @sac_artx (Instagram)
 > **Tipo de negocio:** Comisiones de arte (mascotas, paisajes, fundas de celular)
 > **Objetivo principal:** Convertir visitantes de Instagram en clientes que encarguen una obra
@@ -31,13 +31,13 @@
 
 ### Problema
 
-SAC_ART tiene presencia en Instagram pero no tiene un sitio web propio. El cliente potencial que llega desde Instagram necesita:
+SAC_ARTX tiene presencia en Instagram pero no tiene un sitio web propio. El cliente potencial que llega desde Instagram necesita:
 - Entender rápidamente qué servicios ofrece y cuánto cuestan
 - Ver ejemplos de trabajo anteriores (galería)
 - Saber cómo es el proceso de encargar una obra
 - Contactar fácilmente (WhatsApp / formulario)
 
-Sin un sitio, SAC_ART pierde clientes que buscan más información antes de escribirle, y no puede posicionarse en Google para búsquedas como "retratos de mascotas acrílico Colombia".
+Sin un sitio, SAC_ARTX pierde clientes que buscan más información antes de escribirle, y no puede posicionarse en Google para búsquedas como "retratos de mascotas acrílico Colombia".
 
 ### Solución
 
@@ -62,7 +62,7 @@ Un sitio web one-page, mobile-first, con foco en conversión. No es un portfolio
 ```
 Nombre:     Valentina, 28–45 años
 Ciudad:     Bogotá / Medellín / Cali / Barranquilla y todo Colombia
-Canal:      Llegó desde Instagram (post o reel de SAC_ART)
+Canal:      Llegó desde Instagram (post o reel de SAC_ARTX)
 Motivación: Quiere un cuadro de su perro/gato como regalo o para su casa
 Dolor:      No sabe cuánto cuesta, no sabe si es "para ella",
             le da vergüenza preguntar sin saber los precios
@@ -84,7 +84,7 @@ Comportamiento: Más racional, busca precios y tiempos. Lee la FAQ.
 ### Persona Terciaria — "La Fan del Arte"
 
 ```
-Motivación: Le encanta el estilo de SAC_ART, quiere ver más trabajo
+Motivación: Le encanta el estilo de SAC_ARTX, quiere ver más trabajo
 Comportamiento: Scrollea la galería, sigue en Instagram,
                 eventualmente encarga o recomienda
 ```
@@ -96,7 +96,7 @@ Comportamiento: Scrollea la galería, sigue en Instagram,
 ### Objetivos de Negocio
 
 1. Aumentar la cantidad de consultas de encargos recibidas por semana
-2. Reducir el tiempo que SAC_ART pasa explicando precios y proceso (FAQ hace ese trabajo)
+2. Reducir el tiempo que SAC_ARTX pasa explicando precios y proceso (FAQ hace ese trabajo)
 3. Generar presencia orgánica en Google (SEO básico)
 4. Tener un lugar profesional para derivar a clientes potenciales ("mirá mi sitio")
 
@@ -132,11 +132,11 @@ sacart.com (o dominio elegido)
 
 ```
 Navbar:
-[SAC_ART]                    [Servicios] [Galería] [Proceso] [Contacto] [💬 Escribime]
+[SAC_ARTX]                    [Servicios] [Galería] [Proceso] [Contacto] [💬 Escribime]
 
 Mobile (hamburger):
 ┌────────────────┐
-│  SAC_ART    ✕  │
+│  SAC_ARTX    ✕  │
 │                │
 │  Servicios     │
 │  Galería       │
@@ -160,7 +160,7 @@ Mobile (hamburger):
 | RF-01.2 | Links de nav hacen smooth scroll hacia la sección correspondiente | Must Have |
 | RF-01.3 | Mobile: menú hamburger con drawer lateral | Must Have |
 | RF-01.4 | Botón "Escribime" en navbar abre WhatsApp en nueva pestaña | Must Have |
-| RF-01.5 | Logo (nombre SAC_ART) hace scroll al top | Must Have |
+| RF-01.5 | Logo (nombre SAC_ARTX) hace scroll al top | Must Have |
 | RF-01.6 | Link activo se resalta según sección visible (IntersectionObserver) | Should Have |
 
 ---
@@ -255,7 +255,7 @@ Mobile (hamburger):
 | RF-08.2 | Campo "tipo de servicio" es un select: Retrato mascota / Paisaje / Funda celular / Otro | Must Have |
 | RF-08.3 | Campo adjuntar foto acepta hasta 5 archivos (JPG, PNG, HEIC) | Must Have |
 | RF-08.4 | Validación de campos requeridos antes de enviar | Must Have |
-| RF-08.5 | Submit envía email a SAC_ART (via Resend o Formspree) | Must Have |
+| RF-08.5 | Submit envía email a SAC_ARTX (via Resend o Formspree) | Must Have |
 | RF-08.6 | Mensaje de confirmación post-submit: "¡Gracias! Te respondo en 24–48 horas" | Must Have |
 | RF-08.7 | Botón de WhatsApp como alternativa al formulario (más prominente) | Must Have |
 | RF-08.8 | Links a Instagram y otras redes en la misma sección | Must Have |
@@ -278,10 +278,10 @@ Mobile (hamburger):
 
 | ID | Requerimiento | Prioridad |
 |----|--------------|-----------|
-| RF-10.1 | Logo / nombre SAC_ART | Must Have |
+| RF-10.1 | Logo / nombre SAC_ARTX | Must Have |
 | RF-10.2 | Links de navegación rápida | Should Have |
 | RF-10.3 | Links a redes sociales (Instagram, WhatsApp, TikTok si tiene) | Must Have |
-| RF-10.4 | Copyright "© 2026 SAC_ART. Todos los derechos reservados." | Must Have |
+| RF-10.4 | Copyright "© 2026 SAC_ARTX. Todos los derechos reservados." | Must Have |
 | RF-10.5 | Frase breve de tagline o descripción | Should Have |
 
 ---
@@ -290,7 +290,7 @@ Mobile (hamburger):
 
 | ID | Requerimiento | Prioridad |
 |----|--------------|-----------|
-| RF-11.1 | Meta title optimizado: `Retratos de Mascotas en Acrílico por Encargo · SAC_ART` | Must Have |
+| RF-11.1 | Meta title optimizado: `Retratos de Mascotas en Acrílico por Encargo · SAC_ARTX` | Must Have |
 | RF-11.2 | Meta description (150–160 chars) con keyword principal + CTA | Must Have |
 | RF-11.3 | Open Graph tags completos (og:title, og:description, og:image 1200×630, og:url) | Must Have |
 | RF-11.4 | Twitter Card tags | Should Have |
@@ -369,7 +369,7 @@ Mobile (hamburger):
 Layout desktop (split screen):
 ┌──────────────────────┬──────────────────────┐
 │                      │                      │
-│   [IMAGEN OBRA]      │  SAC_ART             │
+│   [IMAGEN OBRA]      │  SAC_ARTX             │
 │   (retrato mascota,  │                      │
 │    alta calidad,     │  Retratos · Paisajes  │
 │    formato cuadrado  │  Fundas Personalizadas│
@@ -387,7 +387,7 @@ Layout mobile:
 │  [IMAGEN OBRA]       │  (full width, 60vh)
 │                      │
 ├──────────────────────┤
-│  SAC_ART             │
+│  SAC_ARTX             │
 │  Tu mascota, arte.   │
 │                      │
 │  [Encargá tu retrato]│
@@ -396,7 +396,7 @@ Layout mobile:
 ```
 
 **Copy:**
-- H1: `SAC_ART`
+- H1: `SAC_ARTX`
 - Tagline: `Retratos de mascotas en acrílico · Paisajes · Fundas personalizadas`
 - Sub-tagline: `Tu mascota, hecha arte. Envianos su foto y la pintamos para vos.`
 - CTA primario: `Encargá tu retrato →` (terracota, abre WhatsApp)
@@ -438,7 +438,7 @@ Layout desktop (3 columnas):
 | 30×30 cm | $XXXXX | $XXXXX |
 | 40×40 cm | $XXXXX | Consultar |
 
-> Nota: SAC_ART define los precios reales. El sitio los muestra sin excusa.
+> Nota: SAC_ARTX define los precios reales. El sitio los muestra sin excusa.
 
 **WhatsApp pre-cargado por servicio:**
 - Retratos: `Hola! Me gustaría encargar un retrato de mi mascota. ¿Podés darme más info?`
@@ -604,14 +604,14 @@ Layout (2 columnas desktop, 1 columna mobile):
 
 Footer:
 ┌──────────────────────────────────────────────────────┐
-│  SAC_ART                                             │
+│  SAC_ARTX                                             │
 │  Pinturas acrílicas por encargo                      │
 │                                                      │
 │  [Instagram] [WhatsApp] [TikTok?]                    │
 │                                                      │
 │  Servicios   Galería   Proceso   Contacto            │
 │                                                      │
-│  © 2026 SAC_ART · Todos los derechos reservados      │
+│  © 2026 SAC_ARTX · Todos los derechos reservados      │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -662,7 +662,7 @@ Footer:
 
 ## 8. Requerimientos de Contenido
 
-### Imágenes Necesarias (checklist para SAC_ART)
+### Imágenes Necesarias (checklist para SAC_ARTX)
 
 **Hero:**
 - [ ] 1 imagen de obra destacada (mínimo 1920×1080px, JPG/PNG de alta calidad)
@@ -702,7 +702,7 @@ Frase corta que defina el negocio. Opciones:
 - Fundas: precio único o por modelo de celular
 
 **FAQ — Respuestas:**
-SAC_ART debe proveer respuestas a las 9 preguntas del FAQ.
+SAC_ARTX debe proveer respuestas a las 9 preguntas del FAQ.
 Especialmente la respuesta a "¿Pintan mascotas fallecidas?" requiere tono empático.
 
 **Número de WhatsApp:**
@@ -865,7 +865,7 @@ El número completo con código de país para el link `wa.me/549XXXXXXXXXX`.
 | **Animaciones** | CSS + IntersectionObserver | Sin GSAP para el MVP — CSS transitions son suficientes y más livianas. GSAP en Fase 2. |
 | **Galería / Lightbox** | PhotoSwipe 5 | Open source, touch nativo, zoom real, sin dependencias. |
 | **Formulario** | Resend (API) o Formspree | Envío de emails con adjuntos. Formspree para MVP (zero config), Resend para producción. |
-| **CMS** | Contentful (free tier) | Gestión de obras sin tocar código. SAC_ART puede agregar fotos sola. |
+| **CMS** | Contentful (free tier) | Gestión de obras sin tocar código. SAC_ARTX puede agregar fotos sola. |
 | **Imágenes** | Astro Image + Cloudinary | Optimización automática a WebP, srcset, lazy load. |
 | **Deploy** | Vercel | CDN global, HTTPS automático, deploys en segundos. |
 | **Analytics** | Plausible (o GA4) | Plausible: privacidad, sin cookies, más simple. |
@@ -971,7 +971,7 @@ Sitio funcional, listo para lanzar.
 | Feature | Valor | Complejidad |
 |---------|-------|-------------|
 | Animaciones con IntersectionObserver más sofisticadas | Alto | Medio |
-| CMS con Contentful (para que SAC_ART actualice sola) | Alto | Medio |
+| CMS con Contentful (para que SAC_ARTX actualice sola) | Alto | Medio |
 | Sección "Sobre mí" con foto de la artista | Medio | Bajo |
 | Guía de fotos (cómo sacarle la mejor foto a tu mascota) | Alto | Bajo |
 | Blog con tutoriales / behind the scenes | Medio | Alto |
