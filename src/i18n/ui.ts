@@ -172,7 +172,9 @@ export const ui = {
     'faq.q8': '¿Puedo poner más de una mascota en el mismo cuadro?',
     'faq.a8': 'Sí, puedes incluir hasta 3 mascotas en un mismo cuadro. El precio varía según la cantidad. Consúltanos para un presupuesto exacto.',
     'faq.q9': '¿Cuáles son los medios de pago?',
-    'faq.a9': 'Aceptamos Nequi, Daviplata, transferencia bancaria y efectivo. Pedimos un 50% de anticipo para arrancar y el resto contra entrega cuando el trabajo esté terminado.',
+    'faq.a9': 'Aceptamos Nequi, Daviplata, transferencia bancaria y efectivo. El proceso es sencillo: se pide un 50% de anticipo para empezar; una vez terminado el trabajo, se cancela el 50% restante para completar el pago, y con el 100% recibido se despacha por servicio contra entrega.',
+    'faq.q10': '¿Pueden mejorar la foto de mi mascota antes de pintar?',
+    'faq.a10': 'Sí. Usamos inteligencia artificial para mejorar la calidad de la imagen, corregir la iluminación, agregar accesorios o combinar varias fotos para lograr la mejor toma posible de tu mascota. Así el retrato queda con más detalle y fidelidad, incluso si la foto original no era perfecta.',
 
     // contact
     'contact.label': 'Hablemos',
@@ -183,7 +185,7 @@ export const ui = {
     'contact.responseTime': 'Respondemos en 24–48 horas',
     'contact.waAriaLabel': 'Contactar por WhatsApp al +57 301 6584401',
     'contact.igAriaLabel': 'Ver perfil de Instagram @sac_artx',
-    'contact.trust1': 'Pago seguro con 50% de anticipo',
+    'contact.trust1': '50% para empezar · 50% al terminar · envío contra entrega',
     'contact.trust2': 'Envíos con seguimiento a todo Colombia',
     'contact.trust3': 'Boceto previo antes de pintar',
     'contact.formTitle': 'Cuéntanos tu idea',
@@ -402,7 +404,9 @@ export const ui = {
     'faq.q8': 'Can I include more than one pet in the same painting?',
     'faq.a8': 'Yes, you can include up to 3 pets in the same painting. The price varies by quantity. Contact us for an exact quote.',
     'faq.q9': 'What payment methods do you accept?',
-    'faq.a9': 'We accept Nequi, Daviplata, bank transfer and cash. We ask for a 50% deposit to get started and the rest upon delivery when the work is finished.',
+    'faq.a9': 'We accept Nequi, Daviplata, bank transfer and cash. The process is simple: a 50% deposit to get started; once the work is finished, you pay the remaining 50% to complete the full payment, and once we receive 100% we ship it via cash-on-delivery courier service.',
+    'faq.q10': 'Can you enhance my pet\'s photo before painting?',
+    'faq.a10': 'Yes. We use artificial intelligence to improve image quality, fix lighting, add accessories, or combine multiple photos to get the best possible shot of your pet. This means more detail and accuracy in the final portrait — even if the original photo wasn\'t perfect.',
 
     // contact
     'contact.label': 'Let\'s talk',
@@ -413,7 +417,7 @@ export const ui = {
     'contact.responseTime': 'We respond in 24–48 hours',
     'contact.waAriaLabel': 'Contact via WhatsApp at +57 301 6584401',
     'contact.igAriaLabel': 'View Instagram profile @sac_artx',
-    'contact.trust1': 'Secure payment with 50% deposit',
+    'contact.trust1': '50% upfront · 50% on completion · shipped on delivery',
     'contact.trust2': 'Tracked shipping across Colombia',
     'contact.trust3': 'Digital sketch before painting',
     'contact.formTitle': 'Tell us your idea',
