@@ -1,43 +1,58 @@
-# Astro Starter Kit: Minimal
+# Sac_Artx — Portfolio Website
 
-```sh
-npm create astro@latest -- --template minimal
+Portfolio web one-page para **SAC_ART** (`@sac_artx`), artista colombiana especializada en retratos de mascotas en acrílico, paisajes y fundas de celular por encargo.
+
+## Stack
+
+- **[Astro 6](https://astro.build/)** — framework web con output SSR
+- **[Tailwind CSS 4](https://tailwindcss.com/)** — via `@tailwindcss/vite`, sin config file
+- **[Vercel](https://vercel.com/)** — adapter para deploy y serverless functions
+- **[Resend](https://resend.com/)** — envío de emails desde el formulario de contacto
+- **Bun** — package manager y runtime
+
+## Características
+
+- Bilingüe **ES / EN** con i18n nativo de Astro (español por defecto en `/`, inglés en `/en/`)
+- Secciones: Hero, Servicios, Proceso, Galería, Testimonios, FAQ, Contacto
+- Formulario de contacto con API Route (`/api/contact`) + Resend
+- WhatsApp FAB flotante
+- SSR via Vercel adapter
+
+## Estructura
+
+```
+src/
+├── components/       # Secciones de la página (Hero, Services, Gallery, etc.)
+├── i18n/
+│   ├── ui.ts         # Traducciones ES/EN
+│   └── utils.ts      # Helpers de i18n
+├── layouts/
+│   └── BaseLayout.astro
+├── pages/
+│   ├── index.astro       # Ruta ES (default)
+│   ├── en/index.astro    # Ruta EN
+│   └── api/contact.ts    # API endpoint — formulario de contacto
+└── styles/
+    └── global.css        # Tokens Tailwind 4 en @theme {}
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Comandos
 
-## 🚀 Project Structure
+| Comando          | Acción                                      |
+| :--------------- | :------------------------------------------ |
+| `bun install`    | Instala dependencias                        |
+| `bun run dev`    | Dev server en `localhost:4321`              |
+| `bun run build`  | Build de producción en `./dist/`            |
+| `bun run preview`| Preview del build local                     |
 
-Inside of your Astro project, you'll see the following folders and files:
+## Variables de entorno
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+Crear un `.env` en la raíz con:
+
+```env
+RESEND_API_KEY=re_...
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Deploy
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+El proyecto usa el adapter de Vercel (`@astrojs/vercel`) con output `server`. Se despliega automáticamente desde `main` via Vercel.
