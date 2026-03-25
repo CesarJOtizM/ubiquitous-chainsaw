@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Brightwall";
+  src: url("/fonts/Brightwall.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-bg: #FAF8F3;
   --color-bg-alt: #F5EFE4;
@@ -15,6 +23,7 @@
 
   --font-heading: "Cormorant Garamond", Georgia, serif;
   --font-body: "DM Sans", system-ui, sans-serif;
+  --font-logo: "Brightwall", "Cormorant Garamond", serif;
 }
 
 /* Base */

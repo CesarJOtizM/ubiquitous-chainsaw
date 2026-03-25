@@ -58,10 +58,12 @@ const services = [
   },
 ];
 
-const pricing = [
-  { size: '20×20 cm', one: '$150.000', two: '$220.000' },
-  { size: '30×30 cm', one: '$220.000', two: '$320.000' },
-  { size: '40×40 cm', one: '$320.000', two: t('services.price.inquire') },
+const cuadros = [
+  { size: '12×18 cm', price: '$120.000', special: false },
+  { size: '20×25 cm', price: '$160.000', special: false },
+  { size: '28×35 cm', price: '$220.000', special: false },
+  { size: '40×50 cm', price: '$270.000', special: false },
+  { size: t('services.cuadros.special'), price: '$150.000', special: true },
 ];
 ---
 
@@ -117,29 +119,86 @@ const pricing = [
       ))}
     </div>
 
-    <!-- Pricing table -->
-    <div class="services__table reveal">
-      <h3 class="services__table-title">{t('services.tableTitle')}</h3>
-      <div class="table-wrap">
-        <table class="pricing-table" aria-label={t('services.tableAriaLabel')}>
-          <thead>
-            <tr>
-              <th scope="col">{t('services.colSize')}</th>
-              <th scope="col">{t('services.col1Pet')}</th>
-              <th scope="col">{t('services.col2Pets')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {pricing.map((row) => (
-              <tr>
-                <td>{row.size}</td>
-                <td>{row.one}</td>
-                <td>{row.two}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <!-- Pricing tabs -->
+    <div class="services__pricing reveal">
+      <h3 class="services__pricing-title">{t('services.pricingTitle')}</h3>
+
+      <div class="pricing-tabs" role="tablist">
+        <button class="pricing-tab is-active" data-tab="cuadros" role="tab" aria-selected="true">{t('services.tab.cuadros')}</button>
+        <button class="pricing-tab" data-tab="bases" role="tab" aria-selected="false">{t('services.tab.bases')}</button>
+        <button class="pricing-tab" data-tab="cases" role="tab" aria-selected="false">{t('services.tab.cases')}</button>
       </div>
+
+      <!-- Cuadros panel -->
+      <div class="pricing-panel is-active" data-panel="cuadros" role="tabpanel">
+        <div class="table-wrap">
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th scope="col">{t('services.cuadros.colSize')}</th>
+                <th scope="col">{t('services.cuadros.colPrice')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cuadros.map((row) => (
+                <tr class={row.special ? 'row--special' : ''}>
+                  <td>{row.size}</td>
+                  <td>{row.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="panel-note">{t('services.cuadros.note')} {t('services.cuadros.addlPet')}.</p>
+      </div>
+
+      <!-- Bases panel -->
+      <div class="pricing-panel" data-panel="bases" role="tabpanel" hidden>
+        <div class="bases-grid">
+          <div class="base-card">
+            <span class="base-card__name">{t('services.bases.name1')}</span>
+            <span class="base-card__size">{t('services.bases.size1')}</span>
+            <span class="base-card__price">{t('services.bases.price1')}</span>
+          </div>
+          <div class="base-card">
+            <span class="base-card__name">{t('services.bases.name2')}</span>
+            <span class="base-card__size">{t('services.bases.size2')}</span>
+            <span class="base-card__price">{t('services.bases.price2')}</span>
+          </div>
+        </div>
+        <div class="panel-notes">
+          <p class="panel-note">{t('services.bases.addlPet')}</p>
+          <p class="panel-note panel-note--highlight">★ {t('services.bases.includes')}</p>
+        </div>
+      </div>
+
+      <!-- Cases panel -->
+      <div class="pricing-panel" data-panel="cases" role="tabpanel" hidden>
+        <div class="cases-grid">
+          <div class="case-card">
+            <span class="case-card__name">{t('services.cases.type1')}</span>
+            <span class="case-card__price">{t('services.cases.price1')}</span>
+            <span class="case-card__desc">{t('services.cases.desc1')}</span>
+          </div>
+          <div class="case-card">
+            <span class="case-card__name">{t('services.cases.type2')}</span>
+            <span class="case-card__price">{t('services.cases.price2')}</span>
+            <span class="case-card__desc">{t('services.cases.desc2')}</span>
+          </div>
+          <div class="case-card">
+            <span class="case-card__name">{t('services.cases.type3')}</span>
+            <span class="case-card__price">{t('services.cases.price3')}</span>
+            <span class="case-card__desc">{t('services.cases.desc3')}</span>
+          </div>
+          <div class="case-card case-card--highlight">
+            <span class="case-card__name">{t('services.cases.type4')}</span>
+            <span class="case-card__price">{t('services.cases.price4')}</span>
+            <span class="case-card__desc">{t('services.cases.desc4')}</span>
+          </div>
+        </div>
+        <p class="panel-note">{t('services.cases.addlPet')}</p>
+      </div>
+
       <p class="services__table-note">
         {t('services.tableNote')}{' '}
         <a href={`${WA_BASE}${t('services.tableNoteMsg')}`} target="_blank" rel="noopener noreferrer">
@@ -296,15 +355,15 @@ const pricing = [
     color: var(--color-text-muted);
   }
 
-  /* Pricing table */
-  .services__table {
+  /* Pricing tabs */
+  .services__pricing {
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: clamp(28px, 4vw, 48px);
   }
 
-  .services__table-title {
+  .services__pricing-title {
     font-family: var(--font-heading);
     font-size: 24px;
     font-weight: 500;
@@ -312,6 +371,59 @@ const pricing = [
     margin-bottom: 24px;
   }
 
+  .pricing-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--color-border);
+    margin-bottom: 28px;
+  }
+
+  .pricing-tab {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  .pricing-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+
+  .pricing-tab:hover {
+    color: var(--color-text);
+  }
+
+  .pricing-tab.is-active {
+    color: var(--color-accent);
+  }
+
+  .pricing-tab.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .pricing-panel {
+    animation: fadeIn 0.2s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Cuadros table */
   .table-wrap {
     overflow-x: auto;
     margin-bottom: 16px;
@@ -335,13 +447,8 @@ const pricing = [
     border-bottom: 1px solid var(--color-border);
   }
 
-  .pricing-table th:first-child {
-    border-radius: 8px 0 0 0;
-  }
-
-  .pricing-table th:last-child {
-    border-radius: 0 8px 0 0;
-  }
+  .pricing-table th:first-child { border-radius: 8px 0 0 0; }
+  .pricing-table th:last-child  { border-radius: 0 8px 0 0; }
 
   .pricing-table td {
     padding: 16px 20px;
@@ -349,26 +456,147 @@ const pricing = [
     color: var(--color-text);
   }
 
-  .pricing-table td:first-child {
+  .pricing-table td:first-child { font-weight: 500; }
+  .pricing-table tbody tr:last-child td { border-bottom: none; }
+  .pricing-table tbody tr:hover td { background: var(--color-bg-alt); }
+
+  .pricing-table tr.row--special td {
+    color: var(--color-accent);
     font-weight: 500;
   }
 
-  .pricing-table tbody tr:last-child td {
-    border-bottom: none;
+  /* Bases cards */
+  .bases-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
   }
 
-  .pricing-table tbody tr:hover td {
+  .base-card {
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: border-color 0.2s ease;
+  }
+
+  .base-card:hover {
+    border-color: var(--color-accent);
+  }
+
+  .base-card__name {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .base-card__size {
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+
+  .base-card__price {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-accent);
+    margin-top: 8px;
+  }
+
+  /* Cases cards */
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .case-card {
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: border-color 0.2s ease;
+  }
+
+  .case-card:hover {
+    border-color: var(--color-accent);
+  }
+
+  .case-card--highlight {
+    border-color: var(--color-accent);
     background: var(--color-bg-alt);
+  }
+
+  .case-card__name {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .case-card__price {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--color-accent);
+    margin-top: 4px;
+  }
+
+  .case-card__desc {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  /* Shared panel notes */
+  .panel-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .panel-note {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+  }
+
+  .panel-note--highlight {
+    color: var(--color-sage);
+    font-weight: 500;
   }
 
   .services__table-note {
     font-size: 13px;
     color: var(--color-text-muted);
+    margin-top: 20px;
   }
 
   .services__table-note a {
     color: var(--color-accent);
     text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .bases-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cases-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-tab {
+      padding: 10px 14px;
+      font-size: 13px;
+    }
   }
 
   @media (max-width: 1024px) {
@@ -386,3 +614,36 @@ const pricing = [
     }
   }
 </style>
+
+<script>
+  function initPricingTabs() {
+    const tabs = document.querySelectorAll<HTMLButtonElement>('.pricing-tab');
+    const panels = document.querySelectorAll<HTMLElement>('.pricing-panel');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+
+        tabs.forEach((t) => {
+          t.classList.remove('is-active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        panels.forEach((p) => {
+          p.classList.remove('is-active');
+          p.hidden = true;
+        });
+
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+        const panel = document.querySelector<HTMLElement>(`[data-panel="${target}"]`);
+        if (panel) {
+          panel.classList.add('is-active');
+          panel.hidden = false;
+        }
+      });
+    });
+  }
+
+  initPricingTabs();
+  document.addEventListener('astro:after-swap', initPricingTabs);
+</script>

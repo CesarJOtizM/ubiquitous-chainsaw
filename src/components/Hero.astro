@@ -13,14 +13,16 @@ const WA_URL = `https://wa.me/573016584401?text=${t('hero.waMsg')}`;
 
 <section class="hero" aria-label="Hero — SAC_ARTX">
   <div class="hero__inner container">
-    <!-- Left: placeholder image -->
+    <!-- Left: hero image -->
     <div class="hero__image-wrap reveal">
       <div class="hero__placeholder" aria-label={t('hero.imageAlt')}>
-        <div class="hero__placeholder-inner">
-          <span class="hero__placeholder-icon" aria-hidden="true">🎨</span>
-          <span class="hero__placeholder-text">{t('hero.imagePlaceholder')}</span>
-          <span class="hero__placeholder-sub">{t('hero.imageSub')}</span>
-        </div>
+        <img
+          src="/images/bases-acrilicas/15.jpeg"
+          alt={t('hero.imageAlt')}
+          class="hero__img"
+          loading="eager"
+          fetchpriority="high"
+        />
       </div>
       <!-- Decorative accent -->
       <div class="hero__deco" aria-hidden="true"></div>
@@ -131,7 +133,16 @@ const WA_URL = `https://wa.me/573016584401?text=${t('hero.waMsg')}`;
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 50%, rgba(44, 44, 44, 0.15) 100%);
+    background: linear-gradient(180deg, transparent 60%, rgba(44, 44, 44, 0.12) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .hero__placeholder-inner {

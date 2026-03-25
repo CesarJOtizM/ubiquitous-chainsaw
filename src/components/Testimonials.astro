@@ -13,28 +13,45 @@ const testimonials = [
     id: 1,
     stars: 5,
     quote: t('testimonials.t1.quote'),
-    author: 'María G.',
-    location: 'Bogotá',
-    pet: 'Schnauzer',
-    gradient: 'linear-gradient(135deg, #C4714F33, #8A9E8C22)',
+    author: '@ybetancour',
+    location: '',
+    pet: '',
+    image: '/images/bases-acrilicas/5.jpeg',
+    gradient: '',
+    instagramUrl: 'https://www.instagram.com/reel/DVeDl6JjbD4?comment_id=18083135780611556&open_comments=true',
   },
   {
     id: 2,
     stars: 5,
     quote: t('testimonials.t2.quote'),
-    author: 'Laura M.',
-    location: 'Medellín',
-    pet: 'Beagle',
-    gradient: 'linear-gradient(135deg, #8A9E8C33, #C4714F22)',
+    author: '@paupalamen5',
+    location: '',
+    pet: '',
+    image: '/images/bases-acrilicas/3.jpeg',
+    gradient: '',
+    instagramUrl: 'https://www.instagram.com/reel/DVjXXPTkeee?comment_id=17865277986598754&open_comments=true',
   },
   {
     id: 3,
     stars: 5,
     quote: t('testimonials.t3.quote'),
-    author: 'Carlos R.',
-    location: 'Cali',
-    pet: 'Golden Retriever',
-    gradient: 'linear-gradient(135deg, #D4845F33, #EDE8DF)',
+    author: '@sannicolasx7',
+    location: '',
+    pet: '',
+    image: '/images/case-anime/20251215_144918.jpg',
+    gradient: '',
+    instagramUrl: 'https://www.instagram.com/reel/DUJk7O9ka7x?comment_id=18023863964796383&open_comments=true',
+  },
+  {
+    id: 4,
+    stars: 5,
+    quote: t('testimonials.t4.quote'),
+    author: 'Maribel',
+    location: '',
+    pet: '',
+    image: '/images/testimonials/maribel-cassiel.jpg',
+    gradient: '',
+    instagramUrl: 'https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDA2NDA1MDAyMzQ3NTgx?story_media_id=3836768790273448818_55473517501',
   },
 ];
 ---
@@ -61,15 +78,40 @@ const testimonials = [
           style={`transition-delay: ${i * 120}ms`}
           aria-label={`${lang === 'en' ? 'Testimonial from' : 'Testimonio de'} ${testimonial.author}`}
         >
-          <!-- Artwork placeholder -->
-          <div
-            class="testimonial-card__artwork"
-            style={`background: ${testimonial.gradient};`}
-            aria-hidden="true"
-          >
-            <span class="testimonial-card__artwork-icon">🐾</span>
-            <span class="testimonial-card__artwork-label">{testimonial.pet}</span>
-          </div>
+          <!-- Artwork -->
+          {testimonial.image ? (
+            <div class="testimonial-card__artwork testimonial-card__artwork--photo" aria-hidden="true">
+              <img
+                src={testimonial.image}
+                alt={`Cuadro personalizado de mascota`}
+                class="testimonial-card__artwork-img"
+                loading="lazy"
+              />
+              {testimonial.instagramUrl && (
+                <a
+                  href={testimonial.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="testimonial-card__ig-badge"
+                  aria-label="Ver comentario en Instagram"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                  Ver en Instagram
+                </a>
+              )}
+            </div>
+          ) : (
+            <div
+              class="testimonial-card__artwork"
+              style={`background: ${testimonial.gradient};`}
+              aria-hidden="true"
+            >
+              <span class="testimonial-card__artwork-icon">🐾</span>
+              <span class="testimonial-card__artwork-label">{testimonial.pet}</span>
+            </div>
+          )}
 
           <!-- Stars -->
           <div class="testimonial-card__stars" aria-label={`${testimonial.stars} ${lang === 'en' ? 'out of 5 stars' : 'de 5 estrellas'}`}>
@@ -84,7 +126,7 @@ const testimonials = [
           <!-- Author -->
           <footer class="testimonial-card__author">
             <div class="testimonial-card__avatar" aria-hidden="true">
-              {testimonial.author.charAt(0)}
+              {testimonial.author.startsWith('@') ? '📸' : testimonial.author.charAt(0)}
             </div>
             <div>
               <strong>— {testimonial.author}</strong>
@@ -136,7 +178,7 @@ const testimonials = [
   /* Grid */
   .testimonials__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     margin-bottom: 40px;
   }
@@ -166,6 +208,40 @@ const testimonials = [
     gap: 8px;
     position: relative;
     overflow: hidden;
+  }
+
+  .testimonial-card__artwork--photo {
+    height: 240px;
+  }
+
+  .testimonial-card__artwork-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .testimonial-card__ig-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .testimonial-card__ig-badge:hover {
+    background: rgba(193, 53, 132, 0.8);
   }
 
   .testimonial-card__artwork-icon {
@@ -255,7 +331,7 @@ const testimonials = [
     text-decoration: underline;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 640px) {
     .testimonials__grid {
       grid-template-columns: 1fr;
       max-width: 480px;
