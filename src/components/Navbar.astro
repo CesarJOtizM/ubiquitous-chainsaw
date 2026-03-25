@@ -25,8 +25,8 @@ const langSwitchHref = lang === 'es' ? '/en/' : '/';
     <!-- Desktop Nav -->
     <nav class="navbar__desktop" aria-label={t('nav.desktopLabel')}>
       <a href="#servicios" class="navbar__link">{t('nav.services')}</a>
-      <a href="#galeria" class="navbar__link">{t('nav.gallery')}</a>
       <a href="#proceso" class="navbar__link">{t('nav.process')}</a>
+      <a href="#galeria" class="navbar__link">{t('nav.gallery')}</a>
       <a href="#contacto" class="navbar__link">{t('nav.contact')}</a>
       <a
         href={langSwitchHref}
@@ -99,7 +99,7 @@ const langSwitchHref = lang === 'es' ? '/en/' : '/';
   }
 
   .navbar.scrolled {
-    background: rgba(250, 248, 243, 0.96);
+    background: rgba(255, 245, 249, 0.96);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 1px 0 var(--color-border);

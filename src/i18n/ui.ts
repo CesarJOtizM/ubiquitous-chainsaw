@@ -59,27 +59,27 @@ export const ui = {
     'services.cuadros.addlPet': 'Mascota adicional: $25.000 – $50.000 según tamaño',
     // bases tab
     'services.bases.name1': 'Base Estándar',
-    'services.bases.size1': '10×5 cm',
+    'services.bases.size1': '10×15 cm',
     'services.bases.price1': '$130.000',
     'services.bases.name2': 'Base Extendida',
-    'services.bases.size2': '12×8 cm',
+    'services.bases.size2': '12×18 cm',
     'services.bases.price2': '$150.000',
     'services.bases.addlPet': 'Mascota adicional: $25.000',
     'services.bases.includes': 'Incluye llavero acrílico corazón con nombre',
     // cases tab
     'services.cases.type1': 'Cases Flores',
     'services.cases.price1': '$40.000',
-    'services.cases.desc1': 'Acrílico, diseños de flores disponibles',
+    'services.cases.desc1': 'diseños de flores disponibles con capa de resina',
     'services.cases.type2': 'Flores Personalizado',
     'services.cases.price2': '$55.000',
-    'services.cases.desc2': 'Flores con diseño personalizado a pedido',
+    'services.cases.desc2': 'Flores con diseño personalizado en pintrura a pedido',
     'services.cases.type3': 'Logo / Anime / Imagen',
-    'services.cases.price3': 'Desde $85.000',
+    'services.cases.price3': 'Desde $100.000',
     'services.cases.desc3': 'Precio según complejidad del diseño',
     'services.cases.type4': 'Mascota',
     'services.cases.price4': '$100.000',
     'services.cases.desc4': '1 mascota incluida',
-    'services.cases.addlPet': 'Mascota adicional: $25.000',
+    'services.cases.addlPet': 'Mascota adicional: $20.000',
     // shared
     'services.tableNote': '* Precios en pesos colombianos (COP). Incluyen envío a todo Colombia. Para tamaños o encargos especiales,',
     'services.tableNoteLink': 'consúltanos por WhatsApp',
@@ -91,7 +91,7 @@ export const ui = {
     'services.s1.f2': 'Fondo a elección',
     'services.s1.f3': 'Foto para aprobación final',
     'services.s1.f4': 'Envío a todo Colombia',
-    'services.s1.price': 'Desde $150.000 COP',
+    'services.s1.price': 'Desde $120.000 COP',
     'services.s1.time': '15–20 días desde el 1er abono',
     'services.s1.waMsg': 'Hola!%20Quiero%20encargar%20un%20retrato%20de%20mi%20mascota',
     // service 2 — landscapes
@@ -111,7 +111,7 @@ export const ui = {
     'services.s3.f2': 'Preview digital previo',
     'services.s3.f3': 'Diseño único hecho a mano',
     'services.s3.f4': 'Envío a todo Colombia',
-    'services.s3.price': '$80.000 COP',
+    'services.s3.price': '$100.000 COP',
     'services.s3.time': '15–20 días desde el 1er abono',
     'services.s3.waMsg': 'Hola!%20Quiero%20encargar%20una%20funda%20de%20celular%20personalizada',
     // gallery
@@ -153,8 +153,8 @@ export const ui = {
     // testimonials
     'testimonials.label': 'Clientes felices',
     'testimonials.title': 'Lo que dicen nuestros clientes',
-    'testimonials.ratingLabel': 'Calificación 4.9 de 5 estrellas',
-    'testimonials.ratingText': '4.9/5 · reseñas verificadas',
+    'testimonials.ratingLabel': 'Calificación 5 de 5 estrellas',
+    'testimonials.ratingText': '5/5 · reseñas verificadas',
     'testimonials.footerText': 'Reseñas verificadas de clientes reales · ',
     'testimonials.footerLink': 'Ver más en Instagram @sac_artx',
     // testimonial quotes
@@ -401,8 +401,8 @@ export const ui = {
     // testimonials
     'testimonials.label': 'Happy clients',
     'testimonials.title': 'What our clients say',
-    'testimonials.ratingLabel': 'Rating 4.9 out of 5 stars',
-    'testimonials.ratingText': '4.9/5 · verified reviews',
+    'testimonials.ratingLabel': 'Rating 5 out of 5 stars',
+    'testimonials.ratingText': '5/5 · verified reviews',
     'testimonials.footerText': 'Verified reviews from real clients · ',
     'testimonials.footerLink': 'See more on Instagram @sac_artx',
     // testimonial quotes
