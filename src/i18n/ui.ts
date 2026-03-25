@@ -248,6 +248,15 @@ export const ui = {
     'fab.tooltip': 'Encarga por WhatsApp',
     'fab.waMsg': 'Hola!%20Me%20gustar%C3%ADa%20encargar%20un%20retrato',
 
+    // 404
+    'notfound.label': 'Error 404',
+    'notfound.title': 'Página no',
+    'notfound.titleEm': 'encontrada.',
+    'notfound.desc': 'La página que buscás no existe o fue movida. Pero tu próxima obra maestra sí existe — y la podemos crear juntos.',
+    'notfound.ctaPrimary': 'Volver al inicio →',
+    'notfound.ctaSecondary': 'Ver galería ↓',
+    'notfound.imageAlt': 'Ilustración de obra de arte no encontrada',
+
     // base layout / meta
     'meta.title': 'Retratos de Mascotas en Acrílico por Encargo · Sac_Artx',
     'meta.description': 'Pintamos retratos de mascotas en acrílico sobre lienzo o base acrílica, paisajes y fundas personalizadas. Por encargo, desde una foto. Envíos a todo Colombia.',
@@ -495,6 +504,15 @@ export const ui = {
     'fab.ariaLabel': 'Contact via WhatsApp to commission',
     'fab.tooltip': 'Order via WhatsApp',
     'fab.waMsg': 'Hello!%20I\'d%20like%20to%20commission%20a%20portrait',
+
+    // 404
+    'notfound.label': 'Error 404',
+    'notfound.title': 'Page not',
+    'notfound.titleEm': 'found.',
+    'notfound.desc': 'The page you\'re looking for doesn\'t exist or has been moved. But your next masterpiece does — and we can create it together.',
+    'notfound.ctaPrimary': 'Back to home →',
+    'notfound.ctaSecondary': 'View gallery ↓',
+    'notfound.imageAlt': 'Illustration of artwork not found',
 
     // base layout / meta
     'meta.title': 'Custom Acrylic Pet Portraits · Sac_Artx',
