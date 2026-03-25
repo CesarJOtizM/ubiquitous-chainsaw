@@ -61,6 +61,13 @@ const testimonials = [
 ---
 
 <section id="testimonios" class="section testimonials" aria-labelledby="testimonials-title">
+  <svg class="section-deco" viewBox="0 0 1440 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M -20 115 Q 400 210 800 110 T 1460 155" stroke="#C9A227" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.4" fill="none"/>
+    <path d="M 980 530 Q 1200 468 1460 510" stroke="#C9A227" stroke-width="1" stroke-dasharray="4 6" opacity="0.26" fill="none"/>
+  </svg>
+  <div class="brush-deco brush-deco--pale brush-d" aria-hidden="true" style="width:640px;height:155px;top:-15px;left:-70px;opacity:0.18;transform:rotate(-5deg)"></div>
+  <div class="brush-deco brush-deco--medium brush-f" aria-hidden="true" style="width:460px;height:115px;bottom:50px;right:-50px;opacity:0.13;transform:rotate(8deg)"></div>
+  <div class="brush-deco brush-deco--light brush-g" aria-hidden="true" style="width:300px;height:75px;top:40%;right:12%;opacity:0.09;transform:rotate(-9deg)"></div>
   <div class="container">
     <div class="testimonials__header reveal">
       <p class="section-label">{t('testimonials.label')}</p>
@@ -156,7 +163,7 @@ const testimonials = [
 
 <style>
   .testimonials {
-    background: var(--color-bg);
+    background: linear-gradient(to bottom, transparent 0px, var(--color-bg) 100px, var(--color-bg) calc(100% - 100px), transparent 100%);
   }
 
   .testimonials__header {

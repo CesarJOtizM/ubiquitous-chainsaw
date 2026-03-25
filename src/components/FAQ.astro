@@ -25,6 +25,12 @@ const faqs = [
 ---
 
 <section id="faq" class="section faq" aria-labelledby="faq-title">
+  <svg class="section-deco" viewBox="0 0 1440 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M 1460 285 Q 1080 165 720 285 T -20 225" stroke="#C9A227" stroke-width="1.5" stroke-dasharray="7 5" opacity="0.38" fill="none"/>
+    <path d="M -20 78 Q 250 38 500 85" stroke="#C9A227" stroke-width="1" stroke-dasharray="4 6" opacity="0.26" fill="none"/>
+  </svg>
+  <div class="brush-deco brush-deco--deep brush-f" aria-hidden="true" style="width:580px;height:145px;top:-10px;right:-60px;opacity:0.10;transform:rotate(-10deg)"></div>
+  <div class="brush-deco brush-deco--light brush-d" aria-hidden="true" style="width:540px;height:135px;bottom:40px;left:-65px;opacity:0.14;transform:rotate(4deg)"></div>
   <div class="container">
     <div class="faq__header reveal">
       <p class="section-label">{t('faq.label')}</p>
@@ -86,7 +92,7 @@ const faqs = [
 
 <style>
   .faq {
-    background: var(--color-bg-alt);
+    background: linear-gradient(to bottom, transparent 0px, var(--color-bg) 100px, var(--color-bg) calc(100% - 100px), transparent 100%);
   }
 
   .faq__header {

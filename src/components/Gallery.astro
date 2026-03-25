@@ -123,6 +123,13 @@ const filters = [
 ---
 
 <section id="galeria" class="section gallery" aria-labelledby="gallery-title">
+  <svg class="section-deco" viewBox="0 0 1440 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M -20 300 Q 480 180 840 320 T 1460 265" stroke="#C9A227" stroke-width="1.5" stroke-dasharray="7 5" opacity="0.38" fill="none"/>
+    <path d="M 280 80 Q 580 38 920 90" stroke="#C9A227" stroke-width="1" stroke-dasharray="4 6" opacity="0.26" fill="none"/>
+  </svg>
+  <div class="brush-deco brush-deco--light brush-c" aria-hidden="true" style="width:720px;height:175px;top:20px;right:-90px;opacity:0.14;transform:rotate(-8deg)"></div>
+  <div class="brush-deco brush-deco--medium brush-e" aria-hidden="true" style="width:480px;height:120px;bottom:60px;left:-50px;opacity:0.12;transform:rotate(6deg)"></div>
+  <div class="brush-deco brush-deco--deep brush-k" aria-hidden="true" style="width:340px;height:85px;top:52%;left:50%;opacity:0.07;transform:rotate(-14deg)"></div>
   <div class="container">
     <div class="gallery__header reveal">
       <p class="section-label">{t('gallery.label')}</p>
@@ -224,7 +231,7 @@ const filters = [
 
 <style>
   .gallery {
-    background: var(--color-bg-alt);
+    background: linear-gradient(to bottom, transparent 0px, var(--color-bg) 100px, var(--color-bg) calc(100% - 100px), transparent 100%);
   }
 
   .gallery__header {

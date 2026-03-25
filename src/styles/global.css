@@ -9,15 +9,19 @@
 }
 
 @theme {
-  --color-bg: #FAF8F3;
-  --color-bg-alt: #F5EFE4;
-  --color-bg-card: #EDE8DF;
-  --color-text: #2C2C2C;
-  --color-text-muted: #7A6E65;
-  --color-accent: #C4714F;
-  --color-accent-hover: #D4845F;
-  --color-sage: #8A9E8C;
-  --color-border: #DDD8CF;
+  --color-bg: #FFF5FB;
+  --color-bg-alt: #FAE8F8;
+  --color-bg-card: #F5E8FA;
+  --color-text: #2A1F26;
+  --color-text-muted: #8A7280;
+  --color-accent: #B762C1;
+  --color-accent-hover: #8946A6;
+  --color-sage: #B762C1;
+  --color-border: #EAD0F0;
+  --color-gold: #C9A227;
+  --color-lavender: #EA99D5;
+  --color-btn: #8946A6;
+  --color-btn-hover: #B762C1;
   --color-whatsapp: #25D366;
   --color-memorial: #9B8AA0;
 
@@ -29,7 +33,7 @@
 /* Base */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   font-family: var(--font-body);
@@ -38,6 +42,7 @@ body {
   line-height: 1.6;
   font-size: 16px;
   font-weight: 400;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4 {
@@ -84,6 +89,265 @@ input, button, textarea, select {
 .reveal-stagger > *:nth-child(4) { transition-delay: 300ms; }
 .reveal-stagger > *:nth-child(5) { transition-delay: 400ms; }
 
+/* ─── Watercolor section blobs ─────────────────────────────────────────── */
+
+#servicios,
+#proceso,
+#galeria,
+#testimonios,
+#faq,
+#contacto {
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    transparent 0px,
+    var(--color-bg) 100px,
+    var(--color-bg) calc(100% - 100px),
+    transparent 100%
+  );
+}
+
+/* Servicios — lavanda top-right, teal bottom-left */
+#servicios::before {
+  content: '';
+  position: absolute;
+  width: 420px; height: 380px;
+  background: rgba(234, 153, 213, 0.35);
+  border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%;
+  filter: blur(80px);
+  top: -140px; right: -60px;
+  pointer-events: none;
+  z-index: 0;
+}
+#servicios::after {
+  content: '';
+  position: absolute;
+  width: 360px; height: 340px;
+  background: rgba(183, 98, 193, 0.32);
+  border-radius: 40% 60% 55% 45% / 50% 60% 40% 50%;
+  filter: blur(80px);
+  bottom: -140px; left: -60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Proceso — pink top-left, lavanda bottom-right */
+#proceso::before {
+  content: '';
+  position: absolute;
+  width: 380px; height: 340px;
+  background: rgba(255, 205, 221, 0.32);
+  border-radius: 50% 50% 38% 62% / 55% 45% 55% 45%;
+  filter: blur(80px);
+  top: -140px; left: -60px;
+  pointer-events: none;
+  z-index: 0;
+}
+#proceso::after {
+  content: '';
+  position: absolute;
+  width: 340px; height: 320px;
+  background: rgba(234, 153, 213, 0.3);
+  border-radius: 60% 40% 50% 50% / 40% 60% 40% 60%;
+  filter: blur(80px);
+  bottom: -140px; right: -60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Galería — teal top-right, pink bottom-left */
+#galeria::before {
+  content: '';
+  position: absolute;
+  width: 400px; height: 360px;
+  background: rgba(183, 98, 193, 0.32);
+  border-radius: 40% 60% 55% 45% / 50% 60% 40% 50%;
+  filter: blur(80px);
+  top: -140px; right: -60px;
+  pointer-events: none;
+  z-index: 0;
+}
+#galeria::after {
+  content: '';
+  position: absolute;
+  width: 340px; height: 320px;
+  background: rgba(255, 205, 221, 0.32);
+  border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%;
+  filter: blur(80px);
+  bottom: -140px; left: -60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Testimonios — lavanda top-right, pink bottom-left */
+#testimonios::before {
+  content: '';
+  position: absolute;
+  width: 380px; height: 360px;
+  background: rgba(234, 153, 213, 0.32);
+  border-radius: 60% 40% 50% 50% / 40% 60% 40% 60%;
+  filter: blur(80px);
+  top: -140px; right: -80px;
+  pointer-events: none;
+  z-index: 0;
+}
+#testimonios::after {
+  content: '';
+  position: absolute;
+  width: 320px; height: 300px;
+  background: rgba(255, 205, 221, 0.3);
+  border-radius: 50% 50% 38% 62% / 55% 45% 55% 45%;
+  filter: blur(80px);
+  bottom: -140px; left: -50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* FAQ — teal top-left, lavanda bottom-right */
+#faq::before {
+  content: '';
+  position: absolute;
+  width: 360px; height: 340px;
+  background: rgba(183, 98, 193, 0.3);
+  border-radius: 40% 60% 55% 45% / 50% 60% 40% 50%;
+  filter: blur(80px);
+  top: -140px; left: -60px;
+  pointer-events: none;
+  z-index: 0;
+}
+#faq::after {
+  content: '';
+  position: absolute;
+  width: 320px; height: 300px;
+  background: rgba(234, 153, 213, 0.3);
+  border-radius: 60% 40% 50% 50% / 40% 60% 40% 60%;
+  filter: blur(80px);
+  bottom: -140px; right: -60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Contacto — pink top-right, teal bottom-left */
+#contacto::before {
+  content: '';
+  position: absolute;
+  width: 400px; height: 360px;
+  background: rgba(255, 205, 221, 0.32);
+  border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%;
+  filter: blur(80px);
+  top: -140px; right: -60px;
+  pointer-events: none;
+  z-index: 0;
+}
+#contacto::after {
+  content: '';
+  position: absolute;
+  width: 360px; height: 340px;
+  background: rgba(183, 98, 193, 0.3);
+  border-radius: 40% 60% 55% 45% / 50% 60% 40% 50%;
+  filter: blur(80px);
+  bottom: -140px; left: -60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────── */
+
+/* ─── Brush stroke mask decorations ─────────────────────────────────── */
+.brush-deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
+}
+/* Stroke variants — 11 distinct brush shapes */
+.brush-a {
+  -webkit-mask-image: url('/images/brush/brush-1.svg');
+  mask-image: url('/images/brush/brush-1.svg');
+}
+.brush-b {
+  -webkit-mask-image: url('/images/brush/brush-4.svg');
+  mask-image: url('/images/brush/brush-4.svg');
+}
+.brush-c {
+  -webkit-mask-image: url('/images/brush/brush-7.svg');
+  mask-image: url('/images/brush/brush-7.svg');
+}
+.brush-d {
+  -webkit-mask-image: url('/images/brush/brush-10.svg');
+  mask-image: url('/images/brush/brush-10.svg');
+}
+.brush-e {
+  -webkit-mask-image: url('/images/brush/brush-12.svg');
+  mask-image: url('/images/brush/brush-12.svg');
+}
+.brush-f {
+  -webkit-mask-image: url('/images/brush/brush-15.svg');
+  mask-image: url('/images/brush/brush-15.svg');
+}
+.brush-g {
+  -webkit-mask-image: url('/images/brush/brush-2.svg');
+  mask-image: url('/images/brush/brush-2.svg');
+}
+.brush-h {
+  -webkit-mask-image: url('/images/brush/brush-5.svg');
+  mask-image: url('/images/brush/brush-5.svg');
+}
+.brush-i {
+  -webkit-mask-image: url('/images/brush/brush-8.svg');
+  mask-image: url('/images/brush/brush-8.svg');
+}
+.brush-j {
+  -webkit-mask-image: url('/images/brush/brush-11.svg');
+  mask-image: url('/images/brush/brush-11.svg');
+}
+.brush-k {
+  -webkit-mask-image: url('/images/brush/brush-13.svg');
+  mask-image: url('/images/brush/brush-13.svg');
+}
+/* Color variants */
+.brush-deco--deep   { background: #8946A6; }
+.brush-deco--medium { background: #B762C1; }
+.brush-deco--light  { background: #EA99D5; }
+.brush-deco--pale   { background: #FFCDDD; }
+.brush-deco--gold   { background: #C9A227; }
+
+/* ─── Decorative section SVG (legacy, kept for brush-stroke underline) ── */
+.section-deco {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+}
+
+/* Brush-stroke underline on section labels */
+.section-label {
+  position: relative;
+  display: inline-block;
+}
+.section-label::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: -6px;
+  right: -6px;
+  height: 7px;
+  background: var(--color-sage);
+  opacity: 0.28;
+  border-radius: 50%;
+  transform: rotate(-1.5deg);
+  z-index: -1;
+}
+/* ─────────────────────────────────────────────────────────────────────── */
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .reveal {
@@ -122,24 +386,25 @@ input, button, textarea, select {
 }
 
 .btn-primary {
-  background: var(--color-accent);
+  background: var(--color-btn);
   color: #fff;
 }
 
 .btn-primary:hover {
-  background: var(--color-accent-hover);
-  box-shadow: 0 4px 16px rgba(196, 113, 79, 0.35);
+  background: var(--color-btn-hover);
+  box-shadow: 0 4px 20px rgba(137, 70, 166, 0.38);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--color-accent);
-  border: 1.5px solid var(--color-accent);
+  color: var(--color-btn);
+  border: 1.5px solid var(--color-btn);
 }
 
 .btn-outline:hover {
-  background: var(--color-accent);
+  background: var(--color-btn);
   color: #fff;
+  box-shadow: 0 4px 20px rgba(137, 70, 166, 0.28);
 }
 
 .btn-whatsapp {

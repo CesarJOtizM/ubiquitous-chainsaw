@@ -45,6 +45,13 @@ const steps = [
 ---
 
 <section id="proceso" class="section process" aria-labelledby="process-title">
+  <svg class="section-deco" viewBox="0 0 1440 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M 1460 160 Q 1080 80 720 180 T -20 135" stroke="#C9A227" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.4" fill="none"/>
+    <path d="M -20 520 Q 220 460 440 505" stroke="#C9A227" stroke-width="1" stroke-dasharray="4 6" opacity="0.26" fill="none"/>
+  </svg>
+  <div class="brush-deco brush-deco--deep brush-e" aria-hidden="true" style="width:660px;height:160px;top:-20px;left:-70px;opacity:0.11;transform:rotate(7deg)"></div>
+  <div class="brush-deco brush-deco--light brush-a" aria-hidden="true" style="width:500px;height:125px;bottom:50px;right:-50px;opacity:0.14;transform:rotate(-4deg)"></div>
+  <div class="brush-deco brush-deco--gold brush-h" aria-hidden="true" style="width:420px;height:105px;top:46%;left:30%;opacity:0.07;transform:rotate(5deg)"></div>
   <div class="container">
     <div class="process__header reveal">
       <p class="section-label">{t('process.label')}</p>
@@ -92,8 +99,7 @@ const steps = [
 
 <style>
   .process {
-    background: var(--color-bg);
-    overflow: hidden;
+    background: linear-gradient(to bottom, transparent 0px, var(--color-bg) 100px, var(--color-bg) calc(100% - 100px), transparent 100%);
   }
 
   .process__header {

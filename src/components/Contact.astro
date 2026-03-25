@@ -15,6 +15,13 @@ const FB_URL = 'https://www.facebook.com/share/1ApXQ8V8SK/';
 ---
 
 <section id="contacto" class="section contact" aria-labelledby="contact-title">
+  <svg class="section-deco" viewBox="0 0 1440 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M -20 200 Q 400 100 800 220 T 1460 162" stroke="#C9A227" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.42" fill="none"/>
+    <path d="M 580 530 Q 900 465 1220 525" stroke="#C9A227" stroke-width="1" stroke-dasharray="4 6" opacity="0.28" fill="none"/>
+  </svg>
+  <div class="brush-deco brush-deco--medium brush-b" aria-hidden="true" style="width:660px;height:160px;top:-5px;left:-75px;opacity:0.12;transform:rotate(6deg)"></div>
+  <div class="brush-deco brush-deco--pale brush-e" aria-hidden="true" style="width:500px;height:125px;bottom:35px;right:-55px;opacity:0.16;transform:rotate(-7deg)"></div>
+  <div class="brush-deco brush-deco--light brush-i" aria-hidden="true" style="width:360px;height:90px;top:50%;left:42%;opacity:0.08;transform:rotate(-6deg)"></div>
   <div class="container">
     <div class="contact__header reveal">
       <p class="section-label">{t('contact.label')}</p>
@@ -206,7 +213,7 @@ const FB_URL = 'https://www.facebook.com/share/1ApXQ8V8SK/';
 
 <style>
   .contact {
-    background: var(--color-bg);
+    background: linear-gradient(to bottom, transparent 0px, var(--color-bg) 100px, var(--color-bg) calc(100% - 100px), transparent 100%);
   }
 
   .contact__header {

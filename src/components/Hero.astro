@@ -12,6 +12,23 @@ const WA_URL = `https://wa.me/573016584401?text=${t('hero.waMsg')}`;
 ---
 
 <section class="hero" aria-label="Hero — Sac_Artx">
+  <!-- Watercolor blobs -->
+  <div class="hero__blobs" aria-hidden="true">
+    <div class="hero__blob hero__blob--pink"></div>
+    <div class="hero__blob hero__blob--teal"></div>
+    <div class="hero__blob hero__blob--lavender"></div>
+    <div class="hero__blob hero__blob--pink2"></div>
+    <!-- Brush stroke decorations -->
+    <div class="brush-deco brush-deco--medium brush-g" aria-hidden="true" style="width:780px;height:190px;top:-30px;right:-100px;opacity:0.10;transform:rotate(-8deg)"></div>
+    <div class="brush-deco brush-deco--pale brush-h" aria-hidden="true" style="width:560px;height:140px;bottom:80px;left:-80px;opacity:0.14;transform:rotate(6deg)"></div>
+    <div class="brush-deco brush-deco--gold brush-i" aria-hidden="true" style="width:320px;height:80px;top:55%;left:38%;opacity:0.07;transform:rotate(-3deg)"></div>
+    <svg class="hero__gold-lines" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M 60 80 Q 200 20 380 120 T 720 80" stroke="#C9A227" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5" fill="none"/>
+      <path d="M 0 300 Q 150 240 300 320 T 600 280" stroke="#C9A227" stroke-width="1" stroke-dasharray="4 6" opacity="0.35" fill="none"/>
+      <path d="M 500 480 Q 620 420 780 500" stroke="#C9A227" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.4" fill="none"/>
+    </svg>
+  </div>
+
   <div class="hero__inner container">
     <!-- Left: hero image -->
     <div class="hero__image-wrap reveal">
@@ -88,17 +105,67 @@ const WA_URL = `https://wa.me/573016584401?text=${t('hero.waMsg')}`;
     overflow: hidden;
   }
 
-  /* Background texture */
-  .hero::before {
-    content: '';
+  /* No ::before polygon — background handled globally */
+
+  /* Watercolor blobs */
+  .hero__blobs {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 55%;
-    height: 100%;
-    background: var(--color-bg-alt);
-    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+    inset: 0;
     z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero__blob {
+    position: absolute;
+    filter: blur(48px);
+    opacity: 0.45;
+  }
+
+  .hero__blob--pink {
+    width: 520px;
+    height: 420px;
+    background: #F5A0C0;
+    border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%;
+    top: -80px;
+    right: -60px;
+  }
+
+  .hero__blob--teal {
+    width: 380px;
+    height: 360px;
+    background: #7CC4BB;
+    border-radius: 40% 60% 55% 45% / 50% 60% 40% 50%;
+    top: 30%;
+    right: 5%;
+    opacity: 0.35;
+  }
+
+  .hero__blob--lavender {
+    width: 300px;
+    height: 280px;
+    background: #C8A8D8;
+    border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%;
+    bottom: 5%;
+    left: -40px;
+    opacity: 0.35;
+  }
+
+  .hero__blob--pink2 {
+    width: 260px;
+    height: 240px;
+    background: #F5B8D0;
+    border-radius: 50% 50% 38% 62% / 55% 45% 55% 45%;
+    top: 55%;
+    left: 25%;
+    opacity: 0.3;
+  }
+
+  .hero__gold-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .hero__inner {
@@ -109,7 +176,7 @@ const WA_URL = `https://wa.me/573016584401?text=${t('hero.waMsg')}`;
     padding-top: clamp(40px, 6vh, 80px);
     padding-bottom: clamp(40px, 6vh, 80px);
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 
   /* Image area */
@@ -120,13 +187,13 @@ const WA_URL = `https://wa.me/573016584401?text=${t('hero.waMsg')}`;
   .hero__placeholder {
     aspect-ratio: 1;
     border-radius: 8px;
-    background: linear-gradient(135deg, #C4714F 0%, #D4845F 35%, #EDE8DF 100%);
+    background: linear-gradient(135deg, #F07050 0%, #F5A0C0 50%, #E8F6F4 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 24px 64px rgba(196, 113, 79, 0.25);
+    box-shadow: 0 24px 64px rgba(240, 112, 80, 0.2), 0 0 0 4px rgba(201, 162, 39, 0.15);
   }
 
   .hero__placeholder::before {
@@ -181,9 +248,9 @@ const WA_URL = `https://wa.me/573016584401?text=${t('hero.waMsg')}`;
     right: -16px;
     width: 80px;
     height: 80px;
-    border: 2px solid var(--color-accent);
+    border: 2px solid var(--color-gold);
     border-radius: 4px;
-    opacity: 0.3;
+    opacity: 0.6;
     z-index: -1;
   }
 

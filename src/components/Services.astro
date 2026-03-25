@@ -68,6 +68,13 @@ const cuadros = [
 ---
 
 <section id="servicios" class="section services" aria-labelledby="services-title">
+  <svg class="section-deco" viewBox="0 0 1440 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M -20 180 Q 360 80 720 200 T 1460 155" stroke="#C9A227" stroke-width="1.5" stroke-dasharray="7 5" opacity="0.42" fill="none"/>
+    <path d="M 820 500 Q 1060 440 1460 480" stroke="#C9A227" stroke-width="1" stroke-dasharray="4 6" opacity="0.28" fill="none"/>
+  </svg>
+  <div class="brush-deco brush-deco--medium brush-a" aria-hidden="true" style="width:700px;height:170px;top:-10px;right:-80px;opacity:0.13;transform:rotate(-6deg)"></div>
+  <div class="brush-deco brush-deco--light brush-b" aria-hidden="true" style="width:520px;height:130px;bottom:40px;left:-60px;opacity:0.15;transform:rotate(5deg)"></div>
+  <div class="brush-deco brush-deco--pale brush-j" aria-hidden="true" style="width:380px;height:95px;top:48%;right:8%;opacity:0.10;transform:rotate(11deg)"></div>
   <div class="container">
     <div class="services__header reveal">
       <p class="section-label">{t('services.label')}</p>
@@ -211,7 +218,7 @@ const cuadros = [
 
 <style>
   .services {
-    background: var(--color-bg-alt);
+    background: linear-gradient(to bottom, transparent 0px, var(--color-bg) 100px, var(--color-bg) calc(100% - 100px), transparent 100%);
   }
 
   .services__header {
@@ -250,8 +257,8 @@ const cuadros = [
   }
 
   .service-card--highlight {
-    border-color: var(--color-accent);
-    background: var(--color-bg);
+    border-color: var(--color-sage);
+    background: var(--color-bg-card);
   }
 
   .service-card--highlight::before {
@@ -261,7 +268,7 @@ const cuadros = [
     left: 0;
     right: 0;
     height: 3px;
-    background: var(--color-accent);
+    background: linear-gradient(90deg, var(--color-sage), var(--color-accent));
     border-radius: 12px 12px 0 0;
   }
 
@@ -319,7 +326,7 @@ const cuadros = [
   }
 
   .service-card__check {
-    color: var(--color-sage);
+    color: var(--color-accent);
     font-size: 13px;
     font-weight: 700;
     flex-shrink: 0;
@@ -359,6 +366,7 @@ const cuadros = [
   .services__pricing {
     background: var(--color-bg);
     border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-gold);
     border-radius: 12px;
     padding: clamp(28px, 4vw, 48px);
   }
@@ -438,8 +446,8 @@ const cuadros = [
   .pricing-table th {
     text-align: left;
     padding: 12px 20px;
-    background: var(--color-bg-alt);
-    color: var(--color-text-muted);
+    background: var(--color-bg-card);
+    color: var(--color-sage);
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.08em;
