@@ -1,4 +1,45 @@
+# ── Crawlers legítimos ────────────────────────────────────────────────────────
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /_image
 
+# ── Bots de IA (entrenamiento de modelos) ────────────────────────────────────
+# Las imágenes y contenido de Sac_Artx están protegidos por derechos de autor.
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# ── Sitemap ───────────────────────────────────────────────────────────────────
 Sitemap: https://sacartx.art/sitemap-index.xml
