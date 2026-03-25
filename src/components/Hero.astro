@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { useTranslations } from '../i18n/utils';
+import heroImg from '../assets/hero.jpeg';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -33,12 +35,14 @@ const WA_URL = `https://wa.me/573016584401?text=${t('hero.waMsg')}`;
     <!-- Left: hero image -->
     <div class="hero__image-wrap reveal">
       <div class="hero__placeholder" aria-label={t('hero.imageAlt')}>
-        <img
-          src="/images/bases-acrilicas/15.jpeg"
+        <Image
+          src={heroImg}
           alt={t('hero.imageAlt')}
           class="hero__img"
           loading="eager"
           fetchpriority="high"
+          format="webp"
+          quality={85}
         />
       </div>
       <!-- Decorative accent -->
@@ -337,7 +341,7 @@ const WA_URL = `https://wa.me/573016584401?text=${t('hero.waMsg')}`;
 
   .hero__stat span {
     font-size: 12px;
-    color: var(--color-text-muted);
+    color: #5C4657;
     white-space: nowrap;
   }
 
