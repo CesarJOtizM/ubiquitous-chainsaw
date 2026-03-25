@@ -28,8 +28,8 @@ export const POST: APIRoute = async ({ request }) => {
   const servicioLabel = SERVICE_LABELS[servicio] ?? servicio;
 
   const { error } = await resend.emails.send({
-    from: 'Sac_Artx Web <noreply@sacart.co>',
-    to: ['sacart.colombia@gmail.com'],
+    from: 'Sac_Artx Web <hello@cesarortiz.co>',
+    to: ['saritamaya.401+website@gmail.com'],
     replyTo: contacto.includes('@') ? contacto : undefined,
     subject: `Nueva consulta: ${servicioLabel} — ${nombre}`,
     html: `
