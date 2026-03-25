@@ -14,6 +14,7 @@ const testimonials = [
     stars: 5,
     quote: t('testimonials.t1.quote'),
     author: '@ybetancour',
+    date: lang === 'en' ? 'Mar 4, 2026' : '4 mar. 2026',
     location: '',
     pet: '',
     image: '/images/bases-acrilicas/5.jpeg',
@@ -25,6 +26,7 @@ const testimonials = [
     stars: 5,
     quote: t('testimonials.t2.quote'),
     author: '@paupalamen5',
+    date: lang === 'en' ? 'Mar 6, 2026' : '6 mar. 2026',
     location: '',
     pet: '',
     image: '/images/bases-acrilicas/3.jpeg',
@@ -36,6 +38,7 @@ const testimonials = [
     stars: 5,
     quote: t('testimonials.t3.quote'),
     author: '@sannicolasx7',
+    date: lang === 'en' ? 'Jan 30, 2026' : '30 ene. 2026',
     location: '',
     pet: '',
     image: '/images/case-anime/20251215_144918.jpg',
@@ -47,9 +50,10 @@ const testimonials = [
     stars: 5,
     quote: t('testimonials.t4.quote'),
     author: 'Maribel',
+    date: lang === 'en' ? 'Mar 5, 2026' : '5 mar. 2026',
     location: '',
     pet: '',
-    image: '/images/testimonials/maribel-cassiel.jpg',
+    image: '/images/bases-acrilicas/14.jpeg',
     gradient: '',
     instagramUrl: 'https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDA2NDA1MDAyMzQ3NTgx?story_media_id=3836768790273448818_55473517501',
   },
@@ -130,7 +134,7 @@ const testimonials = [
             </div>
             <div>
               <strong>— {testimonial.author}</strong>
-              <span class="testimonial-card__location">· {testimonial.location}</span>
+              <span class="testimonial-card__date">· {testimonial.date}</span>
             </div>
           </footer>
         </article>
@@ -294,8 +298,9 @@ const testimonials = [
     font-style: normal;
   }
 
-  .testimonial-card__location {
+  .testimonial-card__date {
     color: var(--color-text-muted);
+    font-size: 13px;
   }
 
   .testimonial-card__avatar {
