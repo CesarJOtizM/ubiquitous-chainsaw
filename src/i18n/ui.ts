@@ -56,7 +56,7 @@ export const ui = {
     'services.cuadros.colPrice': 'Precio',
     'services.cuadros.special': 'Edición especial corazón 20×20 cm',
     'services.cuadros.note': 'Todos los cuadros incluyen 1 mascota.',
-    'services.cuadros.addlPet': 'Mascota adicional: $25.000 – $50.000 según tamaño',
+    'services.cuadros.addlPet': 'Mascota adicional: $30.000 – $50.000 según tamaño',
     // bases tab
     'services.bases.name1': 'Base Estándar',
     'services.bases.size1': '10×15 cm',
@@ -81,7 +81,7 @@ export const ui = {
     'services.cases.desc4': '1 mascota incluida',
     'services.cases.addlPet': 'Mascota adicional: $20.000',
     // shared
-    'services.tableNote': '* Precios en pesos colombianos (COP). Incluyen envío a todo Colombia. Para tamaños o encargos especiales,',
+    'services.tableNote': '* Precios en pesos colombianos (COP) + envío. Para tamaños o encargos especiales,',
     'services.tableNoteLink': 'consúltanos por WhatsApp',
     'services.tableNoteMsg': 'Hola!%20Quiero%20consultar%20precios%20para%20un%20encargo%20especial',
     // service 1 — pet portraits
@@ -313,7 +313,7 @@ export const ui = {
     'services.cuadros.colPrice': 'Price',
     'services.cuadros.special': 'Special edition heart 20×20 cm',
     'services.cuadros.note': 'All paintings include 1 pet.',
-    'services.cuadros.addlPet': 'Additional pet: $25,000 – $50,000 depending on size',
+    'services.cuadros.addlPet': 'Additional pet: $30,000 – $50,000 depending on size',
     // bases tab
     'services.bases.name1': 'Standard Base',
     'services.bases.size1': '10×5 cm',
@@ -338,7 +338,7 @@ export const ui = {
     'services.cases.desc4': '1 pet included',
     'services.cases.addlPet': 'Additional pet: $25,000',
     // shared
-    'services.tableNote': '* Prices in Colombian pesos (COP). Include shipping across Colombia. For special sizes or orders,',
+    'services.tableNote': '* Prices in Colombian pesos (COP) + shipping. For special sizes or orders,',
     'services.tableNoteLink': 'ask us on WhatsApp',
     'services.tableNoteMsg': 'Hello!%20I\'d%20like%20to%20inquire%20about%20pricing%20for%20a%20special%20order',
     // service 1 — pet portraits
