@@ -206,6 +206,87 @@ const cuadros = [
         <p class="panel-note">{t('services.cases.addlPet')}</p>
       </div>
 
+      <!-- Service + Offer JSON-LD for AI search / rich snippets -->
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "Service",
+              "name": t('services.s1.title'),
+              "description": t('services.s1.desc'),
+              "provider": { "@id": "https://sacartx.art/#business" },
+              "areaServed": { "@type": "Country", "name": "Colombia" },
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "COP",
+                "price": "120000",
+                "priceSpecification": {
+                  "@type": "PriceSpecification",
+                  "minPrice": "120000",
+                  "priceCurrency": "COP"
+                },
+                "availability": "https://schema.org/InStock",
+                "deliveryLeadTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 15,
+                  "maxValue": 20,
+                  "unitCode": "DAY"
+                }
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "Service",
+              "name": t('services.s2.title'),
+              "description": t('services.s2.desc'),
+              "provider": { "@id": "https://sacartx.art/#business" },
+              "areaServed": { "@type": "Country", "name": "Colombia" },
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "COP",
+                "availability": "https://schema.org/InStock",
+                "deliveryLeadTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 15,
+                  "maxValue": 20,
+                  "unitCode": "DAY"
+                }
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "Service",
+              "name": t('services.s3.title'),
+              "description": t('services.s3.desc'),
+              "provider": { "@id": "https://sacartx.art/#business" },
+              "areaServed": { "@type": "Country", "name": "Colombia" },
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "COP",
+                "price": "100000",
+                "availability": "https://schema.org/InStock",
+                "deliveryLeadTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 15,
+                  "maxValue": 20,
+                  "unitCode": "DAY"
+                }
+              }
+            }
+          }
+        ]
+      })} />
+
       <p class="services__table-note">
         {t('services.tableNote')}{' '}
         <a href={`${WA_BASE}${t('services.tableNoteMsg')}`} target="_blank" rel="noopener noreferrer">

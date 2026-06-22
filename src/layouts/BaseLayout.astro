@@ -10,10 +10,12 @@ export interface Props {
   lang?: 'es' | 'en';
 }
 
+const SITE = 'https://sacartx.art';
+
 const {
   lang = 'es',
   ogImage = '/images/og-image.jpg',
-  ogUrl = 'https://sacart.co',
+  ogUrl = lang === 'en' ? `${SITE}/en/` : `${SITE}/`,
 } = Astro.props;
 
 const t = useTranslations(lang);
@@ -21,19 +23,41 @@ const t = useTranslations(lang);
 const title = Astro.props.title ?? t('meta.title');
 const description = Astro.props.description ?? t('meta.description');
 
+// Canonical & hreflang
+const canonicalUrl = lang === 'en' ? `${SITE}/en/` : `${SITE}/`;
+const alternateEs = `${SITE}/`;
+const alternateEn = `${SITE}/en/`;
+
 const schemaOrg = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "ArtGallery"],
+  "@id": `${SITE}/#business`,
   "name": "Sac_Artx",
   "description": t('schema.description'),
-  "url": ogUrl,
+  "url": SITE,
   "telephone": "+573016584401",
+  "image": `${SITE}/images/og-image.jpg`,
   "address": {
     "@type": "PostalAddress",
+    "addressLocality": "Bogotá",
+    "addressRegion": "Bogotá D.C.",
     "addressCountry": "CO"
   },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Colombia"
+  },
   "sameAs": [
-    "https://www.instagram.com/sac_artx"
+    "https://www.instagram.com/sac_artx",
+    "https://www.tiktok.com/@sac_artx"
+  ],
+  "knowsAbout": [
+    "Pet portraits",
+    "Acrylic painting",
+    "Custom phone cases",
+    "Landscape painting",
+    "Retratos de mascotas",
+    "Pintura en acrílico"
   ],
   "priceRange": "$$",
   "currenciesAccepted": "COP",
@@ -60,6 +84,12 @@ const schemaOrg = {
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#7d2181" />
+
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="es" href={alternateEs} />
+    <link rel="alternate" hreflang="en" href={alternateEn} />
+    <link rel="alternate" hreflang="x-default" href={alternateEs} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

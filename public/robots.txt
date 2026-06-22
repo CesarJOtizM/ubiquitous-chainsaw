@@ -5,34 +5,26 @@ Disallow: /api/
 Disallow: /_astro/
 Disallow: /_image
 
-# ── Bots de IA (entrenamiento de modelos) ────────────────────────────────────
-# Las imágenes y contenido de Sac_Artx están protegidos por derechos de autor.
+# ── Bots de búsqueda IA ──────────────────────────────────────────────────────
+# Permitir acceso a páginas HTML para que puedan citar contenido en resultados.
+# Bloquear /images/ para proteger obras de arte con derechos de autor.
 
 User-agent: GPTBot
-Disallow: /
-
 User-agent: ChatGPT-User
-Disallow: /
-
 User-agent: Google-Extended
-Disallow: /
+User-agent: PerplexityBot
+User-agent: Claude-Web
+User-agent: YouBot
+User-agent: Amazonbot
+Disallow: /images/
+
+# ── Bots de entrenamiento / scraping — BLOQUEAR TODO ─────────────────────────
+# Estos bots solo extraen datos para entrenar modelos, no citan fuentes.
 
 User-agent: CCBot
 Disallow: /
 
 User-agent: anthropic-ai
-Disallow: /
-
-User-agent: Claude-Web
-Disallow: /
-
-User-agent: PerplexityBot
-Disallow: /
-
-User-agent: YouBot
-Disallow: /
-
-User-agent: Amazonbot
 Disallow: /
 
 User-agent: Bytespider

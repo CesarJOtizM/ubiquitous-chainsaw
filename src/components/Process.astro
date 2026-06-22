@@ -79,6 +79,21 @@ const steps = [
       ))}
     </div>
 
+    <!-- HowTo JSON-LD for AI search / rich snippets -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": t('process.title'),
+      "description": t('process.subtitle'),
+      "totalTime": "P20D",
+      "step": steps.map((step, i) => ({
+        "@type": "HowToStep",
+        "position": i + 1,
+        "name": step.title,
+        "text": step.desc
+      }))
+    })} />
+
     <!-- CTA -->
     <div class="process__cta reveal">
       <div class="process__cta-inner">

@@ -36,7 +36,7 @@ export const ui = {
     'hero.stat3Value': 'Colombia',
     'hero.stat3Label': 'envíos nacionales',
     'hero.scroll': 'Desliza',
-    'hero.imageAlt': 'Fotografía de obra de arte',
+    'hero.imageAlt': 'Retrato de mascota pintado en acrílico por Sac_Artx, artista colombiana',
     'hero.imagePlaceholder': 'Foto de obra',
     'hero.imageSub': 'Retrato en acrílico',
     'hero.waMsg': 'Hola!%20Me%20gustar%C3%ADa%20encargar%20un%20retrato',
@@ -162,6 +162,7 @@ export const ui = {
     'testimonials.t2.quote': 'Siempre en mi corazon ❤️ gracias por tu hermosa labor y arte 😍',
     'testimonials.t3.quote': 'Aquí estoy con mi señora, viendo tu publicación! Nos encantó por completo! Ella quedó muy feliz con su case! Muchas gracias!!!! 🥳🥳🥳🥳🥳',
     'testimonials.t4.quote': 'Muchísimas gracias, está muy muy hermoso, gracias por haber plasmado la foto de mi gordita en ese cuadrito, me encantó — enamorada de mi cuadro 🥰',
+    'testimonials.imageAlt': 'Obra personalizada pintada a mano por Sac_Artx',
 
     // faq
     'faq.label': 'Todo lo que necesitas saber',
@@ -293,7 +294,7 @@ export const ui = {
     'hero.stat3Value': 'Colombia',
     'hero.stat3Label': 'nationwide shipping',
     'hero.scroll': 'Scroll',
-    'hero.imageAlt': 'Artwork photograph',
+    'hero.imageAlt': 'Custom acrylic pet portrait by Sac_Artx, Colombian artist',
     'hero.imagePlaceholder': 'Artwork photo',
     'hero.imageSub': 'Acrylic portrait',
     'hero.waMsg': 'Hello!%20I\'d%20like%20to%20commission%20a%20portrait',
@@ -331,12 +332,12 @@ export const ui = {
     'services.cases.price2': '$55,000',
     'services.cases.desc2': 'Custom flower design on request',
     'services.cases.type3': 'Logo / Anime / Image',
-    'services.cases.price3': 'From $85,000',
+    'services.cases.price3': 'From $100,000',
     'services.cases.desc3': 'Price depends on design complexity',
     'services.cases.type4': 'Pet Portrait',
     'services.cases.price4': '$100,000',
     'services.cases.desc4': '1 pet included',
-    'services.cases.addlPet': 'Additional pet: $25,000',
+    'services.cases.addlPet': 'Additional pet: $20,000',
     // shared
     'services.tableNote': '* Prices in Colombian pesos (COP) + shipping. For special sizes or orders,',
     'services.tableNoteLink': 'ask us on WhatsApp',
@@ -348,7 +349,7 @@ export const ui = {
     'services.s1.f2': 'Background of your choice',
     'services.s1.f3': 'Photo for final approval',
     'services.s1.f4': 'Shipping across Colombia',
-    'services.s1.price': 'From $150,000 COP',
+    'services.s1.price': 'From $120,000 COP',
     'services.s1.time': '15–20 days from first payment',
     'services.s1.waMsg': 'Hello!%20I\'d%20like%20to%20commission%20a%20pet%20portrait',
     // service 2 — landscapes
@@ -368,7 +369,7 @@ export const ui = {
     'services.s3.f2': 'Digital preview first',
     'services.s3.f3': 'Unique handmade design',
     'services.s3.f4': 'Shipping across Colombia',
-    'services.s3.price': '$80,000 COP',
+    'services.s3.price': '$100,000 COP',
     'services.s3.time': '15–20 days from first payment',
     'services.s3.waMsg': 'Hello!%20I\'d%20like%20to%20order%20a%20custom%20phone%20case',
     // gallery
@@ -419,6 +420,7 @@ export const ui = {
     'testimonials.t2.quote': 'Always in my heart ❤️ thank you for your beautiful work and art 😍',
     'testimonials.t3.quote': 'Here I am with my wife, looking at your post! We absolutely loved it! She was so happy with her case! Thank you so much!!!! 🥳🥳🥳🥳🥳',
     'testimonials.t4.quote': 'Thank you so much, it\'s so so beautiful, thank you for capturing my little chubby girl in that painting, I loved it — completely in love with my artwork 🥰',
+    'testimonials.imageAlt': 'Custom hand-painted artwork by Sac_Artx',
 
     // faq
     'faq.label': 'Everything you need to know',

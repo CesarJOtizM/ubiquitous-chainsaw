@@ -88,6 +88,20 @@ const faqs = [
       </a>
     </div>
   </div>
+
+  <!-- FAQPage JSON-LD for AI search / rich snippets -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(item => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }))
+  })} />
 </section>
 
 <style>

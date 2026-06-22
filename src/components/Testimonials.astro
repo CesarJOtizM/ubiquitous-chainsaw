@@ -94,7 +94,7 @@ const testimonials = [
             <div class="testimonial-card__artwork testimonial-card__artwork--photo" aria-hidden="true">
               <img
                 src={testimonial.image}
-                alt={`Cuadro personalizado de mascota`}
+                alt={t('testimonials.imageAlt')}
                 class="testimonial-card__artwork-img"
                 loading="lazy"
               />
@@ -147,6 +147,37 @@ const testimonials = [
         </article>
       ))}
     </div>
+
+    <!-- Review + AggregateRating JSON-LD for AI search / rich snippets -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://sacartx.art/#business",
+      "name": "Sac_Artx",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "bestRating": "5",
+        "ratingCount": String(testimonials.length),
+        "reviewCount": String(testimonials.length)
+      },
+      "review": testimonials.map(t => ({
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": t.author
+        },
+        "datePublished": t.date.includes('2026')
+          ? `2026-${t.date.includes('Jan') || t.date.includes('ene') ? '01' : t.date.includes('Mar') || t.date.includes('mar') ? '03' : '01'}-${t.date.match(/\d+/)?.[0]?.padStart(2, '0') || '01'}`
+          : '2026-01-01',
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": String(t.stars),
+          "bestRating": "5"
+        },
+        "reviewBody": t.quote
+      }))
+    })} />
 
     <!-- Google reviews note -->
     <div class="testimonials__footer reveal">
