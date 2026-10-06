@@ -12,6 +12,7 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [
     sitemap({
+      customPages: ['https://sacartx.art/preguntas.md', 'https://sacartx.art/llms.txt'],
       i18n: {
         defaultLocale: 'es',
         locales: {
