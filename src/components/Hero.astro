@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { useTranslations } from '../i18n/utils';
+import { catalogPath } from '../i18n/paths';
 import heroImg from '../assets/hero.jpeg';
 
 export interface Props {
@@ -63,7 +64,7 @@ const WA_URL = `https://wa.me/573016584401?text=${t('hero.waMsg')}`;
         <a href={WA_URL} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
           {t('hero.ctaPrimary')}
         </a>
-        <a href="#galeria" class="btn btn-outline">
+        <a href={catalogPath(lang)} class="btn btn-outline">
           {t('hero.ctaSecondary')}
         </a>
       </div>

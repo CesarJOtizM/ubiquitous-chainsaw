@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from '../i18n/utils';
+import { catalogPath, homePath, isCatalogPath } from '../i18n/paths';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -12,7 +13,17 @@ const WA_BASE = 'https://wa.me/573016584401?text=';
 const WA_URL = `${WA_BASE}${t('nav.cta') === 'Order via WhatsApp' ? 'Hello!%20I\'d%20like%20to%20commission%20a%20portrait' : 'Hola!%20Me%20gustar%C3%ADa%20encargar%20un%20retrato'}`;
 
 const otherLang = lang === 'es' ? 'en' : 'es';
-const langSwitchHref = lang === 'es' ? '/en/' : '/';
+const home = homePath(lang);
+const catalogHref = catalogPath(lang);
+const onCatalog = isCatalogPath(Astro.url.pathname);
+const langSwitchHref = onCatalog ? catalogPath(otherLang) : homePath(otherLang);
+
+const links = [
+  { href: `${home}#servicios`, label: t('nav.services'), current: false },
+  { href: catalogHref, label: t('nav.gallery'), current: onCatalog },
+  { href: `${home}#proceso`, label: t('nav.process'), current: false },
+  { href: `${home}#contacto`, label: t('nav.contact'), current: false },
+];
 ---
 
 <header id="navbar" class="navbar">
@@ -24,10 +35,15 @@ const langSwitchHref = lang === 'es' ? '/en/' : '/';
 
     <!-- Desktop Nav -->
     <nav class="navbar__desktop" aria-label={t('nav.desktopLabel')}>
-      <a href="#servicios" class="navbar__link">{t('nav.services')}</a>
-      <a href="#proceso" class="navbar__link">{t('nav.process')}</a>
-      <a href="#galeria" class="navbar__link">{t('nav.gallery')}</a>
-      <a href="#contacto" class="navbar__link">{t('nav.contact')}</a>
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class:list={['navbar__link', { 'navbar__link--current': link.current }]}
+          aria-current={link.current ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
       <a
         href={langSwitchHref}
         class="navbar__lang-switch"
@@ -67,10 +83,15 @@ const langSwitchHref = lang === 'es' ? '/en/' : '/';
     </svg>
   </button>
   <nav class="mobile-menu__nav" aria-label={t('nav.mobileLabel')}>
-    <a href="#servicios" class="mobile-menu__link">{t('nav.services')}</a>
-    <a href="#galeria" class="mobile-menu__link">{t('nav.gallery')}</a>
-    <a href="#proceso" class="mobile-menu__link">{t('nav.process')}</a>
-    <a href="#contacto" class="mobile-menu__link">{t('nav.contact')}</a>
+    {links.map((link) => (
+      <a
+        href={link.href}
+        class:list={['mobile-menu__link', { 'mobile-menu__link--current': link.current }]}
+        aria-current={link.current ? 'page' : undefined}
+      >
+        {link.label}
+      </a>
+    ))}
     <a
       href={langSwitchHref}
       class="mobile-menu__lang-switch"
@@ -157,8 +178,13 @@ const langSwitchHref = lang === 'es' ? '/en/' : '/';
     color: var(--color-text);
   }
 
-  .navbar__link:hover::after {
+  .navbar__link:hover::after,
+  .navbar__link--current::after {
     transform: scaleX(1);
+  }
+
+  .navbar__link--current {
+    color: var(--color-text);
   }
 
   /* Language switcher pill */
@@ -263,7 +289,8 @@ const langSwitchHref = lang === 'es' ? '/en/' : '/';
     padding: 8px 24px;
   }
 
-  .mobile-menu__link:hover {
+  .mobile-menu__link:hover,
+  .mobile-menu__link--current {
     color: var(--color-accent);
   }
 

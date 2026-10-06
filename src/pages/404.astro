@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { catalogPath, homePath } from '../i18n/paths';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const homeUrl = lang === 'en' ? '/en/' : '/';
-const galleryUrl = lang === 'en' ? '/en/#gallery' : '/#galeria';
+const homeUrl = homePath(lang);
+const galleryUrl = catalogPath(lang);
 ---
 
 <BaseLayout

@@ -1,0 +1,52 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Catalog from '../../components/Catalog.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppFAB from '../../components/WhatsAppFAB.astro';
+import { useTranslations } from '../../i18n/utils';
+import { catalogLines } from '../../data/catalog';
+
+const lang = 'en' as const;
+const t = useTranslations(lang);
+const url = 'https://sacartx.art/en/catalog/';
+
+const extraJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: t('catalog.title'),
+  description: t('catalog.metaDescription'),
+  url,
+  inLanguage: 'en-US',
+  isPartOf: { '@id': 'https://sacartx.art/#business' },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: catalogLines.map((line, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: t(line.name),
+      url: `${url}#${line.id}`,
+    })),
+  },
+};
+---
+
+<BaseLayout
+  lang={lang}
+  title={t('catalog.metaTitle')}
+  description={t('catalog.metaDescription')}
+  ogUrl={url}
+  canonicalUrl={url}
+  alternateEs="https://sacartx.art/catalogo/"
+  alternateEn={url}
+  extraJsonLd={extraJsonLd}
+>
+  <Navbar lang={lang} />
+  <main>
+    <Catalog lang={lang} />
+  </main>
+  <Footer lang={lang} />
+  <WhatsAppFAB lang={lang} />
+</BaseLayout>

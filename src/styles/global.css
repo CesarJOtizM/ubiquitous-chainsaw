@@ -93,7 +93,7 @@ input, button, textarea, select {
 
 #servicios,
 #proceso,
-#galeria,
+#catalogo,
 #testimonios,
 #faq,
 #contacto {
@@ -155,8 +155,8 @@ input, button, textarea, select {
   z-index: 0;
 }
 
-/* Galería — teal top-right, pink bottom-left */
-#galeria::before {
+/* Catálogo — teal top-right, pink bottom-left */
+#catalogo::before {
   content: '';
   position: absolute;
   width: 400px; height: 360px;
@@ -167,7 +167,7 @@ input, button, textarea, select {
   pointer-events: none;
   z-index: 0;
 }
-#galeria::after {
+#catalogo::after {
   content: '';
   position: absolute;
   width: 340px; height: 320px;

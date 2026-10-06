@@ -8,6 +8,10 @@ export interface Props {
   ogImage?: string;
   ogUrl?: string;
   lang?: 'es' | 'en';
+  canonicalUrl?: string;
+  alternateEs?: string;
+  alternateEn?: string;
+  extraJsonLd?: object;
 }
 
 const SITE = 'https://sacartx.art';
@@ -15,7 +19,10 @@ const SITE = 'https://sacartx.art';
 const {
   lang = 'es',
   ogImage = '/og-image.png',
-  ogUrl = lang === 'en' ? `${SITE}/en/` : `${SITE}/`,
+  canonicalUrl: canonicalProp,
+  alternateEs: alternateEsProp,
+  alternateEn: alternateEnProp,
+  extraJsonLd,
 } = Astro.props;
 
 const t = useTranslations(lang);
@@ -23,10 +30,10 @@ const t = useTranslations(lang);
 const title = Astro.props.title ?? t('meta.title');
 const description = Astro.props.description ?? t('meta.description');
 
-// Canonical & hreflang
-const canonicalUrl = lang === 'en' ? `${SITE}/en/` : `${SITE}/`;
-const alternateEs = `${SITE}/`;
-const alternateEn = `${SITE}/en/`;
+const canonicalUrl = canonicalProp ?? (lang === 'en' ? `${SITE}/en/` : `${SITE}/`);
+const alternateEs = alternateEsProp ?? `${SITE}/`;
+const alternateEn = alternateEnProp ?? `${SITE}/en/`;
+const ogUrl = Astro.props.ogUrl ?? canonicalUrl;
 
 const schemaOrg = {
   "@context": "https://schema.org",
@@ -126,6 +133,7 @@ const schemaOrg = {
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+    {extraJsonLd && <script type="application/ld+json" set:html={JSON.stringify(extraJsonLd)} />}
   </head>
 
   <body>

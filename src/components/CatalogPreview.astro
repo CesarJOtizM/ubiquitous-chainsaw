@@ -1,0 +1,179 @@
+---
+import { useTranslations } from '../i18n/utils';
+import { catalogItems, catalogLines, itemsForLine } from '../data/catalog';
+import { catalogPath } from '../i18n/paths';
+
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+const catalogHref = catalogPath(lang);
+
+const featured = catalogLines
+  .filter((line) => line.featured)
+  .map((line) => {
+    const items = itemsForLine(line.id);
+    return {
+      id: line.id,
+      name: t(line.name),
+      price: t(line.price),
+      href: `${catalogHref}#${line.id}`,
+      src: items[0]?.src ?? '',
+      count: items.length,
+      countLabel: items.length === 1 ? t('catalog.piece') : t('catalog.pieces'),
+    };
+  });
+---
+
+<section id="catalogo" class="section catalog-preview" aria-labelledby="catalog-preview-title">
+  <div class="container">
+    <div class="catalog-preview__header reveal">
+      <p class="section-label">{t('catalog.previewLabel')}</p>
+      <h2 class="section-title" id="catalog-preview-title">{t('catalog.previewTitle')}</h2>
+      <p class="section-subtitle">{t('catalog.previewSubtitle')}</p>
+    </div>
+
+    <div class="catalog-preview__grid">
+      {featured.map((line) => (
+        <a class="catalog-cover reveal" href={line.href}>
+          <span class="catalog-cover__frame">
+            <img
+              src={line.src}
+              alt={line.name}
+              width="800"
+              height="1000"
+              loading="lazy"
+              decoding="async"
+            />
+          </span>
+          <span class="catalog-cover__body">
+            <span class="catalog-cover__name">{line.name}</span>
+            <span class="catalog-cover__price">{line.price}</span>
+            <span class="catalog-cover__count">{line.count} {line.countLabel}</span>
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <div class="catalog-preview__cta reveal">
+      <a href={catalogHref} class="btn btn-primary">
+        {t('catalog.viewAll')}
+      </a>
+      <p class="catalog-preview__total">
+        {catalogItems.length} {t('catalog.pieces')}
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .catalog-preview .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .catalog-preview__header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .catalog-preview__header .section-subtitle {
+    margin: 0 auto;
+  }
+
+  .catalog-preview__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .catalog-cover {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .catalog-cover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(137, 70, 166, 0.14);
+  }
+
+  .catalog-cover__frame {
+    display: block;
+    aspect-ratio: 4 / 5;
+    background: var(--color-bg-card);
+  }
+
+  .catalog-cover__frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .catalog-cover__body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 16px 18px;
+  }
+
+  .catalog-cover__name {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    line-height: 1.1;
+    color: var(--color-text);
+  }
+
+  .catalog-cover__price {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .catalog-cover__count {
+    font-size: 13px;
+    color: var(--color-accent);
+  }
+
+  .catalog-preview__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 36px;
+  }
+
+  .catalog-preview__total {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 980px) {
+    .catalog-preview__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .catalog-preview__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .catalog-cover {
+      transition: none;
+    }
+  }
+</style>

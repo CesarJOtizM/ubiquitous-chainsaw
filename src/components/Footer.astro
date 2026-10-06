@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from '../i18n/utils';
+import { catalogPath, homePath } from '../i18n/paths';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -15,11 +16,12 @@ const FB_URL = 'https://www.facebook.com/share/1ApXQ8V8SK/';
 
 const year = new Date().getFullYear();
 
+const home = homePath(lang);
 const links = [
-  { href: '#servicios', label: t('footer.nav.services') },
-  { href: '#proceso', label: t('footer.nav.process') },
-  { href: '#galeria', label: t('footer.nav.gallery') },
-  { href: '#contacto', label: t('footer.nav.contact') },
+  { href: `${home}#servicios`, label: t('footer.nav.services') },
+  { href: catalogPath(lang), label: t('footer.nav.gallery') },
+  { href: `${home}#proceso`, label: t('footer.nav.process') },
+  { href: `${home}#contacto`, label: t('footer.nav.contact') },
 ];
 ---
 
