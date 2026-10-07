@@ -215,6 +215,47 @@ const schemaOrg = {
       ::view-transition-group(site-nav) {
         z-index: 1000;
       }
+
+      .nav-progress {
+        position: fixed;
+        inset: 0 0 auto 0;
+        height: 3px;
+        z-index: 1100;
+        overflow: hidden;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.15s ease;
+      }
+      .nav-progress::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        width: 40%;
+        background: var(--color-accent, #B762C1);
+        animation: nav-progress 1s ease-in-out infinite;
+      }
+      html.is-navigating .nav-progress {
+        opacity: 1;
+      }
+      @keyframes nav-progress {
+        from { transform: translateX(-100%); }
+        to { transform: translateX(250%); }
+      }
+
+      html[data-navigated] main {
+        animation: page-enter 0.35s ease both;
+      }
+      @keyframes page-enter {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: none; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .nav-progress::before,
+        html[data-navigated] main {
+          animation: none;
+        }
+      }
       ::view-transition-group(site-fab) {
         z-index: 900;
       }
@@ -222,7 +263,24 @@ const schemaOrg = {
   </head>
 
   <body>
+    <div class="nav-progress" aria-hidden="true"></div>
     <slot />
+
+    <script>
+      document.addEventListener('astro:before-preparation', (event) => {
+        document.documentElement.classList.add('is-navigating');
+        // Astro restores focus to elements inside transition:persist after the swap;
+        // focusing a persisted footer link scrolls the new page back down to it.
+        const active = document.activeElement;
+        if (event.to.pathname !== event.from.pathname && active instanceof HTMLElement && active.closest('[data-astro-transition-persist]')) {
+          active.blur();
+        }
+      });
+      document.addEventListener('astro:after-swap', () => {
+        document.documentElement.classList.remove('is-navigating');
+        document.documentElement.dataset.navigated = '';
+      });
+    </script>
 
     <!-- Scroll Reveal — re-run after client navigations -->
     <script>

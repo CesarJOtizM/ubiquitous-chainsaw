@@ -1,6 +1,6 @@
 # Hand-painted acrylic pet portraits in Colombia
 
-Sac_Artx is a studio in Bogotá, Colombia, specialized in custom pet portraits hand-painted in acrylic. Each portrait is commissioned from a photograph sent on WhatsApp.
+Sac_Artx is a studio in Bogotá, Colombia, specializing in custom pet portraits hand-painted in acrylic. Each portrait is commissioned from a photograph sent on WhatsApp.
 
 ## What it is
 
@@ -23,7 +23,8 @@ Dogs, cats, rabbits, horses, pigeons, and any other animal that matters. Memoria
 Prices current as of October 2026, in Colombian pesos (COP). Shipping is extra.
 
 - Acrylic pet portrait on canvas, 1 pet: COP 120,000 (12×18 cm), COP 160,000 (20×25 cm), COP 220,000 (28×35 cm), COP 270,000 (40×50 cm). Special 20×20 cm heart edition: COP 150,000.
-- Extra pet on a canvas: COP 30,000 to 50,000 depending on size. Up to 3 pets per painting.
+- Extra pet on a canvas: COP 30,000 to 50,000 depending on size.
+- Suggested pets per piece: 12×18 cm canvas, 1 to 5; 20×25 and 28×35 cm, 1 to 6; 40×50 cm, 1 to 10; heart edition, 1 pet; acrylic base 10×15 cm, 1 to 4, and 12×18 cm, 1 to 5; phone case, 1 to 3.
 - Acrylic base, includes a heart keychain with the name: COP 130,000 (10×15 cm), COP 150,000 (12×18 cm). Extra pet: COP 25,000.
 - Phone case with a pet: COP 100,000. Extra pet: COP 20,000.
 

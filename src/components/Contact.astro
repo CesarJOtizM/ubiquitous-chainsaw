@@ -134,6 +134,8 @@ const FB_URL = 'https://www.facebook.com/profile.php?id=61561180858722';
           id="contact-form"
           class="contact-form"
           aria-label={t('contact.formAriaLabel')}
+          toolname="request_custom_artwork_quote"
+          tooldescription="Send a quote request to Sac_Artx, a Bogotá studio that hand-paints custom acrylic pet portraits, landscapes and personalized phone cases. The studio replies by email within 24 to 48 hours."
           novalidate
         >
           <div class="contact-form__field">
@@ -145,6 +147,7 @@ const FB_URL = 'https://www.facebook.com/profile.php?id=61561180858722';
               id="cf-name"
               name="nombre"
               class="contact-form__input"
+              toolparamdescription="Full name of the person requesting the quote."
               placeholder={t('contact.fieldNamePlaceholder')}
               required
               autocomplete="name"
@@ -160,6 +163,7 @@ const FB_URL = 'https://www.facebook.com/profile.php?id=61561180858722';
               id="cf-contact"
               name="contacto"
               class="contact-form__input"
+              toolparamdescription="Email address where Sac_Artx should send the reply."
               placeholder={t('contact.fieldContactPlaceholder')}
               required
               autocomplete="email"
@@ -174,6 +178,7 @@ const FB_URL = 'https://www.facebook.com/profile.php?id=61561180858722';
               id="cf-service"
               name="servicio"
               class="contact-form__select"
+              toolparamdescription="Type of work: 'retrato' for a pet portrait on canvas or acrylic base, 'paisaje' for a landscape painting, 'funda' for a custom phone case, 'otro' for anything else."
               required
             >
               <option value="" disabled selected>{t('contact.fieldServicePlaceholder')}</option>
@@ -190,6 +195,7 @@ const FB_URL = 'https://www.facebook.com/profile.php?id=61561180858722';
               id="cf-message"
               name="mensaje"
               class="contact-form__textarea"
+              toolparamdescription="Optional details: animal type, number of pets, preferred size, deadline or any other request."
               placeholder={t('contact.fieldMessagePlaceholder')}
               rows="4"
             ></textarea>

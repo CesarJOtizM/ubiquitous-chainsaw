@@ -1,6 +1,6 @@
 # Hand-painted acrylic dog portraits in Colombia
 
-Sac_Artx is a studio in Bogotá, Colombia, specialized in custom dog portraits hand-painted in acrylic. Each portrait is commissioned from a photograph sent on WhatsApp.
+Sac_Artx is a studio in Bogotá, Colombia, specializing in custom dog portraits hand-painted in acrylic. Each portrait is commissioned from a photograph sent on WhatsApp.
 
 ## What it is
 
@@ -8,7 +8,7 @@ Sac_Artx hand-paints your dog in acrylic on canvas or on an acrylic (methacrylat
 
 ## Who it is for
 
-Dog owners in Colombia who want a custom painting, a gift, or a memorial portrait. Any breed or mixed breed is welcome. Up to 3 pets in the same painting.
+Dog owners in Colombia who want a custom painting, a gift, or a memorial portrait. Any breed or mixed breed is welcome. Several pets can share one painting; the suggested number depends on the size.
 
 ## What is included
 

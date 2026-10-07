@@ -78,7 +78,7 @@ export const catalogAnimals: Record<string, CatalogAnimal> = {
   'images/case-mascotas/05.jpg': 'dog',
   'images/case-mascotas/06.jpg': 'cat', // pending confirm
   'images/case-mascotas/07.jpg': 'dog', // pending confirm
-  'images/case-mascotas/08.jpg': 'cat', // pending confirm
+  'images/case-mascotas/08.jpg': 'dog',
   'images/case-mascotas/09.jpg': 'dog', // pending confirm
   'images/case-mascotas/10.jpg': 'cat', // pending confirm
   'images/case-mascotas/11.jpg': 'dog', // pending confirm

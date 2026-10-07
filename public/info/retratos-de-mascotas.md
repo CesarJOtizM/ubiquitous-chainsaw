@@ -23,7 +23,8 @@ Perros, gatos, conejos, caballos, palomas y cualquier otro animal que importe. T
 Precios vigentes a octubre de 2026, en pesos colombianos (COP). El envío se cobra aparte.
 
 - Retrato en acrílico sobre lienzo, 1 mascota: $120.000 (12×18 cm), $160.000 (20×25 cm), $220.000 (28×35 cm), $270.000 (40×50 cm). Edición especial corazón 20×20 cm: $150.000.
-- Mascota adicional en un cuadro: $30.000 a $50.000 según el tamaño. Hasta 3 mascotas por cuadro.
+- Mascota adicional en un cuadro: $30.000 a $50.000 según el tamaño.
+- Mascotas sugeridas por pieza: cuadro 12×18 cm, de 1 a 5; 20×25 y 28×35 cm, de 1 a 6; 40×50 cm, de 1 a 10; cuadro corazón, 1 mascota; base acrílica 10×15 cm, de 1 a 4, y 12×18 cm, de 1 a 5; funda, de 1 a 3.
 - Base acrílica, incluye llavero corazón con nombre: $130.000 (10×15 cm), $150.000 (12×18 cm). Mascota adicional: $25.000.
 - Funda de celular con mascota: $100.000. Mascota adicional: $20.000.
 

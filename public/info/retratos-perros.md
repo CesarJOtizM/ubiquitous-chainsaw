@@ -8,7 +8,7 @@ Sac_Artx pinta a mano el retrato de tu perro en acrílico sobre lienzo o sobre b
 
 ## Para quién
 
-Dueños de perros en Colombia que quieren un cuadro personalizado, un regalo o un retrato en memoria. Se aceptan perros de cualquier raza o mestizos. Hasta 3 mascotas en el mismo cuadro.
+Dueños de perros en Colombia que quieren un cuadro personalizado, un regalo o un retrato en memoria. Se aceptan perros de cualquier raza o mestizos. Se pueden incluir varias mascotas en el mismo cuadro; la cantidad sugerida depende del tamaño.
 
 ## Qué incluye
 

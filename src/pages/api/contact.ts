@@ -34,14 +34,14 @@ export const POST: APIRoute = async ({ request }) => {
     subject: `Nueva consulta: ${servicioLabel} — ${nombre}`,
     html: `
       <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#1a1a1a">
-        <h2 style="color:#c4714f;margin-bottom:4px">Nueva consulta desde sacart.co</h2>
+        <h2 style="color:#c4714f;margin-bottom:4px">Nueva consulta desde sacartx.art</h2>
         <hr style="border:none;border-top:1px solid #eee;margin:16px 0"/>
         <p><strong>Nombre:</strong> ${nombre}</p>
         <p><strong>Contacto:</strong> ${contacto}</p>
         <p><strong>Servicio:</strong> ${servicioLabel}</p>
         ${mensaje ? `<p><strong>Mensaje:</strong></p><p style="white-space:pre-wrap;background:#f9f6f3;padding:12px;border-radius:6px">${mensaje}</p>` : ''}
         <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
-        <p style="font-size:12px;color:#888">Enviado desde el formulario de contacto de sacart.co</p>
+        <p style="font-size:12px;color:#888">Enviado desde el formulario de contacto de sacartx.art</p>
       </div>
     `,
   });

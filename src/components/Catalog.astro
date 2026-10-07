@@ -59,7 +59,7 @@ const lines = catalogLines.map((line) => {
       <h1 class="catalog-hero__title">{t('catalog.title')}</h1>
       <p class="catalog-hero__subtitle">
         {t('catalog.subtitle')}{' '}
-        <a href={pricesHref}>{t('catalog.pricesLink')}</a>
+        <a href={pricesHref} class="catalog-hero__link">{t('catalog.pricesLink')}</a>
       </p>
     </div>
   </header>
@@ -233,6 +233,18 @@ const lines = catalogLines.map((line) => {
     max-width: 38rem;
     font-size: 17px;
     color: var(--color-text-muted);
+  }
+
+  .catalog-hero__link {
+    color: var(--color-accent);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+
+  .catalog-hero__link:hover {
+    color: var(--color-accent-hover);
   }
 
   .catalog-jump {

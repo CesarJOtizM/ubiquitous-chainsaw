@@ -7,7 +7,7 @@ Disallow: /_image
 
 # ── Búsqueda en IAs ───────────────────────────────────────────────────────────
 # Estos bots deciden si el sitio aparece citado en respuestas.
-# El HTML, /llms.txt y las fotos de /images/ quedan abiertos para usarlas como referencia.
+# El HTML, /llms.txt y las fotos de /img/ quedan abiertos para usarlas como referencia.
 # Los bots de entrenamiento siguen bloqueados más abajo.
 
 User-agent: OAI-SearchBot
@@ -20,7 +20,7 @@ User-agent: Google-Extended
 User-agent: YouBot
 User-agent: Amazonbot
 Allow: /
-Allow: /images/
+Allow: /img/
 Disallow: /api/
 Disallow: /_astro/
 Disallow: /_image

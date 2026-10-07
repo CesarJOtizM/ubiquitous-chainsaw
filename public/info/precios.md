@@ -26,7 +26,7 @@ Cada precio de retrato o base incluye 1 mascota, boceto digital previo y revisio
 | 40×50 cm | $270.000 |
 | Edición especial corazón 20×20 cm | $150.000 |
 
-Mascota adicional en un cuadro: $30.000 a $50.000 según el tamaño. Hasta 3 mascotas por cuadro.
+Mascota adicional en un cuadro: $30.000 a $50.000 según el tamaño. Mascotas sugeridas: 12×18 cm, de 1 a 5; 20×25 y 28×35 cm, de 1 a 6; 40×50 cm, de 1 a 10. La edición corazón se recomienda para una sola mascota.
 
 ### Bases acrílicas
 
@@ -37,18 +37,18 @@ Incluyen llavero corazón con nombre.
 | 10×15 cm | $130.000 |
 | 12×18 cm | $150.000 |
 
-Mascota adicional en una base: $25.000.
+Mascota adicional en una base: $25.000. Mascotas sugeridas: 10×15 cm, de 1 a 4; 12×18 cm, de 1 a 5.
 
 ### Fundas de celular
 
 | Tipo | Precio |
 |------|--------|
-| Cases flores | $40.000 |
-| Flores personalizado | $55.000 |
+| Fundas de flores | $40.000 |
+| Flores personalizadas | $55.000 |
 | Logo / anime / imagen | Desde $100.000 (según complejidad) |
 | Mascota (1 incluida) | $100.000 |
 
-Mascota adicional en una funda: $20.000.
+Mascota adicional en una funda: $20.000. Mascotas sugeridas: de 1 a 3.
 
 ### Paisajes y encargos a medida
 

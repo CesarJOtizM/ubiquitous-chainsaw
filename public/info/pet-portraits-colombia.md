@@ -1,6 +1,6 @@
 # Acrylic pet portraits with shipping across Colombia
 
-Sac_Artx is a studio in Bogotá, Colombia, specialized in custom pet portraits hand-painted in acrylic. Orders ship to any city in Colombia.
+Sac_Artx is a studio in Bogotá, Colombia, specializing in custom pet portraits hand-painted in acrylic. Orders ship to any city in Colombia.
 
 ## What it is
 

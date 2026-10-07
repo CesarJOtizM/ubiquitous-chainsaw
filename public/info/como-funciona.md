@@ -18,7 +18,7 @@ Quien quiere encargar un retrato de perro, gato u otra mascota, una base acríli
 4. Se pinta: cuando la obra está lista, recibes fotos por WhatsApp para la aprobación final.
 5. Recibes tu obra: embalaje seguro y envío a todo Colombia con seguimiento.
 
-También pueden mejorar la imagen con inteligencia artificial antes de pintar: corregir iluminación, unir varias fotos o agregar un accesorio.
+También se puede mejorar la imagen con inteligencia artificial antes de pintar: corregir la iluminación o unir varias fotos.
 
 ## Precios
 

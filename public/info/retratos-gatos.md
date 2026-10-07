@@ -8,7 +8,7 @@ Sac_Artx pinta a mano el retrato de tu gato en acrílico sobre lienzo o sobre ba
 
 ## Para quién
 
-Dueños de gatos en Colombia que quieren un cuadro personalizado, un regalo o un retrato en memoria. Se aceptan gatos de cualquier raza o mestizos. Hasta 3 mascotas en el mismo cuadro.
+Dueños de gatos en Colombia que quieren un cuadro personalizado, un regalo o un retrato en memoria. Se aceptan gatos de cualquier raza o mestizos. Se pueden incluir varias mascotas en el mismo cuadro; la cantidad sugerida depende del tamaño.
 
 ## Qué incluye
 

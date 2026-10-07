@@ -31,6 +31,10 @@ const caseRows = casePrices.map((row, i) => ({
   highlight: i === casePrices.length - 1,
 }));
 
+const canvasPets = [t('pets.l1'), t('pets.l2'), t('pets.l3'), t('pets.l4')];
+const basePets = [t('pets.l5'), t('pets.l6')];
+const casePets = [t('pets.l7')];
+
 const faqs = [
   { q: t('prices.faq1.q'), a: t('prices.faq1.a') },
   { q: t('prices.faq2.q'), a: t('prices.faq2.a') },
@@ -74,6 +78,12 @@ const faqs = [
         </table>
       </div>
       <p class="pricing-block__note">{t('prices.canvasNote')}</p>
+      <div class="pricing-pets">
+        <p class="pricing-pets__title">{t('prices.petsTitle')}</p>
+        <ul class="pricing-pets__list">
+          {canvasPets.map((entry) => <li>{entry}</li>)}
+        </ul>
+      </div>
     </section>
 
     <section class="pricing-block" aria-labelledby="prices-bases">
@@ -88,6 +98,12 @@ const faqs = [
         ))}
       </ul>
       <p class="pricing-block__note">{t('prices.basesNote')}</p>
+      <div class="pricing-pets">
+        <p class="pricing-pets__title">{t('prices.petsTitle')}</p>
+        <ul class="pricing-pets__list">
+          {basePets.map((entry) => <li>{entry}</li>)}
+        </ul>
+      </div>
     </section>
 
     <section class="pricing-block" aria-labelledby="prices-cases">
@@ -102,6 +118,12 @@ const faqs = [
         ))}
       </ul>
       <p class="pricing-block__note">{t('prices.casesNote')}</p>
+      <div class="pricing-pets">
+        <p class="pricing-pets__title">{t('prices.petsTitle')}</p>
+        <ul class="pricing-pets__list">
+          {casePets.map((entry) => <li>{entry}</li>)}
+        </ul>
+      </div>
     </section>
 
     <section class="pricing-block pricing-block--payment" aria-labelledby="prices-payment">
@@ -221,6 +243,44 @@ const faqs = [
     font-size: 0.9375rem;
     line-height: 1.6;
     max-width: 720px;
+  }
+
+  .pricing-pets {
+    margin-top: 14px;
+    max-width: 720px;
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .pricing-pets__title {
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 6px;
+  }
+
+  .pricing-pets__list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .pricing-pets__list li {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .pricing-pets__list li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 0.65em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-accent);
   }
 
   .pricing-cards {

@@ -8,11 +8,11 @@ Un retrato de mascota en acrílico sobre lienzo empieza desde $120.000 COP (12×
 
 Las bases acrílicas cuestan $130.000 (10×15 cm) y $150.000 (12×18 cm), e incluyen llavero corazón con nombre. Una funda de celular con tu mascota cuesta $100.000. Las fundas de flores cuestan $40.000 y las flores personalizadas $55.000. Los paisajes y encargos a medida se cotizan según tamaño y complejidad.
 
-Una mascota adicional suma entre $30.000 y $50.000 en un cuadro, $25.000 en una base y $20.000 en una funda. Se pueden incluir hasta 3 mascotas en el mismo cuadro.
+Una mascota adicional suma entre $30.000 y $50.000 en un cuadro, $25.000 en una base y $20.000 en una funda. Mascotas sugeridas por pieza: cuadro 12×18 cm, de 1 a 5; 20×25 y 28×35 cm, de 1 a 6; 40×50 cm, de 1 a 10; cuadro corazón, 1 mascota; base acrílica 10×15 cm, de 1 a 4, y 12×18 cm, de 1 a 5; funda, de 1 a 3.
 
 ## ¿Qué foto necesito para encargar un retrato?
 
-Basta una foto nítida de la mascota y el tamaño que quieres. Sac_Artx guía el encargo por WhatsApp. Si la foto no alcanza, avisan antes de aceptar el trabajo.
+Basta una foto nítida de la mascota y el tamaño que quieres. Sac_Artx guía el encargo por WhatsApp. Si la foto no alcanza, se avisa antes de aceptar el trabajo.
 
 Para una foto útil:
 
@@ -22,7 +22,7 @@ Para una foto útil:
 - La cámara a la altura de la mascota, no desde arriba.
 - Varias tomas: de frente, de lado y un detalle del pelaje.
 
-También pueden mejorar la imagen con inteligencia artificial: corregir iluminación, unir varias fotos o agregar un accesorio, para que el retrato tenga más detalle aunque la foto original no sea perfecta.
+También se puede mejorar la imagen con inteligencia artificial: corregir la iluminación o unir varias fotos, para que el retrato tenga más detalle aunque la foto original no sea perfecta.
 
 ## ¿Qué animales pintan?
 
@@ -46,11 +46,11 @@ An acrylic pet portrait on canvas starts at COP 120,000 (12×18 cm, 1 pet). Othe
 
 Acrylic bases are COP 130,000 (10×15 cm) and COP 150,000 (12×18 cm), and include a heart keychain with the pet's name. A phone case with your pet is COP 100,000. Flower cases are COP 40,000 and custom flower cases are COP 55,000. Landscapes and made-to-order pieces are quoted based on size and complexity.
 
-An extra pet adds COP 30,000 to 50,000 on a canvas, COP 25,000 on a base, and COP 20,000 on a case. You can include up to 3 pets in the same painting.
+An extra pet adds COP 30,000 to 50,000 on a canvas, COP 25,000 on a base, and COP 20,000 on a case. Suggested pets per piece: 12×18 cm canvas, 1 to 5; 20×25 and 28×35 cm, 1 to 6; 40×50 cm, 1 to 10; heart edition, 1 pet; acrylic base 10×15 cm, 1 to 4, and 12×18 cm, 1 to 5; phone case, 1 to 3.
 
 ## What photo do I need to commission a portrait?
 
-You need a sharp photo of your pet and the size you want. Sac_Artx guides the commission on WhatsApp. If the photo is not good enough, they say so before accepting the job.
+You need a sharp photo of your pet and the size you want. Sac_Artx guides the commission on WhatsApp. If the photo is not good enough, you are told before the job is accepted.
 
 For a useful photo:
 
@@ -60,7 +60,7 @@ For a useful photo:
 - The camera at the pet's eye level, not from above.
 - Several shots: front, side, and a close detail of the fur.
 
-They can also improve the image with artificial intelligence: fix the lighting, combine several photos, or add an accessory, so the portrait has more detail even when the original photo was not perfect.
+The image can also be improved with artificial intelligence: fixing the lighting or combining several photos, so the portrait has more detail even when the original photo was not perfect.
 
 ## What animals do you paint?
 

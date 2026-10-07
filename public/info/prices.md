@@ -1,6 +1,6 @@
 # Sac_Artx pet portrait prices in Colombia
 
-Sac_Artx is a studio in Bogotá, Colombia, specialized in custom pet portraits hand-painted in acrylic. The prices below are current as of October 2026, in Colombian pesos (COP). Shipping is extra.
+Sac_Artx is a studio in Bogotá, Colombia, specializing in custom pet portraits hand-painted in acrylic. The prices below are current as of October 2026, in Colombian pesos (COP). Shipping is extra.
 
 ## What it is
 
@@ -8,7 +8,7 @@ Sac_Artx offers acrylic portraits on canvas, acrylic bases with a keychain, pers
 
 ## Who it is for
 
-Anyone pricing a dog, cat, or other pet portrait, an acrylic base, a personalized phone case, or a landscape, with shipping inside Colombia.
+Anyone pricing a dog, cat, or other pet portrait, an acrylic base, a personalized phone case, or a landscape, with shipping within Colombia.
 
 ## What is included
 
@@ -26,18 +26,18 @@ Each portrait or base price includes 1 pet, a digital sketch beforehand, and fre
 | 40×50 cm | COP 270,000 |
 | Special 20×20 cm heart edition | COP 150,000 |
 
-Extra pet on a canvas: COP 30,000 to 50,000 depending on size. Up to 3 pets per painting.
+Extra pet on a canvas: COP 30,000 to 50,000 depending on size. Suggested pets: 12×18 cm, 1 to 5; 20×25 and 28×35 cm, 1 to 6; 40×50 cm, 1 to 10. The heart edition is recommended for a single pet.
 
 ### Acrylic bases
 
-Include a heart keychain with the name.
+They include a heart keychain with the name.
 
 | Size | Price |
 |------|-------|
 | 10×15 cm | COP 130,000 |
 | 12×18 cm | COP 150,000 |
 
-Extra pet on a base: COP 25,000.
+Extra pet on a base: COP 25,000. Suggested pets: 10×15 cm, 1 to 4; 12×18 cm, 1 to 5.
 
 ### Phone cases
 
@@ -48,7 +48,7 @@ Extra pet on a base: COP 25,000.
 | Logo / anime / image | From COP 100,000 (by complexity) |
 | Pet (1 included) | COP 100,000 |
 
-Extra pet on a case: COP 20,000.
+Extra pet on a case: COP 20,000. Suggested pets: 1 to 3.
 
 ### Landscapes and custom commissions
 
