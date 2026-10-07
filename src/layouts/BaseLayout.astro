@@ -1,6 +1,5 @@
 ---
 import { ClientRouter } from 'astro:transitions';
-import Analytics from '@vercel/analytics/astro';
 import '../styles/global.css';
 import { useTranslations } from '../i18n/utils';
 
@@ -13,7 +12,7 @@ export interface Props {
   canonicalUrl?: string;
   alternateEs?: string;
   alternateEn?: string;
-  markdownAlt?: string;
+  markdownAlt?: string | false;
   extraJsonLd?: object | object[];
 }
 
@@ -139,7 +138,9 @@ const schemaOrg = {
     <link rel="alternate" hreflang={hreflangEs} href={alternateEs} />
     <link rel="alternate" hreflang={hreflangEn} href={alternateEn} />
     <link rel="alternate" hreflang="x-default" href={alternateEs} />
-    <link rel="alternate" type="text/markdown" href={markdownAlt} title="Sac_Artx FAQ, español e inglés" />
+    {markdownAlt && (
+      <link rel="alternate" type="text/markdown" href={markdownAlt} title="Sac_Artx FAQ, español e inglés" />
+    )}
     <link rel="alternate" type="text/plain" href={`${SITE}/llms.txt`} title="Sac_Artx — resumen para IAs" />
 
     <!-- Open Graph -->
@@ -179,7 +180,6 @@ const schemaOrg = {
     </noscript>
 
     <ClientRouter />
-    <Analytics />
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />

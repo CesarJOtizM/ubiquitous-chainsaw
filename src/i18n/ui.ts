@@ -309,6 +309,8 @@ export const ui = {
     'contact.serviceOther': 'Otro',
     'contact.fieldMessage': 'Mensaje',
     'contact.fieldMessagePlaceholder': 'Cuéntanos sobre tu mascota, el tamaño que quieres, si es un regalo... ¡Todo ayuda!',
+    'contact.privacyNote': 'Al enviar, autorizas a Sac_Artx a usar estos datos solo para responderte.',
+    'contact.privacyLink': 'Política de privacidad',
     'contact.submit': 'Enviar consulta →',
     'contact.successMsg': '¡Mensaje enviado! Te respondemos en menos de 24 horas.',
     'contact.errorMsg': 'Algo falló. Escríbenos directamente por WhatsApp.',
@@ -333,6 +335,7 @@ export const ui = {
     'footer.nav.process': 'Proceso',
     'footer.nav.faq': 'Preguntas frecuentes',
     'footer.nav.contact': 'Contacto',
+    'footer.privacy': 'Privacidad',
 
     // whatsapp fab
     'fab.ariaLabel': 'Contactar por WhatsApp para encargar',
@@ -657,6 +660,8 @@ export const ui = {
     'contact.serviceOther': 'Other',
     'contact.fieldMessage': 'Message',
     'contact.fieldMessagePlaceholder': 'Tell us about your pet, the size you want, if it\'s a gift... Everything helps!',
+    'contact.privacyNote': 'By sending this form, you authorize Sac_Artx to use this information only to reply to you.',
+    'contact.privacyLink': 'Privacy policy',
     'contact.submit': 'Send inquiry →',
     'contact.successMsg': 'Message sent! We\'ll get back to you in less than 24 hours.',
     'contact.errorMsg': 'Something went wrong. Please write to us directly on WhatsApp.',
@@ -681,6 +686,7 @@ export const ui = {
     'footer.nav.process': 'Process',
     'footer.nav.faq': 'FAQ',
     'footer.nav.contact': 'Contact',
+    'footer.privacy': 'Privacy',
 
     // whatsapp fab
     'fab.ariaLabel': 'Contact via WhatsApp to commission',

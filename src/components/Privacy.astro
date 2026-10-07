@@ -1,0 +1,169 @@
+---
+import { homePath } from '../i18n/paths';
+import { useTranslations } from '../i18n/utils';
+import { privacyCopy, type PrivacyPart } from '../data/privacy';
+
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+const home = homePath(lang);
+const copy = privacyCopy[lang];
+
+function linkAttrs(part: PrivacyPart) {
+  if (!part.external) return {};
+  return { target: '_blank', rel: 'noopener noreferrer' };
+}
+---
+
+<div class="privacy-page">
+  <header class="privacy-hero">
+    <div class="container">
+      <nav class="privacy-crumb" aria-label={lang === 'en' ? 'Breadcrumb' : 'Miga de pan'}>
+        <a href={home}>{t('prices.crumbHome')}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{copy.crumb}</span>
+      </nav>
+      <p class="section-label">{copy.label}</p>
+      <h1 class="privacy-hero__title">{copy.title}</h1>
+      <p class="privacy-hero__updated">{copy.updated}</p>
+      <p class="privacy-hero__intro">{copy.intro}</p>
+    </div>
+  </header>
+
+  <div class="container privacy-body">
+    {copy.sections.map((section) => (
+      <section class="privacy-section" aria-labelledby={`privacy-${section.id}`}>
+        <h2 id={`privacy-${section.id}`}>{section.title}</h2>
+        {section.blocks.map((block) =>
+          block.type === 'p' ? (
+            <p>
+              {block.parts.map((part) =>
+                part.href ? (
+                  <a href={part.href} {...linkAttrs(part)}>
+                    {part.emphasis ? <strong>{part.text}</strong> : part.text}
+                  </a>
+                ) : part.emphasis ? (
+                  <strong>{part.text}</strong>
+                ) : (
+                  part.text
+                ),
+              )}
+            </p>
+          ) : (
+            <ul>
+              {block.items.map((item) => (
+                <li>
+                  {item.map((part) =>
+                    part.href ? (
+                      <a href={part.href} {...linkAttrs(part)}>
+                        {part.emphasis ? <strong>{part.text}</strong> : part.text}
+                      </a>
+                    ) : part.emphasis ? (
+                      <strong>{part.text}</strong>
+                    ) : (
+                      part.text
+                    ),
+                  )}
+                </li>
+              ))}
+            </ul>
+          ),
+        )}
+      </section>
+    ))}
+  </div>
+</div>
+
+<style>
+  .privacy-page {
+    padding-bottom: clamp(64px, 8vw, 120px);
+  }
+
+  .privacy-hero {
+    padding: clamp(100px, 14vw, 140px) 0 clamp(32px, 4vw, 48px);
+  }
+
+  .privacy-crumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+  }
+
+  .privacy-crumb a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .privacy-crumb a:hover {
+    text-decoration: underline;
+  }
+
+  .privacy-hero__title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 400;
+    margin: 8px 0 12px;
+  }
+
+  .privacy-hero__updated {
+    margin: 0 0 16px;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+  }
+
+  .privacy-hero__intro,
+  .privacy-body {
+    max-width: 720px;
+  }
+
+  .privacy-hero__intro {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  .privacy-body {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 4vw, 40px);
+  }
+
+  .privacy-section h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .privacy-section p,
+  .privacy-section li {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  .privacy-section p + p,
+  .privacy-section ul {
+    margin-top: 12px;
+  }
+
+  .privacy-section ul {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .privacy-section a {
+    color: var(--color-accent);
+    text-underline-offset: 3px;
+  }
+
+  .privacy-section a:hover {
+    color: var(--color-accent-hover);
+  }
+</style>

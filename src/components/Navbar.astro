@@ -398,10 +398,12 @@ const links = [
   function syncLangSwitch(path: string) {
     const isCatalog = path.endsWith('/catalog') || path.endsWith('/catalogo');
     const isPrices = path.endsWith('/prices') || path.endsWith('/precios');
+    const isPrivacy = path.endsWith('/privacy') || path.endsWith('/privacidad');
     const isEn = path === '/en' || path.startsWith('/en/');
     let href: string;
     if (isCatalog) href = isEn ? '/catalogo/' : '/en/catalog/';
     else if (isPrices) href = isEn ? '/precios/' : '/en/prices/';
+    else if (isPrivacy) href = isEn ? '/privacidad/' : '/en/privacy/';
     else href = isEn ? '/' : '/en/';
     document.querySelectorAll<HTMLAnchorElement>('.navbar__lang-switch, .mobile-menu__lang-switch').forEach((a) => {
       a.setAttribute('href', href);

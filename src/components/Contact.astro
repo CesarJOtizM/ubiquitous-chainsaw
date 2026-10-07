@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from '../i18n/utils';
+import { privacyPath } from '../i18n/paths';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -200,6 +201,11 @@ const FB_URL = 'https://www.facebook.com/profile.php?id=61561180858722';
               rows="4"
             ></textarea>
           </div>
+
+          <p class="contact-form__privacy">
+            {t('contact.privacyNote')}{' '}
+            <a href={privacyPath(lang)}>{t('contact.privacyLink')}</a>
+          </p>
 
           <button type="submit" class="btn btn-primary contact-form__submit" id="cf-submit">
             {t('contact.submit')}
@@ -491,6 +497,22 @@ const FB_URL = 'https://www.facebook.com/profile.php?id=61561180858722';
   .contact-form__upload-hint {
     font-size: 12px;
     color: var(--color-text-muted);
+  }
+
+  .contact-form__privacy {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+  }
+
+  .contact-form__privacy a {
+    color: var(--color-accent);
+    text-underline-offset: 3px;
+  }
+
+  .contact-form__privacy a:hover {
+    color: var(--color-accent-hover);
   }
 
   .contact-form__submit {

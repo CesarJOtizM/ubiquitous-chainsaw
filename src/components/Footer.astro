@@ -1,6 +1,6 @@
 ---
 import { useTranslations } from '../i18n/utils';
-import { catalogPath, homePath, pricesPath } from '../i18n/paths';
+import { catalogPath, homePath, pricesPath, privacyPath } from '../i18n/paths';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -159,6 +159,7 @@ const links = [
       <p class="footer__copy">
         &copy; {year} Sac_Artx &middot; {t('footer.rights')}
       </p>
+      <a href={privacyPath(lang)} class="footer__legal">{t('footer.privacy')}</a>
       <p class="footer__made">
         {t('footer.madeWith')}
       </p>
@@ -320,9 +321,19 @@ const links = [
   }
 
   .footer__copy,
-  .footer__made {
+  .footer__made,
+  .footer__legal {
     font-size: 13px;
     color: rgba(255,255,255,0.65);
+  }
+
+  .footer__legal {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .footer__legal:hover {
+    color: #fff;
   }
 
   @media (max-width: 900px) {

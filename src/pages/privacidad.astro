@@ -1,0 +1,53 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Privacy from '../components/Privacy.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFAB from '../components/WhatsAppFAB.astro';
+import { privacyCopy } from '../data/privacy';
+
+const lang = 'es' as const;
+const copy = privacyCopy[lang];
+const url = 'https://sacartx.art/privacidad/';
+const homeUrl = 'https://sacartx.art/';
+
+const extraJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: homeUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: copy.crumb,
+      item: url,
+    },
+  ],
+};
+---
+
+<BaseLayout
+  lang={lang}
+  title={copy.metaTitle}
+  description={copy.metaDescription}
+  ogUrl={url}
+  canonicalUrl={url}
+  alternateEs={url}
+  alternateEn="https://sacartx.art/en/privacy/"
+  markdownAlt={false}
+  extraJsonLd={extraJsonLd}
+>
+  <Navbar lang={lang} />
+  <main>
+    <Privacy lang={lang} />
+  </main>
+  <Footer lang={lang} />
+  <WhatsAppFAB lang={lang} />
+</BaseLayout>

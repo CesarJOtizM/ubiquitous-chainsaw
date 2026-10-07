@@ -41,7 +41,7 @@ export const POST: APIRoute = async ({ request }) => {
         <p><strong>Servicio:</strong> ${servicioLabel}</p>
         ${mensaje ? `<p><strong>Mensaje:</strong></p><p style="white-space:pre-wrap;background:#f9f6f3;padding:12px;border-radius:6px">${mensaje}</p>` : ''}
         <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
-        <p style="font-size:12px;color:#888">Enviado desde el formulario de contacto de sacartx.art</p>
+        <p style="font-size:12px;color:#888">Enviado desde el formulario de contacto de sacartx.art. La persona envió el formulario con la política de privacidad a la vista y autorizó usar estos datos para responderle.</p>
       </div>
     `,
   });
