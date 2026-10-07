@@ -1,6 +1,6 @@
 # Sac_Artx
 
-> Sac_Artx pinta retratos de mascotas en acrílico por encargo, desde una foto. También hace paisajes y fundas de celular personalizadas. Trabaja desde Bogotá, Colombia, y envía a todo el país.
+> Sac_Artx es un estudio en Bogotá, Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. También hace paisajes y fundas de celular personalizadas. Envía pedidos a todo Colombia.
 
 Sac_Artx es el estudio de @sac_artx. Cada pieza se pinta a mano en acrílico sobre lienzo o sobre base de metacrilato. El encargo empieza con una foto por WhatsApp. Antes de pintar se envía un boceto digital, con revisiones sin costo. El plazo es de 15 a 20 días hábiles desde el primer abono del 50%. El 50% restante se paga al terminar, y el envío sale cuando el pago está completo. Medios de pago: Nequi, Daviplata, transferencia bancaria y efectivo. Teléfono y WhatsApp: +57 301 658 4401.
 
@@ -42,9 +42,20 @@ Respuestas completas, en texto: [preguntas.md](https://sacartx.art/preguntas.md)
 - [TikTok](https://www.tiktok.com/@sac_artx): @sac_artx
 - [Preguntas frecuentes en texto](https://sacartx.art/preguntas.md): precios, foto, retratos en memoria, plazos y pago, en español e inglés.
 
+## Textos para motores e IAs (español)
+
+Cada archivo responde una intención concreta con la misma estructura: qué es, para quién, qué incluye, precios, plazo y pago, dónde.
+
+- [Retratos de mascotas](https://sacartx.art/info/retratos-de-mascotas.md)
+- [Retratos de perros](https://sacartx.art/info/retratos-perros.md)
+- [Retratos de gatos](https://sacartx.art/info/retratos-gatos.md)
+- [Precios](https://sacartx.art/info/precios.md)
+- [Cómo funciona](https://sacartx.art/info/como-funciona.md)
+- [Retratos de mascotas en Colombia](https://sacartx.art/info/retratos-mascotas-colombia.md)
+
 ## English
 
-> Sac_Artx paints custom acrylic pet portraits from a photo, plus landscapes and personalized phone cases. The studio is in Bogotá, Colombia, and ships across the country.
+> Sac_Artx is a studio in Bogotá, Colombia, specialized in custom pet portraits hand-painted in acrylic, plus landscapes and personalized phone cases. Orders ship across Colombia.
 
 Sac_Artx is the studio behind @sac_artx. Each piece is hand-painted in acrylic on canvas or on an acrylic base. A commission starts with a photo on WhatsApp. A digital sketch is sent before painting, and revisions are free. Turnaround is 15 to 20 business days from the first 50% payment. The remaining 50% is paid when the work is finished, and the piece ships once payment is complete. Payment methods: Nequi, Daviplata, bank transfer, and cash. Phone and WhatsApp: +57 301 658 4401.
 
@@ -76,3 +87,14 @@ Full answers, in Spanish and English: [preguntas.md](https://sacartx.art/pregunt
 - What photo should I send? A sharp photo in natural light, with a simple background and the eyes in focus. A weak photo can be improved, or Sac_Artx will say so before accepting the commission.
 - Do you paint pets that have passed away? Yes. Memorial portraits are made from the photos you have.
 - How long does it take and how do you pay? 15 to 20 business days from the first 50% payment. The rest is paid when the work is finished, and then it ships within Colombia.
+
+### Intent pages for engines and AIs (English)
+
+Each file answers one intent with the same structure: what it is, who it is for, what is included, prices, turnaround and payment, where.
+
+- [Pet portraits](https://sacartx.art/info/pet-portraits.md)
+- [Dog portraits](https://sacartx.art/info/dog-portraits.md)
+- [Cat portraits](https://sacartx.art/info/cat-portraits.md)
+- [Prices](https://sacartx.art/info/prices.md)
+- [How it works](https://sacartx.art/info/how-it-works.md)
+- [Pet portraits in Colombia](https://sacartx.art/info/pet-portraits-colombia.md)

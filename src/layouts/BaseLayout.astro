@@ -40,38 +40,51 @@ const ogImage = /^https?:\/\//.test(ogImageProp)
 
 const schemaOrg = {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "ArtGallery"],
-  "@id": `${SITE}/#business`,
-  "name": "Sac_Artx",
-  "description": t('schema.description'),
-  "url": SITE,
-  "telephone": "+573016584401",
-  "image": `${SITE}/og-image.png`,
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Bogotá",
-    "addressRegion": "Bogotá D.C.",
-    "addressCountry": "CO"
-  },
-  "areaServed": {
-    "@type": "Country",
-    "name": "Colombia"
-  },
-  "sameAs": [
-    "https://www.instagram.com/sac_artx",
-    "https://www.tiktok.com/@sac_artx"
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      "url": SITE,
+      "name": "Sac_Artx",
+      "description": t('schema.description'),
+      "inLanguage": lang === 'en' ? 'en-US' : 'es-CO',
+      "publisher": { "@id": `${SITE}/#business` },
+    },
+    {
+      "@type": ["LocalBusiness", "ArtGallery"],
+      "@id": `${SITE}/#business`,
+      "name": "Sac_Artx",
+      "description": t('schema.description'),
+      "url": SITE,
+      "telephone": "+573016584401",
+      "image": `${SITE}/og-image.png`,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bogotá",
+        "addressRegion": "Bogotá D.C.",
+        "addressCountry": "CO",
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Colombia",
+      },
+      "sameAs": [
+        "https://www.instagram.com/sac_artx",
+        "https://www.tiktok.com/@sac_artx",
+      ],
+      "knowsAbout": [
+        "Pet portraits",
+        "Acrylic painting",
+        "Custom phone cases",
+        "Landscape painting",
+        "Retratos de mascotas",
+        "Pintura en acrílico",
+      ],
+      "priceRange": "$$",
+      "currenciesAccepted": "COP",
+      "paymentAccepted": "Nequi, Daviplata, Transferencia bancaria, Efectivo",
+    },
   ],
-  "knowsAbout": [
-    "Pet portraits",
-    "Acrylic painting",
-    "Custom phone cases",
-    "Landscape painting",
-    "Retratos de mascotas",
-    "Pintura en acrílico"
-  ],
-  "priceRange": "$$",
-  "currenciesAccepted": "COP",
-  "paymentAccepted": "Nequi, Daviplata, Transferencia bancaria, Efectivo"
 };
 ---
 
@@ -101,6 +114,7 @@ const schemaOrg = {
     <link rel="alternate" hreflang="en" href={alternateEn} />
     <link rel="alternate" hreflang="x-default" href={alternateEs} />
     <link rel="alternate" type="text/markdown" href={`${SITE}/preguntas.md`} title="Sac_Artx FAQ, español e inglés" />
+    <link rel="alternate" type="text/plain" href={`${SITE}/llms.txt`} title="Sac_Artx — resumen para IAs" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -168,6 +182,21 @@ const schemaOrg = {
       } else {
         initReveal();
       }
+    </script>
+
+    <!-- Google Analytics 4 — load only after window load so it does not compete with first paint -->
+    <script is:inline>
+      window.addEventListener('load', function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-DGVQ013LLR');
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-DGVQ013LLR';
+        document.head.appendChild(s);
+      });
     </script>
   </body>
 </html>

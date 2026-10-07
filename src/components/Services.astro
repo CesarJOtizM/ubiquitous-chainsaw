@@ -131,13 +131,13 @@ const cuadros = [
       <h3 class="services__pricing-title">{t('services.pricingTitle')}</h3>
 
       <div class="pricing-tabs" role="tablist">
-        <button class="pricing-tab is-active" data-tab="cuadros" role="tab" aria-selected="true">{t('services.tab.cuadros')}</button>
-        <button class="pricing-tab" data-tab="bases" role="tab" aria-selected="false">{t('services.tab.bases')}</button>
-        <button class="pricing-tab" data-tab="cases" role="tab" aria-selected="false">{t('services.tab.cases')}</button>
+        <button class="pricing-tab is-active" id="tab-cuadros" data-tab="cuadros" role="tab" aria-selected="true" aria-controls="panel-cuadros">{t('services.tab.cuadros')}</button>
+        <button class="pricing-tab" id="tab-bases" data-tab="bases" role="tab" aria-selected="false" aria-controls="panel-bases">{t('services.tab.bases')}</button>
+        <button class="pricing-tab" id="tab-cases" data-tab="cases" role="tab" aria-selected="false" aria-controls="panel-cases">{t('services.tab.cases')}</button>
       </div>
 
       <!-- Cuadros panel -->
-      <div class="pricing-panel is-active" data-panel="cuadros" role="tabpanel">
+      <div class="pricing-panel is-active" id="panel-cuadros" data-panel="cuadros" role="tabpanel" aria-labelledby="tab-cuadros">
         <div class="table-wrap">
           <table class="pricing-table">
             <thead>
@@ -160,19 +160,19 @@ const cuadros = [
       </div>
 
       <!-- Bases panel -->
-      <div class="pricing-panel" data-panel="bases" role="tabpanel" hidden>
-        <div class="bases-grid">
-          <div class="base-card">
-            <span class="base-card__name">{t('services.bases.name1')}</span>
+      <div class="pricing-panel" id="panel-bases" data-panel="bases" role="tabpanel" aria-labelledby="tab-bases" hidden>
+        <ul class="bases-grid">
+          <li class="base-card">
+            <h4 class="base-card__name">{t('services.bases.name1')}</h4>
             <span class="base-card__size">{t('services.bases.size1')}</span>
             <span class="base-card__price">{t('services.bases.price1')}</span>
-          </div>
-          <div class="base-card">
-            <span class="base-card__name">{t('services.bases.name2')}</span>
+          </li>
+          <li class="base-card">
+            <h4 class="base-card__name">{t('services.bases.name2')}</h4>
             <span class="base-card__size">{t('services.bases.size2')}</span>
             <span class="base-card__price">{t('services.bases.price2')}</span>
-          </div>
-        </div>
+          </li>
+        </ul>
         <div class="panel-notes">
           <p class="panel-note">{t('services.bases.addlPet')}</p>
           <p class="panel-note panel-note--highlight">★ {t('services.bases.includes')}</p>
@@ -180,29 +180,29 @@ const cuadros = [
       </div>
 
       <!-- Cases panel -->
-      <div class="pricing-panel" data-panel="cases" role="tabpanel" hidden>
-        <div class="cases-grid">
-          <div class="case-card">
-            <span class="case-card__name">{t('services.cases.type1')}</span>
+      <div class="pricing-panel" id="panel-cases" data-panel="cases" role="tabpanel" aria-labelledby="tab-cases" hidden>
+        <ul class="cases-grid">
+          <li class="case-card">
+            <h4 class="case-card__name">{t('services.cases.type1')}</h4>
             <span class="case-card__price">{t('services.cases.price1')}</span>
             <span class="case-card__desc">{t('services.cases.desc1')}</span>
-          </div>
-          <div class="case-card">
-            <span class="case-card__name">{t('services.cases.type2')}</span>
+          </li>
+          <li class="case-card">
+            <h4 class="case-card__name">{t('services.cases.type2')}</h4>
             <span class="case-card__price">{t('services.cases.price2')}</span>
             <span class="case-card__desc">{t('services.cases.desc2')}</span>
-          </div>
-          <div class="case-card">
-            <span class="case-card__name">{t('services.cases.type3')}</span>
+          </li>
+          <li class="case-card">
+            <h4 class="case-card__name">{t('services.cases.type3')}</h4>
             <span class="case-card__price">{t('services.cases.price3')}</span>
             <span class="case-card__desc">{t('services.cases.desc3')}</span>
-          </div>
-          <div class="case-card case-card--highlight">
-            <span class="case-card__name">{t('services.cases.type4')}</span>
+          </li>
+          <li class="case-card case-card--highlight">
+            <h4 class="case-card__name">{t('services.cases.type4')}</h4>
             <span class="case-card__price">{t('services.cases.price4')}</span>
             <span class="case-card__desc">{t('services.cases.desc4')}</span>
-          </div>
-        </div>
+          </li>
+        </ul>
         <p class="panel-note">{t('services.cases.addlPet')}</p>
       </div>
 
@@ -559,7 +559,9 @@ const cuadros = [
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
+    padding: 0;
+    list-style: none;
   }
 
   .base-card {
@@ -577,9 +579,11 @@ const cuadros = [
   }
 
   .base-card__name {
+    margin: 0;
     font-family: var(--font-heading);
     font-size: 18px;
     font-weight: 500;
+    line-height: 1.15;
     color: var(--color-text);
   }
 
@@ -601,7 +605,9 @@ const cuadros = [
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
+    padding: 0;
+    list-style: none;
   }
 
   .case-card {
@@ -624,9 +630,11 @@ const cuadros = [
   }
 
   .case-card__name {
+    margin: 0;
     font-family: var(--font-heading);
     font-size: 16px;
     font-weight: 500;
+    line-height: 1.15;
     color: var(--color-text);
   }
 

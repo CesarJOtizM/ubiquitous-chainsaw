@@ -305,7 +305,7 @@ export const ui = {
     'meta.title': 'Retratos de Mascotas en Acrílico por Encargo · Sac_Artx',
     'meta.description': 'Pintamos retratos de mascotas en acrílico sobre lienzo o base acrílica, paisajes y fundas personalizadas. Por encargo, desde una foto. Envíos a todo Colombia.',
     'meta.ogLocale': 'es_CO',
-    'schema.description': 'Pintamos retratos de mascotas en acrílico sobre lienzo o base acrílica, paisajes y fundas personalizadas por encargo. Envíos a todo Colombia.',
+    'schema.description': 'Sac_Artx es un estudio en Bogotá, Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. También hace paisajes y fundas personalizadas. Envía pedidos a todo Colombia.',
   } as const,
   en: {
     // navbar
@@ -606,6 +606,6 @@ export const ui = {
     'meta.title': 'Custom Acrylic Pet Portraits · Sac_Artx',
     'meta.description': 'We paint custom acrylic pet portraits on canvas or acrylic base, landscapes and personalized phone cases. Commissioned from a photo. Shipping across Colombia.',
     'meta.ogLocale': 'en_US',
-    'schema.description': 'We paint custom acrylic pet portraits on canvas or acrylic base, landscapes and personalized phone cases. Shipping across Colombia.',
+    'schema.description': 'Sac_Artx is a studio in Bogotá, Colombia, specialized in custom pet portraits hand-painted in acrylic, plus landscapes and personalized phone cases. Orders ship across Colombia.',
   } as const,
 } as const;

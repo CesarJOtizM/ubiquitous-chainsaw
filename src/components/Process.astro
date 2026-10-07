@@ -62,21 +62,23 @@ const steps = [
     </div>
 
     <!-- Steps desktop strip -->
-    <div class="process__steps" role="list">
+    <div class="process__steps">
       <!-- Animated progress line (desktop) -->
       <div class="process__line" aria-hidden="true">
         <div class="process__line-bg"></div>
         <div class="process__line-fill"></div>
       </div>
 
-      {steps.map((step, i) => (
-        <div class="process__step reveal" role="listitem" style={`transition-delay: ${i * 100}ms`} data-step={i}>
-          <div class="process__step-num" aria-hidden="true">{step.number}</div>
-          <div class="process__step-icon" aria-hidden="true">{step.icon}</div>
-          <h3 class="process__step-title">{step.title}</h3>
-          <p class="process__step-desc">{step.desc}</p>
-        </div>
-      ))}
+      <ol class="process__steps-list">
+        {steps.map((step, i) => (
+          <li class="process__step reveal" style={`transition-delay: ${i * 100}ms`} data-step={i}>
+            <div class="process__step-num" aria-hidden="true">{step.number}</div>
+            <div class="process__step-icon" aria-hidden="true">{step.icon}</div>
+            <h3 class="process__step-title">{step.title}</h3>
+            <p class="process__step-desc">{step.desc}</p>
+          </li>
+        ))}
+      </ol>
     </div>
 
     <!-- HowTo JSON-LD for AI search / rich snippets -->
@@ -128,11 +130,17 @@ const steps = [
 
   /* Steps */
   .process__steps {
+    margin-bottom: 72px;
+    position: relative;
+  }
+
+  .process__steps-list {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 0;
-    margin-bottom: 72px;
-    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   /* Animated progress line (desktop) */
@@ -269,7 +277,7 @@ const steps = [
       display: none;
     }
 
-    .process__steps {
+    .process__steps-list {
       grid-template-columns: 1fr;
       max-width: 480px;
       margin-left: auto;
