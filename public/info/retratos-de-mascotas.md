@@ -8,7 +8,7 @@ Sac_Artx pinta a mano retratos de mascotas en acrílico sobre lienzo o sobre bas
 
 ## Para quién
 
-Perros, gatos y otras mascotas. También se pintan retratos en memoria de mascotas que ya no están, a partir de las fotos disponibles.
+Perros, gatos, conejos, caballos, palomas y cualquier otro animal que importe. También se pintan retratos en memoria de mascotas que ya no están, a partir de las fotos disponibles.
 
 ## Qué incluye
 

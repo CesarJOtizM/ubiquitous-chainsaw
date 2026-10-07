@@ -11,7 +11,7 @@ const t = useTranslations(lang);
 const WA_URL = `https://wa.me/573016584401?text=${t('fab.waMsg')}`;
 ---
 
-<div class="wa-fab-wrap">
+<div class="wa-fab-wrap" transition:persist="site-fab">
   <a
     href={WA_URL}
     class="wa-fab"

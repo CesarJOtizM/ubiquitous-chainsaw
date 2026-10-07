@@ -1,7 +1,9 @@
 ---
 import { useTranslations } from '../i18n/utils';
 import { catalogItems, catalogLines, itemsForLine } from '../data/catalog';
+import { animalAltEn, animalAltEs, animalForSrc } from '../data/catalog-animals';
 import { catalogPath } from '../i18n/paths';
+import { imageDimensions, imageSrcSet, imageUrl } from '../lib/images';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -15,12 +17,21 @@ const featured = catalogLines
   .filter((line) => line.featured)
   .map((line) => {
     const items = itemsForLine(line.id);
+    const first = items[0];
+    const animal = first ? animalForSrc(first.src) : 'none';
+    const animalLabel = lang === 'en' ? animalAltEn[animal] : animalAltEs[animal];
+    const name = t(line.name);
+    const dims = first ? imageDimensions(first.src, 800) : { width: 800, height: 1000 };
     return {
       id: line.id,
-      name: t(line.name),
+      name,
       price: t(line.price),
       href: `${catalogHref}#${line.id}`,
-      src: items[0]?.src ?? '',
+      src: first ? imageUrl(first.src, 640) : '',
+      srcset: first ? imageSrcSet(first.src, [640, 1024]) : '',
+      width: dims.width,
+      height: dims.height,
+      alt: first ? `${animalLabel} — ${name} · Sac_Artx` : name,
       count: items.length,
       countLabel: items.length === 1 ? t('catalog.piece') : t('catalog.pieces'),
     };
@@ -41,9 +52,11 @@ const featured = catalogLines
           <span class="catalog-cover__frame">
             <img
               src={line.src}
-              alt={line.name}
-              width="800"
-              height="1000"
+              srcset={line.srcset || undefined}
+              sizes="(max-width: 768px) 90vw, 280px"
+              alt={line.alt}
+              width={line.width}
+              height={line.height}
               loading="lazy"
               decoding="async"
             />

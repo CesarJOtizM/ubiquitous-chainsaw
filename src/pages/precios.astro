@@ -1,0 +1,135 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Pricing from '../components/Pricing.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFAB from '../components/WhatsAppFAB.astro';
+import { useTranslations } from '../i18n/utils';
+import {
+  canvasPrices,
+  basePrices,
+  casePrices,
+  LEAD_TIME_DAYS,
+} from '../data/prices';
+
+const lang = 'es' as const;
+const t = useTranslations(lang);
+const url = 'https://sacartx.art/precios/';
+const homeUrl = 'https://sacartx.art/';
+
+const offerItems = [
+  ...canvasPrices.map((row) => ({
+    '@type': 'Offer',
+    name: row.nameKey ? t(row.nameKey as Parameters<typeof t>[0]) : `Cuadro ${row.size}`,
+    price: String(row.price),
+    priceCurrency: 'COP',
+    availability: 'https://schema.org/InStock',
+  })),
+  ...basePrices.map((row) => ({
+    '@type': 'Offer',
+    name: t(row.nameKey as Parameters<typeof t>[0]),
+    price: String(row.price),
+    priceCurrency: 'COP',
+    availability: 'https://schema.org/InStock',
+  })),
+  ...casePrices.map((row) => ({
+    '@type': 'Offer',
+    name: t(row.nameKey as Parameters<typeof t>[0]),
+    price: String(row.price),
+    priceCurrency: 'COP',
+    availability: 'https://schema.org/InStock',
+  })),
+];
+
+const faqs = [
+  { q: t('prices.faq1.q'), a: t('prices.faq1.a') },
+  { q: t('prices.faq2.q'), a: t('prices.faq2.a') },
+  { q: t('prices.faq3.q'), a: t('prices.faq3.a') },
+];
+
+const extraJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'OfferCatalog',
+    name: t('prices.title'),
+    description: t('prices.metaDescription'),
+    url,
+    numberOfItems: offerItems.length,
+    itemListElement: offerItems.map((offer, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: offer,
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: t('prices.crumbHome'),
+        item: homeUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: t('prices.crumb'),
+        item: url,
+      },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: t('services.s1.title'),
+    provider: { '@id': 'https://sacartx.art/#business' },
+    areaServed: { '@type': 'Country', name: 'Colombia' },
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'COP',
+      price: String(canvasPrices[0]!.price),
+      availability: 'https://schema.org/InStock',
+      deliveryLeadTime: {
+        '@type': 'QuantitativeValue',
+        minValue: LEAD_TIME_DAYS.min,
+        maxValue: LEAD_TIME_DAYS.max,
+        unitCode: 'DAY',
+      },
+    },
+  },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title={t('prices.metaTitle')}
+  description={t('prices.metaDescription')}
+  ogUrl={url}
+  canonicalUrl={url}
+  alternateEs={url}
+  alternateEn="https://sacartx.art/en/prices/"
+  markdownAlt="https://sacartx.art/info/precios.md"
+  extraJsonLd={extraJsonLd}
+>
+  <Navbar lang={lang} />
+  <main>
+    <Pricing lang={lang} />
+  </main>
+  <Footer lang={lang} />
+  <WhatsAppFAB lang={lang} />
+</BaseLayout>

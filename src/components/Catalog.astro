@@ -1,7 +1,9 @@
 ---
 import { useTranslations } from '../i18n/utils';
 import { catalogLines, itemsForLine } from '../data/catalog';
-import { homePath } from '../i18n/paths';
+import { animalAltEn, animalAltEs, animalForSrc } from '../data/catalog-animals';
+import { homePath, pricesPath } from '../i18n/paths';
+import { imageDimensions, imageSrcSet, imageUrl } from '../lib/images';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -10,6 +12,7 @@ export interface Props {
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 const home = homePath(lang);
+const pricesHref = pricesPath(lang);
 const waBase = 'https://wa.me/573016584401?text=';
 
 const lines = catalogLines.map((line) => {
@@ -24,11 +27,22 @@ const lines = catalogLines.map((line) => {
     orderHref: `${waBase}${encodeURIComponent(t(line.wa))}`,
     count: items.length,
     countLabel: items.length === 1 ? t('catalog.piece') : t('catalog.pieces'),
-    items: items.map((item, index) => ({
-      src: item.src,
-      alt: `${name} ${String(index + 1).padStart(2, '0')} — Sac_Artx`,
-      indexLabel: String(index + 1).padStart(2, '0'),
-    })),
+    items: items.map((item, index) => {
+      const animal = animalForSrc(item.src);
+      const animalLabel = lang === 'en' ? animalAltEn[animal] : animalAltEs[animal];
+      const dims = imageDimensions(item.src, 800);
+      return {
+        src: imageUrl(item.src, 640),
+        srcset: imageSrcSet(item.src, [640, 1024]),
+        fullSrc: imageUrl(item.src, 1600),
+        originalSrc: item.src,
+        width: dims.width,
+        height: dims.height,
+        animal,
+        alt: `${animalLabel} — ${name} ${String(index + 1).padStart(2, '0')} · Sac_Artx`,
+        indexLabel: String(index + 1).padStart(2, '0'),
+      };
+    }),
   };
 });
 ---
@@ -43,7 +57,10 @@ const lines = catalogLines.map((line) => {
       </nav>
       <p class="section-label">{t('catalog.label')}</p>
       <h1 class="catalog-hero__title">{t('catalog.title')}</h1>
-      <p class="catalog-hero__subtitle">{t('catalog.subtitle')}</p>
+      <p class="catalog-hero__subtitle">
+        {t('catalog.subtitle')}{' '}
+        <a href={pricesHref}>{t('catalog.pricesLink')}</a>
+      </p>
     </div>
   </header>
 
@@ -92,16 +109,18 @@ const lines = catalogLines.map((line) => {
                   type="button"
                   class="catalog-card"
                   data-line={line.id}
-                  data-src={item.src}
+                  data-src={item.fullSrc}
                   data-name={line.name}
                   data-medium={line.medium}
                 >
                   <span class="catalog-card__frame">
                     <img
                       src={item.src}
+                      srcset={item.srcset || undefined}
+                      sizes="(max-width: 640px) 50vw, 280px"
                       alt={item.alt}
-                      width="800"
-                      height="800"
+                      width={item.width}
+                      height={item.height}
                       loading="lazy"
                       decoding="async"
                     />

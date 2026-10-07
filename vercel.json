@@ -1,0 +1,41 @@
+{
+  "headers": [
+    {
+      "source": "/info/precios.md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/info/prices.md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/img/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/img/:path*",
+      "destination": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/:path*"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/images/:folder/:file.jpg",
+      "destination": "/img/:folder/:file.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/:folder/:file.jpeg",
+      "destination": "/img/:folder/:file.jpeg",
+      "permanent": true
+    },
+    {
+      "source": "/images/:folder/:file.png",
+      "destination": "/img/:folder/:file.png",
+      "permanent": true
+    }
+  ]
+}

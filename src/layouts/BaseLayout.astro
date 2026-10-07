@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { useTranslations } from '../i18n/utils';
 
@@ -11,10 +12,12 @@ export interface Props {
   canonicalUrl?: string;
   alternateEs?: string;
   alternateEn?: string;
-  extraJsonLd?: object;
+  markdownAlt?: string;
+  extraJsonLd?: object | object[];
 }
 
 const SITE = 'https://sacartx.art';
+const FB_URL = 'https://www.facebook.com/profile.php?id=61561180858722';
 
 const {
   lang = 'es',
@@ -22,8 +25,13 @@ const {
   canonicalUrl: canonicalProp,
   alternateEs: alternateEsProp,
   alternateEn: alternateEnProp,
+  markdownAlt = `${SITE}/info/preguntas.md`,
   extraJsonLd,
 } = Astro.props;
+
+const htmlLang = lang === 'en' ? 'en' : 'es-CO';
+const hreflangEs = 'es-CO';
+const hreflangEn = 'en';
 
 const t = useTranslations(lang);
 
@@ -47,7 +55,7 @@ const schemaOrg = {
       "url": SITE,
       "name": "Sac_Artx",
       "description": t('schema.description'),
-      "inLanguage": lang === 'en' ? 'en-US' : 'es-CO',
+      "inLanguage": lang === 'en' ? 'en' : 'es-CO',
       "publisher": { "@id": `${SITE}/#business` },
     },
     {
@@ -58,6 +66,12 @@ const schemaOrg = {
       "url": SITE,
       "telephone": "+573016584401",
       "image": `${SITE}/brand/og-image.png`,
+      "logo": `${SITE}/brand/logo-square.png`,
+      "founder": {
+        "@type": "Person",
+        "name": "Sara Amaya Caldas",
+        "jobTitle": "Artista",
+      },
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Bogotá",
@@ -71,13 +85,24 @@ const schemaOrg = {
       "sameAs": [
         "https://www.instagram.com/sac_artx",
         "https://www.tiktok.com/@sac_artx",
+        FB_URL,
       ],
       "knowsAbout": [
         "Pet portraits",
+        "Dog portraits",
+        "Cat portraits",
+        "Rabbit portraits",
+        "Horse portraits",
+        "Bird portraits",
         "Acrylic painting",
         "Custom phone cases",
         "Landscape painting",
         "Retratos de mascotas",
+        "Retratos de perros",
+        "Retratos de gatos",
+        "Retratos de conejos",
+        "Retratos de caballos",
+        "Retratos de aves",
         "Pintura en acrílico",
       ],
       "priceRange": "$$",
@@ -89,7 +114,7 @@ const schemaOrg = {
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={htmlLang} transition:animate="none">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -110,10 +135,10 @@ const schemaOrg = {
 
     <!-- Canonical & Hreflang -->
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="alternate" hreflang="es" href={alternateEs} />
-    <link rel="alternate" hreflang="en" href={alternateEn} />
+    <link rel="alternate" hreflang={hreflangEs} href={alternateEs} />
+    <link rel="alternate" hreflang={hreflangEn} href={alternateEn} />
     <link rel="alternate" hreflang="x-default" href={alternateEs} />
-    <link rel="alternate" type="text/markdown" href={`${SITE}/info/preguntas.md`} title="Sac_Artx FAQ, español e inglés" />
+    <link rel="alternate" type="text/markdown" href={markdownAlt} title="Sac_Artx FAQ, español e inglés" />
     <link rel="alternate" type="text/plain" href={`${SITE}/llms.txt`} title="Sac_Artx — resumen para IAs" />
 
     <!-- Open Graph -->
@@ -133,6 +158,9 @@ const schemaOrg = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <!-- Logo font — preload so Sac_Artx does not flash between routes -->
+    <link rel="preload" href="/fonts/Brightwall.ttf" as="font" type="font/ttf" crossorigin />
+
     <!-- Google Fonts — non-blocking load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -149,15 +177,54 @@ const schemaOrg = {
       />
     </noscript>
 
+    <ClientRouter />
+
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
-    {extraJsonLd && <script type="application/ld+json" set:html={JSON.stringify(extraJsonLd)} />}
+    {extraJsonLd && (
+      Array.isArray(extraJsonLd)
+        ? extraJsonLd.map((block) => (
+            <script type="application/ld+json" set:html={JSON.stringify(block)} />
+          ))
+        : <script type="application/ld+json" set:html={JSON.stringify(extraJsonLd)} />
+    )}
+
+    <style is:global>
+      /*
+        Fixed chrome must leave the root snapshot. Otherwise the browser sets
+        visibility:hidden on the live navbar during the transition → flicker.
+      */
+      #site-nav-root {
+        view-transition-name: site-nav;
+      }
+      footer.footer {
+        view-transition-name: site-footer;
+      }
+      .wa-fab-wrap {
+        view-transition-name: site-fab;
+      }
+
+      /* Zero motion on every VT layer — swap only, no fades */
+      ::view-transition-group(*),
+      ::view-transition-old(*),
+      ::view-transition-new(*) {
+        animation: none !important;
+        mix-blend-mode: normal;
+      }
+
+      ::view-transition-group(site-nav) {
+        z-index: 1000;
+      }
+      ::view-transition-group(site-fab) {
+        z-index: 900;
+      }
+    </style>
   </head>
 
   <body>
     <slot />
 
-    <!-- Scroll Reveal -->
+    <!-- Scroll Reveal — re-run after client navigations -->
     <script>
       function initReveal() {
         const observer = new IntersectionObserver(
@@ -172,16 +239,12 @@ const schemaOrg = {
           { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
         );
 
-        document.querySelectorAll('.reveal').forEach((el) => {
+        document.querySelectorAll('.reveal:not(.visible)').forEach((el) => {
           observer.observe(el);
         });
       }
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initReveal);
-      } else {
-        initReveal();
-      }
+      document.addEventListener('astro:page-load', initReveal);
     </script>
 
     <!-- Google Analytics 4 — load only after window load so it does not compete with first paint -->

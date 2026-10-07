@@ -12,6 +12,7 @@ const WA_URL = `https://wa.me/573016584401?text=${t('faq.waMsg')}`;
 
 const faqs = [
   { q: t('faq.q11'), a: t('faq.a11'), memorial: false },
+  { q: t('faq.q12'), a: t('faq.a12'), memorial: false },
   { q: t('faq.q1'), a: t('faq.a1'), memorial: false },
   { q: t('faq.q2'), a: t('faq.a2'), memorial: false },
   { q: t('faq.q3'), a: t('faq.a3'), memorial: false },
@@ -240,45 +241,45 @@ const faqs = [
 </style>
 
 <script>
-  const faqItems = document.querySelectorAll<HTMLElement>('.faq-item');
+  function bindFaq() {
+    const list = document.querySelector('.faq__list');
+    if (!list || list.dataset.faqBound === 'true') return;
+    list.dataset.faqBound = 'true';
 
-  faqItems.forEach((item) => {
-    const trigger = item.querySelector<HTMLButtonElement>('.faq-item__trigger');
-    const body = item.querySelector<HTMLElement>('.faq-item__body');
+    const faqItems = list.querySelectorAll<HTMLElement>('.faq-item');
 
-    if (!trigger || !body) return;
+    faqItems.forEach((item) => {
+      const trigger = item.querySelector<HTMLButtonElement>('.faq-item__trigger');
+      const body = item.querySelector<HTMLElement>('.faq-item__body');
+      if (!trigger || !body) return;
 
-    trigger.addEventListener('click', () => {
-      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.addEventListener('click', () => {
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
 
-      // Close all
-      faqItems.forEach((otherItem) => {
-        const otherTrigger = otherItem.querySelector<HTMLButtonElement>('.faq-item__trigger');
-        const otherBody = otherItem.querySelector<HTMLElement>('.faq-item__body');
-        if (otherTrigger && otherBody && otherItem !== item) {
+        faqItems.forEach((otherItem) => {
+          if (otherItem === item) return;
+          const otherTrigger = otherItem.querySelector<HTMLButtonElement>('.faq-item__trigger');
+          const otherBody = otherItem.querySelector<HTMLElement>('.faq-item__body');
+          if (!otherTrigger || !otherBody) return;
           otherTrigger.setAttribute('aria-expanded', 'false');
           otherBody.style.maxHeight = '0';
-          setTimeout(() => {
-            otherBody.setAttribute('hidden', '');
-          }, 350);
+          setTimeout(() => otherBody.setAttribute('hidden', ''), 350);
+        });
+
+        if (isOpen) {
+          trigger.setAttribute('aria-expanded', 'false');
+          body.style.maxHeight = '0';
+          setTimeout(() => body.setAttribute('hidden', ''), 350);
+        } else {
+          body.removeAttribute('hidden');
+          trigger.setAttribute('aria-expanded', 'true');
+          requestAnimationFrame(() => {
+            body.style.maxHeight = body.scrollHeight + 'px';
+          });
         }
       });
-
-      // Toggle current
-      if (isOpen) {
-        trigger.setAttribute('aria-expanded', 'false');
-        body.style.maxHeight = '0';
-        setTimeout(() => {
-          body.setAttribute('hidden', '');
-        }, 350);
-      } else {
-        body.removeAttribute('hidden');
-        trigger.setAttribute('aria-expanded', 'true');
-        // Set max-height to scrollHeight for animation
-        requestAnimationFrame(() => {
-          body.style.maxHeight = body.scrollHeight + 'px';
-        });
-      }
     });
-  });
+  }
+
+  document.addEventListener('astro:page-load', bindFaq);
 </script>

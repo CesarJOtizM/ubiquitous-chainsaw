@@ -1,6 +1,6 @@
 ---
 import { useTranslations } from '../i18n/utils';
-import { catalogPath, homePath } from '../i18n/paths';
+import { catalogPath, homePath, pricesPath } from '../i18n/paths';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -12,7 +12,7 @@ const t = useTranslations(lang);
 const WA_URL = `https://wa.me/573016584401?text=${t('contact.waMsg')}`;
 const IG_URL = 'https://www.instagram.com/sac_artx';
 const TK_URL = 'https://www.tiktok.com/@sac_artx';
-const FB_URL = 'https://www.facebook.com/share/1ApXQ8V8SK/';
+const FB_URL = 'https://www.facebook.com/profile.php?id=61561180858722';
 
 const year = new Date().getFullYear();
 
@@ -20,12 +20,14 @@ const home = homePath(lang);
 const links = [
   { href: `${home}#servicios`, label: t('footer.nav.services') },
   { href: catalogPath(lang), label: t('footer.nav.gallery') },
+  { href: pricesPath(lang), label: t('prices.navLabel') },
   { href: `${home}#proceso`, label: t('footer.nav.process') },
+  { href: `${home}#faq`, label: t('footer.nav.faq') },
   { href: `${home}#contacto`, label: t('footer.nav.contact') },
 ];
 ---
 
-<footer class="footer" role="contentinfo">
+<footer class="footer" role="contentinfo" transition:persist="site-footer">
   <div class="footer__inner container">
     <!-- Top section -->
     <div class="footer__top">

@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from '../i18n/utils';
+import { imageDimensions, imageSrcSet, imageUrl } from '../lib/images';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -15,6 +16,7 @@ const testimonials = [
     quote: t('testimonials.t1.quote'),
     author: '@ybetancour',
     date: lang === 'en' ? 'Mar 4, 2026' : '4 mar. 2026',
+    datePublished: '2026-03-04',
     location: '',
     pet: '',
     image: '/images/bases-acrilicas/04.jpg',
@@ -27,6 +29,7 @@ const testimonials = [
     quote: t('testimonials.t2.quote'),
     author: '@paupalamen5',
     date: lang === 'en' ? 'Mar 6, 2026' : '6 mar. 2026',
+    datePublished: '2026-03-06',
     location: '',
     pet: '',
     image: '/images/bases-acrilicas/02.jpg',
@@ -39,6 +42,7 @@ const testimonials = [
     quote: t('testimonials.t3.quote'),
     author: '@sannicolasx7',
     date: lang === 'en' ? 'Jan 30, 2026' : '30 ene. 2026',
+    datePublished: '2026-01-30',
     location: '',
     pet: '',
     image: '/images/case-anime/04.jpg',
@@ -51,6 +55,7 @@ const testimonials = [
     quote: t('testimonials.t4.quote'),
     author: 'Maribel',
     date: lang === 'en' ? 'Mar 5, 2026' : '5 mar. 2026',
+    datePublished: '2026-03-05',
     location: '',
     pet: '',
     image: '/images/bases-acrilicas/13.jpg',
@@ -58,6 +63,30 @@ const testimonials = [
     instagramUrl: 'https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDA2NDA1MDAyMzQ3NTgx?story_media_id=3836768790273448818_55473517501',
   },
 ];
+
+const reviewsJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://sacartx.art/#business',
+  name: 'Sac_Artx',
+  review: testimonials.map((item) => ({
+    '@type': 'Review',
+    author: {
+      '@type': 'Person',
+      name: item.author,
+    },
+    datePublished: item.datePublished,
+    reviewBody: item.quote,
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: item.stars,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    url: item.instagramUrl,
+    itemReviewed: { '@id': 'https://sacartx.art/#business' },
+  })),
+};
 ---
 
 <section id="testimonios" class="section testimonials" aria-labelledby="testimonials-title">
@@ -93,10 +122,15 @@ const testimonials = [
           {testimonial.image ? (
             <div class="testimonial-card__artwork testimonial-card__artwork--photo" aria-hidden="true">
               <img
-                src={testimonial.image}
+                src={imageUrl(testimonial.image, 640)}
+                srcset={imageSrcSet(testimonial.image, [640, 1024]) || undefined}
+                sizes="(max-width: 768px) 85vw, 320px"
                 alt={t('testimonials.imageAlt')}
                 class="testimonial-card__artwork-img"
+                width={imageDimensions(testimonial.image, 640).width}
+                height={imageDimensions(testimonial.image, 640).height}
                 loading="lazy"
+                decoding="async"
               />
               {testimonial.instagramUrl && (
                 <a
@@ -159,6 +193,7 @@ const testimonials = [
       </p>
     </div>
   </div>
+  <script type="application/ld+json" set:html={JSON.stringify(reviewsJsonLd)} />
 </section>
 
 <style>

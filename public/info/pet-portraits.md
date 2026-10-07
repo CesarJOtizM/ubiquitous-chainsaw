@@ -8,7 +8,7 @@ Sac_Artx hand-paints pet portraits in acrylic on canvas or on an acrylic (methac
 
 ## Who it is for
 
-Dogs, cats, and other pets. Memorial portraits of pets that have passed away are also available from the photos you have.
+Dogs, cats, rabbits, horses, pigeons, and any other animal that matters. Memorial portraits of pets that have passed away are also available from the photos you have.
 
 ## What is included
 

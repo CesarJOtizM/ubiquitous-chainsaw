@@ -4,7 +4,7 @@ Sac_Artx es un estudio en Bogotá, Colombia, especializado en retratos personali
 
 ## Qué es
 
-Sac_Artx ofrece retratos en acrílico sobre lienzo, bases acrílicas con llavero, fundas de celular personalizadas y paisajes por encargo. Cada pieza se pinta a mano a partir de una fotografía. Sitio: https://sacartx.art/
+Sac_Artx ofrece retratos en acrílico sobre lienzo, bases acrílicas con llavero, fundas de celular personalizadas y paisajes por encargo. Cada pieza se pinta a mano a partir de una fotografía. Página de precios HTML: https://sacartx.art/precios/. Sitio: https://sacartx.art/
 
 ## Para quién
 

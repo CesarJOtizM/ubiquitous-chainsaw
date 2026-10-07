@@ -1,0 +1,285 @@
+---
+import { useTranslations } from '../i18n/utils';
+import { homePath } from '../i18n/paths';
+import { canvasPrices, basePrices, casePrices } from '../data/prices';
+
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+const home = homePath(lang);
+const WA_URL = `https://wa.me/573016584401?text=${encodeURIComponent(t('prices.waMsg'))}`;
+
+const canvasRows = canvasPrices.map((row) => ({
+  label: row.nameKey ? t(row.nameKey as Parameters<typeof t>[0]) : row.size!,
+  price: row.priceLabel,
+  special: !!row.special,
+}));
+
+const baseRows = basePrices.map((row) => ({
+  name: t(row.nameKey as Parameters<typeof t>[0]),
+  size: row.size!,
+  price: row.priceLabel,
+}));
+
+const caseRows = casePrices.map((row, i) => ({
+  name: t(row.nameKey as Parameters<typeof t>[0]),
+  price: row.priceLabel,
+  desc: t(`services.cases.desc${i + 1}` as Parameters<typeof t>[0]),
+  highlight: i === casePrices.length - 1,
+}));
+
+const faqs = [
+  { q: t('prices.faq1.q'), a: t('prices.faq1.a') },
+  { q: t('prices.faq2.q'), a: t('prices.faq2.a') },
+  { q: t('prices.faq3.q'), a: t('prices.faq3.a') },
+];
+---
+
+<div class="pricing-page">
+  <header class="pricing-hero">
+    <div class="container">
+      <nav class="pricing-crumb" aria-label={lang === 'en' ? 'Breadcrumb' : 'Miga de pan'}>
+        <a href={home}>{t('prices.crumbHome')}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{t('prices.crumb')}</span>
+      </nav>
+      <p class="section-label">{t('prices.label')}</p>
+      <h1 class="pricing-hero__title">{t('prices.title')}</h1>
+      <p class="pricing-hero__intro">{t('prices.intro')}</p>
+    </div>
+  </header>
+
+  <div class="container pricing-body">
+    <section class="pricing-block" aria-labelledby="prices-canvas">
+      <h2 id="prices-canvas" class="pricing-block__title">{t('prices.canvasTitle')}</h2>
+      <div class="table-wrap">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th scope="col">{t('prices.colSize')}</th>
+              <th scope="col">{t('prices.colPrice')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {canvasRows.map((row) => (
+              <tr class={row.special ? 'row--special' : ''}>
+                <td>{row.label}</td>
+                <td>{row.price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="pricing-block__note">{t('prices.canvasNote')}</p>
+    </section>
+
+    <section class="pricing-block" aria-labelledby="prices-bases">
+      <h2 id="prices-bases" class="pricing-block__title">{t('prices.basesTitle')}</h2>
+      <ul class="pricing-cards">
+        {baseRows.map((row) => (
+          <li class="pricing-card">
+            <h3 class="pricing-card__name">{row.name}</h3>
+            <span class="pricing-card__size">{row.size}</span>
+            <span class="pricing-card__price">{row.price}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="pricing-block__note">{t('prices.basesNote')}</p>
+    </section>
+
+    <section class="pricing-block" aria-labelledby="prices-cases">
+      <h2 id="prices-cases" class="pricing-block__title">{t('prices.casesTitle')}</h2>
+      <ul class="pricing-cards pricing-cards--cases">
+        {caseRows.map((row) => (
+          <li class={`pricing-card${row.highlight ? ' pricing-card--highlight' : ''}`}>
+            <h3 class="pricing-card__name">{row.name}</h3>
+            <span class="pricing-card__price">{row.price}</span>
+            <span class="pricing-card__desc">{row.desc}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="pricing-block__note">{t('prices.casesNote')}</p>
+    </section>
+
+    <section class="pricing-block pricing-block--payment" aria-labelledby="prices-payment">
+      <h2 id="prices-payment" class="pricing-block__title">{t('prices.paymentTitle')}</h2>
+      <p class="pricing-block__body">{t('prices.paymentBody')}</p>
+    </section>
+
+    <section class="pricing-block" aria-labelledby="prices-faq">
+      <h2 id="prices-faq" class="pricing-block__title">{t('prices.faqTitle')}</h2>
+      <dl class="pricing-faq">
+        {faqs.map((item) => (
+          <div class="pricing-faq__item">
+            <dt>{item.q}</dt>
+            <dd>{item.a}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <div class="pricing-cta">
+      <a href={WA_URL} class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+        {t('prices.cta')}
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .pricing-page {
+    padding-bottom: clamp(64px, 8vw, 120px);
+  }
+
+  .pricing-hero {
+    padding: clamp(100px, 14vw, 140px) 0 clamp(40px, 5vw, 64px);
+  }
+
+  .pricing-crumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+  }
+
+  .pricing-crumb a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .pricing-crumb a:hover {
+    text-decoration: underline;
+  }
+
+  .pricing-hero__title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 400;
+    margin: 8px 0 16px;
+  }
+
+  .pricing-hero__intro {
+    max-width: 720px;
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  .pricing-body {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(40px, 5vw, 64px);
+  }
+
+  .pricing-block__title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+  }
+
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .pricing-table th,
+  .pricing-table td {
+    padding: 14px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .pricing-table th {
+    background: var(--color-bg-alt);
+    font-weight: 500;
+  }
+
+  .pricing-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .pricing-table .row--special td {
+    color: var(--color-accent-hover);
+    font-weight: 500;
+  }
+
+  .pricing-block__note,
+  .pricing-block__body {
+    margin-top: 14px;
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    max-width: 720px;
+  }
+
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    list-style: none;
+  }
+
+  .pricing-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .pricing-card--highlight {
+    border-color: var(--color-accent);
+  }
+
+  .pricing-card__name {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .pricing-card__size,
+  .pricing-card__desc {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+  }
+
+  .pricing-card__price {
+    font-weight: 600;
+    color: var(--color-accent-hover);
+    margin-top: 4px;
+  }
+
+  .pricing-faq {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 720px;
+  }
+
+  .pricing-faq__item dt {
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .pricing-faq__item dd {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .pricing-cta {
+    padding-top: 8px;
+  }
+</style>

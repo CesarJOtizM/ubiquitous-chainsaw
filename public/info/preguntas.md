@@ -24,6 +24,10 @@ Para una foto útil:
 
 También pueden mejorar la imagen con inteligencia artificial: corregir iluminación, unir varias fotos o agregar un accesorio, para que el retrato tenga más detalle aunque la foto original no sea perfecta.
 
+## ¿Qué animales pintan?
+
+Cualquier animal que importe en tu vida. Lo más común son perros y gatos, pero también se pintan conejos, caballos, palomas y otras mascotas o animales. Si tienes la foto, se puede pintar.
+
 ## ¿Pintan mascotas que ya no están?
 
 Sí. Sac_Artx pinta retratos en memoria de mascotas que ya fallecieron, a partir de las fotos que tengas. El trato de estos encargos es el mismo: boceto digital antes de pintar y revisiones sin costo extra.
@@ -57,6 +61,10 @@ For a useful photo:
 - Several shots: front, side, and a close detail of the fur.
 
 They can also improve the image with artificial intelligence: fix the lighting, combine several photos, or add an accessory, so the portrait has more detail even when the original photo was not perfect.
+
+## What animals do you paint?
+
+Any animal that matters in your life. Dogs and cats are the most common, but Sac_Artx also paints rabbits, horses, pigeons, and other pets or animals. If you have the photo, it can be painted.
 
 ## Do you paint pets that have passed away?
 

@@ -4,7 +4,7 @@ Sac_Artx is a studio in Bogotá, Colombia, specialized in custom pet portraits h
 
 ## What it is
 
-Sac_Artx offers acrylic portraits on canvas, acrylic bases with a keychain, personalized phone cases, and commissioned landscapes. Each piece is hand-painted from a photograph. Website: https://sacartx.art/en/
+Sac_Artx offers acrylic portraits on canvas, acrylic bases with a keychain, personalized phone cases, and commissioned landscapes. Each piece is hand-painted from a photograph. HTML prices page: https://sacartx.art/en/prices/. Website: https://sacartx.art/en/
 
 ## Who it is for
 
