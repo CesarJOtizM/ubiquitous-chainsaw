@@ -45,5 +45,5 @@ User-agent: PetalBot
 Disallow: /
 
 # Resumen para IAs: https://sacartx.art/llms.txt
-# Preguntas en texto: https://sacartx.art/preguntas.md
+# Preguntas en texto: https://sacartx.art/info/preguntas.md
 Sitemap: https://sacartx.art/sitemap-index.xml

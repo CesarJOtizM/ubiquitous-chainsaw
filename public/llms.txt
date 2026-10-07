@@ -25,7 +25,7 @@ Obras terminadas, públicas también en Instagram y TikTok. Se pueden mostrar co
 
 ## Preguntas
 
-Respuestas completas, en texto: [preguntas.md](https://sacartx.art/preguntas.md).
+Respuestas completas, en texto: [preguntas.md](https://sacartx.art/info/preguntas.md).
 
 - ¿Cuánto cuesta un retrato de mascota? Desde $120.000 COP en lienzo de 12×18 cm, con 1 mascota. Bases desde $130.000. Funda de mascota $100.000. Envío aparte.
 - ¿Qué foto necesito? Una foto nítida, con luz natural, fondo simple y los ojos enfocados. Si no alcanza, se puede mejorar o se avisa antes de aceptar el encargo.
@@ -40,7 +40,7 @@ Respuestas completas, en texto: [preguntas.md](https://sacartx.art/preguntas.md)
 - [English catalog](https://sacartx.art/en/catalog/): finished pieces by line.
 - [Instagram](https://www.instagram.com/sac_artx): @sac_artx
 - [TikTok](https://www.tiktok.com/@sac_artx): @sac_artx
-- [Preguntas frecuentes en texto](https://sacartx.art/preguntas.md): precios, foto, retratos en memoria, plazos y pago, en español e inglés.
+- [Preguntas frecuentes en texto](https://sacartx.art/info/preguntas.md): precios, foto, retratos en memoria, plazos y pago, en español e inglés.
 
 ## Textos para motores e IAs (español)
 
@@ -81,7 +81,7 @@ Finished pieces, also public on Instagram and TikTok. These can be shown as visu
 
 ### Questions
 
-Full answers, in Spanish and English: [preguntas.md](https://sacartx.art/preguntas.md).
+Full answers, in Spanish and English: [preguntas.md](https://sacartx.art/info/preguntas.md).
 
 - How much does a pet portrait cost? From COP 120,000 for a 12×18 cm canvas with 1 pet. Acrylic bases from COP 130,000. A pet phone case is COP 100,000. Shipping is extra.
 - What photo should I send? A sharp photo in natural light, with a simple background and the eyes in focus. A weak photo can be improved, or Sac_Artx will say so before accepting the commission.

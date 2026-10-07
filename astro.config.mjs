@@ -13,7 +13,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       customPages: [
-        'https://sacartx.art/preguntas.md',
+        'https://sacartx.art/info/preguntas.md',
         'https://sacartx.art/llms.txt',
         'https://sacartx.art/info/retratos-de-mascotas.md',
         'https://sacartx.art/info/retratos-perros.md',

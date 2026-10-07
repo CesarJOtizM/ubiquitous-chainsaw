@@ -18,7 +18,7 @@ const SITE = 'https://sacartx.art';
 
 const {
   lang = 'es',
-  ogImage: ogImageProp = '/og-image.png',
+  ogImage: ogImageProp = '/brand/og-image.png',
   canonicalUrl: canonicalProp,
   alternateEs: alternateEsProp,
   alternateEn: alternateEnProp,
@@ -57,7 +57,7 @@ const schemaOrg = {
       "description": t('schema.description'),
       "url": SITE,
       "telephone": "+573016584401",
-      "image": `${SITE}/og-image.png`,
+      "image": `${SITE}/brand/og-image.png`,
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Bogotá",
@@ -113,7 +113,7 @@ const schemaOrg = {
     <link rel="alternate" hreflang="es" href={alternateEs} />
     <link rel="alternate" hreflang="en" href={alternateEn} />
     <link rel="alternate" hreflang="x-default" href={alternateEs} />
-    <link rel="alternate" type="text/markdown" href={`${SITE}/preguntas.md`} title="Sac_Artx FAQ, español e inglés" />
+    <link rel="alternate" type="text/markdown" href={`${SITE}/info/preguntas.md`} title="Sac_Artx FAQ, español e inglés" />
     <link rel="alternate" type="text/plain" href={`${SITE}/llms.txt`} title="Sac_Artx — resumen para IAs" />
 
     <!-- Open Graph -->
