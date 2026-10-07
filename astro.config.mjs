@@ -9,7 +9,11 @@ export default defineConfig({
   site: 'https://sacartx.art',
   devToolbar: { enabled: false },
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   integrations: [
     sitemap({
       customPages: [
