@@ -43,12 +43,12 @@ Extra pet on a base: COP 25,000. Suggested pets: 10×15 cm, 1 to 4; 12×18 cm, 1
 
 | Type | Price |
 |------|-------|
-| Flower cases | COP 40,000 |
-| Custom flowers | COP 55,000 |
+| Pressed flower cases | COP 40,000 |
+| Flowers + painting case (pressed flowers with a basic painted design) | COP 55,000 |
 | Logo / anime / image | From COP 100,000 (by complexity) |
 | Pet (1 included) | COP 100,000 |
 
-Extra pet on a case: COP 20,000. Suggested pets: 1 to 3.
+Extra pet on a case: COP 20,000. Suggested pets: 1 to 3. For flower cases, ask which colors are available; all of them are protected by a resin coat.
 
 ### Landscapes and custom commissions
 

@@ -6,7 +6,7 @@
 
 Un retrato de mascota en acrílico sobre lienzo empieza desde $120.000 COP (12×18 cm, 1 mascota). Los demás tamaños son $160.000 (20×25 cm), $220.000 (28×35 cm) y $270.000 (40×50 cm). La edición especial corazón de 20×20 cm cuesta $150.000.
 
-Las bases acrílicas cuestan $130.000 (10×15 cm) y $150.000 (12×18 cm), e incluyen llavero corazón con nombre. Una funda de celular con tu mascota cuesta $100.000. Las fundas de flores cuestan $40.000 y las flores personalizadas $55.000. Los paisajes y encargos a medida se cotizan según tamaño y complejidad.
+Las bases acrílicas cuestan $130.000 (10×15 cm) y $150.000 (12×18 cm), e incluyen llavero corazón con nombre. Una funda de celular con tu mascota cuesta $100.000. Las fundas de flores prensadas cuestan $40.000 y la funda flores + pintura (flores prensadas con diseño básico en pintura), $55.000. Los paisajes y encargos a medida se cotizan según tamaño y complejidad.
 
 Una mascota adicional suma entre $30.000 y $50.000 en un cuadro, $25.000 en una base y $20.000 en una funda. Mascotas sugeridas por pieza: cuadro 12×18 cm, de 1 a 5; 20×25 y 28×35 cm, de 1 a 6; 40×50 cm, de 1 a 10; cuadro corazón, 1 mascota; base acrílica 10×15 cm, de 1 a 4, y 12×18 cm, de 1 a 5; funda, de 1 a 3.
 
@@ -44,7 +44,7 @@ El plazo es de 15 a 20 días hábiles desde el primer abono. Se paga 50% para em
 
 An acrylic pet portrait on canvas starts at COP 120,000 (12×18 cm, 1 pet). Other sizes are COP 160,000 (20×25 cm), COP 220,000 (28×35 cm), and COP 270,000 (40×50 cm). The special 20×20 cm heart edition is COP 150,000.
 
-Acrylic bases are COP 130,000 (10×15 cm) and COP 150,000 (12×18 cm), and include a heart keychain with the pet's name. A phone case with your pet is COP 100,000. Flower cases are COP 40,000 and custom flower cases are COP 55,000. Landscapes and made-to-order pieces are quoted based on size and complexity.
+Acrylic bases are COP 130,000 (10×15 cm) and COP 150,000 (12×18 cm), and include a heart keychain with the pet's name. A phone case with your pet is COP 100,000. Pressed flower cases are COP 40,000 and the flowers + painting case (pressed flowers with a basic painted design) is COP 55,000. Landscapes and made-to-order pieces are quoted based on size and complexity.
 
 An extra pet adds COP 30,000 to 50,000 on a canvas, COP 25,000 on a base, and COP 20,000 on a case. Suggested pets per piece: 12×18 cm canvas, 1 to 5; 20×25 and 28×35 cm, 1 to 6; 40×50 cm, 1 to 10; heart edition, 1 pet; acrylic base 10×15 cm, 1 to 4, and 12×18 cm, 1 to 5; phone case, 1 to 3.
 

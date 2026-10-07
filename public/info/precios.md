@@ -43,12 +43,12 @@ Mascota adicional en una base: $25.000. Mascotas sugeridas: 10×15 cm, de 1 a 4;
 
 | Tipo | Precio |
 |------|--------|
-| Fundas de flores | $40.000 |
-| Flores personalizadas | $55.000 |
+| Fundas de flores prensadas | $40.000 |
+| Funda flores + pintura (flores prensadas con diseño básico en pintura) | $55.000 |
 | Logo / anime / imagen | Desde $100.000 (según complejidad) |
 | Mascota (1 incluida) | $100.000 |
 
-Mascota adicional en una funda: $20.000. Mascotas sugeridas: de 1 a 3.
+Mascota adicional en una funda: $20.000. Mascotas sugeridas: de 1 a 3. En las fundas de flores, pregunta qué colores hay disponibles; todas van protegidas con una capa de resina.
 
 ### Paisajes y encargos a medida
 
