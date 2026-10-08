@@ -1,6 +1,6 @@
 # How to commission a pet portrait with Sac_Artx
 
-Sac_Artx is a studio in Bogotá, Colombia, specializing in custom pet portraits hand-painted in acrylic. Commissions are placed on WhatsApp, from a photograph.
+Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic. Commissions are placed on WhatsApp, from a photograph.
 
 ## What it is
 
@@ -16,7 +16,7 @@ Anyone commissioning a dog, cat, or other pet portrait, an acrylic base, or a pe
 2. Sketch within 48 hours: you receive a digital preview of the result.
 3. Approve the design: whatever is needed gets adjusted, with no extra charge for revisions.
 4. Painting: when the piece is ready, you receive photos on WhatsApp for final approval.
-5. Delivery: secure packaging and shipping across Colombia with tracking.
+5. Delivery: secure packaging and shipping to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia, with tracking.
 
 The image can also be improved with artificial intelligence before painting: fixing the lighting or combining several photos.
 
@@ -30,4 +30,4 @@ Turnaround is 15 to 20 business days from the first 50% payment. The remaining 5
 
 ## Where
 
-Sac_Artx works from Bogotá and ships across Colombia. WhatsApp: +57 301 658 4401. Homepage: https://sacartx.art/en/
+Sac_Artx paints to order and ships to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia. WhatsApp: +57 301 658 4401. Homepage: https://sacartx.art/en/

@@ -1,6 +1,6 @@
 # Sac_Artx pet portrait prices in Colombia
 
-Sac_Artx is a studio in Bogotá, Colombia, specializing in custom pet portraits hand-painted in acrylic. The prices below are current as of October 2026, in Colombian pesos (COP). Shipping is extra.
+Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic. The prices below are current as of October 2026, in Colombian pesos (COP). Shipping is extra.
 
 ## What it is
 
@@ -62,4 +62,4 @@ Turnaround is 15 to 20 business days from the first 50% payment. The remaining 5
 
 ## Where
 
-Sac_Artx works from Bogotá and ships across Colombia. WhatsApp: +57 301 658 4401. Homepage: https://sacartx.art/en/
+Sac_Artx paints to order and ships to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia. WhatsApp: +57 301 658 4401. Homepage: https://sacartx.art/en/

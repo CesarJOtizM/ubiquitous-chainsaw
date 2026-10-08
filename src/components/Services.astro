@@ -1,6 +1,7 @@
 ---
 import { useTranslations } from '../i18n/utils';
 import { canvasPrices, basePrices, casePrices } from '../data/prices';
+import { areaServed } from '../data/coverage';
 import { pricesPath } from '../i18n/paths';
 
 export interface Props {
@@ -204,7 +205,7 @@ const services = [
               "name": t('services.s1.title'),
               "description": t('services.s1.desc'),
               "provider": { "@id": "https://sacartx.art/#business" },
-              "areaServed": { "@type": "Country", "name": "Colombia" },
+              "areaServed": areaServed,
               "offers": {
                 "@type": "Offer",
                 "priceCurrency": "COP",
@@ -232,7 +233,7 @@ const services = [
               "name": t('services.s2.title'),
               "description": t('services.s2.desc'),
               "provider": { "@id": "https://sacartx.art/#business" },
-              "areaServed": { "@type": "Country", "name": "Colombia" },
+              "areaServed": areaServed,
               "offers": {
                 "@type": "Offer",
                 "priceCurrency": "COP",
@@ -254,7 +255,7 @@ const services = [
               "name": t('services.s3.title'),
               "description": t('services.s3.desc'),
               "provider": { "@id": "https://sacartx.art/#business" },
-              "areaServed": { "@type": "Country", "name": "Colombia" },
+              "areaServed": areaServed,
               "offers": {
                 "@type": "Offer",
                 "priceCurrency": "COP",

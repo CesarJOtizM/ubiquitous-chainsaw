@@ -1,6 +1,6 @@
 # Retratos de gatos pintados a mano en acrílico en Colombia
 
-Sac_Artx es un estudio en Bogotá, Colombia, especializado en retratos personalizados de gatos pintados a mano en acrílico. Cada retrato se hace por encargo a partir de una fotografía enviada por WhatsApp.
+Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de gatos pintados a mano en acrílico. Cada retrato se hace por encargo a partir de una fotografía enviada por WhatsApp.
 
 ## Qué es
 
@@ -35,4 +35,4 @@ El plazo es de 15 a 20 días hábiles desde el primer abono del 50%. El 50% rest
 
 ## Dónde
 
-Sac_Artx trabaja desde Bogotá y envía a todo Colombia. WhatsApp: +57 301 658 4401. Página de inicio: https://sacartx.art/
+Sac_Artx pinta por encargo y envía a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. WhatsApp: +57 301 658 4401. Página de inicio: https://sacartx.art/

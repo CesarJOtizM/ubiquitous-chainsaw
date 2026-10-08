@@ -1,6 +1,6 @@
 # Retratos de mascotas en acrílico con envío a Colombia
 
-Sac_Artx es un estudio en Bogotá, Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. Realiza envíos a cualquier ciudad de Colombia.
+Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. Realiza envíos a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia.
 
 ## Qué es
 
@@ -15,7 +15,7 @@ Personas en Colombia que buscan un artista que pinte a su perro, gato u otra mas
 - Retrato pintado a mano en acrílico.
 - Boceto digital previo y revisiones sin costo.
 - Embalaje seguro.
-- Envío a todo Colombia con número de seguimiento.
+- Envío a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia, con número de seguimiento.
 - Por ahora no hay envíos fuera del país.
 
 ## Precios
@@ -28,4 +28,4 @@ El plazo es de 15 a 20 días hábiles desde el primer abono del 50%. El 50% rest
 
 ## Dónde
 
-Estudio en Bogotá. Cobertura de envío: todo Colombia. WhatsApp: +57 301 658 4401. Instagram y TikTok: @sac_artx. Página de inicio: https://sacartx.art/
+Cobertura de envío: Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. WhatsApp: +57 301 658 4401. Instagram y TikTok: @sac_artx. Página de inicio: https://sacartx.art/

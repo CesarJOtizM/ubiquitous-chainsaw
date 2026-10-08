@@ -1,6 +1,6 @@
 # Cómo encargar un retrato de mascota con Sac_Artx
 
-Sac_Artx es un estudio en Bogotá, Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. El encargo se hace por WhatsApp, a partir de una fotografía.
+Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. El encargo se hace por WhatsApp, a partir de una fotografía.
 
 ## Qué es
 
@@ -16,7 +16,7 @@ Quien quiere encargar un retrato de perro, gato u otra mascota, una base acríli
 2. Boceto en 48 horas: recibes un adelanto digital de cómo va a quedar.
 3. Apruebas el diseño: se ajusta lo necesario sin cargo extra por revisiones.
 4. Se pinta: cuando la obra está lista, recibes fotos por WhatsApp para la aprobación final.
-5. Recibes tu obra: embalaje seguro y envío a todo Colombia con seguimiento.
+5. Recibes tu obra: embalaje seguro y envío a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia, con seguimiento.
 
 También se puede mejorar la imagen con inteligencia artificial antes de pintar: corregir la iluminación o unir varias fotos.
 
@@ -30,4 +30,4 @@ El plazo es de 15 a 20 días hábiles desde el primer abono del 50%. El 50% rest
 
 ## Dónde
 
-Sac_Artx trabaja desde Bogotá y envía a todo Colombia. WhatsApp: +57 301 658 4401. Página de inicio: https://sacartx.art/
+Sac_Artx pinta por encargo y envía a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. WhatsApp: +57 301 658 4401. Página de inicio: https://sacartx.art/

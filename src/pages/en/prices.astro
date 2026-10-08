@@ -13,6 +13,7 @@ import {
   casePrices,
   LEAD_TIME_DAYS,
 } from '../../data/prices';
+import { areaServed } from '../../data/coverage';
 
 const lang = 'en' as const;
 const t = useTranslations(lang);
@@ -98,7 +99,7 @@ const extraJsonLd = [
     '@type': 'Service',
     name: t('services.s1.title'),
     provider: { '@id': 'https://sacartx.art/#business' },
-    areaServed: { '@type': 'Country', name: 'Colombia' },
+    areaServed,
     offers: {
       '@type': 'Offer',
       priceCurrency: 'COP',

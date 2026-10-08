@@ -2,6 +2,7 @@
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { useTranslations } from '../i18n/utils';
+import { areaServed } from '../data/coverage';
 
 export interface Props {
   title?: string;
@@ -74,14 +75,9 @@ const schemaOrg = {
       },
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Bogotá",
-        "addressRegion": "Bogotá D.C.",
         "addressCountry": "CO",
       },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Colombia",
-      },
+      "areaServed": areaServed,
       "sameAs": [
         "https://www.instagram.com/sac_artx",
         "https://www.tiktok.com/@sac_artx",

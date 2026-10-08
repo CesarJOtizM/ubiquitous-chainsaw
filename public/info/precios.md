@@ -1,6 +1,6 @@
 # Precios de retratos de mascotas Sac_Artx en Colombia
 
-Sac_Artx es un estudio en Bogotá, Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. Los precios siguientes están vigentes a octubre de 2026, en pesos colombianos (COP). El envío se cobra aparte.
+Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. Los precios siguientes están vigentes a octubre de 2026, en pesos colombianos (COP). El envío se cobra aparte.
 
 ## Qué es
 
@@ -62,4 +62,4 @@ El plazo es de 15 a 20 días hábiles desde el primer abono del 50%. El 50% rest
 
 ## Dónde
 
-Sac_Artx trabaja desde Bogotá y envía a todo Colombia. WhatsApp: +57 301 658 4401. Página de inicio: https://sacartx.art/
+Sac_Artx pinta por encargo y envía a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. WhatsApp: +57 301 658 4401. Página de inicio: https://sacartx.art/

@@ -191,7 +191,7 @@ export const ui = {
     'process.step4.title': 'Se pinta con amor',
     'process.step4.desc': 'Pintamos tu obra con dedicación. Cuando está lista, te enviamos fotos por WhatsApp para tu aprobación final.',
     'process.step5.title': 'Recibes tu obra',
-    'process.step5.desc': 'Embalaje seguro y profesional. Envíos a todo Colombia con seguimiento en tiempo real.',
+    'process.step5.desc': 'Embalaje seguro y profesional. Envío a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia, con seguimiento.',
 
     // testimonials
     'testimonials.label': 'Clientes felices',
@@ -229,7 +229,7 @@ export const ui = {
     'faq.q5': '¿Puedo pedir cambios si no me gusta el boceto?',
     'faq.a5': '¡Por supuesto! Antes de empezar a pintar, te enviamos un boceto digital. Hacemos los ajustes que necesites hasta que estés completamente satisfecho/a. Sin cargo extra por revisiones.',
     'faq.q6': '¿Cómo me llega el cuadro?',
-    'faq.a6': 'Enviamos con embalaje seguro y profesional a todo Colombia. El cuadro va bien protegido para que llegue en perfectas condiciones. Te compartimos el número de seguimiento una vez despachado.',
+    'faq.a6': 'Enviamos con embalaje seguro a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. El cuadro va bien protegido para que llegue en perfectas condiciones. Te compartimos el número de seguimiento una vez despachado.',
     'faq.q7': '¿Pintan mascotas que ya no están?',
     'faq.a7': 'Sí, y es uno de los encargos más especiales que recibimos. Si perdiste a tu compañero de vida, o alguien cercano a ti perdió el suyo, podemos crear un retrato en su memoria. Es una forma hermosa de tenerlo siempre cerca. Trabajamos con el mayor cuidado y respeto en estos casos.',
     'faq.q8': '¿Hacen envíos fuera de Colombia?',
@@ -253,7 +253,7 @@ export const ui = {
 
     // prices page
     'prices.metaTitle': 'Precios de retratos de mascotas en acrílico · Sac_Artx',
-    'prices.metaDescription': 'Precios de Sac_Artx: retratos desde $120.000 COP, bases acrílicas desde $130.000 y fundas desde $40.000. Envío aparte. Anticipo 50%. Plazo 15–20 días hábiles. Bogotá, Colombia.',
+    'prices.metaDescription': 'Precios de Sac_Artx: retratos desde $120.000 COP, bases acrílicas desde $130.000 y fundas desde $40.000. Envío aparte. Anticipo 50%. Plazo 15–20 días hábiles. Envíos a todo Colombia.',
     'prices.crumbHome': 'Inicio',
     'prices.crumb': 'Precios',
     'prices.label': 'Lista clara',
@@ -270,7 +270,7 @@ export const ui = {
     'prices.petsTitle': 'Mascotas sugeridas según el tamaño:',
     'prices.casesNote': 'Mascota adicional en funda: $20.000. Paisajes y encargos a medida se cotizan según tamaño y complejidad.',
     'prices.paymentTitle': 'Plazo y pago',
-    'prices.paymentBody': 'El plazo es de 15 a 20 días hábiles desde el primer abono del 50%. El 50% restante se paga al terminar. El envío sale cuando el pago está completo, con embalaje y seguimiento a todo Colombia. Medios de pago: Nequi, Daviplata, transferencia bancaria y efectivo.',
+    'prices.paymentBody': 'El plazo es de 15 a 20 días hábiles desde el primer abono del 50%. El 50% restante se paga al terminar. El envío sale cuando el pago está completo, con embalaje y seguimiento a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. Medios de pago: Nequi, Daviplata, transferencia bancaria y efectivo.',
     'prices.faqTitle': 'Preguntas sobre precios',
     'prices.faq1.q': '¿El precio incluye el envío?',
     'prices.faq1.a': 'No. Los precios publicados son del encargo en COP. El envío se cobra aparte según el destino dentro de Colombia.',
@@ -355,7 +355,7 @@ export const ui = {
     'meta.title': 'Retratos de mascotas en acrílico por encargo · Sac_Artx',
     'meta.description': 'Pintamos retratos de mascotas en acrílico sobre lienzo o base acrílica, paisajes y fundas personalizadas. Por encargo, desde una foto. Envíos a todo Colombia.',
     'meta.ogLocale': 'es_CO',
-    'schema.description': 'Sac_Artx es un estudio en Bogotá, Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. También hace paisajes y fundas personalizadas. Envía pedidos a todo Colombia.',
+    'schema.description': 'Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. También hace paisajes y fundas personalizadas. Envía pedidos a Bogotá, Medellín, Cali, Barranquilla y el resto del país.',
   } as const,
   en: {
     // navbar
@@ -542,7 +542,7 @@ export const ui = {
     'process.step4.title': 'Painted with love',
     'process.step4.desc': 'We paint your artwork with dedication. Once it\'s ready, we send you photos via WhatsApp for your final approval.',
     'process.step5.title': 'Receive your artwork',
-    'process.step5.desc': 'Safe, professional packaging. Shipping across Colombia with real-time tracking.',
+    'process.step5.desc': 'Safe, professional packaging. Shipping to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia, with tracking.',
 
     // testimonials
     'testimonials.label': 'Happy clients',
@@ -580,7 +580,7 @@ export const ui = {
     'faq.q5': 'Can I request changes if I don\'t like the sketch?',
     'faq.a5': 'Absolutely! Before we start painting, we send you a digital sketch. We make any adjustments you need until you\'re completely satisfied. No extra charge for revisions.',
     'faq.q6': 'How will the painting be delivered?',
-    'faq.a6': 'We ship with safe, professional packaging across Colombia. The painting is well protected so it arrives in perfect condition. We share the tracking number once it ships.',
+    'faq.a6': 'We ship with safe packaging to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia. The painting is well protected so it arrives in perfect condition. We share the tracking number once it ships.',
     'faq.q7': 'Do you paint pets that have passed away?',
     'faq.a7': 'Yes, and it\'s one of the most special commissions we receive. If you or someone close to you has lost their companion, we can create a memorial portrait. It\'s a beautiful way to keep them close forever. We work with the utmost care and respect in these cases.',
     'faq.q8': 'Do you ship outside Colombia?',
@@ -604,7 +604,7 @@ export const ui = {
 
     // prices page
     'prices.metaTitle': 'Acrylic pet portrait prices · Sac_Artx',
-    'prices.metaDescription': 'Sac_Artx prices: portraits from COP 120,000, acrylic bases from COP 130,000 and phone cases from COP 40,000. Shipping extra. 50% deposit. 15–20 business days. Bogotá, Colombia.',
+    'prices.metaDescription': 'Sac_Artx prices: portraits from COP 120,000, acrylic bases from COP 130,000 and phone cases from COP 40,000. Shipping extra. 50% deposit. 15–20 business days. Shipping across Colombia.',
     'prices.crumbHome': 'Home',
     'prices.crumb': 'Prices',
     'prices.label': 'Clear pricing',
@@ -621,7 +621,7 @@ export const ui = {
     'prices.basesNote': 'Extra pet: COP 25,000. Includes a heart-shaped acrylic keychain with the name.',
     'prices.casesNote': 'Extra pet on a case: COP 20,000. Landscapes and custom commissions are quoted by size and complexity.',
     'prices.paymentTitle': 'Turnaround and payment',
-    'prices.paymentBody': 'Turnaround is 15 to 20 business days from the first 50% payment. The remaining 50% is paid when the work is finished. The piece ships once payment is complete, with packaging and tracking across Colombia. Payment methods: Nequi, Daviplata, bank transfer, and cash.',
+    'prices.paymentBody': 'Turnaround is 15 to 20 business days from the first 50% payment. The remaining 50% is paid when the work is finished. The piece ships once payment is complete, with packaging and tracking to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia. Payment methods: Nequi, Daviplata, bank transfer, and cash.',
     'prices.faqTitle': 'Pricing questions',
     'prices.faq1.q': 'Does the price include shipping?',
     'prices.faq1.a': 'No. Published prices are for the commission in COP. Shipping is charged separately based on the destination within Colombia.',
@@ -706,6 +706,6 @@ export const ui = {
     'meta.title': 'Custom Acrylic Pet Portraits · Sac_Artx',
     'meta.description': 'We paint custom acrylic pet portraits on canvas or acrylic base, landscapes and personalized phone cases. Commissioned from a photo. Shipping across Colombia.',
     'meta.ogLocale': 'en_US',
-    'schema.description': 'Sac_Artx is a studio in Bogotá, Colombia, specializing in custom pet portraits hand-painted in acrylic, plus landscapes and personalized phone cases. Orders ship across Colombia.',
+    'schema.description': 'Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic, plus landscapes and personalized phone cases. Orders ship to Bogotá, Medellín, Cali, Barranquilla, and the rest of the country.',
   } as const,
 } as const;

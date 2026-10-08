@@ -50,7 +50,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'Sac_Artx es el estudio de Sara Amaya Caldas, en Bogotá, Colombia. Sara es la responsable del tratamiento.',
+                text: 'Sac_Artx es el estudio de Sara Amaya Caldas, en Colombia. Sara es la responsable del tratamiento.',
               },
             ],
           },
@@ -298,7 +298,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'Sac_Artx is Sara Amaya Caldas’s studio in Bogotá, Colombia. Sara is the data controller.',
+                text: 'Sac_Artx is Sara Amaya Caldas’s studio in Colombia. Sara is the data controller.',
               },
             ],
           },

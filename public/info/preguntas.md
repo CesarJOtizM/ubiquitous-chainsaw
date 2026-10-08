@@ -1,6 +1,6 @@
 # Preguntas frecuentes de Sac_Artx
 
-> Precios vigentes a octubre de 2026, en pesos colombianos (COP). El envío se cobra aparte. Sac_Artx trabaja desde Bogotá y envía a todo Colombia. WhatsApp: +57 301 658 4401. Fotos de referencia: [catálogo](https://sacartx.art/catalogo/).
+> Precios vigentes a octubre de 2026, en pesos colombianos (COP). El envío se cobra aparte. Sac_Artx pinta por encargo y envía a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. WhatsApp: +57 301 658 4401. Fotos de referencia: [catálogo](https://sacartx.art/catalogo/).
 
 ## ¿Cuánto cuesta un retrato de mascota?
 
@@ -34,11 +34,11 @@ Sí. Sac_Artx pinta retratos en memoria de mascotas que ya fallecieron, a partir
 
 ## ¿Cuánto tarda y cómo se paga?
 
-El plazo es de 15 a 20 días hábiles desde el primer abono. Se paga 50% para empezar y 50% al terminar. Con el pago completo se despacha, con embalaje y número de seguimiento, a todo Colombia. Por ahora no hay envíos fuera del país. Medios de pago: Nequi, Daviplata, transferencia bancaria y efectivo. Antes de pintar se envía un boceto digital y los ajustes no tienen costo.
+El plazo es de 15 a 20 días hábiles desde el primer abono. Se paga 50% para empezar y 50% al terminar. Con el pago completo se despacha, con embalaje y número de seguimiento, a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. Por ahora no hay envíos fuera del país. Medios de pago: Nequi, Daviplata, transferencia bancaria y efectivo. Antes de pintar se envía un boceto digital y los ajustes no tienen costo.
 
 # Sac_Artx frequently asked questions
 
-> Prices current as of October 2026, in Colombian pesos (COP). Shipping is extra. Sac_Artx works from Bogotá and ships across Colombia. WhatsApp: +57 301 658 4401. Reference photos: [catalog](https://sacartx.art/en/catalog/).
+> Prices current as of October 2026, in Colombian pesos (COP). Shipping is extra. Sac_Artx paints to order and ships to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia. WhatsApp: +57 301 658 4401. Reference photos: [catalog](https://sacartx.art/en/catalog/).
 
 ## How much does a pet portrait cost?
 
@@ -72,4 +72,4 @@ Yes. Sac_Artx paints memorial portraits of pets that have died, from the photos 
 
 ## How long does it take and how do you pay?
 
-Turnaround is 15 to 20 business days from the first payment. You pay 50% to start and 50% when the work is finished. Once payment is complete, the piece ships across Colombia with protective packaging and a tracking number. Shipping outside Colombia is not available for now. Payment methods: Nequi, Daviplata, bank transfer, and cash. A digital sketch is sent before painting, and adjustments are free.
+Turnaround is 15 to 20 business days from the first payment. You pay 50% to start and 50% when the work is finished. Once payment is complete, the piece ships to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia, with protective packaging and a tracking number. Shipping outside Colombia is not available for now. Payment methods: Nequi, Daviplata, bank transfer, and cash. A digital sketch is sent before painting, and adjustments are free.
