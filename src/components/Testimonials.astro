@@ -64,11 +64,21 @@ const testimonials = [
   },
 ];
 
+const reviewCount = testimonials.length;
+const ratingTotal = testimonials.reduce((sum, item) => sum + item.stars, 0);
+
 const reviewsJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   '@id': 'https://sacartx.art/#business',
   name: 'Sac_Artx',
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: reviewCount ? ratingTotal / reviewCount : 0,
+    bestRating: 5,
+    worstRating: 1,
+    reviewCount,
+  },
   review: testimonials.map((item) => ({
     '@type': 'Review',
     author: {
@@ -84,7 +94,6 @@ const reviewsJsonLd = {
       worstRating: 1,
     },
     url: item.instagramUrl,
-    itemReviewed: { '@id': 'https://sacartx.art/#business' },
   })),
 };
 ---

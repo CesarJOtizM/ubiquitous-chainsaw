@@ -116,6 +116,16 @@ const schemaOrg = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Google tag (gtag.js). GT- sends to the connected GA4 property G-DGVQ013LLR. -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=GT-T94TPG7N"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'GT-T94TPG7N');
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon"      href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -301,21 +311,6 @@ const schemaOrg = {
       }
 
       document.addEventListener('astro:page-load', initReveal);
-    </script>
-
-    <!-- Google Analytics 4 — load only after window load so it does not compete with first paint -->
-    <script is:inline>
-      window.addEventListener('load', function () {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', 'G-DGVQ013LLR');
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-DGVQ013LLR';
-        document.head.appendChild(s);
-      });
     </script>
   </body>
 </html>

@@ -119,7 +119,9 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             parts: [
               { text: 'El identificador de medición de Google Analytics es ' },
               { text: 'G-DGVQ013LLR', emphasis: true },
-              { text: '.' },
+              { text: '. El sitio carga la etiqueta de Google ' },
+              { text: 'GT-T94TPG7N', emphasis: true },
+              { text: ', que envía esa medición a Analytics.' },
             ],
           },
           {
@@ -367,7 +369,9 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             parts: [
               { text: 'The Google Analytics measurement ID is ' },
               { text: 'G-DGVQ013LLR', emphasis: true },
-              { text: '.' },
+              { text: '. The site loads the Google tag ' },
+              { text: 'GT-T94TPG7N', emphasis: true },
+              { text: ', which sends that measurement to Analytics.' },
             ],
           },
           {
