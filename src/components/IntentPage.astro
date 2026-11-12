@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from './Navbar.astro';
+import Footer from './Footer.astro';
+import WhatsAppFAB from './WhatsAppFAB.astro';
+import { useTranslations } from '../i18n/utils';
+import { catalogPath, homePath, intentPath, pricesPath } from '../i18n/paths';
+import { business } from '../data/business';
+import {
+  priceLead,
+  priceBullets,
+  catalogLine,
+  priceSummaryColombia,
+  priceSummaryHow,
+  leadTimeText,
+  whereText,
+  sectionLabels,
+} from '../lib/price-text';
+import { intentEntry, type IntentEntry } from '../data/intent-pages';
+
+export interface Props {
+  entry: IntentEntry;
+}
+
+const { entry } = Astro.props;
+const { lang, topic } = entry;
+const t = useTranslations(lang);
+const labels = sectionLabels[lang];
+
+const SITE = business.site;
+const path = intentPath(topic, lang);
+const canonicalUrl = `${SITE}${path}`;
+const alternateEs = `${SITE}${intentPath(topic, 'es')}`;
+const alternateEn = `${SITE}${intentPath(topic, 'en')}`;
+const markdownAlt = `${SITE}/info/${entry.slug}.md`;
+const homeUrl = `${SITE}${homePath(lang)}`;
+
+// Generated price section.
+const isSummary = entry.priceVariant === 'summaryColombia' || entry.priceVariant === 'summaryHow';
+const bullets = isSummary
+  ? []
+  : priceBullets(lang, entry.noun, { suggested: entry.priceVariant === 'bulletsSuggested' });
+const summary =
+  entry.priceVariant === 'summaryColombia'
+    ? priceSummaryColombia(lang)
+    : entry.priceVariant === 'summaryHow'
+      ? priceSummaryHow(lang)
+      : '';
+
+const relatedLinks = entry.related.map((relTopic) => {
+  const rel = intentEntry(relTopic, lang);
+  return { href: intentPath(relTopic, lang), label: rel.linkLabel };
+});
+const relatedTitle = lang === 'en' ? 'Related pages' : 'Páginas relacionadas';
+const pricesLabel = t('prices.navLabel');
+const catalogLabel = lang === 'en' ? 'Catalog' : 'Catálogo';
+
+const extraJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${canonicalUrl}#webpage`,
+    url: canonicalUrl,
+    name: entry.metaTitle,
+    description: entry.metaDescription,
+    inLanguage: lang === 'en' ? 'en' : 'es-CO',
+    isPartOf: { '@id': `${SITE}/#website` },
+    about: { '@id': `${SITE}/#business` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t('prices.crumbHome'), item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: entry.linkLabel, item: canonicalUrl },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title={entry.metaTitle}
+  description={entry.metaDescription}
+  ogUrl={canonicalUrl}
+  canonicalUrl={canonicalUrl}
+  alternateEs={alternateEs}
+  alternateEn={alternateEn}
+  markdownAlt={markdownAlt}
+  extraJsonLd={extraJsonLd}
+>
+  <Navbar lang={lang} />
+  <main>
+    <div class="intent-page">
+      <header class="intent-hero">
+        <div class="container">
+          <nav class="intent-crumb" aria-label={lang === 'en' ? 'Breadcrumb' : 'Miga de pan'}>
+            <a href={homePath(lang)}>{t('prices.crumbHome')}</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{entry.linkLabel}</span>
+          </nav>
+          <h1 class="intent-hero__title">{entry.h1}</h1>
+          <p class="intent-hero__intro">{entry.lead}</p>
+        </div>
+      </header>
+
+      <div class="container intent-body">
+        <section class="intent-section">
+          <h2>{labels.whatItIs}</h2>
+          <p>{entry.whatItIs}</p>
+        </section>
+
+        <section class="intent-section">
+          <h2>{labels.whoFor}</h2>
+          <p>{entry.whoFor}</p>
+        </section>
+
+        <section class="intent-section">
+          <h2>{labels.included}</h2>
+          {entry.includedOrdered ? (
+            <ol>
+              {entry.included.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ol>
+          ) : (
+            <ul>
+              {entry.included.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          )}
+          {entry.includedNote && <p>{entry.includedNote}</p>}
+        </section>
+
+        <section class="intent-section">
+          <h2>{labels.prices}</h2>
+          {isSummary ? (
+            <p>{summary}</p>
+          ) : (
+            <>
+              <p>{priceLead(lang)}</p>
+              <ul>
+                {bullets.map((b) => (
+                  <li>{b}</li>
+                ))}
+              </ul>
+              <p>{catalogLine(lang)}</p>
+            </>
+          )}
+        </section>
+
+        <section class="intent-section">
+          <h2>{labels.turnaround}</h2>
+          <p>{leadTimeText(lang)}</p>
+        </section>
+
+        <section class="intent-section">
+          <h2>{labels.where}</h2>
+          <p>{whereText(lang, entry.whereVariant)}</p>
+        </section>
+
+        <nav class="intent-related" aria-label={relatedTitle}>
+          <h2>{relatedTitle}</h2>
+          <ul>
+            {relatedLinks.map((link) => (
+              <li>
+                <a href={link.href} data-astro-prefetch="viewport">{link.label}</a>
+              </li>
+            ))}
+            <li>
+              <a href={pricesPath(lang)} data-astro-prefetch="viewport">{pricesLabel}</a>
+            </li>
+            <li>
+              <a href={catalogPath(lang)} data-astro-prefetch="viewport">{catalogLabel}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+  <WhatsAppFAB lang={lang} />
+</BaseLayout>
+
+<style>
+  .intent-page {
+    padding-bottom: clamp(64px, 8vw, 120px);
+  }
+
+  .intent-hero {
+    padding: clamp(100px, 14vw, 140px) 0 clamp(32px, 4vw, 48px);
+  }
+
+  .intent-crumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+  }
+
+  .intent-crumb a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .intent-crumb a:hover {
+    text-decoration: underline;
+  }
+
+  .intent-hero__title {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 400;
+    margin: 8px 0 12px;
+    max-width: 760px;
+  }
+
+  .intent-hero__intro,
+  .intent-body {
+    max-width: 720px;
+  }
+
+  .intent-hero__intro {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  .intent-body {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 4vw, 40px);
+  }
+
+  .intent-section h2,
+  .intent-related h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .intent-section p,
+  .intent-section li,
+  .intent-related li {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  .intent-section p + p,
+  .intent-section ul,
+  .intent-section ol {
+    margin-top: 12px;
+  }
+
+  .intent-section ul,
+  .intent-section ol,
+  .intent-related ul {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .intent-related ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .intent-section a,
+  .intent-related a {
+    color: var(--color-accent);
+    text-underline-offset: 3px;
+  }
+
+  .intent-section a:hover,
+  .intent-related a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .intent-related {
+    border-top: 1px solid var(--color-border, rgba(0, 0, 0, 0.1));
+    padding-top: clamp(24px, 3vw, 32px);
+  }
+</style>

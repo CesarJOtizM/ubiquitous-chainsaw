@@ -36,13 +36,15 @@ approved full scope (A1–A11). Artist decides A1 = convert .md intent pages to 
 - T1 (S11) — DONE. Search map: 429 real Google autocomplete queries, 0 failures. Top intents: price, from-photo, custom, memorial, medium, reviews, Colombia. Artifact: odd/seo-improvements/mapa/mapa.json.
 - T2 (S2) — DONE. Home meta ES/EN overridable via home.metaTitle/home.metaDescription (ui.ts), wired in index.astro + en/index.astro. commit: this slice.
 - T3 (S3) — DONE. BaseLayout `robots` prop (default index,follow); 404 set noindex,follow. commit: this slice.
-- T4 (S1,S5) — Intent pages as real HTML routes + citable content + nav/footer links. route: writer/inline. commit: feat(seo)
+- T4 (S1,S5) — DONE. 5 topics × 2 langs as real prerendered HTML routes (IntentPage.astro) from src/data/intent-pages.ts; prose preserved verbatim; new meta from mapa.json; footer "Guías/Guides" group + per-page related/prices/catalog links. commit: this slice.
 - T5 (S4,S9) — Review/AggregateRating + Product + BreadcrumbList schema. route: inline. commit: feat(seo)
-- T6 (S6) — Centralize prices/business data; generate llms.txt. route: inline. commit: refactor(seo)
+- T6 (S6) — DONE. business.ts + price-text.ts single source; /info/<slug>.md and /llms.txt now generated endpoints; static public/info 10 topic .md + public/llms.txt deleted; no month/year date remains. commit: this slice. Note: astro.config customPages kept (sitemap only auto-includes page routes, not endpoints).
+- T5note — BreadcrumbList already added on intent pages via IntentPage.astro; remaining T5 = catalog/prices breadcrumb + Review/Product.
 - T7 (S7,S8,S10) — Polish: testimonial alts, hero dimensions, twitter/manifest. route: inline. commit: fix(seo)
 
 ## Log
 
 - L1 — User original request (verbatim): "tenmeos unas skills de SEO C:\Users\csar-\Downloads\seo-schema.skill C:\Users\csar-\Downloads\seo-super-agent.skill C:\Users\csar-\Downloads\sitemap.skill C:\Users\csar-\Downloads\contenido-citable.skill \"C:\Users\csar-\Downloads\lista de user-agents.pdf\" C:\Users\csar-\Downloads\mapa-de-busquedas.skill C:\Users\csar-\Downloads\meta-titulos-descripciones.skill C:\Users\csar-\Downloads\seo-interlinking.skill vamos a ejecutar para mejorar el seo de la aplicacion harmemos un plan para esto y ver toodas las modificaciones sugeridas"
 - L2 — User selected full scope A1–A11; for A1 chose "decidilo vos y proponé lo mejor" → convert intent .md pages to real HTML routes.
+- L4 — Writer launch blocked twice (missing surfaces heading, then no-backstop); after context backstop fired at ~155k tokens, T4+T6 delegated to gentle-ai-worker and verified (build, sitemap, .md fidelity). Parent fixed one ES price-format regression ($50.000 lost its $).
 - L3 — Keyword evidence (Google autocomplete, Nov 2026): EN "pet portrait price list" x10, "pet portrait prices" x7, "from photo", "custom ... for nursery/bathroom", "on canvas/bag/purse/ornament", "with collar", "memorial", "reviews". ES: "retrato mascota fallecida", "personalizado", "acuarela/oleo/acrilico", "cuanto cuesta ... en colombia".
