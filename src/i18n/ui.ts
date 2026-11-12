@@ -354,6 +354,9 @@ export const ui = {
     // base layout / meta
     'meta.title': 'Retratos de mascotas en acrílico por encargo · Sac_Artx',
     'meta.description': 'Pintamos retratos de mascotas en acrílico sobre lienzo o base acrílica, paisajes y fundas personalizadas. Por encargo, desde una foto. Envíos a todo Colombia.',
+    // Home-specific meta (keyword-first + locality, grounded in Google autocomplete: "desde foto", "personalizado", "Colombia")
+    'home.metaTitle': 'Retratos de mascotas desde foto en Colombia · Sac_Artx',
+    'home.metaDescription': 'Retratos de mascotas pintados a mano en acrílico, desde tu foto. Cuadros, bases acrílicas y fundas personalizadas por encargo, con envío a todo Colombia.',
     'meta.ogLocale': 'es_CO',
     'schema.description': 'Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. También hace paisajes y fundas personalizadas. Envía pedidos a Bogotá, Medellín, Cali, Barranquilla y el resto del país.',
   } as const,
@@ -705,6 +708,9 @@ export const ui = {
     // base layout / meta
     'meta.title': 'Custom Acrylic Pet Portraits · Sac_Artx',
     'meta.description': 'We paint custom acrylic pet portraits on canvas or acrylic base, landscapes and personalized phone cases. Commissioned from a photo. Shipping across Colombia.',
+    // Home-specific meta (keyword-first + locality, grounded in Google autocomplete: "from photo", "custom", "Colombia")
+    'home.metaTitle': 'Custom Pet Portraits From Your Photo · Colombia · Sac_Artx',
+    'home.metaDescription': 'Hand-painted pet portraits in acrylic, made from your photo. Canvas, acrylic bases and custom phone cases, commissioned with shipping across Colombia.',
     'meta.ogLocale': 'en_US',
     'schema.description': 'Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic, plus landscapes and personalized phone cases. Orders ship to Bogotá, Medellín, Cali, Barranquilla, and the rest of the country.',
   } as const,

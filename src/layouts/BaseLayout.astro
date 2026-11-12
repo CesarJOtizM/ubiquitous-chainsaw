@@ -14,6 +14,7 @@ export interface Props {
   alternateEs?: string;
   alternateEn?: string;
   markdownAlt?: string | false;
+  robots?: string;
   extraJsonLd?: object | object[];
 }
 
@@ -27,6 +28,7 @@ const {
   alternateEs: alternateEsProp,
   alternateEn: alternateEnProp,
   markdownAlt = `${SITE}/info/preguntas.md`,
+  robots = 'index, follow',
   extraJsonLd,
 } = Astro.props;
 
@@ -136,7 +138,7 @@ const schemaOrg = {
     <!-- Primary Meta -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robots} />
     <meta name="theme-color" content="#B762C1" />
 
     <!-- Canonical & Hreflang -->

@@ -1,0 +1,19 @@
+{"negocio": "Retratos de mascotas Sac_Artx", "ciudad": "Colombia",
+ "fuente": "Google autocomplete — 429 consultas reales, 0 fallidas (hl=es/gl=co, hl=en/gl=us)",
+ "intenciones_clave": {
+   "precio_transaccional": ["pet portrait price list (x10)", "pet portrait prices (x7)", "pet portrait commission pricing", "custom pet portrait price", "cuanto cuesta un retrato a lapiz en colombia", "precio retratos a lapiz"],
+   "desde_foto_transaccional": ["pet portrait from photo", "custom dog painting from photo", "dog portrait from photo", "pet portraits from photos"],
+   "personalizado_consideracion": ["custom pet portrait", "custom dog portrait", "retrato de perro personalizado", "retrato gato personalizado", "custom pet portrait for nursery", "custom dog portrait for bathroom"],
+   "variantes_producto": ["custom dog painting on canvas", "on bag", "on purse", "ornament", "custom dog painting with collar", "black and white", "retrato con pelo de mascota", "retrato de huella de perro"],
+   "memorial_emocional": ["memorial pet portrait", "pet memorial portraits with collar", "retrato de mascota fallecida", "retrato de perro fallecido"],
+   "medio": ["acrylic pet portrait", "retrato de mascota en acuarela", "retrato mascota oleo", "retrato mascota acrilico"],
+   "resenas_consideracion": ["pet portrait reviews", "custom pet portraits reviews"],
+   "local": ["pet portrait artists near me", "retratos de mascotas colombia", "donde hacen retratos de mascotas"]
+ },
+ "preguntas_ia": [
+   "¿Dónde puedo encargar un retrato de mi mascota pintado a mano en Colombia?",
+   "¿Cuánto cuesta un retrato de mascota personalizado desde una foto?",
+   "¿Puedo encargar un retrato de mi mascota fallecida como recuerdo?",
+   "¿Qué tan parecido queda un retrato en acrílico hecho desde una foto?",
+   "¿Cuánto tarda y cómo se encarga un retrato de mascota por encargo?"
+ ]}
