@@ -67,6 +67,23 @@ const testimonials = [
 const reviewCount = testimonials.length;
 const ratingTotal = testimonials.reduce((sum, item) => sum + item.stars, 0);
 
+/** Descriptive, per-piece alt text derived from the artwork category in its image path. */
+function artworkAlt(image: string): string {
+  if (image.includes('bases-acrilicas'))
+    return lang === 'en'
+      ? 'Custom acrylic base hand-painted by Sac_Artx'
+      : 'Base acrílica personalizada pintada a mano por Sac_Artx';
+  if (image.includes('case'))
+    return lang === 'en'
+      ? 'Custom phone case hand-painted by Sac_Artx'
+      : 'Funda de celular personalizada pintada a mano por Sac_Artx';
+  if (image.includes('cuadro'))
+    return lang === 'en'
+      ? 'Custom hand-painted pet portrait by Sac_Artx'
+      : 'Retrato de mascota personalizado pintado a mano por Sac_Artx';
+  return t('testimonials.imageAlt');
+}
+
 const reviewsJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -134,7 +151,7 @@ const reviewsJsonLd = {
                 src={imageUrl(testimonial.image, 640)}
                 srcset={imageSrcSet(testimonial.image, [640, 1024]) || undefined}
                 sizes="(max-width: 768px) 85vw, 320px"
-                alt={t('testimonials.imageAlt')}
+                alt={artworkAlt(testimonial.image)}
                 class="testimonial-card__artwork-img"
                 width={imageDimensions(testimonial.image, 640).width}
                 height={imageDimensions(testimonial.image, 640).height}

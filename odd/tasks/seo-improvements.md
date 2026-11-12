@@ -37,10 +37,10 @@ approved full scope (A1–A11). Artist decides A1 = convert .md intent pages to 
 - T2 (S2) — DONE. Home meta ES/EN overridable via home.metaTitle/home.metaDescription (ui.ts), wired in index.astro + en/index.astro. commit: this slice.
 - T3 (S3) — DONE. BaseLayout `robots` prop (default index,follow); 404 set noindex,follow. commit: this slice.
 - T4 (S1,S5) — DONE. 5 topics × 2 langs as real prerendered HTML routes (IntentPage.astro) from src/data/intent-pages.ts; prose preserved verbatim; new meta from mapa.json; footer "Guías/Guides" group + per-page related/prices/catalog links. commit: this slice.
-- T5 (S4,S9) — Review/AggregateRating + Product + BreadcrumbList schema. route: inline. commit: feat(seo)
+- T5 (S4,S9) — DONE. Review/AggregateRating already existed (Testimonials.astro); prices breadcrumbs already existed; added BreadcrumbList to catalogo + en/catalog; intent pages carry BreadcrumbList. Per-piece Product schema intentionally SKIPPED (one-off commissions; CollectionPage/ItemList already covers, Product sans price/stock would be weak markup). commit: this slice.
 - T6 (S6) — DONE. business.ts + price-text.ts single source; /info/<slug>.md and /llms.txt now generated endpoints; static public/info 10 topic .md + public/llms.txt deleted; no month/year date remains. commit: this slice. Note: astro.config customPages kept (sitemap only auto-includes page routes, not endpoints).
 - T5note — BreadcrumbList already added on intent pages via IntentPage.astro; remaining T5 = catalog/prices breadcrumb + Review/Product.
-- T7 (S7,S8,S10) — Polish: testimonial alts, hero dimensions, twitter/manifest. route: inline. commit: fix(seo)
+- T7 (S7,S8,S10) — DONE/partial. S7 per-piece testimonial alts (derived from product category) done. S8 hero: NO-OP — astro:assets <Image> already emits width=1280 height=1280 (CLS handled). S10 manifest: added id/scope/lang=es-CO. twitter:site/creator SKIPPED on purpose: @sac_artx is an Instagram/TikTok handle, not an X account; a fake twitter:site would be misleading. commit: this slice.
 
 ## Log
 

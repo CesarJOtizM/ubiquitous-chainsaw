@@ -9,5 +9,8 @@
   "theme_color": "#B762C1",
   "background_color": "#FFF5FB",
   "display": "standalone",
-  "start_url": "/"
+  "start_url": "/",
+  "id": "/",
+  "scope": "/",
+  "lang": "es-CO"
 }
