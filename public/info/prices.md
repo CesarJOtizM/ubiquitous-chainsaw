@@ -58,7 +58,7 @@ Catalog of finished pieces: https://sacartx.art/en/catalog/
 
 ## Turnaround and payment
 
-Turnaround is 15 to 20 business days from the first 50% payment. The remaining 50% is paid when the work is finished. The piece ships once payment is complete. Payment methods: Nequi, Daviplata, bank transfer, and cash.
+Turnaround is 15 to 20 business days from the first 50% payment. The remaining 50% is paid when the work is finished. The piece ships once payment is complete. Payment methods: Nequi, Daviplata, bank transfer, Bre-B key, and credit cards.
 
 ## Where
 

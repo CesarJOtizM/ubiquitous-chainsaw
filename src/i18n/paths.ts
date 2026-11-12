@@ -38,6 +38,7 @@ export const intentSlugs = {
   cats: { es: 'retratos-gatos', en: 'cat-portraits' },
   colombia: { es: 'retratos-mascotas-colombia', en: 'pet-portraits-colombia' },
   how: { es: 'como-funciona', en: 'how-it-works' },
+  memorial: { es: 'retrato-mascota-fallecida', en: 'memorial-pet-portrait' },
 } as const;
 
 export type IntentTopic = keyof typeof intentSlugs;
@@ -65,6 +66,8 @@ export const productSlugs = {
   paintings: { es: 'cuadros-en-acrilico', en: 'acrylic-paintings' },
   bases: { es: 'bases-acrilicas', en: 'acrylic-bases' },
   cases: { es: 'fundas-personalizadas', en: 'custom-phone-cases' },
+  sizes: { es: 'cuadros-de-diferentes-tamanos', en: 'paintings-different-sizes' },
+  magnets: { es: 'imanes-de-lienzo', en: 'canvas-magnets' },
 } as const;
 
 export type ProductKey = keyof typeof productSlugs;

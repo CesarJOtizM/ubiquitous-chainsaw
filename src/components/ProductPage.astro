@@ -36,15 +36,15 @@ const alternateEn = lang === 'en' ? canonicalUrl : `${SITE}${productPath(entry.p
 const homeUrl = `${SITE}${homePath(lang)}`;
 
 // Price table driving the price block and the schema offer.
-const priceTables: Record<ProductEntry['priceSource'], PriceRow[]> = {
+const priceTables: Record<Exclude<ProductEntry['priceSource'], null>, PriceRow[]> = {
   canvas: canvasPrices,
   base: basePrices,
   case: casePrices,
 };
-const priceRows = priceTables[entry.priceSource];
+const priceRows = entry.priceSource ? priceTables[entry.priceSource] : [];
 const amounts = priceRows.map((r) => r.price);
-const lowPrice = Math.min(...amounts);
-const highPrice = Math.max(...amounts);
+const lowPrice = amounts.length ? Math.min(...amounts) : undefined;
+const highPrice = amounts.length ? Math.max(...amounts) : undefined;
 const fromWord = lang === 'en' ? 'From ' : 'Desde ';
 
 const priceItems = priceRows.map((r) => {
@@ -125,19 +125,23 @@ const extraJsonLd = [
     '@type': 'Product',
     name: entry.h1,
     description: entry.metaDescription,
-    image: schemaImages,
+    ...(schemaImages.length ? { image: schemaImages } : {}),
     brand: { '@type': 'Brand', name: 'Sac_Artx' },
     category: entry.category,
-    offers: {
-      '@type': 'AggregateOffer',
-      priceCurrency: 'COP',
-      lowPrice,
-      highPrice,
-      availability: 'https://schema.org/InStock',
-      areaServed: { '@type': 'Country', name: 'Colombia' },
-      url: canonicalUrl,
-      seller: { '@id': `${SITE}/#business` },
-    },
+    ...(lowPrice !== undefined && highPrice !== undefined
+      ? {
+          offers: {
+            '@type': 'AggregateOffer',
+            priceCurrency: 'COP',
+            lowPrice,
+            highPrice,
+            availability: 'https://schema.org/InStock',
+            areaServed: { '@type': 'Country', name: 'Colombia' },
+            url: canonicalUrl,
+            seller: { '@id': `${SITE}/#business` },
+          },
+        }
+      : {}),
   },
   {
     '@context': 'https://schema.org',
@@ -183,9 +187,9 @@ const extraJsonLd = [
         {gallery.length > 0 && (
           <section class="product-section" aria-label={labels.gallery}>
             <h2>{labels.gallery}</h2>
-            <ul class="product-gallery">
-              {gallery.map((item) => (
-                <li>
+            <ul class="product-gallery" id="product-gallery">
+              {gallery.map((item, index) => (
+                <li hidden={index >= 6}>
                   <img
                     src={item.src}
                     srcset={item.srcset || undefined}
@@ -199,6 +203,19 @@ const extraJsonLd = [
                 </li>
               ))}
             </ul>
+            {gallery.length > 6 && (
+              <button
+                type="button"
+                class="product-more"
+                aria-expanded="false"
+                aria-controls="product-gallery"
+                data-more={t('catalog.showMore')}
+                data-less={t('catalog.showLess')}
+                data-count={String(gallery.length - 6)}
+              >
+                {t('catalog.showMore').replace('{n}', String(gallery.length - 6))}
+              </button>
+            )}
           </section>
         )}
 
@@ -213,15 +230,21 @@ const extraJsonLd = [
 
         <section class="product-section">
           <h2>{labels.prices}</h2>
-          <p>{priceLead(lang)}</p>
-          <ul class="product-prices">
-            {priceItems.map((item) => (
-              <li>
-                <span class="product-prices__label">{item.label}</span>
-                <span class="product-prices__price">{item.price}</span>
-              </li>
-            ))}
-          </ul>
+          {priceItems.length > 0 ? (
+            <>
+              <p>{priceLead(lang)}</p>
+              <ul class="product-prices">
+                {priceItems.map((item) => (
+                  <li>
+                    <span class="product-prices__label">{item.label}</span>
+                    <span class="product-prices__price">{item.price}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p>{entry.priceNote}</p>
+          )}
         </section>
 
         <section class="product-section">
@@ -337,7 +360,7 @@ const extraJsonLd = [
     gap: 8px;
   }
 
-  .product-gallery {
+  .product-section > ul.product-gallery {
     list-style: none;
     padding: 0;
     display: grid;
@@ -345,13 +368,80 @@ const extraJsonLd = [
     gap: 16px;
   }
 
-  .product-gallery img {
-    width: 100%;
-    height: auto;
+  .product-gallery li {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
     border-radius: 12px;
     border: 1px solid var(--color-border);
     background: #fff;
-    display: block;
+  }
+
+  .product-gallery img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .product-more {
+    position: fixed;
+    z-index: 49;
+    left: 32px;
+    bottom: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    max-width: calc(100vw - 140px);
+    padding: 0 22px;
+    border: 0;
+    border-radius: 40px;
+    background: var(--color-accent);
+    color: #fff;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(137, 70, 166, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .product-more:hover {
+    transform: scale(1.06);
+    background: var(--color-accent-hover);
+    box-shadow: 0 6px 28px rgba(137, 70, 166, 0.55);
+  }
+
+  .product-more:active {
+    transform: scale(0.97);
+  }
+
+  .product-more:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 540px) {
+    .product-more {
+      left: 16px;
+      bottom: 24px;
+      min-height: 54px;
+      padding: 0 16px;
+      font-size: 14px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .product-more {
+      transition: none;
+    }
+
+    .product-more:hover,
+    .product-more:active {
+      transform: none;
+    }
   }
 
   .product-prices {
@@ -417,8 +507,31 @@ const extraJsonLd = [
   }
 
   @media (max-width: 640px) {
-    .product-gallery {
+    .product-section > ul.product-gallery {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 </style>
+
+<script>
+  function bindProductGallery() {
+    document.querySelectorAll<HTMLButtonElement>('.product-more').forEach((btn) => {
+      if (btn.dataset.bound === 'true') return;
+      btn.dataset.bound = 'true';
+      btn.addEventListener('click', () => {
+        const list = document.getElementById(btn.getAttribute('aria-controls') || '');
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        list?.querySelectorAll('li').forEach((item, index) => {
+          if (index >= 6) item.hidden = open;
+        });
+        const next = !open;
+        btn.setAttribute('aria-expanded', String(next));
+        const template = next ? btn.dataset.less : btn.dataset.more;
+        btn.textContent = (template || '').replace('{n}', btn.dataset.count || '');
+      });
+    });
+  }
+
+  bindProductGallery();
+  document.addEventListener('astro:page-load', bindProductGallery);
+</script>

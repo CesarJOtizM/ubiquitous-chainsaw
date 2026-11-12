@@ -1,9 +1,10 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import PageDecor from '../components/PageDecor.astro';
 import '../styles/global.css';
 import { useTranslations } from '../i18n/utils';
 import { areaServed } from '../data/coverage';
-import { business, founderId } from '../data/business';
+import { business, founderId, paymentMethods } from '../data/business';
 import { aboutPath } from '../i18n/paths';
 
 export interface Props {
@@ -110,7 +111,7 @@ const schemaOrg = {
       ],
       "priceRange": "$$",
       "currenciesAccepted": "COP",
-      "paymentAccepted": "Nequi, Daviplata, Transferencia bancaria, Efectivo",
+      "paymentAccepted": paymentMethods[lang === 'en' ? 'en' : 'es'],
     },
   ],
 };
@@ -231,6 +232,10 @@ const schemaOrg = {
         z-index: 1000;
       }
 
+      ::view-transition-group(page-decor) {
+        z-index: 0;
+      }
+
       .nav-progress {
         position: fixed;
         inset: 0 0 auto 0;
@@ -279,7 +284,10 @@ const schemaOrg = {
 
   <body>
     <div class="nav-progress" aria-hidden="true"></div>
-    <slot />
+    <PageDecor />
+    <div class="page-shell">
+      <slot />
+    </div>
 
     <script>
       document.addEventListener('astro:before-preparation', (event) => {
@@ -290,6 +298,15 @@ const schemaOrg = {
         if (event.to.pathname !== event.from.pathname && active instanceof HTMLElement && active.closest('[data-astro-transition-persist]')) {
           active.blur();
         }
+      });
+      document.addEventListener('astro:before-swap', (event) => {
+        const nextLang = event.newDocument.documentElement.lang;
+        if (!nextLang || nextLang === document.documentElement.lang) return;
+        // Persisted chrome keeps the previous language. Drop it so the
+        // incoming navbar, footer and WhatsApp button render in the new one.
+        document.querySelectorAll('[data-astro-transition-persist]').forEach((el) => {
+          el.removeAttribute('data-astro-transition-persist');
+        });
       });
       document.addEventListener('astro:after-swap', () => {
         document.documentElement.classList.remove('is-navigating');

@@ -58,7 +58,7 @@ Catálogo de obras terminadas: https://sacartx.art/catalogo/
 
 ## Plazo y pago
 
-El plazo es de 15 a 20 días hábiles desde el primer abono del 50%. El 50% restante se paga al terminar. El envío sale cuando el pago está completo. Medios de pago: Nequi, Daviplata, transferencia bancaria y efectivo.
+El plazo es de 15 a 20 días hábiles desde el primer abono del 50%. El 50% restante se paga al terminar. El envío sale cuando el pago está completo. Medios de pago: Nequi, Daviplata, transferencia bancaria, llave Bre-B y tarjetas de crédito.
 
 ## Dónde
 

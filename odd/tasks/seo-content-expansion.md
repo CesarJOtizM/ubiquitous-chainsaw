@@ -39,3 +39,4 @@ Branch: feat/seo-improvements (unmerged; shares the foundation). User approved f
 - L1 — User request (verbatim): "entiendo que para seo tambien combiene tener pagian explicaita para cada prodcuto, un blog para entradas y post. y tambien agregaremos un sobre mi"
 - L2 — Decisions: product pages grouped into 3 (agent-chosen grouping); blog bilingual ES+EN with infra + 1 example post; about page = skeleton from known facts with marked gaps, no invented E-E-A-T claims.
 - L3 — About page does not print TODO text. Gaps stay in src/data/about.ts (`aboutGaps`) so the public page never invents a city, a start year, or credentials.
+- L4 — Memorial guide added: ES /retrato-mascota-fallecida, EN /memorial-pet-portrait. Home services link to the three product pages. The deceased-pet FAQ links to the memorial guide.

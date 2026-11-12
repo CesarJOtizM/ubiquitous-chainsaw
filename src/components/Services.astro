@@ -2,7 +2,8 @@
 import { useTranslations } from '../i18n/utils';
 import { canvasPrices, basePrices, casePrices } from '../data/prices';
 import { areaServed } from '../data/coverage';
-import { pricesPath } from '../i18n/paths';
+import { pricesPath, productKeys, productPath } from '../i18n/paths';
+import { productEntry } from '../data/product-pages';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -127,6 +128,12 @@ const services = [
         </article>
       ))}
     </div>
+
+    <nav class="services__products" aria-label={lang === 'en' ? 'Product pages' : 'Páginas de producto'}>
+      {productKeys.map((key) => (
+        <a href={productPath(key, lang)} data-astro-prefetch="viewport">{productEntry(key, lang).linkLabel}</a>
+      ))}
+    </nav>
 
     <!-- Pricing tabs -->
     <div class="services__pricing reveal">
@@ -305,7 +312,24 @@ const services = [
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .services__products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
     margin-bottom: 64px;
+  }
+
+  .services__products a {
+    color: var(--color-accent);
+    font-size: 1.0625rem;
+    text-decoration: none;
+  }
+
+  .services__products a:hover {
+    text-decoration: underline;
   }
 
   /* Card */

@@ -24,6 +24,8 @@ export default defineConfig({
         'https://sacartx.art/info/retratos-gatos.md',
         'https://sacartx.art/info/como-funciona.md',
         'https://sacartx.art/info/retratos-mascotas-colombia.md',
+        'https://sacartx.art/info/retrato-mascota-fallecida.md',
+        'https://sacartx.art/info/memorial-pet-portrait.md',
         'https://sacartx.art/info/pet-portraits.md',
         'https://sacartx.art/info/dog-portraits.md',
         'https://sacartx.art/info/cat-portraits.md',

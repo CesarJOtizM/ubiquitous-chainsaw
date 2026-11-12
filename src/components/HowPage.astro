@@ -1,0 +1,1071 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from './Navbar.astro';
+import Footer from './Footer.astro';
+import WhatsAppFAB from './WhatsAppFAB.astro';
+import { useTranslations } from '../i18n/utils';
+import { blogPostPath, catalogPath, homePath, intentPath, pricesPath, type Lang } from '../i18n/paths';
+import { business, paymentMethodLabels } from '../data/business';
+import { intentEntry } from '../data/intent-pages';
+import { LEAD_TIME_DAYS, PRICE_FROM_CANVAS } from '../data/prices';
+import { cop, leadTimeText } from '../lib/price-text';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const entry = intentEntry('how', lang);
+
+const SITE = business.site;
+const path = intentPath('how', lang);
+const canonicalUrl = `${SITE}${path}`;
+const alternateEs = `${SITE}${intentPath('how', 'es')}`;
+const alternateEn = `${SITE}${intentPath('how', 'en')}`;
+const markdownAlt = `${SITE}/info/${entry.slug}.md`;
+const homeUrl = `${SITE}${homePath(lang)}`;
+const waUrl = `https://wa.me/573016584401?text=${t('process.waMsg')}`;
+const fromPrice = cop(PRICE_FROM_CANVAS, lang);
+const photoGuideHref = blogPostPath(
+  lang === 'en' ? 'how-to-choose-the-best-photo' : 'como-elegir-la-mejor-foto-mascota',
+  lang,
+);
+const photoGuideUrl = `${SITE}${photoGuideHref}`;
+
+const es = lang === 'es';
+
+const copy = es
+  ? {
+      crumb: 'Miga de pan',
+      eyebrow: 'Simple y transparente',
+      ctaSecondary: 'Ver el catálogo',
+      statSteps: '5 pasos',
+      statStepsHint: 'de la foto a tu casa',
+      statSketch: '48 horas',
+      statSketchHint: 'para el boceto digital',
+      statDays: `${LEAD_TIME_DAYS.min}–${LEAD_TIME_DAYS.max} días`,
+      statDaysHint: 'hábiles de pintura',
+      statPay: '50%',
+      statPayHint: 'para empezar',
+      journeyLabel: 'El recorrido',
+      journeyTitle: 'Cinco pasos, con calma',
+      journeyLead:
+        'Envías la foto, ves un boceto digital, apruebas el diseño, Sara pinta la obra y el cuadro sale hacia tu ciudad.',
+      chip1: 'WhatsApp o Instagram',
+      chip2: 'Antes de pintar',
+      chip3: 'Sin costo extra',
+      chip4: 'Acrílico a mano',
+      chip5: 'Con seguimiento',
+      points: [
+        ['Te ayudamos a elegir la mejor toma si tienes varias.', 'Si la luz falla, se puede corregir o unir fotos antes de pintar.'],
+        ['Es un adelanto digital, para que veas cómo va a quedar.', 'Todavía no es la pintura: sirve para afinar la idea.'],
+        ['Se ajusta lo que haga falta hasta que el diseño te convenza.', 'Las revisiones del boceto no tienen cargo extra.'],
+        ['Sara pinta la obra con dedicación, en acrílico.', 'Cuando está lista, te manda fotos por WhatsApp para la aprobación final.'],
+        ['Embalaje seguro y número de seguimiento.', 'Llega a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia.'],
+      ],
+      pricesKicker: 'Precios',
+      pricesHint: 'Lienzo 12×18 cm, 1 mascota',
+      pricesBody: 'Los retratos en acrílico sobre lienzo empiezan desde este valor. El envío se cotiza aparte.',
+      pricesLink: 'Ver todos los precios',
+      timeKicker: 'Plazo y pago',
+      timeHint: 'desde el primer abono',
+      timeSplit: '50% al encargar · 50% al terminar',
+      whereKicker: 'Dónde llega',
+      whereBody: `Sac_Artx pinta por encargo y envía a ${business.cities.join(', ')} y el resto de Colombia.`,
+      wherePhone: `WhatsApp ${business.phoneDisplay}`,
+      rest: 'y el resto de Colombia',
+      whoKicker: 'Para quién',
+      noteKicker: 'Antes de pintar',
+      payLabel: 'Medios de pago',
+      pays: paymentMethodLabels.es,
+      related: 'También te puede servir',
+      catalog: 'Catálogo',
+      prices: 'Precios',
+    }
+  : {
+      eyebrow: 'Simple and transparent',
+      crumb: 'Breadcrumb',
+      ctaSecondary: 'See the catalog',
+      statSteps: '5 steps',
+      statStepsHint: 'from photo to doorstep',
+      statSketch: '48 hours',
+      statSketchHint: 'for the digital sketch',
+      statDays: `${LEAD_TIME_DAYS.min}–${LEAD_TIME_DAYS.max} days`,
+      statDaysHint: 'of painting, business days',
+      statPay: '50%',
+      statPayHint: 'to get started',
+      journeyLabel: 'The path',
+      journeyTitle: 'Five steps, unhurried',
+      journeyLead:
+        'You send the photo, see a digital sketch, approve the design, Sara paints the piece, and it ships to your city.',
+      chip1: 'WhatsApp or Instagram',
+      chip2: 'Before painting',
+      chip3: 'No extra charge',
+      chip4: 'Acrylic, by hand',
+      chip5: 'With tracking',
+      points: [
+        ['We help you choose the best shot if you have several.', 'Poor light can be corrected, or several photos combined, before painting.'],
+        ['A digital preview, so you can see how it will look.', 'It is not the painting yet: it is there to shape the idea.'],
+        ['Whatever needs adjusting gets adjusted until the design feels right.', 'Sketch revisions have no extra charge.'],
+        ['Sara paints the piece by hand, in acrylic.', 'When it is ready, she sends photos on WhatsApp for final approval.'],
+        ['Protective packaging and a tracking number.', 'It ships to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia.'],
+      ],
+      pricesKicker: 'Prices',
+      pricesHint: 'Canvas 12×18 cm, 1 pet',
+      pricesBody: 'Acrylic portraits on canvas start at this price. Shipping is quoted separately.',
+      pricesLink: 'See every price',
+      timeKicker: 'Turnaround and payment',
+      timeHint: 'from the first payment',
+      timeSplit: '50% to start · 50% when it is finished',
+      whereKicker: 'Where it ships',
+      whereBody: `Sac_Artx paints to order and ships to ${business.cities.join(', ')} and the rest of Colombia.`,
+      wherePhone: `WhatsApp ${business.phoneDisplay}`,
+      rest: 'and the rest of Colombia',
+      whoKicker: 'Who it is for',
+      noteKicker: 'Before painting',
+      payLabel: 'Payment methods',
+      pays: paymentMethodLabels.en,
+      related: 'You may also want',
+      catalog: 'Catalog',
+      prices: 'Prices',
+    };
+
+const chips = [copy.chip1, copy.chip2, copy.chip3, copy.chip4, copy.chip5];
+
+const steps = [1, 2, 3, 4, 5].map((n, i) => ({
+  number: String(n).padStart(2, '0'),
+  title: t(`process.step${n}.title` as 'process.step1.title'),
+  body: t(`process.step${n}.desc` as 'process.step1.desc'),
+  chip: chips[i],
+  points: copy.points[i],
+}));
+
+const relatedLinks = [
+  ...entry.related.map((topic) => {
+    const rel = intentEntry(topic, lang);
+    return { href: intentPath(topic, lang), label: rel.linkLabel };
+  }),
+  { href: pricesPath(lang), label: copy.prices },
+  { href: catalogPath(lang), label: copy.catalog },
+];
+
+const icons = [
+  'M4 7h3l1.2-2h7.6L17 7h3v12H4V7zm8 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z',
+  'M5 19l2.2-5.2L15.8 5.2a1.6 1.6 0 0 1 2.2 0l.8.8a1.6 1.6 0 0 1 0 2.2L10.2 16.8 5 19z',
+  'M5 12.5l4.2 4.2L19 7',
+  'M14.5 4.5l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3zM7 13l.6 1.6L9.2 15l-1.6.5L7 17.2l-.6-1.7L4.8 15l1.6-.4L7 13z',
+  'M4 8l8-3 8 3-8 3-8-3zm0 0v8l8 3 8-3V8',
+];
+
+const extraJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${canonicalUrl}#webpage`,
+    url: canonicalUrl,
+    name: entry.metaTitle,
+    description: entry.metaDescription,
+    inLanguage: es ? 'es-CO' : 'en',
+    isPartOf: { '@id': `${SITE}/#website` },
+    about: { '@id': `${SITE}/#business` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t('prices.crumbHome'), item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: entry.linkLabel, item: canonicalUrl },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: entry.h1,
+    description: entry.metaDescription,
+    totalTime: 'P20D',
+    step: steps.map((step, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: step.title,
+      text: step.body,
+      ...(i === 0 ? { url: photoGuideUrl } : {}),
+    })),
+  },
+];
+
+const turnaround = leadTimeText(lang);
+---
+
+<BaseLayout
+  lang={lang}
+  title={entry.metaTitle}
+  description={entry.metaDescription}
+  ogUrl={canonicalUrl}
+  canonicalUrl={canonicalUrl}
+  alternateEs={alternateEs}
+  alternateEn={alternateEn}
+  markdownAlt={markdownAlt}
+  extraJsonLd={extraJsonLd}
+>
+  <Navbar lang={lang} />
+  <main class="how">
+    <header class="how-hero">
+      <div class="how-hero__blobs" aria-hidden="true">
+        <div class="how-blob how-blob--pink"></div>
+        <div class="how-blob how-blob--lilac"></div>
+        <div class="how-blob how-blob--blush"></div>
+        <div class="brush-deco brush-deco--medium brush-g" style="width:720px;height:180px;top:-40px;right:-120px;opacity:0.12;transform:rotate(-8deg)"></div>
+        <div class="brush-deco brush-deco--pale brush-h" style="width:520px;height:130px;bottom:40px;left:-80px;opacity:0.16;transform:rotate(6deg)"></div>
+        <div class="brush-deco brush-deco--gold brush-i" style="width:280px;height:72px;top:42%;left:8%;opacity:0.1;transform:rotate(-4deg)"></div>
+        <svg class="how-hero__gold how-hero__gold--top" viewBox="0 0 640 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 90 Q 160 20 320 78 T 640 36" stroke="#C9A227" stroke-width="1.5" stroke-dasharray="7 5" fill="none"/>
+        </svg>
+        <svg class="how-hero__gold how-hero__gold--bottom" viewBox="0 0 560 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 70 Q 180 16 340 64 T 560 40" stroke="#C9A227" stroke-width="1.5" stroke-dasharray="5 6" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="container how-hero__inner">
+        <nav class="how-crumb reveal" aria-label={copy.crumb}>
+          <a href={homePath(lang)}>{t('prices.crumbHome')}</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{entry.linkLabel}</span>
+        </nav>
+        <p class="section-label reveal">{copy.eyebrow}</p>
+        <h1 class="how-hero__title reveal">{entry.h1}</h1>
+        <p class="how-hero__lead reveal">{entry.lead}</p>
+        <div class="how-hero__ctas reveal">
+          <a href={waUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            {t('process.ctaBtn')}
+          </a>
+          <a href={catalogPath(lang)} class="btn btn-outline" data-astro-prefetch="viewport">{copy.ctaSecondary}</a>
+        </div>
+
+        <dl class="how-stats">
+          <div class="how-stat reveal">
+            <dt>{copy.statStepsHint}</dt>
+            <dd>{copy.statSteps}</dd>
+          </div>
+          <div class="how-stat reveal" style="transition-delay: 80ms">
+            <dt>{copy.statSketchHint}</dt>
+            <dd>{copy.statSketch}</dd>
+          </div>
+          <div class="how-stat reveal" style="transition-delay: 160ms">
+            <dt>{copy.statDaysHint}</dt>
+            <dd>{copy.statDays}</dd>
+          </div>
+          <div class="how-stat reveal" style="transition-delay: 240ms">
+            <dt>{copy.statPayHint}</dt>
+            <dd>{copy.statPay}</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="how-journey" aria-labelledby="how-journey-title">
+      <div class="container">
+        <div class="how-journey__head reveal">
+          <p class="section-label">{copy.journeyLabel}</p>
+          <h2 id="how-journey-title">{copy.journeyTitle}</h2>
+          <p>{copy.journeyLead}</p>
+        </div>
+
+        <div class="how-track" data-how-journey>
+          <div class="how-rail" aria-hidden="true"><div class="how-rail__fill" data-how-fill></div></div>
+          <ol class="how-steps">
+            {steps.map((step, i) => (
+              <li class="how-step" data-how-step={i}>
+                <article class="how-step__card">
+                  <p class="how-step__chip">{step.chip}</p>
+                  <h3>{step.title}</h3>
+                  <p class="how-step__body">{step.body}</p>
+                  {i === 0 && (
+                    <a class="how-step__guide" href={photoGuideHref}>{t('process.step1.guide')}</a>
+                  )}
+                  <ul>
+                    {step.points.map((point) => (
+                      <li>{point}</li>
+                    ))}
+                  </ul>
+                </article>
+                <div class="how-step__node" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path pathLength="1" d={icons[i]} />
+                  </svg>
+                </div>
+                <p class="how-step__num" aria-hidden="true">{step.number}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-facts" aria-label={copy.pricesKicker}>
+      <div class="container how-facts__grid">
+        <article class="how-fact reveal">
+          <p class="section-label">{copy.pricesKicker}</p>
+          <p class="how-fact__value">{fromPrice}</p>
+          <p class="how-fact__hint">{copy.pricesHint}</p>
+          <p>{copy.pricesBody}</p>
+          <a href={pricesPath(lang)} data-astro-prefetch="viewport">{copy.pricesLink}</a>
+        </article>
+
+        <article class="how-fact reveal" style="transition-delay: 90ms">
+          <p class="section-label">{copy.timeKicker}</p>
+          <p class="how-fact__value">{copy.statDays}</p>
+          <p class="how-fact__hint">{copy.timeHint}</p>
+          <p class="how-fact__split">{copy.timeSplit}</p>
+          <p>{turnaround}</p>
+          <ul class="how-pills" aria-label={copy.payLabel}>
+            {copy.pays.map((pay) => (
+              <li>{pay}</li>
+            ))}
+          </ul>
+        </article>
+
+        <article class="how-fact reveal" style="transition-delay: 180ms">
+          <p class="section-label">{copy.whereKicker}</p>
+          <p>{copy.whereBody}</p>
+          <ul class="how-pills">
+            {business.cities.map((city) => (
+              <li>{city}</li>
+            ))}
+            <li>{copy.rest}</li>
+          </ul>
+          <a href={waUrl} target="_blank" rel="noopener noreferrer">{copy.wherePhone}</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="how-note">
+      <div class="container how-note__grid">
+        <article class="how-panel reveal">
+          <p class="section-label">{copy.whoKicker}</p>
+          <p>{entry.whoFor}</p>
+        </article>
+        {entry.includedNote && (
+          <article class="how-panel how-panel--gold reveal" style="transition-delay: 100ms">
+            <p class="section-label">{copy.noteKicker}</p>
+            <p>{entry.includedNote}</p>
+          </article>
+        )}
+      </div>
+    </section>
+
+    <section class="how-cta">
+      <div class="container">
+        <div class="how-cta__inner reveal">
+          <div>
+            <h2>{t('process.ctaTitle')}</h2>
+            <p>{t('process.ctaDesc')}</p>
+          </div>
+          <a href={waUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            {t('process.ctaBtn')}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <nav class="how-related" aria-label={copy.related}>
+      <div class="container">
+        <h2 class="reveal">{copy.related}</h2>
+        <ul>
+          {relatedLinks.map((link, i) => (
+            <li class="reveal" style={`transition-delay: ${i * 70}ms`}>
+              <a href={link.href} data-astro-prefetch="viewport">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  </main>
+  <Footer lang={lang} />
+  <WhatsAppFAB lang={lang} />
+</BaseLayout>
+
+<script>
+  function bindHowJourney() {
+    const win = window as Window & { __howScroll?: () => void };
+    if (win.__howScroll) {
+      window.removeEventListener('scroll', win.__howScroll);
+      window.removeEventListener('resize', win.__howScroll);
+      win.__howScroll = undefined;
+    }
+
+    const root = document.querySelector<HTMLElement>('[data-how-journey]');
+    if (!root) return;
+
+    const fill = root.querySelector<HTMLElement>('[data-how-fill]');
+    const rail = root.querySelector<HTMLElement>('.how-rail');
+    const steps = Array.from(root.querySelectorAll<HTMLElement>('[data-how-step]'));
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const placeRail = () => {
+      if (!rail || steps.length < 2) return;
+      const track = root.getBoundingClientRect();
+      const first = steps[0].querySelector('.how-step__node')?.getBoundingClientRect();
+      const last = steps[steps.length - 1].querySelector('.how-step__node')?.getBoundingClientRect();
+      if (!first || !last) return;
+      rail.style.top = `${first.top + first.height / 2 - track.top}px`;
+      rail.style.bottom = `${track.bottom - (last.top + last.height / 2)}px`;
+    };
+
+    const paint = (progress: number) => {
+      placeRail();
+      if (fill) fill.style.transform = `scaleY(${progress})`;
+      steps.forEach((step) => {
+        const top = step.getBoundingClientRect().top;
+        step.classList.toggle('is-lit', top < window.innerHeight * 0.92);
+      });
+    };
+
+    if (reduce) {
+      paint(1);
+      steps.forEach((step) => step.classList.add('is-lit'));
+      return;
+    }
+
+    root.classList.add('is-armed');
+
+    const onScroll = () => {
+      const rect = root.getBoundingClientRect();
+      const start = window.innerHeight * 0.62;
+      const traveled = start - rect.top;
+      const progress = Math.min(1, Math.max(0, traveled / Math.max(root.offsetHeight, 1)));
+      paint(progress);
+    };
+
+    win.__howScroll = onScroll;
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  }
+
+  document.addEventListener('astro:page-load', bindHowJourney);
+</script>
+
+<style>
+  .how {
+    overflow: clip;
+  }
+
+  .how-hero {
+    position: relative;
+    padding: clamp(108px, 14vw, 148px) 0 clamp(36px, 5vw, 64px);
+    overflow: hidden;
+    background: var(--color-bg);
+  }
+
+  .how-hero__blobs {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .how-blob {
+    position: absolute;
+    filter: blur(52px);
+    animation: how-float 14s ease-in-out infinite;
+  }
+
+  .how-blob--pink {
+    width: 460px;
+    height: 380px;
+    background: #f5a0c0;
+    opacity: 0.42;
+    border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%;
+    top: -90px;
+    right: -40px;
+  }
+
+  .how-blob--lilac {
+    width: 340px;
+    height: 320px;
+    background: #c8a8d8;
+    opacity: 0.4;
+    border-radius: 40% 60% 55% 45% / 50% 60% 40% 50%;
+    top: 28%;
+    left: -80px;
+    animation-delay: -4s;
+  }
+
+  .how-blob--blush {
+    width: 260px;
+    height: 220px;
+    background: #ea99d5;
+    opacity: 0.28;
+    border-radius: 50% 50% 38% 62% / 55% 45% 55% 45%;
+    bottom: 10%;
+    right: 18%;
+    animation-delay: -8s;
+  }
+
+  .how-hero__gold {
+    position: absolute;
+    height: 120px;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .how-hero__gold--top {
+    top: 64px;
+    right: -20px;
+    width: min(46vw, 560px);
+  }
+
+  .how-hero__gold--bottom {
+    bottom: -48px;
+    left: -90px;
+    width: min(28vw, 320px);
+  }
+
+  .how-hero__gold path {
+    stroke-dashoffset: 0;
+    animation: how-dash 18s linear infinite;
+  }
+
+  .how-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 920px;
+  }
+
+  .how-crumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 22px;
+  }
+
+  .how-crumb a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .how-crumb a:hover {
+    text-decoration: underline;
+  }
+
+  .how-hero__title {
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    max-width: 16ch;
+    margin: 0 0 18px;
+  }
+
+  .how-hero__lead {
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 62ch;
+    margin-bottom: 28px;
+  }
+
+  .how-hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: clamp(36px, 5vw, 56px);
+  }
+
+  .how-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+  }
+
+  .how-stat {
+    margin: 0;
+    padding: 16px 18px 14px;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+  }
+
+  .how-stat dt {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    margin-bottom: 6px;
+  }
+
+  .how-stat dd {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.45rem, 2vw, 1.85rem);
+    line-height: 1;
+    color: var(--color-text);
+  }
+
+  .how-journey {
+    position: relative;
+    padding: clamp(48px, 7vw, 96px) 0 clamp(24px, 4vw, 48px);
+  }
+
+  .how-journey__head {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto clamp(48px, 6vw, 72px);
+  }
+
+  .how-journey__head h2 {
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .how-journey__head p {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .how-track {
+    position: relative;
+  }
+
+  .how-rail {
+    position: absolute;
+    top: 36px;
+    bottom: 36px;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: var(--color-border);
+    border-radius: 2px;
+  }
+
+  .how-rail__fill {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, var(--color-gold), var(--color-accent));
+    transform: scaleY(0);
+    transform-origin: top center;
+  }
+
+  .how-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 4vw, 48px);
+  }
+
+  .how-step {
+    display: grid;
+    grid-template-columns: 1fr 88px 1fr;
+    gap: clamp(16px, 3vw, 36px);
+    align-items: center;
+  }
+
+  .how-step__card {
+    grid-column: 1;
+    grid-row: 1;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid var(--color-border);
+    border-radius: 22px;
+    padding: clamp(22px, 3vw, 32px);
+    box-shadow: 0 16px 40px rgba(137, 70, 166, 0.06);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.3s ease;
+  }
+
+  .how-step:nth-child(even) .how-step__card {
+    grid-column: 3;
+  }
+
+  .how-track.is-armed .how-step:not(.is-lit) .how-step__card {
+    opacity: 0;
+    transform: translateX(-36px);
+  }
+
+  .how-track.is-armed .how-step:nth-child(even):not(.is-lit) .how-step__card {
+    transform: translateX(36px);
+  }
+
+  .how-track.is-armed .how-step.is-lit .how-step__card {
+    opacity: 1;
+    transform: none;
+  }
+
+  .how-step__card:hover {
+    box-shadow: 0 22px 48px rgba(137, 70, 166, 0.12);
+  }
+
+  .how-step__chip {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--color-bg-alt);
+    color: var(--color-accent-hover);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .how-step__card h3 {
+    font-size: clamp(1.7rem, 2.4vw, 2.15rem);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .how-step__body {
+    color: var(--color-text);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  .how-step__guide {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-weight: 500;
+    color: var(--color-accent);
+    text-underline-offset: 3px;
+  }
+
+  .how-step__guide:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .how-step__card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .how-step__card li {
+    position: relative;
+    padding-left: 18px;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    font-size: 0.98rem;
+  }
+
+  .how-step__card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-gold);
+  }
+
+  .how-step__node {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--color-bg);
+    border: 1.5px solid var(--color-border);
+    color: var(--color-accent);
+    position: relative;
+    z-index: 1;
+    transition:
+      transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+      border-color 0.4s ease,
+      box-shadow 0.4s ease,
+      background 0.4s ease;
+  }
+
+  .how-track.is-armed .how-step:not(.is-lit) .how-step__node {
+    transform: scale(0.86);
+  }
+
+  .how-step.is-lit .how-step__node {
+    transform: scale(1);
+    background: #fff;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 7px rgba(183, 98, 193, 0.14);
+  }
+
+  .how-step__node svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .how-step__node path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.9s ease 0.12s;
+  }
+
+  .how-track.is-armed .how-step:not(.is-lit) .how-step__node path {
+    stroke-dashoffset: 1;
+  }
+
+  .how-step.is-lit .how-step__node path {
+    stroke-dashoffset: 0;
+  }
+
+  .how-step__num {
+    grid-row: 1;
+    grid-column: 3;
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(3.2rem, 5vw, 4.6rem);
+    line-height: 0.85;
+    font-variant-numeric: lining-nums;
+    color: var(--color-gold);
+    opacity: 0.55;
+    justify-self: start;
+    transition: opacity 0.5s ease;
+  }
+
+  .how-step:nth-child(even) .how-step__num {
+    grid-column: 1;
+    justify-self: end;
+  }
+
+  .how-step.is-lit .how-step__num {
+    opacity: 0.34;
+  }
+
+  .how-facts {
+    padding: clamp(28px, 5vw, 64px) 0;
+  }
+
+  .how-facts__grid,
+  .how-note__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .how-note__grid {
+    grid-template-columns: 1.3fr 0.7fr;
+  }
+
+  .how-fact,
+  .how-panel {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid var(--color-border);
+    border-radius: 22px;
+    padding: clamp(22px, 3vw, 32px);
+  }
+
+  .how-fact__value {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    line-height: 1;
+    margin: 4px 0 8px;
+  }
+
+  .how-fact__hint,
+  .how-fact__split {
+    color: var(--color-accent-hover);
+    font-size: 0.92rem;
+    margin-bottom: 12px;
+  }
+
+  .how-fact p,
+  .how-panel p {
+    line-height: 1.65;
+    color: var(--color-text-muted);
+  }
+
+  .how-fact .section-label,
+  .how-panel .section-label {
+    color: var(--color-accent);
+  }
+
+  .how-fact a,
+  .how-related a {
+    color: var(--color-accent-hover);
+    font-weight: 500;
+  }
+
+  .how-fact a {
+    display: inline-block;
+    margin-top: 14px;
+  }
+
+  .how-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+  }
+
+  .how-pills li {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    font-size: 0.875rem;
+    color: var(--color-text);
+  }
+
+  .how-note {
+    padding-bottom: clamp(12px, 3vw, 28px);
+  }
+
+  .how-panel--gold {
+    background:
+      linear-gradient(160deg, rgba(201, 162, 39, 0.14), rgba(255, 255, 255, 0.8) 42%),
+      #fff;
+  }
+
+  .how-cta {
+    padding: clamp(12px, 3vw, 28px) 0 clamp(36px, 5vw, 64px);
+  }
+
+  .how-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding: clamp(28px, 4vw, 48px);
+    border-radius: 24px;
+    background:
+      radial-gradient(420px 180px at 100% 0%, rgba(234, 153, 213, 0.45), transparent 70%),
+      linear-gradient(135deg, #fae8f8, #fff5fb 55%, #fff);
+    border: 1px solid var(--color-border);
+  }
+
+  .how-cta__inner h2 {
+    font-size: clamp(2rem, 3.4vw, 2.8rem);
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+
+  .how-cta__inner p {
+    color: var(--color-text-muted);
+    max-width: 46ch;
+  }
+
+  .how-related {
+    padding: 0 0 clamp(72px, 8vw, 110px);
+  }
+
+  .how-related h2 {
+    font-size: clamp(1.6rem, 2.5vw, 2rem);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .how-related ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .how-related a {
+    display: inline-flex;
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .how-related a:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+    background: #fff;
+  }
+
+  @keyframes how-float {
+    0%,
+    100% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(14px, -18px, 0) scale(1.05); }
+  }
+
+  @keyframes how-dash {
+    to { stroke-dashoffset: -160; }
+  }
+
+  @media (max-width: 900px) {
+    .how-stats,
+    .how-facts__grid,
+    .how-note__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .how-rail {
+      left: 28px;
+      transform: none;
+    }
+
+    .how-step {
+      grid-template-columns: 56px 1fr;
+      gap: 14px;
+    }
+
+    .how-step__node {
+      grid-column: 1;
+      width: 56px;
+      height: 56px;
+    }
+
+    .how-step__card,
+    .how-step:nth-child(even) .how-step__card {
+      grid-column: 2;
+    }
+
+    .how-track.is-armed .how-step:not(.is-lit) .how-step__card,
+    .how-track.is-armed .how-step:nth-child(even):not(.is-lit) .how-step__card {
+      transform: translateY(24px);
+    }
+
+    .how-step__num {
+      display: none;
+    }
+
+    .how-cta__inner .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .how-blob,
+    .how-hero__gold path,
+    .how-step__card,
+    .how-step__node,
+    .how-step__node path {
+      animation: none;
+      transition: none;
+    }
+
+    .how-step__card,
+    .how-step:nth-child(even) .how-step__card {
+      opacity: 1;
+      transform: none;
+    }
+
+    .how-step__node path {
+      stroke-dashoffset: 0;
+    }
+  }
+</style>

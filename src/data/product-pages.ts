@@ -30,7 +30,10 @@ export interface ProductEntry {
   slug: string;
   /** Route slug in the other language (reciprocal hreflang). */
   altSlug: string;
-  priceSource: PriceSource;
+  /** Null when the price is not published yet. The page then shows priceNote and skips the offer schema. */
+  priceSource: PriceSource | null;
+  /** Shown instead of a price table when priceSource is null. */
+  priceNote?: string;
   /** Catalog line ids feeding the gallery. */
   lineIds: CatalogLineId[];
   /** Other product pages to cross-link. */
@@ -51,11 +54,19 @@ export interface ProductEntry {
 
 type Content = Pick<
   ProductEntry,
-  'linkLabel' | 'category' | 'h1' | 'metaTitle' | 'metaDescription' | 'lead' | 'whatIncluded' | 'faq'
+  | 'linkLabel'
+  | 'category'
+  | 'h1'
+  | 'metaTitle'
+  | 'metaDescription'
+  | 'lead'
+  | 'whatIncluded'
+  | 'faq'
+  | 'priceNote'
 >;
 
 interface ProductConfig {
-  priceSource: PriceSource;
+  priceSource: PriceSource | null;
   lineIds: CatalogLineId[];
   relatedProducts: ProductKey[];
   relatedIntents: IntentTopic[];
@@ -65,65 +76,65 @@ interface ProductConfig {
 const productConfig: Record<ProductKey, ProductConfig> = {
   paintings: {
     priceSource: 'canvas',
-    lineIds: ['cuadros-mascotas', 'cuadros-personalizados'],
-    relatedProducts: ['bases', 'cases'],
-    relatedIntents: ['pets', 'dogs', 'cats'],
+    lineIds: ['cuadros-mascotas'],
+    relatedProducts: ['sizes', 'bases', 'cases', 'magnets'],
+    relatedIntents: ['pets', 'dogs', 'cats', 'memorial'],
     content: {
       es: {
         linkLabel: 'Cuadros en acrílico',
         category: 'Cuadros en acrílico',
-        h1: 'Cuadros en acrílico personalizados, pintados a mano en Colombia',
-        metaTitle: 'Cuadros en acrílico personalizados | Sac_Artx',
+        h1: 'Cuadros en acrílico de tu mascota, pintados a mano',
+        metaTitle: 'Cuadros en acrílico de tu mascota | Sac_Artx',
         metaDescription:
-          'Cuadros en acrílico pintados a mano desde tu foto: retratos de mascotas y paisajes. Encargo por WhatsApp, boceto previo y envío a toda Colombia.',
-        lead: 'Sac_Artx pinta a mano cuadros en acrílico sobre lienzo por encargo: retratos de mascotas y paisajes personalizados desde tu foto, con boceto previo y envío a toda Colombia.',
+          'Pinto cuadros en acrílico de tu mascota desde la foto. Te mando un boceto antes de pintar y envío a toda Colombia.',
+        lead: 'Me mandas la foto y la pinto pelo a pelo en acrílico sobre lienzo. Antes de empezar te mando un boceto para que me digas si se parece.',
         whatIncluded: [
-          'Cuadro pintado a mano en acrílico sobre lienzo.',
-          'Boceto digital previo con revisiones sin costo.',
-          'Foto de aprobación final antes del envío.',
-          'Embalaje seguro y número de seguimiento dentro de Colombia.',
+          'Acrílico sobre lienzo, desde la foto de tu mascota.',
+          'Incluye 1 mascota. Si quieres otra, el valor cambia según el tamaño.',
+          'Boceto por WhatsApp antes de pintar. Los cambios del boceto no se cobran.',
+          'Una foto del cuadro terminado, antes de enviarlo.',
         ],
         faq: [
           {
             q: '¿El precio incluye el envío?',
-            a: 'No. Los precios corresponden al encargo en pesos colombianos; el envío se cobra aparte según el destino dentro de Colombia.',
+            a: 'No. El precio es del cuadro. El envío se cobra aparte, según la ciudad.',
           },
           {
-            q: '¿Cómo hago el encargo?',
-            a: 'Escríbenos por WhatsApp con tu foto y el tamaño que prefieres. Antes de pintar te enviamos un boceto digital y hacemos las revisiones que necesites sin costo.',
+            q: '¿Cómo lo pido?',
+            a: 'Me escribes por WhatsApp con la foto y el tamaño. Te mando el boceto y lo ajustamos si hace falta.',
           },
           {
-            q: '¿Pintan mascotas que ya no están?',
-            a: 'Sí. Creamos retratos en memoria a partir de las fotos que tengas, con todo el cuidado que merece el recuerdo.',
+            q: '¿Pintas mascotas que ya no están?',
+            a: 'Sí. Las pinto con las fotos que todavía guardas.',
           },
         ],
       },
       en: {
         linkLabel: 'Acrylic paintings',
         category: 'Acrylic paintings',
-        h1: 'Custom acrylic paintings, hand-painted in Colombia',
-        metaTitle: 'Custom acrylic paintings from photo | Sac_Artx',
+        h1: 'Acrylic paintings of your pet, from your photo',
+        metaTitle: 'Acrylic pet paintings from your photo | Sac_Artx',
         metaDescription:
-          'Hand-painted acrylic paintings from your photo: custom pet portraits and landscapes. Commission on WhatsApp, free sketch, shipping across Colombia.',
-        lead: 'Sac_Artx hand-paints custom acrylic paintings on canvas to order: pet portraits and landscapes from your photo, with a sketch beforehand and shipping across Colombia.',
+          'I paint acrylic canvases of your pet from a photo. I send a sketch before I paint, and I ship across Colombia.',
+        lead: 'Send me the photo and I paint it, hair by hair, in acrylic on canvas. Before I start I send a sketch so you can tell me if it looks like them.',
         whatIncluded: [
-          'Hand-painted acrylic painting on canvas.',
-          'Digital sketch beforehand with free revisions.',
-          'Final approval photo before shipping.',
-          'Protective packaging and a tracking number within Colombia.',
+          'Acrylic on canvas, from a photo of your pet.',
+          'Includes 1 pet. Another pet changes the price, depending on the size.',
+          'A WhatsApp sketch before I paint. Sketch changes are free.',
+          'A photo of the finished painting before I ship it.',
         ],
         faq: [
           {
             q: 'Does the price include shipping?',
-            a: 'No. Prices are for the commission in Colombian pesos; shipping is charged separately based on the destination within Colombia.',
+            a: 'No. The price is for the painting. Shipping is charged separately, based on the city.',
           },
           {
-            q: 'How do I place an order?',
-            a: 'Message us on WhatsApp with your photo and the size you want. Before painting we send a digital sketch and make any revisions you need at no extra charge.',
+            q: 'How do I order one?',
+            a: 'Message me on WhatsApp with the photo and the size. I send the sketch, and we adjust it if it needs to.',
           },
           {
             q: 'Do you paint pets that have passed away?',
-            a: 'Yes. We create memorial portraits from the photos you have, with all the care the memory deserves.',
+            a: 'Yes. I paint them from the photos you still have.',
           },
         ],
       },
@@ -138,50 +149,50 @@ const productConfig: Record<ProductKey, ProductConfig> = {
       es: {
         linkLabel: 'Bases acrílicas',
         category: 'Bases acrílicas',
-        h1: 'Bases acrílicas personalizadas con tu retrato en Colombia',
-        metaTitle: 'Bases acrílicas personalizadas | Sac_Artx',
+        h1: 'Bases acrílicas con tu retrato y el nombre',
+        metaTitle: 'Bases acrílicas con retrato y nombre | Sac_Artx',
         metaDescription:
-          'Bases acrílicas con tu retrato sobre metacrilato y capa de resina. Incluyen llavero corazón con nombre. Encargo por WhatsApp y envío a toda Colombia.',
-        lead: 'Las bases acrílicas de Sac_Artx son retratos pintados a mano sobre metacrilato con capa de resina, e incluyen un llavero corazón con el nombre. Se hacen por encargo desde tu foto.',
+          'Pinto tu retrato en una base acrílica, con resina y un llavero corazón con el nombre. Escríbeme por WhatsApp. Envío en Colombia.',
+        lead: 'Pinto el retrato sobre metacrilato, lo cubro con resina y te hago un llavero corazón con el nombre.',
         whatIncluded: [
-          'Retrato pintado a mano sobre base de metacrilato.',
-          'Capa de resina protectora.',
-          'Llavero acrílico corazón con el nombre.',
-          'Embalaje seguro y número de seguimiento dentro de Colombia.',
+          'El retrato, pintado a mano desde tu foto.',
+          'Resina por encima de la base.',
+          'Llavero corazón con el nombre.',
+          'Una foto de cómo quedó, antes de enviarla.',
         ],
         faq: [
           {
-            q: '¿Qué incluye la base acrílica?',
-            a: 'El retrato sobre metacrilato con capa de resina y un llavero corazón con el nombre. El envío se cobra aparte según el destino dentro de Colombia.',
+            q: '¿Qué trae la base?',
+            a: 'El retrato, la resina y el llavero con el nombre. El envío se cobra aparte, según la ciudad.',
           },
           {
-            q: '¿Cómo hago el encargo?',
-            a: 'Escríbenos por WhatsApp con tu foto y el tamaño que prefieres. Antes de pintar te enviamos un boceto digital y hacemos las revisiones que necesites sin costo.',
+            q: '¿Cómo la pido?',
+            a: 'Me escribes por WhatsApp con la foto, el tamaño y el nombre del llavero. Te mando un boceto antes de pintar.',
           },
         ],
       },
       en: {
         linkLabel: 'Acrylic bases',
         category: 'Acrylic bases',
-        h1: 'Custom acrylic bases with your portrait in Colombia',
-        metaTitle: 'Custom acrylic bases | Sac_Artx',
+        h1: 'Acrylic bases with your portrait and the name',
+        metaTitle: 'Acrylic bases with portrait and name | Sac_Artx',
         metaDescription:
-          'Custom acrylic bases: your portrait on methacrylate with a resin coat and a heart keychain with the name. Commission on WhatsApp, shipping in Colombia.',
-        lead: 'Sac_Artx acrylic bases are portraits hand-painted on methacrylate with a resin coat, and they include a heart keychain with the name. Each one is made to order from your photo.',
+          'I paint your portrait on an acrylic base, with resin and a heart keychain with the name. Message me on WhatsApp. Shipping in Colombia.',
+        lead: 'I paint the portrait on methacrylate, coat it with resin, and make you a heart keychain with the name.',
         whatIncluded: [
-          'Portrait hand-painted on a methacrylate base.',
-          'Protective resin coat.',
-          'Heart-shaped acrylic keychain with the name.',
-          'Protective packaging and a tracking number within Colombia.',
+          'The portrait, hand-painted from your photo.',
+          'Resin over the base.',
+          'A heart keychain with the name.',
+          'A photo of the finished piece before I ship it.',
         ],
         faq: [
           {
-            q: 'What does the acrylic base include?',
-            a: 'The portrait on methacrylate with a resin coat and a heart keychain with the name. Shipping is charged separately based on the destination within Colombia.',
+            q: 'What comes with the base?',
+            a: 'The portrait, the resin, and the keychain with the name. Shipping is charged separately, based on the city.',
           },
           {
-            q: 'How do I place an order?',
-            a: 'Message us on WhatsApp with your photo and the size you want. Before painting we send a digital sketch and make any revisions you need at no extra charge.',
+            q: 'How do I order one?',
+            a: 'Message me on WhatsApp with the photo, the size, and the name for the keychain. I send a sketch before I paint.',
           },
         ],
       },
@@ -196,58 +207,188 @@ const productConfig: Record<ProductKey, ProductConfig> = {
       es: {
         linkLabel: 'Fundas personalizadas',
         category: 'Fundas de celular',
-        h1: 'Fundas personalizadas para celular, pintadas a mano en Colombia',
+        h1: 'Fundas personalizadas para tu celular',
         metaTitle: 'Fundas personalizadas para celular | Sac_Artx',
         metaDescription:
-          'Fundas personalizadas para celular: con tu mascota, flores prensadas, anime o tu diseño. Protegidas con resina. Encargo por WhatsApp y envío en Colombia.',
-        lead: 'Sac_Artx crea fundas personalizadas para celular por encargo: con tu mascota pintada a mano, flores prensadas, anime o tu propio diseño, protegidas con una capa de resina.',
+          'Pinto fundas para celular: tu mascota, flores prensadas, anime o tu diseño, selladas con resina. Escríbeme por WhatsApp.',
+        lead: 'Pinto la funda de tu celular y la sello con resina. Puede ir tu mascota, flores prensadas, un anime o un diseño que me pases.',
         whatIncluded: [
-          'Funda personalizada con tu mascota, flores, anime o diseño a pedido.',
-          'Capa de resina protectora.',
-          'Boceto o referencia previa según el diseño.',
-          'Embalaje seguro y número de seguimiento dentro de Colombia.',
+          'La funda con el diseño que elijas.',
+          'Resina por encima, para proteger la pintura.',
+          'Te confirmo el modelo del celular antes de empezar.',
         ],
         faq: [
           {
-            q: '¿Qué diseños puedo pedir en la funda?',
-            a: 'Tu mascota pintada a mano, flores prensadas, personajes de anime o tu propio diseño. Pregúntanos por los colores de flores disponibles.',
+            q: '¿Qué puedo pedir?',
+            a: 'Tu mascota, flores prensadas, un personaje de anime o un diseño tuyo. Si quieres flores, pregúntame qué colores tengo.',
           },
           {
             q: '¿El precio incluye el envío?',
-            a: 'No. Los precios corresponden al encargo en pesos colombianos; el envío se cobra aparte según el destino dentro de Colombia.',
+            a: 'No. El precio es de la funda. El envío se cobra aparte, según la ciudad.',
           },
           {
-            q: '¿Cómo hago el encargo?',
-            a: 'Escríbenos por WhatsApp con el modelo de tu celular y el diseño que quieres. Te confirmamos la disponibilidad antes de empezar.',
+            q: '¿Cómo la pido?',
+            a: 'Me escribes el modelo del celular y qué quieres pintar. Te digo si lo tengo antes de empezar.',
           },
         ],
       },
       en: {
         linkLabel: 'Custom phone cases',
         category: 'Phone cases',
-        h1: 'Custom phone cases, hand-painted in Colombia',
+        h1: 'Custom cases for your phone',
         metaTitle: 'Custom phone cases | Sac_Artx',
         metaDescription:
-          'Custom phone cases: your pet hand-painted, pressed flowers, anime or your own design, sealed with resin. Commission on WhatsApp, shipping in Colombia.',
-        lead: 'Sac_Artx makes custom phone cases to order: your pet hand-painted, pressed flowers, anime art or your own design, each sealed with a protective resin coat.',
+          'I paint phone cases: your pet, pressed flowers, anime, or your design, sealed with resin. Message me on WhatsApp.',
+        lead: 'I paint your phone case and seal it with resin. It can be your pet, pressed flowers, an anime character, or a design you send me.',
         whatIncluded: [
-          'Custom case with your pet, flowers, anime or a made-to-order design.',
-          'Protective resin coat.',
-          'Sketch or reference beforehand depending on the design.',
-          'Protective packaging and a tracking number within Colombia.',
+          'The case with the design you pick.',
+          'Resin on top, to protect the paint.',
+          'I confirm your phone model before I start.',
         ],
         faq: [
           {
-            q: 'What designs can I order on the case?',
-            a: 'Your pet hand-painted, pressed flowers, anime characters or your own design. Ask us which flower colors are available.',
+            q: 'What can I ask for?',
+            a: 'Your pet, pressed flowers, an anime character, or a design of yours. If you want flowers, ask me which colors I have.',
           },
           {
             q: 'Does the price include shipping?',
-            a: 'No. Prices are for the commission in Colombian pesos; shipping is charged separately based on the destination within Colombia.',
+            a: 'No. The price is for the case. Shipping is charged separately, based on the city.',
           },
           {
-            q: 'How do I place an order?',
-            a: 'Message us on WhatsApp with your phone model and the design you want. We confirm availability before we start.',
+            q: 'How do I order one?',
+            a: 'Message me the phone model and what you want painted. I tell you if I have that model before I start.',
+          },
+        ],
+      },
+    },
+  },
+  sizes: {
+    priceSource: 'canvas',
+    lineIds: ['cuadros-personalizados'],
+    relatedProducts: ['paintings', 'bases', 'cases'],
+    relatedIntents: ['pets'],
+    content: {
+      es: {
+        linkLabel: 'Cuadros de diferentes tamaños',
+        category: 'Cuadros en acrílico',
+        h1: 'Cuadros de diferentes tamaños, del más chiquito al más grande',
+        metaTitle: 'Cuadros de diferentes tamaños | Sac_Artx',
+        metaDescription:
+          'Pinto lienzos de 12×18 cm a 40×50 cm: paisajes y encargos a medida. El precio de cada tamaño está en la página. Envío en Colombia.',
+        lead: 'Hay lienzos de 12×18 cm, 20×25 cm, 28×35 cm y 40×50 cm, y un corazón de 20×20 cm. Las fotos de esta página son paisajes y encargos a medida.',
+        whatIncluded: [
+          'El lienzo, pintado a mano en el tamaño que elijas.',
+          'Boceto por WhatsApp antes de pintar. Los cambios del boceto no se cobran.',
+          'Si es un paisaje o un encargo con más detalle, te digo el precio antes de empezar.',
+        ],
+        faq: [
+          {
+            q: '¿Qué tamaños hay?',
+            a: '12×18 cm, 20×25 cm, 28×35 cm y 40×50 cm. El corazón mide 20×20 cm. Si necesitas otro, escríbeme y lo vemos.',
+          },
+          {
+            q: '¿Un paisaje cuesta lo mismo que un retrato?',
+            a: 'El retrato de mascota va con la tabla de abajo. Un paisaje o un encargo con más detalle lo cotizo según el tamaño.',
+          },
+          {
+            q: '¿El precio incluye el envío?',
+            a: 'No. El precio es del cuadro. El envío se cobra aparte, según la ciudad.',
+          },
+        ],
+      },
+      en: {
+        linkLabel: 'Paintings in different sizes',
+        category: 'Acrylic paintings',
+        h1: 'Paintings in different sizes, from the smallest to the largest',
+        metaTitle: 'Paintings in different sizes | Sac_Artx',
+        metaDescription:
+          'I paint canvases from 12×18 cm to 40×50 cm: landscapes and made-to-order pieces. Each size is priced on the page. Shipping in Colombia.',
+        lead: 'Canvases come in 12×18 cm, 20×25 cm, 28×35 cm, and 40×50 cm, plus a 20×20 cm heart. The photos on this page are landscapes and made-to-order pieces.',
+        whatIncluded: [
+          'The canvas, hand-painted in the size you pick.',
+          'A WhatsApp sketch before I paint. Sketch changes are free.',
+          'For a landscape or a piece with more detail, I tell you the price before I start.',
+        ],
+        faq: [
+          {
+            q: 'Which sizes are there?',
+            a: '12×18 cm, 20×25 cm, 28×35 cm, and 40×50 cm. The heart is 20×20 cm. If you need another size, message me and we will look at it.',
+          },
+          {
+            q: 'Does a landscape cost the same as a portrait?',
+            a: 'A pet portrait follows the price list below. I quote a landscape, or a piece with more detail, by size.',
+          },
+          {
+            q: 'Does the price include shipping?',
+            a: 'No. The price is for the painting. Shipping is charged separately, based on the city.',
+          },
+        ],
+      },
+    },
+  },
+  magnets: {
+    priceSource: null,
+    lineIds: [],
+    relatedProducts: ['paintings', 'cases'],
+    relatedIntents: ['pets'],
+    content: {
+      es: {
+        linkLabel: 'Imanes de lienzo',
+        category: 'Imanes de lienzo',
+        h1: 'Imanes de lienzo con tu mascota',
+        metaTitle: 'Imanes de lienzo pintados a mano | Sac_Artx',
+        metaDescription:
+          'Pinto tu mascota en un mini lienzo de 7,6 cm con imán. Lo pegas en la nevera. Escríbeme por WhatsApp.',
+        lead: 'Pinto tu mascota en un mini lienzo de 7,6 × 7,6 cm. Atrás lleva un imán y lo pegas en la nevera.',
+        priceNote:
+          'El precio de este imán te lo digo por WhatsApp, antes de empezar. El envío se cobra aparte.',
+        whatIncluded: [
+          'Mini lienzo de algodón de 7,6 × 7,6 cm, pintado a mano en acrílico.',
+          'Imán atrás, listo para pegar.',
+          'Te llega pintado por mí, desde tu foto.',
+        ],
+        faq: [
+          {
+            q: '¿De qué tamaño es?',
+            a: 'Mide 7,6 × 7,6 cm, que son 3 × 3 pulgadas. Cabe en la nevera.',
+          },
+          {
+            q: '¿Puedo pedir cualquier mascota?',
+            a: 'Sí. Perro, gato, loro, conejo, caballo, hámster, paloma o la que tengas.',
+          },
+          {
+            q: '¿Me llega en blanco para pintarlo yo?',
+            a: 'No. Te llega pintado por mí, desde tu foto.',
+          },
+        ],
+      },
+      en: {
+        linkLabel: 'Canvas magnets',
+        category: 'Canvas magnets',
+        h1: 'Canvas magnets with your pet',
+        metaTitle: 'Hand-painted canvas magnets | Sac_Artx',
+        metaDescription:
+          'I paint your pet on a 7.6 cm mini canvas with a magnet. It sticks on the fridge. Message me on WhatsApp.',
+        lead: 'I paint your pet on a 7.6 × 7.6 cm mini canvas. A magnet on the back holds it on the fridge.',
+        priceNote:
+          'I will tell you the price of this magnet on WhatsApp, before I start. Shipping is charged separately.',
+        whatIncluded: [
+          'A 7.6 × 7.6 cm cotton mini canvas, hand-painted in acrylic.',
+          'A magnet on the back, ready to stick.',
+          'It arrives painted by me, from your photo.',
+        ],
+        faq: [
+          {
+            q: 'How big is it?',
+            a: 'It is 7.6 × 7.6 cm, which is 3 × 3 inches. It fits on the fridge.',
+          },
+          {
+            q: 'Can I ask for any pet?',
+            a: 'Yes. Dog, cat, parrot, rabbit, horse, hamster, pigeon, or whichever you have.',
+          },
+          {
+            q: 'Does it arrive blank for me to paint?',
+            a: 'No. It arrives painted by me, from your photo.',
           },
         ],
       },

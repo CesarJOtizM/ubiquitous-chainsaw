@@ -80,7 +80,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'Este sitio no pide datos de pago ni documentos. El anticipo y el saldo se acuerdan por fuera, por Nequi, Daviplata, transferencia o efectivo.',
+                text: 'Este sitio no pide datos de pago ni documentos. El anticipo y el saldo se acuerdan por fuera, por Nequi, Daviplata, transferencia bancaria, llave Bre-B o tarjeta de crédito.',
               },
             ],
           },
@@ -330,7 +330,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'This site does not ask for payment details or identity documents. The deposit and the balance are arranged off the site, by Nequi, Daviplata, bank transfer, or cash.',
+                text: 'This site does not ask for payment details or identity documents. The deposit and the balance are arranged off the site, by Nequi, Daviplata, bank transfer, Bre-B key, or credit card.',
               },
             ],
           },

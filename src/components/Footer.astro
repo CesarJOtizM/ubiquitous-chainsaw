@@ -25,21 +25,23 @@ const links = [
   { href: pricesPath(lang), label: t('prices.navLabel') },
   { href: blogPath(lang), label: t('footer.nav.blog') },
   { href: aboutPath(lang), label: t('footer.nav.about') },
-  { href: `${home}#proceso`, label: t('footer.nav.process') },
+  { href: intentPath('how', lang), label: t('nav.how') },
   { href: `${home}#faq`, label: t('footer.nav.faq') },
   { href: `${home}#contacto`, label: t('footer.nav.contact') },
 ];
 
-const productLinks = productKeys.map((key) => ({
+const productLinks: { href: string; label: string; external?: boolean }[] = productKeys.map((key) => ({
   href: productPath(key, lang),
   label: productEntry(key, lang).linkLabel,
 }));
 
 const guidesTitle = lang === 'en' ? 'Guides' : 'Guías';
-const guideLinks = intentTopics.map((topic) => ({
-  href: intentPath(topic, lang),
-  label: intentEntry(topic, lang).linkLabel,
-}));
+const guideLinks = intentTopics
+  .filter((topic) => topic !== 'how' && topic !== 'dogs' && topic !== 'cats')
+  .map((topic) => ({
+    href: intentPath(topic, lang),
+    label: intentEntry(topic, lang).linkLabel,
+  }));
 ---
 
 <footer class="footer" role="contentinfo" transition:persist="site-footer">
@@ -69,7 +71,13 @@ const guideLinks = intentTopics.map((topic) => ({
       <nav class="footer__nav" aria-label={t('footer.productsAriaLabel')}>
         <p class="footer__nav-title">{t('footer.productsTitle')}</p>
         {productLinks.map((link) => (
-          <a href={link.href} class="footer__nav-link" data-astro-prefetch="viewport">{link.label}</a>
+          <a
+            href={link.href}
+            class="footer__nav-link"
+            data-astro-prefetch={link.external ? undefined : 'viewport'}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+          >{link.label}</a>
         ))}
       </nav>
 

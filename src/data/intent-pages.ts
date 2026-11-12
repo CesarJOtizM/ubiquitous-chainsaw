@@ -68,7 +68,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
     noun: { es: 'mascota', en: 'pet' },
     priceVariant: 'bulletsSuggested',
     whereVariant: 'studio',
-    related: ['dogs', 'cats', 'colombia', 'how'],
+    related: ['dogs', 'cats', 'colombia', 'memorial'],
     content: {
       es: {
         linkLabel: 'Retratos de mascotas',
@@ -114,7 +114,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
     noun: { es: 'perro', en: 'dog' },
     priceVariant: 'bullets',
     whereVariant: 'studio',
-    related: ['cats', 'pets', 'how'],
+    related: ['cats', 'pets', 'memorial'],
     content: {
       es: {
         linkLabel: 'Retratos de perros',
@@ -160,7 +160,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
     noun: { es: 'gato', en: 'cat' },
     priceVariant: 'bullets',
     whereVariant: 'studio',
-    related: ['dogs', 'pets', 'how'],
+    related: ['dogs', 'pets', 'memorial'],
     content: {
       es: {
         linkLabel: 'Retratos de gatos',
@@ -248,6 +248,52 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
       },
     },
   },
+  memorial: {
+    noun: { es: 'mascota', en: 'pet' },
+    priceVariant: 'bullets',
+    whereVariant: 'studio',
+    related: ['pets', 'how', 'dogs'],
+    content: {
+      es: {
+        linkLabel: 'Retrato de mascota fallecida',
+        h1: 'Retrato de mascota fallecida, pintado a mano en acrílico',
+        metaTitle: 'Retrato de mascota fallecida en acrílico · Sac_Artx',
+        metaDescription:
+          'Sac_Artx pinta un retrato de mascota fallecida en acrílico desde las fotos que conservas. Boceto previo y envío a toda Colombia.',
+        lead: 'Un retrato de mascota fallecida en Sac_Artx es un cuadro pintado a mano en acrílico, a partir de las fotos que conservas. Sara Amaya Caldas lo hace por encargo en Colombia: envías la foto por WhatsApp, recibes un boceto digital antes de pintar y el cuadro sale a todo el país.',
+        whatItIs:
+          'Sac_Artx pinta el retrato en memoria sobre lienzo o sobre base de metacrilato. Sirve la foto que tengas, aunque no sea reciente. Si la luz es mala o hay varias tomas, se puede mejorar la iluminación o unirlas antes de pintar. Instagram y TikTok: @sac_artx.',
+        whoFor:
+          'Quien perdió a su perro, gato u otra mascota y quiere tenerlo cerca, y quien encarga el cuadro como recuerdo para otra persona. El proceso es el mismo que el de un retrato de una mascota que sigue en casa, con el cuidado que merece el recuerdo.',
+        included: [
+          'Retrato pintado a mano en acrílico sobre lienzo o base acrílica, desde las fotos que conservas.',
+          'Boceto digital previo a la pintura.',
+          'Revisiones del boceto sin costo extra.',
+          'Foto de aprobación final antes del envío.',
+          'Embalaje y número de seguimiento dentro de Colombia.',
+        ],
+      },
+      en: {
+        linkLabel: 'Memorial pet portrait',
+        h1: 'A memorial pet portrait, hand-painted in acrylic',
+        metaTitle: 'Memorial pet portrait from a photo · Sac_Artx',
+        metaDescription:
+          'Sac_Artx paints a memorial pet portrait in acrylic from the photos you kept. A sketch comes first, and shipping covers Colombia.',
+        lead: 'A memorial pet portrait from Sac_Artx is a painting made by hand in acrylic, from the photos you still have. Sara Amaya Caldas paints it to order in Colombia: you send the photo on WhatsApp, you receive a digital sketch before painting, and the piece ships across the country.',
+        whatItIs:
+          'Sac_Artx paints the memorial portrait on canvas or on a methacrylate base. The photo you have is enough, even if it is not recent. If the light is poor or you have several shots, the lighting can be improved or the photos combined before painting. Instagram and TikTok: @sac_artx.',
+        whoFor:
+          'Anyone who lost a dog, cat, or other pet and wants them close, and anyone commissioning the painting as a keepsake for someone else. The process is the same as a portrait of a pet who is still here, with the care the memory deserves.',
+        included: [
+          'Hand-painted acrylic portrait on canvas or an acrylic base, from the photos you kept.',
+          'Digital sketch before painting.',
+          'Sketch revisions at no extra charge.',
+          'Final approval photo before shipping.',
+          'Protective packaging and a tracking number within Colombia.',
+        ],
+      },
+    },
+  },
   how: {
     noun: { es: 'mascota', en: 'pet' },
     priceVariant: 'summaryHow',
@@ -266,7 +312,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
         whoFor:
           'Quien quiere encargar un retrato de perro, gato u otra mascota, una base acrílica o una funda personalizada, con seguimiento por WhatsApp e Instagram.',
         included: [
-          'Manda tu foto: envías la mejor foto de tu mascota por WhatsApp o Instagram. Sac_Artx ayuda a elegir la mejor toma.',
+          'Manda tu foto: envías la mejor foto de tu mascota por WhatsApp o Instagram. Sac_Artx ayuda a elegir la mejor toma. Guía: [cómo tomar la foto](/blog/como-elegir-la-mejor-foto-mascota/).',
           'Boceto en 48 horas: recibes un adelanto digital de cómo va a quedar.',
           'Apruebas el diseño: se ajusta lo necesario sin cargo extra por revisiones.',
           'Se pinta: cuando la obra está lista, recibes fotos por WhatsApp para la aprobación final.',
@@ -288,7 +334,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
         whoFor:
           'Anyone commissioning a dog, cat, or other pet portrait, an acrylic base, or a personalized phone case, with follow-up on WhatsApp and Instagram.',
         included: [
-          'Send your photo: you send the best photo of your pet on WhatsApp or Instagram. Sac_Artx helps you choose the best shot.',
+          'Send your photo: you send the best photo of your pet on WhatsApp or Instagram. Sac_Artx helps you choose the best shot. Guide: [how to take the photo](/en/blog/how-to-choose-the-best-photo/).',
           'Sketch within 48 hours: you receive a digital preview of the result.',
           'Approve the design: whatever is needed gets adjusted, with no extra charge for revisions.',
           'Painting: when the piece is ready, you receive photos on WhatsApp for final approval.',

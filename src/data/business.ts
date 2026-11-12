@@ -20,9 +20,15 @@ export const business = {
 /** Stable @id shared by LocalBusiness.founder, the about page and blog authors. */
 export const founderId = `${business.site}/#founder`;
 
+/** Short labels for payment chips on the how-it-works page. */
+export const paymentMethodLabels: Record<Lang, readonly string[]> = {
+  es: ['Nequi', 'Daviplata', 'Transferencia bancaria', 'Llave Bre-B', 'Tarjetas de crédito'],
+  en: ['Nequi', 'Daviplata', 'Bank transfer', 'Bre-B key', 'Credit cards'],
+};
+
 export const paymentMethods: Record<Lang, string> = {
-  es: 'Nequi, Daviplata, transferencia bancaria y efectivo',
-  en: 'Nequi, Daviplata, bank transfer and cash',
+  es: 'Nequi, Daviplata, transferencia bancaria, llave Bre-B y tarjetas de crédito',
+  en: 'Nequi, Daviplata, bank transfer, Bre-B key, and credit cards',
 };
 
 /** Human-readable shipping coverage, e.g. "Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia". */
