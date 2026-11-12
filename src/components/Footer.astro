@@ -1,7 +1,8 @@
 ---
 import { useTranslations } from '../i18n/utils';
-import { catalogPath, homePath, intentPath, intentTopics, pricesPath, privacyPath } from '../i18n/paths';
+import { catalogPath, homePath, intentPath, intentTopics, pricesPath, privacyPath, productKeys, productPath } from '../i18n/paths';
 import { intentEntry } from '../data/intent-pages';
+import { productEntry } from '../data/product-pages';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -26,6 +27,11 @@ const links = [
   { href: `${home}#faq`, label: t('footer.nav.faq') },
   { href: `${home}#contacto`, label: t('footer.nav.contact') },
 ];
+
+const productLinks = productKeys.map((key) => ({
+  href: productPath(key, lang),
+  label: productEntry(key, lang).linkLabel,
+}));
 
 const guidesTitle = lang === 'en' ? 'Guides' : 'Guías';
 const guideLinks = intentTopics.map((topic) => ({
@@ -53,6 +59,14 @@ const guideLinks = intentTopics.map((topic) => ({
       <nav class="footer__nav" aria-label={t('footer.navAriaLabel')}>
         <p class="footer__nav-title">{t('footer.navTitle')}</p>
         {links.map((link) => (
+          <a href={link.href} class="footer__nav-link" data-astro-prefetch="viewport">{link.label}</a>
+        ))}
+      </nav>
+
+      <!-- Products -->
+      <nav class="footer__nav" aria-label={t('footer.productsAriaLabel')}>
+        <p class="footer__nav-title">{t('footer.productsTitle')}</p>
+        {productLinks.map((link) => (
           <a href={link.href} class="footer__nav-link" data-astro-prefetch="viewport">{link.label}</a>
         ))}
       </nav>
@@ -195,7 +209,7 @@ const guideLinks = intentTopics.map((topic) => ({
 
   .footer__top {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr 1.4fr;
     gap: clamp(32px, 5vw, 72px);
     margin-bottom: clamp(40px, 5vw, 64px);
     padding-bottom: clamp(40px, 5vw, 64px);

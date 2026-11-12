@@ -1,0 +1,8 @@
+---
+export const prerender = true;
+
+import ProductPage from '../../../components/ProductPage.astro';
+import { productEntry } from '../../../data/product-pages';
+---
+
+<ProductPage entry={productEntry('cases', 'en')} />
