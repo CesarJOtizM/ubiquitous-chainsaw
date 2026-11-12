@@ -31,10 +31,11 @@ Branch: feat/seo-improvements (unmerged; shares the foundation). User approved f
 ## Tasks
 
 - T1 (S1) — DONE. 3 grouped product pages × 2 langs (6 routes) via product-pages.ts + ProductPage.astro; gallery reuses catalog images; AggregateOffer (COP, from prices.ts) + BreadcrumbList; footer Productos/Products group. Navbar link skipped (no products index page). commit: this slice.
-- T2 (S2) — Blog infra (content collection, index, post route, RSS, sitemap) + 1 ES/EN example post. route: writer. commit: feat(blog)
-- T3 (S3) — About page ES/EN skeleton + Person schema + links. route: inline. commit: feat(seo)
+- T2 (S2) — DONE in the working tree, not committed. Content collection, ES/EN index, post route, RSS, sitemap custom pages, nav/footer. One example post (best photo) in ES + EN. Author Person @id is the founder.
+- T3 (S3) — DONE in the working tree, not committed. ES /sobre-mi and EN /about via about.ts + AboutPage.astro. ProfilePage + Person @id https://sacartx.art/#founder (same as LocalBusiness.founder) + BreadcrumbList. Nav and footer links. Public copy uses only published facts; aboutGaps lists the unpublished ones (city, start year, training/exhibitions/awards).
 
 ## Log
 
 - L1 — User request (verbatim): "entiendo que para seo tambien combiene tener pagian explicaita para cada prodcuto, un blog para entradas y post. y tambien agregaremos un sobre mi"
 - L2 — Decisions: product pages grouped into 3 (agent-chosen grouping); blog bilingual ES+EN with infra + 1 example post; about page = skeleton from known facts with marked gaps, no invented E-E-A-T claims.
+- L3 — About page does not print TODO text. Gaps stay in src/data/about.ts (`aboutGaps`) so the public page never invents a city, a start year, or credentials.

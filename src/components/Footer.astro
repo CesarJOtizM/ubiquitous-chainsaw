@@ -1,6 +1,6 @@
 ---
 import { useTranslations } from '../i18n/utils';
-import { catalogPath, homePath, intentPath, intentTopics, pricesPath, privacyPath, productKeys, productPath } from '../i18n/paths';
+import { aboutPath, blogPath, catalogPath, homePath, intentPath, intentTopics, pricesPath, privacyPath, productKeys, productPath } from '../i18n/paths';
 import { intentEntry } from '../data/intent-pages';
 import { productEntry } from '../data/product-pages';
 
@@ -23,6 +23,8 @@ const links = [
   { href: `${home}#servicios`, label: t('footer.nav.services') },
   { href: catalogPath(lang), label: t('footer.nav.gallery') },
   { href: pricesPath(lang), label: t('prices.navLabel') },
+  { href: blogPath(lang), label: t('footer.nav.blog') },
+  { href: aboutPath(lang), label: t('footer.nav.about') },
   { href: `${home}#proceso`, label: t('footer.nav.process') },
   { href: `${home}#faq`, label: t('footer.nav.faq') },
   { href: `${home}#contacto`, label: t('footer.nav.contact') },

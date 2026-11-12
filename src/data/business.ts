@@ -17,6 +17,9 @@ export const business = {
   cities: ['Bogotá', 'Medellín', 'Cali', 'Barranquilla'],
 } as const;
 
+/** Stable @id shared by LocalBusiness.founder, the about page and blog authors. */
+export const founderId = `${business.site}/#founder`;
+
 export const paymentMethods: Record<Lang, string> = {
   es: 'Nequi, Daviplata, transferencia bancaria y efectivo',
   en: 'Nequi, Daviplata, bank transfer and cash',

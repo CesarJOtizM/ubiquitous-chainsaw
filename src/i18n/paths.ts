@@ -16,6 +16,21 @@ export function privacyPath(lang: Lang) {
   return lang === 'en' ? '/en/privacy/' : '/privacidad/';
 }
 
+/** About page path, e.g. '/sobre-mi/' or '/en/about/'. */
+export function aboutPath(lang: Lang) {
+  return lang === 'en' ? '/en/about/' : '/sobre-mi/';
+}
+
+/** Blog index path, e.g. '/blog/' or '/en/blog/'. */
+export function blogPath(lang: Lang) {
+  return lang === 'en' ? '/en/blog/' : '/blog/';
+}
+
+/** Blog post path for a given post slug, e.g. '/blog/<slug>/' or '/en/blog/<slug>/'. */
+export function blogPostPath(slug: string, lang: Lang) {
+  return lang === 'en' ? `/en/blog/${slug}/` : `/blog/${slug}/`;
+}
+
 /** Topic → per-language route slug for the intent (guide) pages. */
 export const intentSlugs = {
   pets: { es: 'retratos-de-mascotas', en: 'pet-portraits' },
@@ -90,11 +105,31 @@ export function isPrivacyPath(pathname: string) {
   return path.endsWith('/privacy') || path.endsWith('/privacidad');
 }
 
+export function isAboutPath(pathname: string) {
+  const path = pathname.replace(/\/+$/, '');
+  return path === '/sobre-mi' || path === '/en/about';
+}
+
+export function isBlogIndexPath(pathname: string) {
+  const path = pathname.replace(/\/+$/, '');
+  return path === '/blog' || path === '/en/blog';
+}
+
+export function isBlogPostPath(pathname: string) {
+  const path = pathname.replace(/\/+$/, '');
+  return /^\/(en\/)?blog\/.+/.test(path) && !isBlogIndexPath(pathname);
+}
+
 /** Language-switch target for the current pathname. */
 export function alternatePath(pathname: string, otherLang: Lang) {
   if (isCatalogPath(pathname)) return catalogPath(otherLang);
   if (isPricesPath(pathname)) return pricesPath(otherLang);
   if (isPrivacyPath(pathname)) return privacyPath(otherLang);
+  if (isAboutPath(pathname)) return aboutPath(otherLang);
+  // Blog index pages are reciprocal. Blog posts resolve their own post-to-post
+  // target via Navbar's langSwitchHref prop (needs the collection); the pathname
+  // fallback here is the blog index in the other language.
+  if (isBlogIndexPath(pathname) || isBlogPostPath(pathname)) return blogPath(otherLang);
   const product = matchProduct(pathname);
   if (product) return productPath(product, otherLang);
   const topic = matchIntentTopic(pathname);

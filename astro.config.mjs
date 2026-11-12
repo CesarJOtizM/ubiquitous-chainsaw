@@ -29,6 +29,8 @@ export default defineConfig({
         'https://sacartx.art/info/cat-portraits.md',
         'https://sacartx.art/info/how-it-works.md',
         'https://sacartx.art/info/pet-portraits-colombia.md',
+        'https://sacartx.art/rss.xml',
+        'https://sacartx.art/en/rss.xml',
       ],
       i18n: {
         defaultLocale: 'es',

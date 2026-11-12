@@ -1,0 +1,208 @@
+---
+export const prerender = true;
+
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppFAB from '../../components/WhatsAppFAB.astro';
+import { business } from '../../data/business';
+import { blogPath, blogPostPath, homePath } from '../../i18n/paths';
+
+const lang = 'es' as const;
+const SITE = business.site;
+
+const posts = (await getCollection('blog'))
+  .filter((post: any) => post.data.lang === lang && !post.data.draft)
+  .sort((a: any, b: any) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const metaTitle = 'Blog · Consejos de retratos de mascotas · Sac_Artx';
+const metaDescription =
+  'Guías y consejos sobre retratos de mascotas en acrílico: cómo elegir la foto, cuidar tu obra y encargar tu pieza. Por Sac_Artx, estudio en Colombia.';
+
+const canonicalUrl = `${SITE}${blogPath('es')}`;
+const alternateEs = canonicalUrl;
+const alternateEn = `${SITE}${blogPath('en')}`;
+const homeUrl = `${SITE}${homePath('es')}`;
+
+const dateFmt = new Intl.DateTimeFormat('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const extraJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${canonicalUrl}#blog`,
+    url: canonicalUrl,
+    name: metaTitle,
+    description: metaDescription,
+    inLanguage: 'es-CO',
+    isPartOf: { '@id': `${SITE}/#website` },
+    publisher: { '@id': `${SITE}/#business` },
+    blogPost: posts.map((post: any) => ({
+      '@type': 'BlogPosting',
+      headline: post.data.title,
+      url: `${SITE}${blogPostPath(post.data.slug, 'es')}`,
+      datePublished: post.data.pubDate.toISOString(),
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: canonicalUrl },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title={metaTitle}
+  description={metaDescription}
+  ogUrl={canonicalUrl}
+  canonicalUrl={canonicalUrl}
+  alternateEs={alternateEs}
+  alternateEn={alternateEn}
+  markdownAlt={false}
+  extraJsonLd={extraJsonLd}
+>
+  <Navbar lang={lang} />
+  <main>
+    <div class="blog-page">
+      <header class="blog-hero">
+        <div class="container">
+          <nav class="blog-crumb" aria-label="Miga de pan">
+            <a href={homePath('es')}>Inicio</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Blog</span>
+          </nav>
+          <p class="section-label">Guías y consejos</p>
+          <h1 class="blog-hero__title">Blog</h1>
+          <p class="blog-hero__intro">
+            Consejos prácticos para encargar tu retrato de mascota: cómo elegir la mejor foto,
+            qué esperar del proceso y cómo cuidar tu obra. Escrito por Sara Amaya Caldas.
+          </p>
+        </div>
+      </header>
+
+      <div class="container blog-body">
+        {posts.length === 0 ? (
+          <p class="blog-empty">Pronto publicaremos nuestras primeras entradas.</p>
+        ) : (
+          <ul class="blog-list">
+            {posts.map((post: any) => (
+              <li class="blog-card">
+                <a href={blogPostPath(post.data.slug, 'es')} class="blog-card__link">
+                  <time class="blog-card__date" datetime={post.data.pubDate.toISOString()}>
+                    {dateFmt.format(post.data.pubDate)}
+                  </time>
+                  <h2 class="blog-card__title">{post.data.title}</h2>
+                  <p class="blog-card__desc">{post.data.description}</p>
+                  <span class="blog-card__more">Leer más →</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+  <WhatsAppFAB lang={lang} />
+</BaseLayout>
+
+<style>
+  .blog-page {
+    padding-bottom: clamp(64px, 8vw, 120px);
+  }
+
+  .blog-hero {
+    padding: clamp(100px, 14vw, 140px) 0 clamp(24px, 4vw, 40px);
+  }
+
+  .blog-crumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+  }
+
+  .blog-crumb a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .blog-crumb a:hover {
+    text-decoration: underline;
+  }
+
+  .blog-hero__title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 400;
+    margin: 8px 0 12px;
+  }
+
+  .blog-hero__intro {
+    max-width: 720px;
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  .blog-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 3vw, 32px);
+    max-width: 760px;
+  }
+
+  .blog-card {
+    border-bottom: 1px solid var(--color-border, rgba(0, 0, 0, 0.08));
+    padding-bottom: clamp(20px, 3vw, 32px);
+  }
+
+  .blog-card__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .blog-card__date {
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+  }
+
+  .blog-card__title {
+    font-size: clamp(1.375rem, 3vw, 1.875rem);
+    font-weight: 500;
+    margin: 6px 0 10px;
+  }
+
+  .blog-card__link:hover .blog-card__title {
+    color: var(--color-accent);
+  }
+
+  .blog-card__desc {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 10px;
+  }
+
+  .blog-card__more {
+    font-size: 0.9375rem;
+    color: var(--color-accent);
+  }
+
+  .blog-empty {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+  }
+</style>

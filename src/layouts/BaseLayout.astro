@@ -3,6 +3,8 @@ import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { useTranslations } from '../i18n/utils';
 import { areaServed } from '../data/coverage';
+import { business, founderId } from '../data/business';
+import { aboutPath } from '../i18n/paths';
 
 export interface Props {
   title?: string;
@@ -72,8 +74,11 @@ const schemaOrg = {
       "logo": `${SITE}/brand/logo-square.png`,
       "founder": {
         "@type": "Person",
-        "name": "Sara Amaya Caldas",
-        "jobTitle": "Artista",
+        "@id": founderId,
+        "name": business.founder,
+        "jobTitle": lang === 'en' ? 'Artist' : 'Artista',
+        "url": `${SITE}${aboutPath(lang)}`,
+        "sameAs": [business.instagram, business.tiktok, business.facebook],
       },
       "address": {
         "@type": "PostalAddress",
