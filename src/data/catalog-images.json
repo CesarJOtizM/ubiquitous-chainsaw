@@ -590,5 +590,61 @@
     "width": 960,
     "height": 1280,
     "size": 121855
+  },
+  "images/sobre-mi/sara-estudio.jpg": {
+    "path": "images/sobre-mi/sara-estudio.jpg",
+    "fileId": "6af66cd7ead997d09ae01710",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/sara-estudio.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 113005
+  },
+  "images/sobre-mi/paisaje-2006.jpg": {
+    "path": "images/sobre-mi/paisaje-2006.jpg",
+    "fileId": "6af66cd7ead997d09ae0181f",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/paisaje-2006.jpg",
+    "width": 1024,
+    "height": 768,
+    "size": 98220
+  },
+  "images/sobre-mi/frutas-2006.jpg": {
+    "path": "images/sobre-mi/frutas-2006.jpg",
+    "fileId": "6af66cd7ead997d09ae01974",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/frutas-2006.jpg",
+    "width": 1024,
+    "height": 768,
+    "size": 80278
+  },
+  "images/sobre-mi/funda.jpg": {
+    "path": "images/sobre-mi/funda.jpg",
+    "fileId": "6af66cd7ead997d09ae019f5",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/funda.jpg",
+    "width": 770,
+    "height": 1024,
+    "size": 91050
+  },
+  "images/sobre-mi/mensajes.jpg": {
+    "path": "images/sobre-mi/mensajes.jpg",
+    "fileId": "6af66cd8ead997d09ae01adc",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/mensajes.jpg",
+    "width": 1024,
+    "height": 818,
+    "size": 112915
+  },
+  "images/sobre-mi/pintando.jpg": {
+    "path": "images/sobre-mi/pintando.jpg",
+    "fileId": "6af66cd8ead997d09ae01bc9",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/pintando.jpg",
+    "width": 576,
+    "height": 1024,
+    "size": 71914
+  },
+  "images/sobre-mi/flores.jpg": {
+    "path": "images/sobre-mi/flores.jpg",
+    "fileId": "6af66cd8ead997d09ae01cd1",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/flores.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 98955
   }
 }

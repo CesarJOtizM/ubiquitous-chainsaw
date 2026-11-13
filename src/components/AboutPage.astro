@@ -3,10 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from './Navbar.astro';
 import Footer from './Footer.astro';
 import WhatsAppFAB from './WhatsAppFAB.astro';
-import { aboutCopy } from '../data/about';
+import { aboutCopy, aboutPortrait } from '../data/about';
 import { business, founderId } from '../data/business';
-import { leadTimeText, whatsappUrl } from '../lib/price-text';
-import WhereParagraph from './WhereParagraph.astro';
+import { whatsappUrl } from '../lib/price-text';
+import { imageMeta, imageSrcSet, imageUrl } from '../lib/images';
 import {
   aboutPath,
   blogPath,
@@ -14,7 +14,6 @@ import {
   homePath,
   intentPath,
   pricesPath,
-  productKeys,
   productPath,
   type Lang,
 } from '../i18n/paths';
@@ -32,23 +31,15 @@ const alternateEs = `${SITE}${aboutPath('es')}`;
 const alternateEn = `${SITE}${aboutPath('en')}`;
 const homeUrl = `${SITE}${homePath(lang)}`;
 const waUrl = whatsappUrl(lang);
+const portrait = imageUrl(aboutPortrait, 1200);
 
 const related = [
   { href: intentPath('how', lang), label: lang === 'en' ? 'How it works' : 'Cómo funciona' },
-  { href: pricesPath(lang), label: lang === 'en' ? 'Prices' : 'Precios' },
   { href: catalogPath(lang), label: lang === 'en' ? 'Catalog' : 'Catálogo' },
+  { href: pricesPath(lang), label: lang === 'en' ? 'Prices' : 'Precios' },
+  { href: productPath('paintings', lang), label: productEntry('paintings', lang).linkLabel },
+  { href: productPath('cases', lang), label: productEntry('cases', lang).linkLabel },
   { href: blogPath(lang), label: 'Blog' },
-  ...productKeys.map((key) => ({
-    href: productPath(key, lang),
-    label: productEntry(key, lang).linkLabel,
-  })),
-];
-
-const contacts = [
-  { href: waUrl, label: `WhatsApp ${business.phoneDisplay}`, external: true },
-  { href: business.instagram, label: `Instagram ${business.handle}`, external: true },
-  { href: business.tiktok, label: `TikTok ${business.handle}`, external: true },
-  { href: business.facebook, label: 'Facebook Sac_Artx', external: true },
 ];
 
 const person = {
@@ -57,7 +48,8 @@ const person = {
   name: business.founder,
   jobTitle: lang === 'en' ? 'Artist' : 'Artista',
   url: canonicalUrl,
-  description: copy.lead,
+  image: `${SITE}${portrait}`,
+  description: copy.chapters[0].paragraphs[0],
   nationality: { '@type': 'Country', name: 'Colombia' },
   worksFor: { '@id': `${SITE}/#business` },
   sameAs: [business.instagram, business.tiktok, business.facebook],
@@ -75,11 +67,12 @@ const extraJsonLd = [
     '@type': 'ProfilePage',
     '@id': `${canonicalUrl}#profile`,
     url: canonicalUrl,
-    name: copy.h1,
+    name: copy.storyTitle,
     description: copy.metaDescription,
     inLanguage: lang === 'en' ? 'en' : 'es-CO',
     isPartOf: { '@id': `${SITE}/#website` },
     mainEntity: person,
+    primaryImageOfPage: `${SITE}${portrait}`,
   },
   {
     '@context': 'https://schema.org',
@@ -90,6 +83,13 @@ const extraJsonLd = [
     ],
   },
 ];
+
+function sizesFor(layout: string): string {
+  if (layout === 'wide') return '(max-width: 860px) 100vw, 960px';
+  if (layout === 'pair') return '(max-width: 860px) 100vw, 42vw';
+  if (layout === 'close') return '(max-width: 860px) 280px, 32vw';
+  return '(max-width: 860px) 100vw, 46vw';
+}
 ---
 
 <BaseLayout
@@ -106,73 +106,79 @@ const extraJsonLd = [
   <Navbar lang={lang} />
   <main>
     <div class="about-page">
-      <header class="about-hero">
-        <div class="container">
-          <nav class="about-crumb" aria-label={lang === 'en' ? 'Breadcrumb' : 'Miga de pan'}>
+      <div class="container">
+        <header class="about-intro">
+          <nav class="about-crumb" aria-label={copy.crumbLabel}>
             <a href={homePath(lang)}>{copy.crumbHome}</a>
             <span aria-hidden="true">/</span>
             <span aria-current="page">{copy.crumbCurrent}</span>
           </nav>
-          <h1 class="about-hero__title">{copy.h1}</h1>
-          <p class="about-hero__intro">{copy.lead}</p>
-        </div>
-      </header>
+          <p class="about-kicker">{copy.storyTitle}</p>
+        </header>
 
-      <div class="container about-body">
-        <section class="about-section">
-          <h2>{copy.whoHeading}</h2>
-          <p>{copy.whoBody}</p>
-        </section>
+        {copy.chapters.map((chapter, i) => {
+          const Heading = i === 0 ? 'h1' : 'h2';
+          const headingId = `about-${chapter.index}`;
+          return (
+            <section
+              class:list={[
+                'about-chapter',
+                `about-chapter--${chapter.layout}`,
+                { 'about-chapter--flip': chapter.side === 'image-start' },
+              ]}
+              aria-labelledby={headingId}
+            >
+              <div class="about-split">
+                <div class="about-copy reveal">
+                  <p class="about-index">
+                    <span>{chapter.index}</span>
+                    {chapter.kicker}
+                  </p>
+                  <Heading id={headingId} class="about-title">{chapter.title}</Heading>
+                  {chapter.paragraphs.map((paragraph, p) => (
+                    <p class:list={[{ 'about-signoff': chapter.layout === 'close' && p === chapter.paragraphs.length - 1 }]}>
+                      {paragraph}
+                    </p>
+                  ))}
+                  {chapter.layout === 'close' && (
+                    <a class="btn btn-primary about-cta" href={waUrl} target="_blank" rel="noopener noreferrer">
+                      {copy.cta}
+                    </a>
+                  )}
+                </div>
 
-        <section class="about-section">
-          <h2>{copy.paintsHeading}</h2>
-          <p>{copy.paintsIntro}</p>
-          <ul>
-            {copy.paints.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-        </section>
-
-        <section class="about-section">
-          <h2>{copy.orderHeading}</h2>
-          <p>{copy.orderIntro}</p>
-          <ol>
-            {copy.orderSteps.map((step) => (
-              <li>{step}</li>
-            ))}
-          </ol>
-          <p>{leadTimeText(lang)}</p>
-        </section>
-
-        <section class="about-section">
-          <h2>{copy.shipsHeading}</h2>
-          <WhereParagraph lang={lang} />
-        </section>
-
-        <section class="about-section">
-          <h2>{copy.contactHeading}</h2>
-          <p>{copy.contactIntro}</p>
-          <ul class="about-contact">
-            {contacts.map((item) => (
-              <li>
-                <a
-                  href={item.href}
-                  target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noopener noreferrer' : undefined}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
+                <div class="about-visual reveal" style={i === 0 ? 'transition-delay: 120ms' : undefined}>
+                  {chapter.images.map((image, j) => {
+                    const meta = imageMeta(image.src);
+                    const srcset = imageSrcSet(image.src, chapter.layout === 'wide' ? [640, 1024] : [480, 768, 1024]);
+                    return (
+                      <figure>
+                        <img
+                          src={imageUrl(image.src, chapter.layout === 'wide' ? 1024 : 960)}
+                          srcset={srcset || undefined}
+                          sizes={srcset ? sizesFor(chapter.layout) : undefined}
+                          width={meta?.width ?? 1024}
+                          height={meta?.height ?? 1024}
+                          alt={image.alt}
+                          loading={i === 0 && j === 0 ? 'eager' : 'lazy'}
+                          fetchpriority={i === 0 && j === 0 ? 'high' : undefined}
+                          decoding="async"
+                        />
+                        {image.caption && <figcaption>{image.caption}</figcaption>}
+                      </figure>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+          );
+        })}
 
         <nav class="about-related" aria-label={copy.relatedHeading}>
-          <h2>{copy.relatedHeading}</h2>
+          <h2 class="reveal">{copy.relatedHeading}</h2>
           <ul>
             {related.map((link) => (
-              <li>
+              <li class="reveal">
                 <a href={link.href} data-astro-prefetch="viewport">{link.label}</a>
               </li>
             ))}
@@ -187,11 +193,12 @@ const extraJsonLd = [
 
 <style>
   .about-page {
-    padding-bottom: clamp(64px, 8vw, 120px);
+    padding-bottom: clamp(64px, 8vw, 110px);
   }
 
-  .about-hero {
-    padding: clamp(100px, 14vw, 140px) 0 clamp(32px, 4vw, 48px);
+  .about-intro {
+    padding-top: clamp(108px, 14vw, 148px);
+    margin-bottom: clamp(28px, 4vw, 40px);
   }
 
   .about-crumb {
@@ -201,79 +208,249 @@ const extraJsonLd = [
     flex-wrap: wrap;
     font-size: 0.875rem;
     color: var(--color-text-muted);
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
 
-  .about-crumb a,
-  .about-section a,
-  .about-contact a,
-  .about-related a {
+  .about-crumb a {
     color: var(--color-accent);
     text-decoration: none;
   }
 
-  .about-crumb a:hover,
-  .about-section a:hover,
-  .about-contact a:hover,
-  .about-related a:hover {
+  .about-crumb a:hover {
     text-decoration: underline;
   }
 
-  .about-hero__title {
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
+  .about-kicker {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
     font-weight: 400;
-    margin: 8px 0 12px;
-  }
-
-  .about-hero__intro,
-  .about-section,
-  .about-related {
-    max-width: 720px;
-  }
-
-  .about-hero__intro {
-    font-size: 1.0625rem;
+    line-height: 1.2;
     color: var(--color-text-muted);
-    line-height: 1.65;
   }
 
-  .about-body {
+  .about-chapter + .about-chapter {
+    margin-top: clamp(72px, 11vw, 128px);
+  }
+
+  .about-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(28px, 4.5vw, 72px);
+    align-items: center;
+  }
+
+  .about-chapter--flip .about-copy {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .about-chapter--flip .about-visual {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .about-chapter--wide .about-split {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    gap: clamp(22px, 3vw, 36px);
+  }
+
+  .about-chapter--wide .about-copy {
+    max-width: 40rem;
+  }
+
+  .about-chapter--wide .about-visual {
+    width: min(100%, 960px);
+    margin-inline: auto;
+  }
+
+  .about-chapter--close .about-split {
+    grid-template-columns: minmax(0, 1.25fr) minmax(200px, 0.62fr);
+    align-items: end;
+  }
+
+  .about-index {
     display: flex;
-    flex-direction: column;
-    gap: clamp(28px, 4vw, 40px);
-  }
-
-  .about-section h2,
-  .about-related h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-family: var(--font-body);
+    font-size: 12px;
     font-weight: 500;
-    margin-bottom: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
   }
 
-  .about-section p,
-  .about-section li,
-  .about-related li {
+  .about-index span {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.85rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--color-gold);
+    line-height: 1;
+  }
+
+  .about-title {
+    font-size: clamp(2rem, 4vw, 3.15rem);
+    font-weight: 400;
+    text-wrap: balance;
+    margin-bottom: 18px;
+  }
+
+  .about-copy p {
     font-size: 1.0625rem;
-    line-height: 1.7;
+    line-height: 1.75;
   }
 
-  .about-section p + ul,
-  .about-section p + ol,
-  .about-section ol + p {
-    margin-top: 12px;
+  .about-copy p + p {
+    margin-top: 14px;
   }
 
-  .about-section ul,
-  .about-section ol,
+  .about-signoff {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.85rem !important;
+    line-height: 1.25 !important;
+    margin-top: 22px !important;
+  }
+
+  .about-cta {
+    margin-top: 26px;
+  }
+
+  .about-visual {
+    display: grid;
+    gap: 18px;
+    min-width: 0;
+  }
+
+  .about-visual figure {
+    margin: 0;
+    min-width: 0;
+  }
+
+  .about-visual img {
+    width: 100%;
+    height: auto;
+  }
+
+  .about-chapter--split figure {
+    position: relative;
+  }
+
+  .about-chapter--split figure::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 18px -14px -14px 18px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(234, 153, 213, 0.5), rgba(201, 162, 39, 0.28));
+  }
+
+  .about-chapter--split img {
+    border-radius: 22px;
+    box-shadow: 0 22px 50px rgba(42, 31, 38, 0.12);
+  }
+
+  .about-chapter--pair figure,
+  .about-chapter--close figure,
+  .about-chapter--wide figure {
+    background: #fff;
+    padding: 10px 10px 12px;
+    box-shadow: 0 16px 36px rgba(42, 31, 38, 0.1);
+  }
+
+  .about-chapter--wide figure {
+    border-radius: 16px;
+    padding: 12px;
+  }
+
+  .about-chapter--wide img {
+    border-radius: 8px;
+  }
+
+  .about-visual figcaption {
+    margin-top: 8px;
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    text-align: center;
+    color: var(--color-text-muted);
+  }
+
+  .about-related {
+    margin-top: clamp(80px, 12vw, 140px);
+  }
+
+  .about-related h2 {
+    font-size: clamp(1.6rem, 2.5vw, 2rem);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
   .about-related ul {
-    padding-left: 1.25rem;
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
-  .about-contact {
-    list-style: none;
-    padding-left: 0;
+  .about-related a {
+    display: inline-flex;
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .about-related a:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+    background: #fff;
+  }
+
+  .about-page a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 860px) {
+    .about-split,
+    .about-chapter--close .about-split {
+      grid-template-columns: 1fr;
+    }
+
+    .about-chapter--flip .about-copy,
+    .about-chapter--flip .about-visual {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .about-chapter--split:first-of-type .about-visual {
+      order: -1;
+    }
+
+    .about-chapter--close .about-visual {
+      max-width: 280px;
+      margin-inline: auto;
+    }
+
+    .about-chapter--split figure::before {
+      inset: 12px -8px -8px 10px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-related a {
+      transition: none;
+    }
   }
 </style>
