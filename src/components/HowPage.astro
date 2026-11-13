@@ -64,6 +64,8 @@ const copy = es
         ['Sara pinta la obra con dedicación, en acrílico.', 'Cuando está lista, te manda fotos por WhatsApp para la aprobación final.'],
         ['Embalaje seguro y número de seguimiento.', 'Llega a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia.'],
       ],
+      factsLabel: 'Precio, plazo y envío',
+      noteLabel: 'Para quién y antes de pintar',
       pricesKicker: 'Precios',
       pricesHint: 'Lienzo 12×18 cm, 1 mascota',
       pricesBody: 'Los retratos en acrílico sobre lienzo empiezan desde este valor. El envío se cotiza aparte.',
@@ -111,6 +113,8 @@ const copy = es
         ['Sara paints the piece by hand, in acrylic.', 'When it is ready, she sends photos on WhatsApp for final approval.'],
         ['Protective packaging and a tracking number.', 'It ships to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia.'],
       ],
+      factsLabel: 'Price, turnaround, and shipping',
+      noteLabel: 'Who it is for, and before painting',
       pricesKicker: 'Prices',
       pricesHint: 'Canvas 12×18 cm, 1 pet',
       pricesBody: 'Acrylic portraits on canvas start at this price. Shipping is quoted separately.',
@@ -305,17 +309,17 @@ const turnaround = leadTimeText(lang);
       </div>
     </section>
 
-    <section class="how-facts" aria-label={copy.pricesKicker}>
+    <section class="how-facts" aria-label={copy.factsLabel}>
       <div class="container how-facts__grid">
-        <article class="how-fact reveal">
+        <div class="how-fact reveal">
           <p class="section-label">{copy.pricesKicker}</p>
           <p class="how-fact__value">{fromPrice}</p>
           <p class="how-fact__hint">{copy.pricesHint}</p>
           <p>{copy.pricesBody}</p>
           <a href={pricesPath(lang)} data-astro-prefetch="viewport">{copy.pricesLink}</a>
-        </article>
+        </div>
 
-        <article class="how-fact reveal" style="transition-delay: 90ms">
+        <div class="how-fact reveal" style="transition-delay: 90ms">
           <p class="section-label">{copy.timeKicker}</p>
           <p class="how-fact__value">{copy.statDays}</p>
           <p class="how-fact__hint">{copy.timeHint}</p>
@@ -326,9 +330,9 @@ const turnaround = leadTimeText(lang);
               <li>{pay}</li>
             ))}
           </ul>
-        </article>
+        </div>
 
-        <article class="how-fact reveal" style="transition-delay: 180ms">
+        <div class="how-fact reveal" style="transition-delay: 180ms">
           <p class="section-label">{copy.whereKicker}</p>
           <p>{copy.whereBody}</p>
           <ul class="how-pills">
@@ -338,21 +342,21 @@ const turnaround = leadTimeText(lang);
             <li>{copy.rest}</li>
           </ul>
           <a href={waUrl} target="_blank" rel="noopener noreferrer">{copy.wherePhone}</a>
-        </article>
+        </div>
       </div>
     </section>
 
-    <section class="how-note">
+    <section class="how-note" aria-label={copy.noteLabel}>
       <div class="container how-note__grid">
-        <article class="how-panel reveal">
+        <div class="how-panel reveal">
           <p class="section-label">{copy.whoKicker}</p>
           <p>{entry.whoFor}</p>
-        </article>
+        </div>
         {entry.includedNote && (
-          <article class="how-panel how-panel--gold reveal" style="transition-delay: 100ms">
+          <div class="how-panel how-panel--gold reveal" style="transition-delay: 100ms">
             <p class="section-label">{copy.noteKicker}</p>
             <p>{entry.includedNote}</p>
-          </article>
+          </div>
         )}
       </div>
     </section>

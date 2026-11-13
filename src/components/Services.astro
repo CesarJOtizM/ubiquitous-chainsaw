@@ -140,9 +140,9 @@ const services = [
       <h3 class="services__pricing-title">{t('services.pricingTitle')}</h3>
 
       <div class="pricing-tabs" role="tablist">
-        <button class="pricing-tab is-active" id="tab-cuadros" data-tab="cuadros" role="tab" aria-selected="true" aria-controls="panel-cuadros">{t('services.tab.cuadros')}</button>
-        <button class="pricing-tab" id="tab-bases" data-tab="bases" role="tab" aria-selected="false" aria-controls="panel-bases">{t('services.tab.bases')}</button>
-        <button class="pricing-tab" id="tab-cases" data-tab="cases" role="tab" aria-selected="false" aria-controls="panel-cases">{t('services.tab.cases')}</button>
+        <button type="button" class="pricing-tab is-active" id="tab-cuadros" data-tab="cuadros" role="tab" aria-selected="true" aria-controls="panel-cuadros">{t('services.tab.cuadros')}</button>
+        <button type="button" class="pricing-tab" id="tab-bases" data-tab="bases" role="tab" aria-selected="false" aria-controls="panel-bases">{t('services.tab.bases')}</button>
+        <button type="button" class="pricing-tab" id="tab-cases" data-tab="cases" role="tab" aria-selected="false" aria-controls="panel-cases">{t('services.tab.cases')}</button>
       </div>
 
       <!-- Cuadros panel -->
@@ -312,24 +312,38 @@ const services = [
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    margin-bottom: 28px;
   }
 
   .services__products {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px 28px;
-    margin-bottom: 64px;
+    justify-content: center;
+    gap: 10px;
+    margin: 28px 0 72px;
   }
 
   .services__products a {
-    color: var(--color-accent);
-    font-size: 1.0625rem;
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
     text-decoration: none;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 10px 16px;
+    background: var(--color-bg);
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
   }
 
   .services__products a:hover {
-    text-decoration: underline;
+    border-color: var(--color-btn);
+    color: var(--color-btn);
+    background: var(--color-bg-card);
+  }
+
+  .services__products a:focus-visible {
+    outline: 2px solid var(--color-btn);
+    outline-offset: 3px;
   }
 
   /* Card */

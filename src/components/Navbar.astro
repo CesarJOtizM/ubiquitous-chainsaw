@@ -176,6 +176,7 @@ const primary: NavLink[] = [
       </nav>
 
       <button
+        type="button"
         id="menu-toggle"
         class="navbar__hamburger"
         aria-label={t('nav.menuOpen')}
@@ -190,7 +191,7 @@ const primary: NavLink[] = [
   </header>
 
   <div id="mobile-menu" class="mobile-menu" aria-hidden="true" inert role="dialog" aria-label={t('nav.mobileLabel')}>
-    <button id="menu-close" class="mobile-menu__close" aria-label={t('nav.menuClose')}>
+    <button type="button" id="menu-close" class="mobile-menu__close" aria-label={t('nav.menuClose')}>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M18 6L6 18M6 6l12 12"/>
       </svg>

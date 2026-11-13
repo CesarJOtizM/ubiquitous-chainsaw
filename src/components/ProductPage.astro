@@ -206,7 +206,7 @@ const extraJsonLd = [
             {gallery.length > 6 && (
               <button
                 type="button"
-                class="product-more"
+                class="btn btn-outline product-more"
                 aria-expanded="false"
                 aria-controls="product-gallery"
                 data-more={t('catalog.showMore')}
@@ -386,62 +386,7 @@ const extraJsonLd = [
   }
 
   .product-more {
-    position: fixed;
-    z-index: 49;
-    left: 32px;
-    bottom: 32px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 60px;
-    max-width: calc(100vw - 140px);
-    padding: 0 22px;
-    border: 0;
-    border-radius: 40px;
-    background: var(--color-accent);
-    color: #fff;
-    font: inherit;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 4px 20px rgba(137, 70, 166, 0.4);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .product-more:hover {
-    transform: scale(1.06);
-    background: var(--color-accent-hover);
-    box-shadow: 0 6px 28px rgba(137, 70, 166, 0.55);
-  }
-
-  .product-more:active {
-    transform: scale(0.97);
-  }
-
-  .product-more:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
-  }
-
-  @media (max-width: 540px) {
-    .product-more {
-      left: 16px;
-      bottom: 24px;
-      min-height: 54px;
-      padding: 0 16px;
-      font-size: 14px;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .product-more {
-      transition: none;
-    }
-
-    .product-more:hover,
-    .product-more:active {
-      transform: none;
-    }
+    margin-top: 16px;
   }
 
   .product-prices {

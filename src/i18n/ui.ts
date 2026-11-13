@@ -138,7 +138,7 @@ export const ui = {
     'services.s3.waMsg': '%C2%A1Hola!%20Quiero%20encargar%20una%20funda%20de%20celular%20personalizada',
     // catalog
     'catalog.metaTitle': 'Catálogo de retratos, bases y fundas · Sac_Artx',
-    'catalog.metaDescription': 'Catálogo de Sac_Artx: retratos de mascotas en acrílico, cuadros personalizados, bases acrílicas y fundas. Mira piezas reales y encarga la tuya por WhatsApp. Envíos a todo Colombia.',
+    'catalog.metaDescription': 'Catálogo de Sac_Artx: retratos, cuadros, bases acrílicas y fundas. Mira piezas reales y encarga la tuya por WhatsApp. Envíos a Colombia.',
     'catalog.crumbHome': 'Inicio',
     'catalog.label': 'Piezas reales',
     'catalog.title': 'Catálogo',
@@ -153,7 +153,6 @@ export const ui = {
     'catalog.showLess': 'Mostrar menos fotos',
     'catalog.viewer': 'Visor del catálogo',
     'catalog.close': 'Cerrar',
-    'catalog.backToTop': 'Volver arriba',
     'catalog.prev': 'Pieza anterior',
     'catalog.next': 'Pieza siguiente',
     'catalog.previewLabel': 'Qué puedes encargar',
@@ -224,6 +223,7 @@ export const ui = {
     'testimonials.ratingText': 'Comentarios reales de clientes en Instagram',
     'testimonials.footerText': 'Comentarios reales de clientes en Instagram · ',
     'testimonials.footerLink': 'Ver más en Instagram @sac_artx',
+    'testimonials.igLink': 'Ver en Instagram',
     // testimonial quotes
     'testimonials.t1.quote': 'Gracias por pintar a mi perrita con tanto amor. No sabes lo que significa para mí ver su recuerdo retratado de una manera tan hermosa. Dios te bendiga 💜🐾',
     'testimonials.t2.quote': 'Siempre en mi corazón ❤️ gracias por tu hermosa labor y arte 😍',
@@ -277,7 +277,7 @@ export const ui = {
 
     // prices page
     'prices.metaTitle': 'Precios de retratos de mascotas en acrílico · Sac_Artx',
-    'prices.metaDescription': 'Precios de Sac_Artx: retratos desde $120.000 COP, bases acrílicas desde $130.000 y fundas desde $40.000. Envío aparte. Anticipo 50%. Plazo 15–20 días hábiles. Envíos a todo Colombia.',
+    'prices.metaDescription': 'Precios de Sac_Artx: retratos desde $120.000, bases desde $130.000 y fundas desde $40.000. Anticipo 50%. Plazo 15–20 días hábiles. Envío aparte.',
     'prices.crumbHome': 'Inicio',
     'prices.crumb': 'Precios',
     'prices.label': 'Lista clara',
@@ -368,6 +368,7 @@ export const ui = {
     // whatsapp fab
     'fab.ariaLabel': 'Contactar por WhatsApp para encargar',
     'fab.tooltip': 'Encarga por WhatsApp',
+    'fab.backToTop': 'Volver arriba',
     'fab.waMsg': '%C2%A1Hola!%20Me%20gustar%C3%ADa%20encargar%20un%20retrato',
 
     // 404
@@ -535,7 +536,6 @@ export const ui = {
     'catalog.showLess': 'Show fewer photos',
     'catalog.viewer': 'Catalog viewer',
     'catalog.close': 'Close',
-    'catalog.backToTop': 'Back to top',
     'catalog.prev': 'Previous piece',
     'catalog.next': 'Next piece',
     'catalog.previewLabel': 'What you can order',
@@ -606,6 +606,7 @@ export const ui = {
     'testimonials.ratingText': 'Real client comments on Instagram',
     'testimonials.footerText': 'Real client comments on Instagram · ',
     'testimonials.footerLink': 'See more on Instagram @sac_artx',
+    'testimonials.igLink': 'See on Instagram',
     // testimonial quotes
     'testimonials.t1.quote': 'Thank you for painting my little dog with so much love. You have no idea what it means to me to see her memory captured in such a beautiful way. God bless you 💜🐾',
     'testimonials.t2.quote': 'Always in my heart ❤️ thank you for your beautiful work and art 😍',
@@ -659,7 +660,7 @@ export const ui = {
 
     // prices page
     'prices.metaTitle': 'Acrylic pet portrait prices · Sac_Artx',
-    'prices.metaDescription': 'Sac_Artx prices: portraits from COP 120,000, acrylic bases from COP 130,000 and phone cases from COP 40,000. Shipping extra. 50% deposit. 15–20 business days. Shipping across Colombia.',
+    'prices.metaDescription': 'Sac_Artx prices: portraits from COP 120,000, bases from COP 130,000 and cases from COP 40,000. 50% deposit. 15–20 business days. Shipping extra.',
     'prices.crumbHome': 'Home',
     'prices.crumb': 'Prices',
     'prices.label': 'Clear pricing',
@@ -750,6 +751,7 @@ export const ui = {
     // whatsapp fab
     'fab.ariaLabel': 'Contact via WhatsApp to commission',
     'fab.tooltip': 'Order via WhatsApp',
+    'fab.backToTop': 'Back to top',
     'fab.waMsg': 'Hello!%20I\'d%20like%20to%20commission%20a%20portrait',
 
     // 404

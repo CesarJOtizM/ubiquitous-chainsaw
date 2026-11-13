@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import PageDecor from '../components/PageDecor.astro';
+import BackToTop from '../components/BackToTop.astro';
 import '../styles/global.css';
 import { useTranslations } from '../i18n/utils';
 import { areaServed } from '../data/coverage';
@@ -287,6 +288,7 @@ const schemaOrg = {
     <PageDecor />
     <div class="page-shell">
       <slot />
+      <BackToTop lang={lang} />
     </div>
 
     <script>
