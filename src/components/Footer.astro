@@ -37,7 +37,7 @@ const productLinks: { href: string; label: string; external?: boolean }[] = prod
 
 const guidesTitle = lang === 'en' ? 'Guides' : 'Guías';
 const guideLinks = intentTopics
-  .filter((topic) => topic !== 'how' && topic !== 'dogs' && topic !== 'cats')
+  .filter((topic) => topic !== 'how')
   .map((topic) => ({
     href: intentPath(topic, lang),
     label: intentEntry(topic, lang).linkLabel,

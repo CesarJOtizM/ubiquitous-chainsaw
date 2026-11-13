@@ -28,6 +28,18 @@ export function profileSentence(entry: IntentEntry): string {
   return `${ig} ${conj} ${tk}: ${business.handle}.`;
 }
 
+function sectionBlock(entry: IntentEntry): string[] {
+  if (!entry.sections?.length) return [];
+  return entry.sections.flatMap((section) => [
+    `## ${section.heading}`,
+    '',
+    ...section.paragraphs,
+    '',
+    ...(section.links?.map((link) => `[${link.label}](${link.href})`) ?? []),
+    '',
+  ]);
+}
+
 function includedBlock(entry: IntentEntry): string[] {
   const lines = entry.includedOrdered
     ? entry.included.map((item, i) => `${i + 1}. ${item}`)
@@ -72,6 +84,7 @@ export function intentMarkdown(entry: IntentEntry): string {
     '',
     ...includedBlock(entry),
     '',
+    ...sectionBlock(entry),
     `## ${labels.prices}`,
     '',
     ...priceBlock(entry),

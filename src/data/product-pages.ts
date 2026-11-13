@@ -88,7 +88,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Cuadros en acrílico sobre lienzo, pintados a mano de tu mascota',
         metaTitle: 'Cuadros en acrílico sobre lienzo de tu mascota | Sac_Artx',
         metaDescription:
-          'Pinto cuadros en acrílico sobre lienzo de tu mascota, desde la foto. Te mando un boceto antes de pintar y envío a toda Colombia. El envío va contra entrega con la transportadora.',
+          'Pinto cuadros en acrílico sobre lienzo de tu mascota, desde la foto. Boceto antes de pintar y envío contra entrega en Colombia.',
         lead: 'Me mandas la foto y la plasmo pelo a pelo sobre el lienzo. Antes de empezar te mando un boceto para que te hagas una idea de cómo puede quedar.',
         whatIncluded: [
           'Acrílico sobre lienzo, desde la foto de tu mascota.',
@@ -162,7 +162,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Bases acrílicas con el retrato y el nombre de tu mascota',
         metaTitle: 'Bases acrílicas con el retrato de tu mascota | Sac_Artx',
         metaDescription:
-          'Pinto el retrato de tu mascota a mano sobre base de acrílico, con capa de resina y llavero corazón de regalo. El precio es de 1 mascota. El envío va contra entrega con la transportadora.',
+          'Retrato a mano sobre base de acrílico, con resina y llavero corazón de regalo. El precio es de 1 mascota. Envío contra entrega en Colombia.',
         lead: 'Pinto el retrato de tu mascota totalmente a mano sobre una base de acrílico (metacrilato) y encima lo cubro con una capa de resina que le da ese efecto vidrio y ese brillo extraordinario. Como regalo te hago un llavero en forma de corazón con el nombre que desees.',
         whatIncluded: [
           'Base en acrílico con capa de resina y base en madera, desde la foto de tu mascota.',
@@ -196,7 +196,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Acrylic bases with the portrait and name of your pet',
         metaTitle: 'Acrylic bases with the portrait of your pet | Sac_Artx',
         metaDescription:
-          'I hand-paint your pet on an acrylic base, with a resin coat and a heart keychain as a gift. The price is for 1 pet. Shipping is cash on delivery with the carrier.',
+          'I hand-paint your pet on an acrylic base, with resin and a heart keychain gift. Price is for 1 pet. Cash on delivery in Colombia.',
         lead: 'I paint your pet entirely by hand on an acrylic (methacrylate) base, then coat it with a layer of resin that gives it that glass look and that extraordinary shine. As a gift, I make you a heart-shaped keychain with the name you want.',
         whatIncluded: [
           'An acrylic base with a resin coat and a wooden base, from a photo of your pet.',
@@ -243,7 +243,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         whatIncluded: [
           'La funda con el diseño que elijas.',
           'Resina por encima, para proteger la pintura.',
-          'Te confirmo el modelo del celular antes de empezar.',
+          'Debes confirmar la disponibilidad de la referencia del celular antes de empezar.',
         ],
         faq: [
           {
@@ -272,14 +272,14 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         linkLabel: 'Custom phone cases',
         category: 'Phone cases',
         h1: 'Custom cases for your phone',
-        metaTitle: 'Custom phone cases | Sac_Artx',
+        metaTitle: 'Custom hand-painted phone cases | Sac_Artx',
         metaDescription:
-          'I paint phone cases: your pet, pressed flowers, anime, or your design, sealed with resin. Message me on WhatsApp.',
+          'I paint phone cases of your pet, pressed flowers, anime, or your design, sealed with resin. Message me on WhatsApp. Shipping across Colombia.',
         lead: 'I paint your phone case and seal it with resin. It can be your pet, pressed flowers, an anime character, or a design you send me.',
         whatIncluded: [
           'The case with the design you pick.',
           'Resin on top, to protect the paint.',
-          'I confirm your phone model before I start.',
+          'Confirm your phone model is available before I start.',
         ],
         faq: [
           {
@@ -316,9 +316,9 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         linkLabel: 'Cuadros personalizados',
         category: 'Cuadros en acrílico',
         h1: 'Cuadros personalizados, de tu imaginación al lienzo',
-        metaTitle: 'Cuadros personalizados, de tu imaginación al lienzo | Sac_Artx',
+        metaTitle: 'Cuadros personalizados, de tu idea al lienzo | Sac_Artx',
         metaDescription:
-          'Pinto paisajes, anime, ilustraciones y diseños especiales, a mano y desde tu idea. Cada diseño se cotiza según el detalle y el tamaño. El envío va contra entrega con la transportadora.',
+          'Pinto paisajes, anime e ilustraciones a mano, desde tu idea. Cada diseño se cotiza por detalle y tamaño. Envío contra entrega en Colombia.',
         lead: 'Desde paisajes y personajes de anime hasta ilustraciones y diseños especiales. Cada cuadro es pintado a mano y creado a partir de tus ideas o imágenes favoritas.',
         whatIncluded: [
           'El lienzo, pintado a mano en el tamaño que elijas.',
@@ -332,7 +332,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: '¿Un paisaje cuesta lo mismo que el retrato de una mascota?',
-            a: 'El retrato de una mascota parte de los precios de la tabla e incluye 1 mascota. Un paisaje, un personaje de anime o un diseño especial también parte de ahí: el valor final depende de la complejidad, el detalle y el tamaño.',
+            a: 'No hay un valor cerrado. El retrato, el paisaje, un personaje de anime o un diseño especial se cotizan según el diseño, el tamaño y el nivel de detalle.',
           },
           {
             q: '¿El precio incluye el envío?',
@@ -356,9 +356,9 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         linkLabel: 'Custom paintings',
         category: 'Acrylic paintings',
         h1: 'Custom paintings, from your imagination to the canvas',
-        metaTitle: 'Custom paintings, from your imagination to the canvas | Sac_Artx',
+        metaTitle: 'Custom paintings, from your idea to canvas | Sac_Artx',
         metaDescription:
-          'I paint landscapes, anime, illustrations, and special designs by hand, from your idea. Each design is quoted by detail and size. Shipping is cash on delivery with the carrier.',
+          'I paint landscapes, anime, and illustrations by hand, from your idea. Each design is quoted by detail and size. Cash on delivery in Colombia.',
         lead: 'From landscapes and anime characters to illustrations and special designs. Each painting is done by hand, from your ideas or a favorite image.',
         whatIncluded: [
           'The canvas, hand-painted in the size you pick.',
@@ -372,7 +372,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: 'Does a landscape cost the same as a pet portrait?',
-            a: 'A pet portrait starts at the prices below and includes 1 pet. A landscape, an anime character, or a special design also starts there: the final price depends on complexity, detail, and size.',
+            a: 'There is no fixed price. A portrait, a landscape, an anime character, or a special design is quoted by the design, the size, and the level of detail.',
           },
           {
             q: 'Does the price include shipping?',
@@ -406,7 +406,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Minilienzo magnético con el retrato de tu mascota',
         metaTitle: 'Minilienzo magnético con el retrato de tu mascota | Sac_Artx',
         metaDescription:
-          'Pinto a tu mascota en un mini lienzo de 7,5 cm, redondo o cuadrado, con imán. El precio está por confirmar: es un producto nuevo. El envío va contra entrega con la transportadora.',
+          'Pinto a tu mascota en un mini lienzo de 7,5 cm, redondo o cuadrado, con imán. Producto nuevo: el precio está por confirmar. Envío contra entrega.',
         lead: 'Pinto a tu mascota en un mini lienzo de 7,5 × 7,5 cm, disponible en forma redonda o cuadrada. Incluye un imán en la parte trasera para que puedas decorar tu nevera o cualquier superficie metálica con un retrato único de tu mascota.',
         priceNote:
           'El precio está por confirmar: es un producto nuevo. Te lo digo por WhatsApp antes de empezar. El envío va contra entrega: lo pagas a la transportadora cuando llega a tu casa.',
@@ -452,7 +452,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: "Magnetic mini canvas with your pet's portrait",
         metaTitle: "Magnetic mini canvas with your pet's portrait | Sac_Artx",
         metaDescription:
-          'I paint your pet on a 7.5 cm mini canvas, round or square, with a magnet. The price is still to be confirmed: it is a new product. Shipping is cash on delivery with the carrier.',
+          'I paint your pet on a 7.5 cm mini canvas, round or square, with a magnet. New product: the price is still to be confirmed. Cash on delivery.',
         lead: 'I paint your pet on a 7.5 × 7.5 cm mini canvas, available round or square. A magnet on the back lets you decorate your fridge, or any metal surface, with a unique portrait of your pet.',
         priceNote:
           'The price is still to be confirmed: this is a new product. I will tell you on WhatsApp before I start. Shipping is cash on delivery: you pay the carrier when it arrives at your home.',

@@ -654,5 +654,53 @@
     "width": 768,
     "height": 1024,
     "size": 163766
+  },
+  "images/bases-acrilicas/16.jpg": {
+    "path": "images/bases-acrilicas/16.jpg",
+    "fileId": "6af68ec3ead997d09aaeac02",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/bases-acrilicas/16.jpg",
+    "width": 576,
+    "height": 1024,
+    "size": 165215
+  },
+  "images/bases-acrilicas/17.jpg": {
+    "path": "images/bases-acrilicas/17.jpg",
+    "fileId": "6af68ec4ead997d09aaeade2",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/bases-acrilicas/17.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 178407
+  },
+  "images/bases-acrilicas/18.jpg": {
+    "path": "images/bases-acrilicas/18.jpg",
+    "fileId": "6af68ec4ead997d09aaeaec7",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/bases-acrilicas/18.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 310116
+  },
+  "images/bases-acrilicas/19.jpg": {
+    "path": "images/bases-acrilicas/19.jpg",
+    "fileId": "6af68ec4ead997d09aaeaf67",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/bases-acrilicas/19.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 191003
+  },
+  "images/cuadros-mascotas/12.jpg": {
+    "path": "images/cuadros-mascotas/12.jpg",
+    "fileId": "6af68ec4ead997d09aaeb02a",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/cuadros-mascotas/12.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 154500
+  },
+  "images/cuadros-mascotas/13.jpg": {
+    "path": "images/cuadros-mascotas/13.jpg",
+    "fileId": "6af68ec4ead997d09aaeb0f7",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/cuadros-mascotas/13.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 174923
   }
 }

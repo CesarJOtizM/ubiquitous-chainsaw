@@ -47,30 +47,35 @@ const amounts = priceRows.map((r) => r.price);
 const lowPrice = amounts.length ? Math.min(...amounts) : undefined;
 const highPrice = amounts.length ? Math.max(...amounts) : undefined;
 const fromWord = lang === 'en' ? 'From ' : 'Desde ';
+// Custom paintings list sizes only. The price is quoted per piece.
+const quoteOnly = entry.product === 'sizes';
 
 const priceItems = priceRows.map((r) => {
   const name = r.nameKey ? t(r.nameKey as TranslationKey) : '';
   const sizeAlreadyInName = Boolean(r.size && name.includes(r.size));
   const label = [name || null, sizeAlreadyInName ? null : r.size].filter(Boolean).join(' · ');
-  const showFrom = r.from || entry.product === 'sizes';
+  const showFrom = r.from;
   return {
     label,
-    price: `${showFrom ? fromWord : ''}${cop(r.price, lang)}`,
+    price: quoteOnly ? '' : `${showFrom ? fromWord : ''}${cop(r.price, lang)}`,
   };
 });
 
+const priceIntro = quoteOnly
+  ? lang === 'en'
+    ? 'Quoted by the design, the size, and the level of detail. If you need a larger size, let me know. Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.'
+    : 'Se cotiza según el diseño, el tamaño y el nivel de detalle. Si necesitas un tamaño más grande, házmelo saber. El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.'
+  : priceLead(lang);
+
 const extraPetNote = (() => {
   const en = lang === 'en';
-  if (entry.product === 'paintings' || entry.product === 'sizes') {
+  if (entry.product === 'sizes') return '';
+  if (entry.product === 'paintings') {
     const min = cop(extraPetPrices.canvas.min, lang);
     const max = cop(extraPetPrices.canvas.max, lang);
-    return entry.product === 'sizes'
-      ? en
-        ? `Prices start at these amounts for 1 pet. The final price also depends on how complex the design is. An extra pet costs ${min} to ${max}, depending on the size. If you want another size, tell me.`
-        : `Estos precios son desde, para 1 mascota. El valor también depende de lo complejo del diseño. La mascota adicional tiene un costo de ${min} a ${max}, según el tamaño. Si deseas otro tamaño, házmelo saber.`
-      : en
-        ? `These prices are for 1 pet. An extra pet costs ${min} to ${max}, depending on the size.`
-        : `Estos precios son de 1 mascota. La mascota adicional tiene un costo de ${min} a ${max}, según el tamaño.`;
+    return en
+      ? `These prices are for 1 pet. An extra pet costs ${min} to ${max}, depending on the size.`
+      : `Estos precios son de 1 mascota. La mascota adicional tiene un costo de ${min} a ${max}, según el tamaño.`;
   }
   if (entry.product === 'bases') {
     const amount = cop(extraPetPrices.base.amount, lang);
@@ -158,7 +163,7 @@ const extraJsonLd = [
     ...(schemaImages.length ? { image: schemaImages } : {}),
     brand: { '@type': 'Brand', name: 'Sac_Artx' },
     category: entry.category,
-    ...(lowPrice !== undefined && highPrice !== undefined
+    ...(lowPrice !== undefined && highPrice !== undefined && !quoteOnly
       ? {
           offers: {
             '@type': 'AggregateOffer',
@@ -262,12 +267,12 @@ const extraJsonLd = [
           <h2>{labels.prices}</h2>
           {priceItems.length > 0 ? (
             <>
-              <p>{priceLead(lang)}</p>
+              <p>{priceIntro}</p>
               <ul class="product-prices">
                 {priceItems.map((item) => (
                   <li>
                     <span class="product-prices__label">{item.label}</span>
-                    <span class="product-prices__price">{item.price}</span>
+                    {item.price && <span class="product-prices__price">{item.price}</span>}
                   </li>
                 ))}
               </ul>

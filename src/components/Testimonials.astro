@@ -20,6 +20,10 @@ const testimonials = [
     location: '',
     pet: '',
     image: '/images/bases-acrilicas/04.jpg',
+    alt:
+      lang === 'en'
+        ? 'Acrylic base with two black dogs, one with angel wings, named Fionita'
+        : 'Base acrílica con dos perros negros, uno con alas, y el nombre Fionita',
     gradient: '',
     instagramUrl: 'https://www.instagram.com/reel/DVeDl6JjbD4?comment_id=18083135780611556&open_comments=true',
   },
@@ -46,6 +50,10 @@ const testimonials = [
     location: '',
     pet: '',
     image: '/images/case-anime/04.jpg',
+    alt:
+      lang === 'en'
+        ? 'Hand-painted phone case of Gaara from Naruto on an orange sunset'
+        : 'Funda pintada a mano con Gaara de Naruto sobre un atardecer naranja',
     gradient: '',
     instagramUrl: 'https://www.instagram.com/reel/DUJk7O9ka7x?comment_id=18023863964796383&open_comments=true',
   },
@@ -59,6 +67,10 @@ const testimonials = [
     location: '',
     pet: '',
     image: '/images/bases-acrilicas/13.jpg',
+    alt:
+      lang === 'en'
+        ? 'Acrylic base with the dogs Mia and Azul on lilac and blue hearts'
+        : 'Base acrílica con los perros Mia y Azul sobre corazones lila y azul',
     gradient: '',
     instagramUrl: 'https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDA2NDA1MDAyMzQ3NTgx?story_media_id=3836768790273448818_55473517501',
   },
@@ -151,7 +163,7 @@ const reviewsJsonLd = {
                 src={imageUrl(testimonial.image, 640)}
                 srcset={imageSrcSet(testimonial.image, [640, 1024]) || undefined}
                 sizes="(max-width: 768px) 85vw, 320px"
-                alt={artworkAlt(testimonial.image)}
+                alt={testimonial.alt || artworkAlt(testimonial.image)}
                 class="testimonial-card__artwork-img"
                 width={imageDimensions(testimonial.image, 640).width}
                 height={imageDimensions(testimonial.image, 640).height}

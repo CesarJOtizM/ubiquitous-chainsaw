@@ -36,7 +36,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
     title: 'Política de privacidad',
     metaTitle: 'Política de privacidad · Sac_Artx',
     metaDescription:
-      'Qué datos recoge Sac_Artx, las cookies de Google Analytics y cómo pedir que corrijamos o borremos tu información.',
+      'Qué datos recoge Sac_Artx en sacartx.art, las cookies de Google Analytics y cómo pedir que corrijamos o borremos tu información.',
     crumb: 'Privacidad',
     updated: 'Actualizada el 7 de octubre de 2026',
     intro:
@@ -284,9 +284,9 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
   en: {
     label: 'Personal data',
     title: 'Privacy policy',
-    metaTitle: 'Privacy policy · Sac_Artx',
+    metaTitle: 'Privacy policy and your data rights | Sac_Artx',
     metaDescription:
-      'What data Sac_Artx collects, the Google Analytics cookies, and how to ask us to correct or delete your information.',
+      'What data Sac_Artx collects on sacartx.art, the Google Analytics cookies, and how to ask us to correct or delete your information.',
     crumb: 'Privacy',
     updated: 'Updated October 7, 2026',
     intro:

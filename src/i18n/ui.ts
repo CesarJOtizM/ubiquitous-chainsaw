@@ -36,6 +36,10 @@ export const ui = {
     'nav.magnetsHint': 'Mini lienzo de 7,5 cm, redondo o cuadrado, con imán. El precio está por confirmar.',
     'nav.pets': 'La mascota que tengas',
     'nav.petsHint': 'Perro, gato, loro, conejo, caballo, hámster, paloma o la que sea. La pinto desde tu foto.',
+    'nav.dogs': 'Retratos de perros',
+    'nav.dogsHint': 'Cualquier raza o mestizo, uno o varios, desde tu foto.',
+    'nav.cats': 'Retratos de gatos',
+    'nav.catsHint': 'Ojos, bigotes y manchas, desde tu foto.',
     'nav.memorial': 'Si ya no está contigo',
     'nav.memorialHint': 'La pinto con las fotos que todavía guardas.',
     'nav.how': 'Cómo funciona',
@@ -227,7 +231,6 @@ export const ui = {
     'testimonials.t2.quote': 'Siempre en mi corazón ❤️ gracias por tu hermosa labor y arte 😍',
     'testimonials.t3.quote': '¡Aquí estoy con mi señora, viendo tu publicación! ¡Nos encantó por completo! ¡Ella quedó muy feliz con su case! ¡Muchas gracias!!!! 🥳🥳🥳🥳🥳',
     'testimonials.t4.quote': 'Muchísimas gracias, está muy muy hermoso, gracias por haber plasmado la foto de mi gordita en ese cuadrito, me encantó — enamorada de mi cuadro 🥰',
-    'testimonials.imageAlt': 'Obra personalizada pintada a mano por Sac_Artx',
 
     // faq
     'faq.label': 'Todo lo que necesitas saber',
@@ -382,7 +385,7 @@ export const ui = {
     'meta.title': 'Retratos de mascotas en acrílico por encargo · Sac_Artx',
     'meta.description': 'Pintamos retratos de mascotas en acrílico sobre lienzo o base acrílica, paisajes y fundas personalizadas. Por encargo, desde una foto. Envíos a todo Colombia.',
     // Home-specific meta (keyword-first + locality, grounded in Google autocomplete: "desde foto", "personalizado", "Colombia")
-    'home.metaTitle': 'Retratos de mascotas desde foto en Colombia · Sac_Artx',
+    'home.metaTitle': 'Cuadros, bases y fundas pintadas a mano · Sac_Artx',
     'home.metaDescription': 'Retratos de mascotas pintados a mano en acrílico, desde tu foto. Cuadros, bases acrílicas y fundas personalizadas por encargo, con envío a todo Colombia.',
     'meta.ogLocale': 'es_CO',
     'schema.description': 'Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. También hace paisajes y fundas personalizadas. Envía pedidos a Bogotá, Medellín, Cali, Barranquilla y el resto del país.',
@@ -417,6 +420,10 @@ export const ui = {
     'nav.magnetsHint': 'A 7.5 cm mini canvas, round or square, with a magnet. The price is still to be confirmed.',
     'nav.pets': 'Whichever pet you have',
     'nav.petsHint': 'Dog, cat, parrot, rabbit, horse, hamster, pigeon, or whichever is yours. I paint it from your photo.',
+    'nav.dogs': 'Dog portraits',
+    'nav.dogsHint': 'Any breed or mix, one dog or several, from your photo.',
+    'nav.cats': 'Cat portraits',
+    'nav.catsHint': 'Eyes, whiskers and markings, from your photo.',
     'nav.memorial': 'If they are no longer with you',
     'nav.memorialHint': 'I paint them from the photos you still have.',
     'nav.how': 'How it works',
@@ -517,7 +524,7 @@ export const ui = {
     'services.s3.waMsg': 'Hello!%20I\'d%20like%20to%20order%20a%20custom%20phone%20case',
     // catalog
     'catalog.metaTitle': 'Catalog of portraits, bases and cases · Sac_Artx',
-    'catalog.metaDescription': 'Sac_Artx catalog: acrylic pet portraits, custom paintings, acrylic bases and phone cases. Browse real pieces and order yours on WhatsApp. Shipping across Colombia.',
+    'catalog.metaDescription': 'Sac_Artx catalog: acrylic portraits, paintings, bases and phone cases. Order on WhatsApp, with shipping across Colombia.',
     'catalog.crumbHome': 'Home',
     'catalog.label': 'Real pieces',
     'catalog.title': 'Catalog',
@@ -608,7 +615,6 @@ export const ui = {
     'testimonials.t2.quote': 'Always in my heart ❤️ thank you for your beautiful work and art 😍',
     'testimonials.t3.quote': 'Here I am with my wife, looking at your post! We absolutely loved it! She was so happy with her case! Thank you so much!!!! 🥳🥳🥳🥳🥳',
     'testimonials.t4.quote': 'Thank you so much, it\'s so so beautiful, thank you for capturing my little chubby girl in that painting, I loved it — completely in love with my artwork 🥰',
-    'testimonials.imageAlt': 'Custom hand-painted artwork by Sac_Artx',
 
     // faq
     'faq.label': 'Everything you need to know',
@@ -763,7 +769,7 @@ export const ui = {
     'meta.title': 'Custom Acrylic Pet Portraits · Sac_Artx',
     'meta.description': 'We paint custom acrylic pet portraits on canvas or acrylic base, landscapes and personalized phone cases. Commissioned from a photo. Shipping across Colombia.',
     // Home-specific meta (keyword-first + locality, grounded in Google autocomplete: "from photo", "custom", "Colombia")
-    'home.metaTitle': 'Custom Pet Portraits From Your Photo · Colombia · Sac_Artx',
+    'home.metaTitle': 'Hand-painted pet canvas, bases and cases · Sac_Artx',
     'home.metaDescription': 'Hand-painted pet portraits in acrylic, made from your photo. Canvas, acrylic bases and custom phone cases, commissioned with shipping across Colombia.',
     'meta.ogLocale': 'en_US',
     'schema.description': 'Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic, plus landscapes and personalized phone cases. Orders ship to Bogotá, Medellín, Cali, Barranquilla, and the rest of the country.',

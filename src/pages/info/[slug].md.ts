@@ -15,6 +15,11 @@ export const GET: APIRoute = ({ params }) => {
     return new Response('Not found', { status: 404 });
   }
   return new Response(intentMarkdown(entry), {
-    headers: { 'Content-Type': 'text/markdown; charset=utf-8' },
+    headers: {
+      'Content-Type': 'text/markdown; charset=utf-8',
+      // The HTML guide is the URL that should rank. This file stays as the
+      // markdown alternate for citation tools.
+      'X-Robots-Tag': 'noindex, follow',
+    },
   });
 };

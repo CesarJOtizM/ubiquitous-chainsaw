@@ -90,6 +90,10 @@ export const catalogLines: LineCopy[] = [
 ];
 
 export const catalogItems: { src: string; line: CatalogLineId }[] = [
+  { src: '/images/bases-acrilicas/16.jpg', line: 'bases-acrilicas' },
+  { src: '/images/bases-acrilicas/17.jpg', line: 'bases-acrilicas' },
+  { src: '/images/bases-acrilicas/18.jpg', line: 'bases-acrilicas' },
+  { src: '/images/bases-acrilicas/19.jpg', line: 'bases-acrilicas' },
   { src: '/images/bases-acrilicas/01.jpg', line: 'bases-acrilicas' },
   { src: '/images/bases-acrilicas/02.jpg', line: 'bases-acrilicas' },
   { src: '/images/bases-acrilicas/03.jpg', line: 'bases-acrilicas' },
@@ -105,6 +109,8 @@ export const catalogItems: { src: string; line: CatalogLineId }[] = [
   { src: '/images/bases-acrilicas/13.jpg', line: 'bases-acrilicas' },
   { src: '/images/bases-acrilicas/14.jpg', line: 'bases-acrilicas' },
   { src: '/images/bases-acrilicas/15.jpg', line: 'bases-acrilicas' },
+  { src: '/images/cuadros-mascotas/12.jpg', line: 'cuadros-mascotas' },
+  { src: '/images/cuadros-mascotas/13.jpg', line: 'cuadros-mascotas' },
   { src: '/images/cuadros-mascotas/01.jpg', line: 'cuadros-mascotas' },
   { src: '/images/cuadros-mascotas/02.jpg', line: 'cuadros-mascotas' },
   { src: '/images/cuadros-mascotas/03.jpg', line: 'cuadros-mascotas' },

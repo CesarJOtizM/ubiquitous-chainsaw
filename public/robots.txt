@@ -16,7 +16,6 @@ User-agent: Claude-SearchBot
 User-agent: Claude-User
 User-agent: PerplexityBot
 User-agent: Perplexity-User
-User-agent: Google-Extended
 User-agent: YouBot
 User-agent: Amazonbot
 Allow: /
@@ -26,6 +25,11 @@ Disallow: /_astro/
 Disallow: /_image
 
 # ── Entrenamiento de modelos — bloquear ───────────────────────────────────────
+# Google-Extended controla el entrenamiento de Gemini, no la búsqueda.
+# Googlebot sigue permitido en el grupo de arriba.
+User-agent: Google-Extended
+Disallow: /
+
 User-agent: GPTBot
 Disallow: /
 

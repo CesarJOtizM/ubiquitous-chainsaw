@@ -53,7 +53,7 @@ function isCurrent(key: string) {
   if (key === 'about') return isAboutPath(path);
   if (key === 'blog') return isBlogIndexPath(path) || isBlogPostPath(path);
   if (product && key === product) return true;
-  if (key === 'pets' || key === 'memorial') return topic === key;
+  if (key === 'pets' || key === 'dogs' || key === 'cats' || key === 'memorial') return topic === key;
   return false;
 }
 
@@ -77,6 +77,8 @@ const groups: { title: string; links: NavLink[] }[] = [
     title: t('nav.petTitle'),
     links: [
       { href: intentPath('pets', lang), label: t('nav.pets'), hint: t('nav.petsHint'), key: 'pets' },
+      { href: intentPath('dogs', lang), label: t('nav.dogs'), hint: t('nav.dogsHint'), key: 'dogs' },
+      { href: intentPath('cats', lang), label: t('nav.cats'), hint: t('nav.catsHint'), key: 'cats' },
       { href: intentPath('memorial', lang), label: t('nav.memorial'), hint: t('nav.memorialHint'), key: 'memorial' },
     ],
   },

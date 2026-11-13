@@ -37,8 +37,16 @@ export interface IntentEntry {
   includedOrdered?: boolean;
   /** Trailing note paragraph after the included list (used by the `how` topic). */
   includedNote?: string;
+  /** Extra sections unique to this page. Headings are real search questions. */
+  sections?: IntentSection[];
   /** Related topic keys for internal links. */
   related: IntentTopic[];
+}
+
+export interface IntentSection {
+  heading: string;
+  paragraphs: string[];
+  links?: { href: string; label: string }[];
 }
 
 type Content = Pick<
@@ -53,6 +61,7 @@ type Content = Pick<
   | 'included'
   | 'includedOrdered'
   | 'includedNote'
+  | 'sections'
 >;
 
 interface TopicConfig {
@@ -75,7 +84,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
         h1: 'Pinto retratos de mascotas a mano en acrílico, desde tu foto',
         metaTitle: 'Retratos de mascotas personalizados desde tu foto | Sac_Artx',
         metaDescription:
-          'Pinto el retrato de tu mascota a mano en acrílico, desde tu foto. Perro, gato, loro, conejo, caballo o la que sea. Te mando un boceto antes de pintar y envío a toda Colombia.',
+          'Pinto tu mascota a mano en acrílico, desde tu foto: perro, gato u otra. Un boceto antes de pintar y envío a toda Colombia.',
         lead: 'Me mandas la foto y pinto a tu mascota a mano en acrílico. Perro, gato, loro, conejo, caballo, hámster, paloma o la que sea: la pinto desde tu foto.',
         whatItIs:
           'La pinto sobre lienzo o sobre base de acrílico (metacrilato). Me escribes por WhatsApp con la foto y, antes de pintar, te mando un boceto. Los cambios del boceto no se cobran.',
@@ -94,7 +103,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
         h1: 'I paint pet portraits by hand in acrylic, from your photo',
         metaTitle: 'Custom acrylic pet portraits from your photo | Sac_Artx',
         metaDescription:
-          'I paint your pet by hand in acrylic, from your photo. Dog, cat, parrot, rabbit, horse, or whichever is yours. I send a sketch before I paint, and I ship across Colombia.',
+          'I paint your pet by hand in acrylic, from your photo: dog, cat, or another. A sketch before I paint, and shipping across Colombia.',
         lead: 'Send me the photo and I paint your pet by hand in acrylic. Dog, cat, parrot, rabbit, horse, hamster, pigeon, or whichever is yours: I paint it from your photo.',
         whatItIs:
           'I paint it on canvas or on an acrylic (methacrylate) base. You message me on WhatsApp with the photo, and before I paint I send a sketch. Sketch changes are free.',
@@ -122,17 +131,38 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
         metaTitle: 'Retratos de perros personalizados desde foto | Sac_Artx',
         metaDescription:
           'Retrato de tu perro pintado a mano en acrílico desde una foto. Cualquier raza, boceto previo sin costo y envío a toda Colombia.',
-        lead: 'Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de perros pintados a mano en acrílico. Cada retrato se hace por encargo a partir de una fotografía enviada por WhatsApp.',
+        lead: 'Me mandas la foto de tu perro y lo pinto a mano en acrílico. Sirve cualquier raza o mestizo, un solo perro o varios en la misma pieza, con envío a toda Colombia.',
         whatItIs:
-          'Sac_Artx pinta a mano el retrato de tu perro en acrílico sobre lienzo o sobre base de metacrilato. El encargo empieza con una foto. Antes de pintar se envía un boceto digital, con revisiones sin costo.',
+          'Lo pinto sobre lienzo o sobre base de acrílico (metacrilato). En la base, el nombre va en la madera. Antes de pintar te mando un boceto por WhatsApp y los cambios de ese boceto no se cobran.',
         whoFor:
-          'Dueños de perros en Colombia que quieren un cuadro personalizado, un regalo o un retrato en memoria. Se aceptan perros de cualquier raza o mestizos. Se pueden incluir varias mascotas en el mismo cuadro; la cantidad sugerida depende del tamaño.',
+          'Para ti, si quieres el retrato de tu perro, regalárselo a alguien o tener cerca a uno que ya no está. En una misma base caben dos: Mia y Azul van juntos, y en la de Fionita hay dos perros negros, uno con alas de ángel.',
         included: [
-          'Retrato de perro pintado a mano en acrílico sobre lienzo o base acrílica.',
-          'Boceto digital previo a la pintura.',
-          'Revisiones del boceto sin costo extra.',
-          'Foto de aprobación final antes del envío.',
+          'Retrato de tu perro pintado a mano en acrílico sobre lienzo o base acrílica, desde tu foto.',
+          'Boceto por WhatsApp antes de pintar. Los cambios del boceto no se cobran.',
+          'El nombre en la madera, cuando la pieza es una base.',
+          'Una foto del trabajo terminado, antes de enviarlo.',
           'Embalaje y número de seguimiento dentro de Colombia.',
+        ],
+        sections: [
+          {
+            heading: '¿Qué foto necesito para pintar a mi perro?',
+            paragraphs: [
+              'La foto tiene que dejar ver los ojos, el hocico y la forma de las orejas, con luz de día. Si el perro sale muy lejos o la toma está borrosa, no alcanzo el pelaje ni la expresión. Acércate y, si en la primera se pierde la cara, manda una segunda.',
+              'Si van dos perros en la misma pieza, necesito la cara de cada uno. No hace falta que salgan juntos: puedo unir tomas distintas. Así están Mia y Azul en una base, y los dos perros de Fionita en otra.',
+            ],
+            links: [
+              {
+                href: '/blog/como-elegir-la-mejor-foto-mascota/',
+                label: 'Guía para elegir la foto',
+              },
+            ],
+          },
+          {
+            heading: '¿Se puede pintar a un perro que ya no está?',
+            paragraphs: [
+              'Sí. Uso las fotos que todavía guardas, aunque no sean recientes. En la base de Fionita uno de los dos perros lleva alas de ángel y el nombre queda en la madera. El proceso es el mismo que cuando tu perro sigue en casa: foto, boceto y después la pintura.',
+            ],
+          },
         ],
       },
       en: {
@@ -141,17 +171,38 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
         metaTitle: 'Custom dog portraits from photo | Sac_Artx',
         metaDescription:
           'Your dog hand-painted in acrylic from a photo. Any breed, free sketch before painting, and shipping across Colombia. Memorial portraits available.',
-        lead: 'Sac_Artx is a studio in Colombia, specializing in custom dog portraits hand-painted in acrylic. Each portrait is commissioned from a photograph sent on WhatsApp.',
+        lead: 'Send me a photo of your dog and I paint it by hand in acrylic. Any breed or mix works, one dog or several on the same piece, with shipping across Colombia.',
         whatItIs:
-          'Sac_Artx hand-paints your dog in acrylic on canvas or on an acrylic (methacrylate) base. A commission starts with a photo. A digital sketch is sent before painting, and revisions are free.',
+          'I paint it on canvas or on an acrylic (methacrylate) base. On a base, the name goes on the wood. Before I paint I send a WhatsApp sketch, and sketch changes are free.',
         whoFor:
-          'Dog owners in Colombia who want a custom painting, a gift, or a memorial portrait. Any breed or mixed breed is welcome. Several pets can share one painting; the suggested number depends on the size.',
+          'For you, if you want a portrait of your dog, a gift, or a dog who is no longer here. Two dogs can share one base: Mia and Azul are together, and Fionita’s base has two black dogs, one with angel wings.',
         included: [
-          'Hand-painted acrylic dog portrait on canvas or acrylic base.',
-          'Digital sketch before painting.',
-          'Sketch revisions at no extra charge.',
-          'Final approval photo before shipping.',
-          'Protective packaging and a tracking number within Colombia.',
+          'Your dog painted by hand in acrylic on canvas or an acrylic base, from your photo.',
+          'A WhatsApp sketch before I paint. Sketch changes are free.',
+          'The name on the wood, when the piece is a base.',
+          'A photo of the finished piece before I ship it.',
+          'Packaging and a tracking number within Colombia.',
+        ],
+        sections: [
+          {
+            heading: 'What photo do I need to paint my dog?',
+            paragraphs: [
+              'The photo has to show the eyes, the muzzle and the shape of the ears, in daylight. If the dog is far away or the shot is blurry, I cannot read the fur or the expression. Step closer and, if the face is lost in the first shot, send a second one.',
+              'If two dogs share one piece, I need each face. They do not have to be in the same photo: I can combine separate shots. That is how Mia and Azul share a base, and how the two dogs on Fionita’s base were painted.',
+            ],
+            links: [
+              {
+                href: '/en/blog/how-to-choose-the-best-photo/',
+                label: 'Guide to choosing the photo',
+              },
+            ],
+          },
+          {
+            heading: 'Can you paint a dog who has passed away?',
+            paragraphs: [
+              'Yes. I use the photos you still have, even if they are not recent. On Fionita’s base one of the two black dogs has angel wings, and the name is on the wood. The process is the same as when your dog is still at home: photo, sketch, then the painting.',
+            ],
+          },
         ],
       },
     },
@@ -168,17 +219,38 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
         metaTitle: 'Retratos de gatos personalizados desde foto | Sac_Artx',
         metaDescription:
           'Retrato de tu gato pintado a mano en acrílico desde una foto. Cualquier raza, boceto previo sin costo y envío a toda Colombia.',
-        lead: 'Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de gatos pintados a mano en acrílico. Cada retrato se hace por encargo a partir de una fotografía enviada por WhatsApp.',
+        lead: 'Me mandas la foto de tu gato y lo pinto a mano en acrílico. Sirve pelo corto o largo: los ojos, los bigotes y las manchas salen de tu foto, no de una raza genérica.',
         whatItIs:
-          'Sac_Artx pinta a mano el retrato de tu gato en acrílico sobre lienzo o sobre base de metacrilato. El encargo empieza con una foto. Antes de pintar se envía un boceto digital, con revisiones sin costo.',
+          'Lo pinto sobre lienzo o sobre base de acrílico (metacrilato). En la base de Amelia, gata tricolor, el retrato va sobre un corazón azul y el nombre queda en la madera. Antes de pintar te mando un boceto por WhatsApp.',
         whoFor:
-          'Dueños de gatos en Colombia que quieren un cuadro personalizado, un regalo o un retrato en memoria. Se aceptan gatos de cualquier raza o mestizos. Se pueden incluir varias mascotas en el mismo cuadro; la cantidad sugerida depende del tamaño.',
+          'Para ti, si quieres el retrato de tu gato en casa, regalárselo a alguien o pintar a uno que ya no está con las fotos que guardas. El color de los ojos y el dibujo del pelaje se respetan toma por toma.',
         included: [
-          'Retrato de gato pintado a mano en acrílico sobre lienzo o base acrílica.',
-          'Boceto digital previo a la pintura.',
-          'Revisiones del boceto sin costo extra.',
-          'Foto de aprobación final antes del envío.',
+          'Retrato de tu gato pintado a mano en acrílico sobre lienzo o base acrílica, desde tu foto.',
+          'Boceto por WhatsApp antes de pintar. Los cambios del boceto no se cobran.',
+          'El nombre en la madera, cuando la pieza es una base.',
+          'Una foto del trabajo terminado, antes de enviarlo.',
           'Embalaje y número de seguimiento dentro de Colombia.',
+        ],
+        sections: [
+          {
+            heading: '¿Qué foto necesito para pintar a mi gato?',
+            paragraphs: [
+              'Necesito los ojos, las orejas y los bigotes con luz de día. Una foto desde muy arriba aplasta la cara. Si el gato es tricolor, como Amelia, el negro, el naranja y el blanco tienen que verse en la toma: esas manchas no se adivinan.',
+              'Si se mueve y sale borroso, manda otra. El pelaje y el color de los ojos salen de esa foto. Una segunda toma, más cerca, alcanza cuando la primera se queda en el ambiente y no en la cara.',
+            ],
+            links: [
+              {
+                href: '/blog/como-elegir-la-mejor-foto-mascota/',
+                label: 'Guía para elegir la foto',
+              },
+            ],
+          },
+          {
+            heading: '¿Se puede pintar a un gato que ya no está?',
+            paragraphs: [
+              'Sí, con las fotos que todavía guardas, aunque no sean recientes. El proceso no cambia: boceto por WhatsApp antes de pintar y envío a toda Colombia. Si quieres el nombre en la pieza, la base lo lleva en la madera, como en la de Amelia.',
+            ],
+          },
         ],
       },
       en: {
@@ -187,17 +259,38 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
         metaTitle: 'Custom cat portraits from photo | Sac_Artx',
         metaDescription:
           'Your cat hand-painted in acrylic from a photo. Any breed, free sketch before painting, and shipping across Colombia. Memorial portraits available.',
-        lead: 'Sac_Artx is a studio in Colombia, specializing in custom cat portraits hand-painted in acrylic. Each portrait is commissioned from a photograph sent on WhatsApp.',
+        lead: 'Send me a photo of your cat and I paint it by hand in acrylic. Short or long fur both work: the eyes, the whiskers and the markings come from your photo, not from a generic breed.',
         whatItIs:
-          'Sac_Artx hand-paints your cat in acrylic on canvas or on an acrylic (methacrylate) base. A commission starts with a photo. A digital sketch is sent before painting, and revisions are free.',
+          'I paint it on canvas or on an acrylic (methacrylate) base. On Amelia’s base, a calico cat, the portrait sits on a blue heart and the name is on the wood. Before I paint I send a WhatsApp sketch.',
         whoFor:
-          'Cat owners in Colombia who want a custom painting, a gift, or a memorial portrait. Any breed or mixed breed is welcome. Several pets can share one painting; the suggested number depends on the size.',
+          'For you, if you want your cat’s portrait at home, as a gift, or painted from the photos you kept after they were gone. Eye color and the pattern of the fur are taken from the shot you send.',
         included: [
-          'Hand-painted acrylic cat portrait on canvas or acrylic base.',
-          'Digital sketch before painting.',
-          'Sketch revisions at no extra charge.',
-          'Final approval photo before shipping.',
-          'Protective packaging and a tracking number within Colombia.',
+          'Your cat painted by hand in acrylic on canvas or an acrylic base, from your photo.',
+          'A WhatsApp sketch before I paint. Sketch changes are free.',
+          'The name on the wood, when the piece is a base.',
+          'A photo of the finished piece before I ship it.',
+          'Packaging and a tracking number within Colombia.',
+        ],
+        sections: [
+          {
+            heading: 'What photo do I need to paint my cat?',
+            paragraphs: [
+              'I need the eyes, the ears and the whiskers in daylight. A photo from high above flattens the face. If the cat is calico, like Amelia, the black, orange and white have to show in the shot: those patches cannot be guessed.',
+              'If the cat moves and the photo is blurry, send another. The fur and the eye color come from that photo. A second, closer shot is enough when the first one stays on the room instead of the face.',
+            ],
+            links: [
+              {
+                href: '/en/blog/how-to-choose-the-best-photo/',
+                label: 'Guide to choosing the photo',
+              },
+            ],
+          },
+          {
+            heading: 'Can you paint a cat who has passed away?',
+            paragraphs: [
+              'Yes, from the photos you still have, even if they are not recent. The process does not change: a WhatsApp sketch before I paint, and shipping across Colombia. If you want the name on the piece, the base carries it on the wood, as on Amelia’s.',
+            ],
+          },
         ],
       },
     },
@@ -257,9 +350,9 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
       es: {
         linkLabel: 'Cómo funciona',
         h1: '¿Cómo encargar tu retrato de mascota personalizado?',
-        metaTitle: '¿Cómo encargar tu retrato de mascota personalizado? | Sac_Artx',
+        metaTitle: '¿Cómo encargar tu retrato en acrílico? | Sac_Artx',
         metaDescription:
-          'Hacer tu pedido en Sac_Artx es sencillo: foto, boceto en menos de 48 horas y retrato pintado a mano. El plazo corre desde la aprobación del boceto. El envío va contra entrega con la transportadora.',
+          'Foto, boceto en menos de 48 horas y retrato pintado a mano. El plazo corre al aprobar el boceto. Envío contra entrega en Colombia.',
         lead: 'Hacer tu pedido en Sac_Artx es muy sencillo. Sigue estos pasos y pronto tendrás una obra de arte creada especialmente para ti.',
         whatItIs:
           'El proceso de Sac_Artx tiene cinco pasos: enviar la foto, recibir un boceto digital, aprobar el diseño, pintar la obra y recibir el envío. Sitio: https://sacartx.art/',
@@ -281,7 +374,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
         h1: 'How do you commission your custom pet portrait?',
         metaTitle: 'How do you commission your custom pet portrait? | Sac_Artx',
         metaDescription:
-          'Ordering from Sac_Artx is simple: a photo, a sketch in under 48 hours, and a hand-painted portrait. The clock starts when you approve the sketch. Shipping is cash on delivery with the carrier.',
+          'A photo, a sketch in under 48 hours, and a hand-painted portrait. Time starts when you approve the sketch. Cash on delivery in Colombia.',
         lead: 'Ordering from Sac_Artx is simple. Follow these steps and you will soon have a work of art made just for you.',
         whatItIs:
           'The Sac_Artx process has five steps: send the photo, receive a digital sketch, approve the design, paint the piece, and receive the shipment. Website: https://sacartx.art/en/',

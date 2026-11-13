@@ -76,6 +76,7 @@ const extraJsonLd = [
   alternateEs={alternateEs}
   alternateEn={alternateEn}
   markdownAlt={markdownAlt}
+  markdownAltTitle={entry.metaTitle}
   extraJsonLd={extraJsonLd}
 >
   <Navbar lang={lang} />
@@ -132,6 +133,22 @@ const extraJsonLd = [
           )}
           {entry.includedNote && <p>{entry.includedNote}</p>}
         </section>
+
+        {entry.sections?.map((section) => (
+          <section class="intent-section">
+            <h2>{section.heading}</h2>
+            {section.paragraphs.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+            {section.links && section.links.length > 0 && (
+              <p>
+                {section.links.map((link) => (
+                  <a href={link.href} data-astro-prefetch="viewport">{link.label}</a>
+                ))}
+              </p>
+            )}
+          </section>
+        ))}
 
         <section class="intent-section">
           <h2>{labels.prices}</h2>
