@@ -14,8 +14,9 @@ const galleryUrl = catalogPath(lang);
   lang={lang}
   title={`404 · Sac_Artx`}
   description={t('notfound.desc')}
+  robots="noindex, follow"
 >
-  <main class="notfound" aria-label="Página no encontrada">
+  <main class="notfound" aria-label={`${t('notfound.title')} ${t('notfound.titleEm')}`}>
     <!-- Watercolor blobs -->
     <div class="notfound__blobs" aria-hidden="true">
       <div class="notfound__blob notfound__blob--pink"></div>

@@ -1,6 +1,6 @@
 # Sac_Artx pet portrait prices in Colombia
 
-Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic. The prices below are current as of October 2026, in Colombian pesos (COP). Shipping is extra.
+Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic. The prices below are current as of October 2026, in Colombian pesos (COP). Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.
 
 ## What it is
 
@@ -12,7 +12,7 @@ Anyone pricing a dog, cat, or other pet portrait, an acrylic base, a personalize
 
 ## What is included
 
-Each portrait or base price includes 1 pet, a digital sketch beforehand, and free revisions. National shipping is charged separately.
+Each portrait or base price includes 1 pet, a digital sketch beforehand, and free revisions. Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.
 
 ## Prices
 
@@ -58,8 +58,8 @@ Catalog of finished pieces: https://sacartx.art/en/catalog/
 
 ## Turnaround and payment
 
-Turnaround is 15 to 20 business days from the first 50% payment. The remaining 50% is paid when the work is finished. The piece ships once payment is complete. Payment methods: Nequi, Daviplata, bank transfer, and cash.
+Turnaround is 15 to 20 business days. Timing can vary with the complexity of the design and the current schedule. You pay 50% to start and 50% when it is finished. The piece ships once payment is complete. You pay the shipping cost to the carrier when it arrives at your home. Payment methods: Nequi, Daviplata, bank transfer, Bre-B key, and credit cards.
 
-## Where
+## Shipping across Colombia
 
-Sac_Artx paints to order and ships to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia. WhatsApp: +57 301 658 4401. Homepage: https://sacartx.art/en/
+I paint to order and ship to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia. Shipping is cash on delivery with the carrier: you pay it when it arrives at your home, based on the city. WhatsApp: +57 301 658 4401.

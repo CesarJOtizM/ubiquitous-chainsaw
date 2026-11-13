@@ -1,0 +1,528 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from './Navbar.astro';
+import Footer from './Footer.astro';
+import WhatsAppFAB from './WhatsAppFAB.astro';
+import WhereParagraph from './WhereParagraph.astro';
+import { useTranslations, type TranslationKey } from '../i18n/utils';
+import {
+  catalogPath,
+  homePath,
+  intentPath,
+  pricesPath,
+  productPath,
+} from '../i18n/paths';
+import { business } from '../data/business';
+import { canvasPrices, basePrices, casePrices, extraPetPrices, type PriceRow } from '../data/prices';
+import { cop, priceLead, leadTimeText } from '../lib/price-text';
+import { itemsForLine } from '../data/catalog';
+import { animalAltEn, animalAltEs, animalForSrc } from '../data/catalog-animals';
+import { imageDimensions, imageSrcSet, imageUrl } from '../lib/images';
+import { intentEntry } from '../data/intent-pages';
+import { productEntry, type ProductEntry } from '../data/product-pages';
+
+export interface Props {
+  entry: ProductEntry;
+}
+
+const { entry } = Astro.props;
+const { lang } = entry;
+const t = useTranslations(lang);
+
+const SITE = business.site;
+const path = productPath(entry.product, lang);
+const canonicalUrl = `${SITE}${path}`;
+const alternateEs = lang === 'es' ? canonicalUrl : `${SITE}${productPath(entry.product, 'es')}`;
+const alternateEn = lang === 'en' ? canonicalUrl : `${SITE}${productPath(entry.product, 'en')}`;
+const homeUrl = `${SITE}${homePath(lang)}`;
+
+// Price table driving the price block and the schema offer.
+const priceTables: Record<Exclude<ProductEntry['priceSource'], null>, PriceRow[]> = {
+  canvas: canvasPrices,
+  base: basePrices,
+  case: casePrices,
+};
+const priceRows = entry.priceSource ? priceTables[entry.priceSource] : [];
+const amounts = priceRows.map((r) => r.price);
+const lowPrice = amounts.length ? Math.min(...amounts) : undefined;
+const highPrice = amounts.length ? Math.max(...amounts) : undefined;
+const fromWord = lang === 'en' ? 'From ' : 'Desde ';
+// Custom paintings list sizes only. The price is quoted per piece.
+const quoteOnly = entry.product === 'sizes';
+
+const priceItems = priceRows.map((r) => {
+  const name = r.nameKey ? t(r.nameKey as TranslationKey) : '';
+  const sizeAlreadyInName = Boolean(r.size && name.includes(r.size));
+  const label = [name || null, sizeAlreadyInName ? null : r.size].filter(Boolean).join(' · ');
+  const showFrom = r.from;
+  return {
+    label,
+    price: quoteOnly ? '' : `${showFrom ? fromWord : ''}${cop(r.price, lang)}`,
+  };
+});
+
+const priceIntro = quoteOnly
+  ? lang === 'en'
+    ? 'Quoted by the design, the size, and the level of detail. If you need a larger size, let me know. Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.'
+    : 'Se cotiza según el diseño, el tamaño y el nivel de detalle. Si necesitas un tamaño más grande, házmelo saber. El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.'
+  : priceLead(lang);
+
+const extraPetNote = (() => {
+  const en = lang === 'en';
+  if (entry.product === 'sizes') return '';
+  if (entry.product === 'paintings') {
+    const min = cop(extraPetPrices.canvas.min, lang);
+    const max = cop(extraPetPrices.canvas.max, lang);
+    return en
+      ? `These prices are for 1 pet. An extra pet costs ${min} to ${max}, depending on the size.`
+      : `Estos precios son de 1 mascota. La mascota adicional tiene un costo de ${min} a ${max}, según el tamaño.`;
+  }
+  if (entry.product === 'bases') {
+    const amount = cop(extraPetPrices.base.amount, lang);
+    return en
+      ? `These prices are for 1 pet. An extra pet costs ${amount}.`
+      : `Estos precios son de 1 mascota. La mascota adicional tiene un costo de ${amount}.`;
+  }
+  if (entry.product === 'cases') {
+    const amount = cop(extraPetPrices.case.amount, lang);
+    return en
+      ? `The pet case price is for 1 pet. An extra pet costs ${amount}.`
+      : `El precio de la funda de mascota es de 1 mascota. La mascota adicional tiene un costo de ${amount}.`;
+  }
+  return '';
+})();
+
+// Gallery built from the product's catalog lines (same approach as Catalog.astro).
+const galleryName = entry.linkLabel;
+const gallery = entry.lineIds.flatMap((id) =>
+  itemsForLine(id).map((item, index) => {
+    const animal = animalForSrc(item.src);
+    const animalLabel = lang === 'en' ? animalAltEn[animal] : animalAltEs[animal];
+    const dims = imageDimensions(item.src, 800);
+    return {
+      src: imageUrl(item.src, 640),
+      srcset: imageSrcSet(item.src, [640, 1024]),
+      width: dims.width,
+      height: dims.height,
+      alt: `${animalLabel} — ${galleryName} ${String(index + 1).padStart(2, '0')} · Sac_Artx`,
+    };
+  })
+);
+
+// Absolute image URLs for the Product schema (first few pieces).
+const schemaImages = gallery
+  .slice(0, 4)
+  .map((g) => (/^https?:\/\//.test(g.src) ? g.src : `${SITE}${g.src}`));
+
+// Related links: other products + relevant guides + prices + catalog.
+const relatedLinks = [
+  ...entry.relatedProducts.map((p) => {
+    const rel = productEntry(p, lang);
+    return { href: productPath(p, lang), label: rel.linkLabel };
+  }),
+  ...entry.relatedIntents.map((topic) => ({
+    href: intentPath(topic, lang),
+    label: intentEntry(topic, lang).linkLabel,
+  })),
+  { href: pricesPath(lang), label: t('prices.navLabel') },
+  { href: catalogPath(lang), label: lang === 'en' ? 'Catalog' : 'Catálogo' },
+];
+
+// Localized section labels.
+const labels =
+  lang === 'en'
+    ? {
+        included: "What's included",
+        prices: 'Prices',
+        turnaround: 'Turnaround and payment',
+        where: 'Shipping across Colombia',
+        faq: 'Frequently asked questions',
+        related: 'Related pages',
+        gallery: 'Gallery',
+        crumbHome: t('prices.crumbHome'),
+        catalog: 'Catalog',
+      }
+    : {
+        included: 'Qué incluye',
+        prices: 'Precios',
+        turnaround: 'Plazo y pago',
+        where: 'Envío a toda Colombia',
+        faq: 'Preguntas frecuentes',
+        related: 'Páginas relacionadas',
+        gallery: 'Galería',
+        crumbHome: t('prices.crumbHome'),
+        catalog: 'Catálogo',
+      };
+
+const extraJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': `${canonicalUrl}#product`,
+    name: entry.h1,
+    description: entry.metaDescription,
+    url: canonicalUrl,
+    ...(schemaImages.length ? { image: schemaImages } : {}),
+    brand: { '@type': 'Brand', name: 'Sac_Artx' },
+    category: entry.category,
+    ...(lowPrice !== undefined && highPrice !== undefined && !quoteOnly
+      ? {
+          offers: {
+            '@type': 'AggregateOffer',
+            priceCurrency: 'COP',
+            lowPrice,
+            highPrice,
+            availability: 'https://schema.org/InStock',
+            areaServed: { '@type': 'Country', name: 'Colombia' },
+            url: canonicalUrl,
+            seller: { '@id': `${SITE}/#business` },
+          },
+        }
+      : {}),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: labels.crumbHome, item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: labels.catalog, item: `${SITE}${catalogPath(lang)}` },
+      { '@type': 'ListItem', position: 3, name: entry.linkLabel, item: canonicalUrl },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title={entry.metaTitle}
+  description={entry.metaDescription}
+  ogUrl={canonicalUrl}
+  canonicalUrl={canonicalUrl}
+  alternateEs={alternateEs}
+  alternateEn={alternateEn}
+  markdownAlt={false}
+  extraJsonLd={extraJsonLd}
+>
+  <Navbar lang={lang} />
+  <main>
+    <div class="product-page">
+      <header class="product-hero">
+        <div class="container">
+          <nav class="product-crumb" aria-label={lang === 'en' ? 'Breadcrumb' : 'Miga de pan'}>
+            <a href={homePath(lang)}>{labels.crumbHome}</a>
+            <span aria-hidden="true">/</span>
+            <a href={catalogPath(lang)}>{labels.catalog}</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{entry.linkLabel}</span>
+          </nav>
+          <h1 class="product-hero__title">{entry.h1}</h1>
+          <p class="product-hero__intro">{entry.lead}</p>
+        </div>
+      </header>
+
+      <div class="container product-body">
+        {gallery.length > 0 && (
+          <section class="product-section" aria-label={labels.gallery}>
+            <h2>{labels.gallery}</h2>
+            <ul class="product-gallery" id="product-gallery">
+              {gallery.map((item, index) => (
+                <li hidden={index >= 6}>
+                  <img
+                    src={item.src}
+                    srcset={item.srcset || undefined}
+                    sizes="(max-width: 640px) 50vw, 280px"
+                    alt={item.alt}
+                    width={item.width}
+                    height={item.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+              ))}
+            </ul>
+            {gallery.length > 6 && (
+              <button
+                type="button"
+                class="btn btn-outline product-more"
+                aria-expanded="false"
+                aria-controls="product-gallery"
+                data-more={t('catalog.showMore')}
+                data-less={t('catalog.showLess')}
+                data-count={String(gallery.length - 6)}
+              >
+                {t('catalog.showMore').replace('{n}', String(gallery.length - 6))}
+              </button>
+            )}
+          </section>
+        )}
+
+        <section class="product-section">
+          <h2>{labels.included}</h2>
+          <ul>
+            {entry.whatIncluded.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="product-section">
+          <h2>{labels.prices}</h2>
+          {priceItems.length > 0 ? (
+            <>
+              <p>{priceIntro}</p>
+              <ul class="product-prices">
+                {priceItems.map((item) => (
+                  <li>
+                    <span class="product-prices__label">{item.label}</span>
+                    {item.price && <span class="product-prices__price">{item.price}</span>}
+                  </li>
+                ))}
+              </ul>
+              {extraPetNote && <p>{extraPetNote}</p>}
+            </>
+          ) : (
+            <p>{entry.priceNote}</p>
+          )}
+        </section>
+
+        <section class="product-section">
+          <h2>{labels.turnaround}</h2>
+          <p>{leadTimeText(lang)}</p>
+        </section>
+
+        <section class="product-section">
+          <h2>{labels.where}</h2>
+          <WhereParagraph lang={lang} />
+        </section>
+
+        <section class="product-section">
+          <h2>{labels.faq}</h2>
+          <dl class="product-faq">
+            {entry.faq.map((item) => (
+              <>
+                <dt>{item.q}</dt>
+                <dd>
+                  {item.a}
+                  {item.link && (
+                    <>
+                      {' '}
+                      <a href={item.link.href} data-astro-prefetch="viewport">{item.link.label}</a>.
+                    </>
+                  )}
+                </dd>
+              </>
+            ))}
+          </dl>
+        </section>
+
+        <nav class="product-related" aria-label={labels.related}>
+          <h2>{labels.related}</h2>
+          <ul>
+            {relatedLinks.map((link) => (
+              <li>
+                <a href={link.href} data-astro-prefetch="viewport">{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+  <WhatsAppFAB lang={lang} />
+</BaseLayout>
+
+<style>
+  .product-page {
+    padding-bottom: clamp(64px, 8vw, 120px);
+  }
+
+  .product-hero {
+    padding: clamp(100px, 14vw, 140px) 0 clamp(32px, 4vw, 48px);
+  }
+
+  .product-crumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .product-crumb a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .product-crumb a:hover {
+    text-decoration: underline;
+  }
+
+  .product-hero__title {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 400;
+    margin: 8px 0 12px;
+    max-width: 760px;
+  }
+
+  .product-hero__intro {
+    max-width: 720px;
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  .product-body {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 4vw, 40px);
+  }
+
+  .product-section h2,
+  .product-related h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .product-section p,
+  .product-section li,
+  .product-related li {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  .product-section p + ul,
+  .product-section p + p {
+    margin-top: 12px;
+  }
+
+  .product-section > ul {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .product-section > ul.product-gallery {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .product-gallery li {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    background: #fff;
+  }
+
+  .product-gallery img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .product-more {
+    margin-top: 16px;
+  }
+
+  .product-prices {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .product-prices li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid var(--color-border, rgba(0, 0, 0, 0.1));
+    padding-bottom: 8px;
+  }
+
+  .product-prices__price {
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .product-faq {
+    margin: 0;
+  }
+
+  .product-faq dt {
+    font-weight: 600;
+    font-size: 1.0625rem;
+    margin-top: 16px;
+  }
+
+  .product-faq dd {
+    margin: 4px 0 0;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+
+  .product-section a,
+  .product-related a {
+    color: var(--color-accent);
+    text-underline-offset: 3px;
+  }
+
+  .product-section a:hover,
+  .product-related a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .product-related {
+    border-top: 1px solid var(--color-border, rgba(0, 0, 0, 0.1));
+    padding-top: clamp(24px, 3vw, 32px);
+  }
+
+  .product-related ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  @media (max-width: 640px) {
+    .product-section > ul.product-gallery {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
+
+<script>
+  function bindProductGallery() {
+    document.querySelectorAll<HTMLButtonElement>('.product-more').forEach((btn) => {
+      if (btn.dataset.bound === 'true') return;
+      btn.dataset.bound = 'true';
+      btn.addEventListener('click', () => {
+        const list = document.getElementById(btn.getAttribute('aria-controls') || '');
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        list?.querySelectorAll('li').forEach((item, index) => {
+          if (index >= 6) item.hidden = open;
+        });
+        const next = !open;
+        btn.setAttribute('aria-expanded', String(next));
+        const template = next ? btn.dataset.less : btn.dataset.more;
+        btn.textContent = (template || '').replace('{n}', btn.dataset.count || '');
+      });
+    });
+  }
+
+  bindProductGallery();
+  document.addEventListener('astro:page-load', bindProductGallery);
+</script>

@@ -1,31 +1,93 @@
 ---
 import { useTranslations } from '../i18n/utils';
-import { alternatePath, catalogPath, homePath, isCatalogPath, isPricesPath, pricesPath } from '../i18n/paths';
+import {
+  aboutPath,
+  alternatePath,
+  blogPath,
+  catalogPath,
+  intentPath,
+  isAboutPath,
+  isBlogIndexPath,
+  isBlogPostPath,
+  isCatalogPath,
+  isPricesPath,
+  matchIntentTopic,
+  matchProduct,
+  pricesPath,
+  productPath,
+} from '../i18n/paths';
 
 export interface Props {
   lang?: 'es' | 'en';
+  /** Overrides the computed language-switch target (used by blog posts for post-to-post hreflang). */
+  langSwitchHref?: string;
 }
 
-const { lang = 'es' } = Astro.props;
+type NavLink = {
+  href: string;
+  label: string;
+  hint?: string;
+  key: string;
+  external?: boolean;
+};
+
+const { lang = 'es', langSwitchHref: langSwitchOverride } = Astro.props;
 const t = useTranslations(lang);
 
 const WA_BASE = 'https://wa.me/573016584401?text=';
 const WA_URL = `${WA_BASE}${t('nav.cta') === 'Order via WhatsApp' ? 'Hello!%20I\'d%20like%20to%20commission%20a%20portrait' : '%C2%A1Hola!%20Me%20gustar%C3%ADa%20encargar%20un%20retrato'}`;
 
 const otherLang = lang === 'es' ? 'en' : 'es';
-const home = homePath(lang);
 const catalogHref = catalogPath(lang);
 const pricesHref = pricesPath(lang);
-const onCatalog = isCatalogPath(Astro.url.pathname);
-const onPrices = isPricesPath(Astro.url.pathname);
-const langSwitchHref = alternatePath(Astro.url.pathname, otherLang);
+const path = Astro.url.pathname;
+const product = matchProduct(path);
+const topic = matchIntentTopic(path);
+const langSwitchHref = langSwitchOverride ?? alternatePath(path, otherLang);
+const retratosCurrent = Boolean(product) || (topic !== null && topic !== 'how');
 
-const links = [
-  { href: `${home}#servicios`, label: t('nav.services'), current: false },
-  { href: catalogHref, label: t('nav.gallery'), current: onCatalog },
-  { href: pricesHref, label: t('prices.navLabel'), current: onPrices },
-  { href: `${home}#proceso`, label: t('nav.process'), current: false },
-  { href: `${home}#contacto`, label: t('nav.contact'), current: false },
+function isCurrent(key: string) {
+  if (key === 'catalog') return isCatalogPath(path);
+  if (key === 'prices') return isPricesPath(path);
+  if (key === 'how') return topic === 'how';
+  if (key === 'about') return isAboutPath(path);
+  if (key === 'blog') return isBlogIndexPath(path) || isBlogPostPath(path);
+  if (product && key === product) return true;
+  if (key === 'pets' || key === 'dogs' || key === 'cats' || key === 'memorial') return topic === key;
+  return false;
+}
+
+const groups: { title: string; links: NavLink[] }[] = [
+  {
+    title: t('nav.paintTitle'),
+    links: [
+      { href: productPath('paintings', lang), label: t('nav.paintings'), key: 'paintings' },
+      { href: productPath('bases', lang), label: t('nav.bases'), key: 'bases' },
+      { href: productPath('cases', lang), label: t('nav.cases'), key: 'cases' },
+      { href: productPath('sizes', lang), label: t('nav.sizes'), hint: t('nav.sizesHint'), key: 'sizes' },
+      {
+        href: productPath('magnets', lang),
+        label: t('nav.magnets'),
+        hint: t('nav.magnetsHint'),
+        key: 'magnets',
+      },
+    ],
+  },
+  {
+    title: t('nav.petTitle'),
+    links: [
+      { href: intentPath('pets', lang), label: t('nav.pets'), hint: t('nav.petsHint'), key: 'pets' },
+      { href: intentPath('memorial', lang), label: t('nav.memorial'), hint: t('nav.memorialHint'), key: 'memorial' },
+    ],
+  },
+];
+
+const primary: NavLink[] = [
+  { href: catalogHref, label: t('nav.gallery'), key: 'catalog' },
+  { href: pricesHref, label: t('prices.navLabel'), key: 'prices' },
+  { href: intentPath('how', lang), label: t('nav.how'), key: 'how' },
+  { href: aboutPath(lang), label: t('nav.about'), key: 'about' },
+  { href: blogPath(lang), label: t('nav.blog'), key: 'blog' },
 ];
 ---
 
@@ -42,11 +104,56 @@ const links = [
       </a>
 
       <nav class="navbar__desktop" aria-label={t('nav.desktopLabel')}>
-        {links.map((link) => (
+        <details class="nav-details">
+          <summary
+            class:list={['navbar__link', 'navbar__summary', { 'is-current': retratosCurrent }]}
+            data-nav-key="retratos"
+          >
+            {t('nav.retratos')}
+            <svg class="navbar__chevron" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+              <path d="M2.2 4.2 6 8l3.8-3.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="nav-panel" id="nav-retratos" aria-label={t('nav.retratosLabel')}>
+            <div class="nav-panel__grid">
+              {groups.map((group) => (
+                <div class="nav-panel__col">
+                  <p class="nav-panel__title">{group.title}</p>
+                  {group.links.map((link) => (
+                    <a
+                      href={link.href}
+                      class:list={['nav-panel__link', { 'is-current': isCurrent(link.key) }]}
+                      data-nav-key={link.key}
+                      aria-current={isCurrent(link.key) ? 'page' : undefined}
+                      data-astro-prefetch={link.external ? undefined : 'viewport'}
+                      target={link.external ? '_blank' : undefined}
+                      rel={link.external ? 'noopener noreferrer' : undefined}
+                    >
+                      <span class="nav-panel__label">
+                        {link.label}
+                        {link.external && (
+                          <svg class="nav-panel__external" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                            <path d="M4 2.5H2.5V9.5H9.5V8M6.5 2.5H9.5V5.5M9.2 2.8 5 7" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        )}
+                      </span>
+                      {link.hint && <span class="nav-panel__hint">{link.hint}</span>}
+                      {link.external && <span class="sr-only">. {t('nav.externalLabel')}</span>}
+                    </a>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </details>
+
+        {primary.map((link) => (
           <a
             href={link.href}
-            class:list={['navbar__link', { 'navbar__link--current': link.current }]}
-            aria-current={link.current ? 'page' : undefined}
+            class:list={['navbar__link', { 'is-current': isCurrent(link.key) }]}
+            data-nav-key={link.key}
+            aria-current={isCurrent(link.key) ? 'page' : undefined}
+            data-astro-prefetch="viewport"
           >
             {link.label}
           </a>
@@ -68,6 +175,7 @@ const links = [
       </nav>
 
       <button
+        type="button"
         id="menu-toggle"
         class="navbar__hamburger"
         aria-label={t('nav.menuOpen')}
@@ -81,22 +189,42 @@ const links = [
     </div>
   </header>
 
-  <div id="mobile-menu" class="mobile-menu" aria-hidden="true" role="dialog" aria-label={t('nav.mobileLabel')}>
-    <button id="menu-close" class="mobile-menu__close" aria-label={t('nav.menuClose')}>
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true" inert role="dialog" aria-label={t('nav.mobileLabel')}>
+    <button type="button" id="menu-close" class="mobile-menu__close" aria-label={t('nav.menuClose')}>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M18 6L6 18M6 6l12 12"/>
       </svg>
     </button>
     <nav class="mobile-menu__nav" aria-label={t('nav.mobileLabel')}>
-      {links.map((link) => (
-        <a
-          href={link.href}
-          class:list={['mobile-menu__link', { 'mobile-menu__link--current': link.current }]}
-          aria-current={link.current ? 'page' : undefined}
-        >
-          {link.label}
-        </a>
+      {groups.map((group) => (
+        <div class="mobile-menu__group">
+          <p class="mobile-menu__title">{group.title}</p>
+          {group.links.map((link) => (
+            <a
+              href={link.href}
+              class:list={['mobile-menu__link', 'mobile-menu__sublink', { 'is-current': isCurrent(link.key) }]}
+              data-nav-key={link.key}
+              aria-current={isCurrent(link.key) ? 'page' : undefined}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
       ))}
+      <div class="mobile-menu__group">
+        {primary.map((link) => (
+          <a
+            href={link.href}
+            class:list={['mobile-menu__link', { 'is-current': isCurrent(link.key) }]}
+            data-nav-key={link.key}
+            aria-current={isCurrent(link.key) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
       <a
         href={langSwitchHref}
         class="mobile-menu__lang-switch"
@@ -131,7 +259,6 @@ const links = [
     pointer-events: auto;
   }
 
-  /* Closed menu must not steal clicks over the page */
   #site-nav-root .mobile-menu {
     pointer-events: none;
   }
@@ -145,7 +272,6 @@ const links = [
     left: 0;
     right: 0;
     z-index: 100;
-    /* Solid bg — translucent nav shows page swaps underneath (looks like flicker) */
     background: var(--color-bg);
     box-shadow: 0 1px 0 transparent;
   }
@@ -176,9 +302,10 @@ const links = [
   }
 
   .navbar__desktop {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 36px;
+    gap: 20px;
   }
 
   .navbar__link {
@@ -207,15 +334,124 @@ const links = [
   }
 
   .navbar__link:hover::after,
-  .navbar__link--current::after {
+  .navbar__link.is-current::after,
+  .nav-details[open] > .navbar__summary::after {
     transform: scaleX(1);
   }
 
-  .navbar__link--current {
+  .navbar__link.is-current {
     color: var(--color-text);
   }
 
-  /* Language switcher pill */
+  .nav-details > .navbar__summary {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 10px 0;
+  }
+
+  .nav-details > .navbar__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .navbar__summary:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+
+  .navbar__chevron {
+    transition: transform 0.2s ease;
+  }
+
+  .nav-details[open] .navbar__chevron {
+    transform: rotate(180deg);
+  }
+
+  .nav-panel {
+    position: absolute;
+    top: calc(100% + 18px);
+    right: 0;
+    width: min(640px, calc(100vw - 32px));
+    padding: 18px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 16px 40px rgb(0 0 0 / 0.08);
+  }
+
+  .nav-panel__grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 8px 28px;
+  }
+
+  .nav-panel__title {
+    margin: 0 0 6px;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .nav-panel__link {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-height: 44px;
+    justify-content: center;
+    padding: 8px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .nav-panel__link:hover,
+  .nav-panel__link.is-current {
+    background: var(--color-bg-alt, rgb(0 0 0 / 0.04));
+  }
+
+  .nav-panel__link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .nav-panel__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+  }
+
+  .nav-panel__link.is-current .nav-panel__label {
+    color: var(--color-accent);
+  }
+
+  .nav-panel__hint {
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--color-text-muted);
+  }
+
+  .nav-panel__external {
+    flex: none;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   .navbar__lang-switch {
     font-size: 12px;
     font-weight: 500;
@@ -239,11 +475,14 @@ const links = [
     border-radius: 4px;
   }
 
-  /* Hamburger */
   .navbar__hamburger {
     display: none;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 5px;
+    min-width: 44px;
+    min-height: 44px;
     cursor: pointer;
     background: none;
     border: none;
@@ -271,15 +510,15 @@ const links = [
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* Mobile menu */
   .mobile-menu {
     position: fixed;
     inset: 0;
     background: var(--color-bg);
     z-index: 200;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: auto;
     transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -302,27 +541,46 @@ const links = [
   .mobile-menu__nav {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
-    text-align: center;
+    width: min(100%, 520px);
+    padding: 88px 28px 40px;
+  }
+
+  .mobile-menu__group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .mobile-menu__title {
+    margin: 16px 0 4px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
   }
 
   .mobile-menu__link {
-    font-family: var(--font-heading);
-    font-size: 42px;
-    font-weight: 300;
+    font-size: 22px;
+    font-weight: 400;
     color: var(--color-text);
     text-decoration: none;
-    transition: color 0.2s;
-    padding: 8px 24px;
+    padding: 10px 0;
+    min-height: 44px;
+  }
+
+  .mobile-menu__sublink {
+    font-size: 18px;
   }
 
   .mobile-menu__link:hover,
-  .mobile-menu__link--current {
+  .mobile-menu__link.is-current {
     color: var(--color-accent);
   }
 
-  /* Mobile language switcher */
   .mobile-menu__lang-switch {
     font-size: 14px;
     font-weight: 500;
@@ -355,7 +613,7 @@ const links = [
     font-weight: 500;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1040px) {
     .navbar__desktop {
       display: none;
     }
@@ -364,9 +622,29 @@ const links = [
       display: flex;
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navbar__chevron,
+    .mobile-menu,
+    .navbar__hamburger span {
+      transition: none;
+    }
+  }
 </style>
 
 <script>
+  import {
+    alternatePath,
+    isAboutPath,
+    isBlogIndexPath,
+    isBlogPostPath,
+    isCatalogPath,
+    isPricesPath,
+    matchIntentTopic,
+    matchProduct,
+    type Lang,
+  } from '../i18n/paths';
+
   function normalizePath(path: string) {
     const clean = path.replace(/#.*$/, '').replace(/\/+$/, '');
     return clean === '' ? '/' : clean;
@@ -380,59 +658,75 @@ const links = [
     const navbar = document.getElementById('navbar');
     if (!navbar) return;
     const path = normalizePath(window.location.pathname);
-    // Solid bar on inner pages so scroll-reset on navigate doesn't flash transparent
     const solid = !isHomePath(path) || window.scrollY > 60;
     navbar.classList.toggle('scrolled', solid);
   }
 
-  function closeMobileMenu() {
+  function closeMobileMenu(restoreFocus = false) {
     const toggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
+    const wasOpen = mobileMenu?.classList.contains('open');
     mobileMenu?.classList.remove('open');
     mobileMenu?.setAttribute('aria-hidden', 'true');
+    mobileMenu?.setAttribute('inert', '');
     toggle?.classList.remove('active');
     toggle?.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    if (restoreFocus && wasOpen) toggle?.focus();
   }
 
-  function syncLangSwitch(path: string) {
-    const isCatalog = path.endsWith('/catalog') || path.endsWith('/catalogo');
-    const isPrices = path.endsWith('/prices') || path.endsWith('/precios');
-    const isPrivacy = path.endsWith('/privacy') || path.endsWith('/privacidad');
-    const isEn = path === '/en' || path.startsWith('/en/');
-    let href: string;
-    if (isCatalog) href = isEn ? '/catalogo/' : '/en/catalog/';
-    else if (isPrices) href = isEn ? '/precios/' : '/en/prices/';
-    else if (isPrivacy) href = isEn ? '/privacidad/' : '/en/privacy/';
-    else href = isEn ? '/' : '/en/';
-    document.querySelectorAll<HTMLAnchorElement>('.navbar__lang-switch, .mobile-menu__lang-switch').forEach((a) => {
-      a.setAttribute('href', href);
+  function closeRetratos() {
+    document.querySelectorAll('details.nav-details').forEach((details) => {
+      details.open = false;
     });
   }
 
-  function linkIsCurrent(href: string, path: string, hash: string) {
-    const hashIdx = href.indexOf('#');
-    if (hashIdx !== -1) {
-      if (!isHomePath(path)) return false;
-      const section = href.slice(hashIdx + 1);
-      return section !== '' && section === hash;
+  function syncLangSwitch(path: string) {
+    const isEn = path === '/en' || path.startsWith('/en/');
+    const other: Lang = isEn ? 'es' : 'en';
+    const isBlogPost = /^\/(en\/)?blog\/.+/.test(path);
+    document.querySelectorAll<HTMLAnchorElement>('.navbar__lang-switch, .mobile-menu__lang-switch').forEach((a) => {
+      if (isBlogPost) {
+        const current = (a.getAttribute('href') || '').replace(/\/+$/, '');
+        if (/^\/(en\/)?blog\/.+/.test(current)) return;
+      }
+      a.setAttribute('href', alternatePath(window.location.pathname, other));
+    });
+  }
+
+  function activeKeys(path: string) {
+    const keys = new Set<string>();
+    if (isCatalogPath(path)) keys.add('catalog');
+    if (isPricesPath(path)) keys.add('prices');
+    if (isAboutPath(path)) keys.add('about');
+    if (isBlogIndexPath(path) || isBlogPostPath(path)) keys.add('blog');
+    const product = matchProduct(path);
+    if (product) {
+      keys.add('retratos');
+      keys.add(product);
     }
-    return normalizePath(href) === path;
+    const topic = matchIntentTopic(path);
+    if (topic === 'how') keys.add('how');
+    else if (topic) {
+      keys.add('retratos');
+      if (topic === 'pets' || topic === 'memorial') keys.add(topic);
+    }
+    return keys;
   }
 
   /** Keep current link highlight in sync when the navbar is persisted across routes. */
   function syncActiveLinks() {
-    const path = normalizePath(window.location.pathname);
-    const hash = window.location.hash.replace(/^#/, '');
-    syncLangSwitch(path);
-    document.querySelectorAll<HTMLAnchorElement>('.navbar__link, .mobile-menu__link').forEach((link) => {
-      const href = link.getAttribute('href') || '';
-      const isCurrent = linkIsCurrent(href, path, hash);
-      const isDesktop = link.classList.contains('navbar__link');
-      link.classList.toggle('navbar__link--current', isCurrent && isDesktop);
-      link.classList.toggle('mobile-menu__link--current', isCurrent && !isDesktop);
-      if (isCurrent) link.setAttribute('aria-current', 'page');
-      else link.removeAttribute('aria-current');
+    const path = window.location.pathname;
+    syncLangSwitch(normalizePath(path));
+    const keys = activeKeys(path);
+    document.querySelectorAll<HTMLElement>('[data-nav-key]').forEach((el) => {
+      const key = el.getAttribute('data-nav-key') || '';
+      const isCurrent = keys.has(key);
+      el.classList.toggle('is-current', isCurrent);
+      if (el instanceof HTMLAnchorElement) {
+        if (isCurrent) el.setAttribute('aria-current', 'page');
+        else el.removeAttribute('aria-current');
+      }
     });
   }
 
@@ -445,6 +739,7 @@ const links = [
     syncNavbarScroll();
     syncActiveLinks();
     closeMobileMenu();
+    closeRetratos();
 
     if (!root || root.dataset.navBound === 'true') return;
     root.dataset.navBound = 'true';
@@ -453,36 +748,48 @@ const links = [
     window.addEventListener('hashchange', syncActiveLinks);
 
     function openMenu() {
+      closeRetratos();
       mobileMenu?.classList.add('open');
       mobileMenu?.setAttribute('aria-hidden', 'false');
+      mobileMenu?.removeAttribute('inert');
       toggle?.classList.add('active');
       toggle?.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      closeBtn?.focus();
     }
 
     toggle?.addEventListener('click', () => {
       const isOpen = mobileMenu?.classList.contains('open');
-      isOpen ? closeMobileMenu() : openMenu();
+      isOpen ? closeMobileMenu(true) : openMenu();
     });
 
-    closeBtn?.addEventListener('click', closeMobileMenu);
+    closeBtn?.addEventListener('click', () => closeMobileMenu(true));
 
-    mobileMenu?.querySelectorAll('.mobile-menu__link, .mobile-menu__wa, .mobile-menu__lang-switch').forEach((link) => {
-      link.addEventListener('click', closeMobileMenu);
+    mobileMenu?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => closeMobileMenu());
     });
 
-    // Same-page hash clicks (Servicios → Proceso) update highlight immediately
-    document.querySelectorAll<HTMLAnchorElement>('.navbar__link, .mobile-menu__link').forEach((link) => {
-      link.addEventListener('click', () => {
-        const href = link.getAttribute('href') || '';
-        if (!href.includes('#')) return;
-        // Defer so location.hash is updated after the click
-        requestAnimationFrame(() => syncActiveLinks());
+    document.addEventListener('click', (event) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      document.querySelectorAll('details.nav-details').forEach((details) => {
+        if (details.open && !details.contains(target)) details.open = false;
       });
     });
 
+    root.querySelectorAll('details.nav-details a').forEach((link) => {
+      link.addEventListener('click', () => closeRetratos());
+    });
+
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMobileMenu();
+      if (e.key !== 'Escape') return;
+      const openDetails = document.querySelector('details.nav-details[open]');
+      if (openDetails) {
+        openDetails.open = false;
+        openDetails.querySelector('summary')?.focus();
+        return;
+      }
+      closeMobileMenu(true);
     });
   }
 

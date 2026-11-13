@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from '../i18n/utils';
+import { blogPostPath } from '../i18n/paths';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -9,6 +10,10 @@ const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 
 const WA_URL = `https://wa.me/573016584401?text=${t('process.waMsg')}`;
+const photoGuideHref = blogPostPath(
+  lang === 'en' ? 'how-to-choose-the-best-photo' : 'como-elegir-la-mejor-foto-mascota',
+  lang,
+);
 
 const steps = [
   {
@@ -76,25 +81,13 @@ const steps = [
             <div class="process__step-icon" aria-hidden="true">{step.icon}</div>
             <h3 class="process__step-title">{step.title}</h3>
             <p class="process__step-desc">{step.desc}</p>
+            {i === 0 && (
+              <a class="process__step-guide" href={photoGuideHref}>{t('process.step1.guide')}</a>
+            )}
           </li>
         ))}
       </ol>
     </div>
-
-    <!-- HowTo JSON-LD for AI search / rich snippets -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": t('process.title'),
-      "description": t('process.subtitle'),
-      "totalTime": "P20D",
-      "step": steps.map((step, i) => ({
-        "@type": "HowToStep",
-        "position": i + 1,
-        "name": step.title,
-        "text": step.desc
-      }))
-    })} />
 
     <!-- CTA -->
     <div class="process__cta reveal">
@@ -240,6 +233,19 @@ const steps = [
     font-size: 14px;
     color: var(--color-text-muted);
     line-height: 1.6;
+  }
+
+  .process__step-guide {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-accent);
+    text-underline-offset: 3px;
+  }
+
+  .process__step-guide:hover {
+    color: var(--color-accent-hover);
   }
 
   /* CTA strip */

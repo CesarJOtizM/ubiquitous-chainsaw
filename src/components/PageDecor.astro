@@ -1,0 +1,203 @@
+<div class="page-decor" aria-hidden="true" transition:persist="page-decor">
+  <div class="page-decor__wash">
+    <div class="page-decor__blob page-decor__blob--pink"></div>
+    <div class="page-decor__blob page-decor__blob--lilac"></div>
+    <div class="page-decor__blob page-decor__blob--blush"></div>
+  </div>
+  <div class="page-decor__scroll">
+    <div class="page-decor__sheet">
+      <svg class="page-decor__gold" viewBox="0 0 1440 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M -20 100 Q 360 24 720 96 T 1460 70" stroke="#C9A227" stroke-width="1.5" stroke-dasharray="7 5" opacity="0.55" fill="none"/>
+      </svg>
+      <div class="brush-deco brush-deco--medium brush-g page-decor__brush page-decor__brush--tr"></div>
+      <div class="brush-deco brush-deco--pale brush-h page-decor__brush page-decor__brush--bl"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const MAX_BANDS = 24;
+  let painting = false;
+
+  function paintDecor() {
+    if (painting) return;
+    const scroll = document.querySelector('.page-decor__scroll');
+    const template = scroll?.querySelector('.page-decor__sheet');
+    if (!scroll || !template) return;
+
+    const onHome = Boolean(document.querySelector('#servicios'));
+    const band = window.innerHeight || 1;
+    const count = onHome
+      ? 1
+      : Math.min(MAX_BANDS, Math.max(1, Math.ceil(document.documentElement.scrollHeight / band)));
+    if (scroll.querySelectorAll('.page-decor__sheet').length === count) return;
+
+    painting = true;
+    scroll.querySelectorAll('.page-decor__sheet:not(:first-child)').forEach((node) => {
+      node.remove();
+    });
+    if (!onHome) {
+      for (let i = 1; i < count; i++) {
+        scroll.appendChild(template.cloneNode(true));
+      }
+    }
+    painting = false;
+  }
+
+  document.addEventListener('astro:page-load', paintDecor);
+  window.addEventListener('resize', paintDecor);
+
+  const watched = document.documentElement;
+  if (watched && 'ResizeObserver' in window) {
+    new ResizeObserver(paintDecor).observe(watched);
+  }
+
+  paintDecor();
+</script>
+
+<style>
+  .page-decor {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .page-decor__wash {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .page-decor__blob {
+    position: absolute;
+    filter: blur(64px);
+  }
+
+  .page-decor__blob--pink {
+    width: 480px;
+    height: 400px;
+    background: #f5a0c0;
+    opacity: 0.42;
+    border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%;
+    top: -70px;
+    right: -50px;
+  }
+
+  .page-decor__blob--lilac {
+    width: 400px;
+    height: 360px;
+    background: #c8a8d8;
+    opacity: 0.38;
+    border-radius: 40% 60% 55% 45% / 50% 60% 40% 50%;
+    bottom: -90px;
+    left: -60px;
+  }
+
+  .page-decor__blob--blush {
+    width: 260px;
+    height: 220px;
+    background: #ea99d5;
+    opacity: 0.28;
+    border-radius: 50% 50% 38% 62% / 55% 45% 55% 45%;
+    top: 18%;
+    left: -40px;
+  }
+
+  .page-decor__scroll {
+    position: absolute;
+    inset: 0;
+  }
+
+  .page-decor__sheet {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .page-decor__brush--tr {
+    width: 680px;
+    height: 170px;
+    top: 8px;
+    right: -100px;
+    opacity: 0.13;
+    transform: rotate(-8deg);
+  }
+
+  .page-decor__brush--bl {
+    width: 520px;
+    height: 130px;
+    bottom: 12px;
+    left: -70px;
+    opacity: 0.15;
+    transform: rotate(6deg);
+  }
+
+  .page-decor__sheet:nth-child(even) .page-decor__brush--tr {
+    right: auto;
+    left: -90px;
+    transform: rotate(7deg);
+  }
+
+  .page-decor__sheet:nth-child(even) .page-decor__brush--bl {
+    left: auto;
+    right: -70px;
+    transform: rotate(-5deg);
+  }
+
+  .page-decor__gold {
+    position: absolute;
+    left: 0;
+    top: 64px;
+    width: 100%;
+    height: 150px;
+  }
+
+  .page-decor__sheet:not(:first-child) .page-decor__gold {
+    display: none;
+  }
+
+  @media (max-width: 720px) {
+    .page-decor__blob--pink {
+      width: 260px;
+      height: 220px;
+    }
+
+    .page-decor__blob--lilac {
+      width: 220px;
+      height: 190px;
+    }
+
+    .page-decor__blob--blush {
+      width: 160px;
+      height: 140px;
+    }
+
+    .page-decor__brush--tr {
+      width: 380px;
+      height: 100px;
+    }
+
+    .page-decor__brush--bl {
+      width: 300px;
+      height: 78px;
+    }
+  }
+</style>
+
+<style is:global>
+  body {
+    position: relative;
+  }
+
+  .page-shell {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* El inicio ya pinta sus manchas por sección. */
+  body:has(#servicios) .page-decor {
+    display: none;
+  }
+</style>

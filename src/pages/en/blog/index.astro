@@ -1,0 +1,208 @@
+---
+export const prerender = true;
+
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import WhatsAppFAB from '../../../components/WhatsAppFAB.astro';
+import { business } from '../../../data/business';
+import { blogPath, blogPostPath, homePath } from '../../../i18n/paths';
+
+const lang = 'en' as const;
+const SITE = business.site;
+
+const posts = (await getCollection('blog'))
+  .filter((post: any) => post.data.lang === lang && !post.data.draft)
+  .sort((a: any, b: any) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const metaTitle = 'Blog · Pet portrait tips · Sac_Artx';
+const metaDescription =
+  'Guides and tips on acrylic pet portraits: how to choose the photo, care for your artwork, and commission your piece. By Sac_Artx, a studio in Colombia.';
+
+const canonicalUrl = `${SITE}${blogPath('en')}`;
+const alternateEs = `${SITE}${blogPath('es')}`;
+const alternateEn = canonicalUrl;
+const homeUrl = `${SITE}${homePath('en')}`;
+
+const dateFmt = new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const extraJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${canonicalUrl}#blog`,
+    url: canonicalUrl,
+    name: metaTitle,
+    description: metaDescription,
+    inLanguage: 'en',
+    isPartOf: { '@id': `${SITE}/#website` },
+    publisher: { '@id': `${SITE}/#business` },
+    blogPost: posts.map((post: any) => ({
+      '@type': 'BlogPosting',
+      headline: post.data.title,
+      url: `${SITE}${blogPostPath(post.data.slug, 'en')}`,
+      datePublished: post.data.pubDate.toISOString(),
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: canonicalUrl },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title={metaTitle}
+  description={metaDescription}
+  ogUrl={canonicalUrl}
+  canonicalUrl={canonicalUrl}
+  alternateEs={alternateEs}
+  alternateEn={alternateEn}
+  markdownAlt={false}
+  extraJsonLd={extraJsonLd}
+>
+  <Navbar lang={lang} />
+  <main>
+    <div class="blog-page">
+      <header class="blog-hero">
+        <div class="container">
+          <nav class="blog-crumb" aria-label="Breadcrumb">
+            <a href={homePath('en')}>Home</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Blog</span>
+          </nav>
+          <p class="section-label">Guides and tips</p>
+          <h1 class="blog-hero__title">Blog</h1>
+          <p class="blog-hero__intro">
+            I write about commissioning a portrait: which photo works, how I paint a dog and how I paint a cat,
+            with real pieces from the catalog, and what to expect from the sketch, the turnaround, and shipping across Colombia.
+          </p>
+        </div>
+      </header>
+
+      <div class="container blog-body">
+        {posts.length === 0 ? (
+          <p class="blog-empty">Our first posts are coming soon.</p>
+        ) : (
+          <ul class="blog-list">
+            {posts.map((post: any) => (
+              <li class="blog-card">
+                <a href={blogPostPath(post.data.slug, 'en')} class="blog-card__link">
+                  <time class="blog-card__date" datetime={post.data.pubDate.toISOString()}>
+                    {dateFmt.format(post.data.pubDate)}
+                  </time>
+                  <h2 class="blog-card__title">{post.data.title}</h2>
+                  <p class="blog-card__desc">{post.data.description}</p>
+                  <span class="blog-card__more">Read more →</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+  <WhatsAppFAB lang={lang} />
+</BaseLayout>
+
+<style>
+  .blog-page {
+    padding-bottom: clamp(64px, 8vw, 120px);
+  }
+
+  .blog-hero {
+    padding: clamp(100px, 14vw, 140px) 0 clamp(24px, 4vw, 40px);
+  }
+
+  .blog-crumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+  }
+
+  .blog-crumb a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .blog-crumb a:hover {
+    text-decoration: underline;
+  }
+
+  .blog-hero__title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 400;
+    margin: 8px 0 12px;
+  }
+
+  .blog-hero__intro {
+    max-width: 720px;
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  .blog-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 3vw, 32px);
+    max-width: 760px;
+  }
+
+  .blog-card {
+    border-bottom: 1px solid var(--color-border, rgba(0, 0, 0, 0.08));
+    padding-bottom: clamp(20px, 3vw, 32px);
+  }
+
+  .blog-card__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .blog-card__date {
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+  }
+
+  .blog-card__title {
+    font-size: clamp(1.375rem, 3vw, 1.875rem);
+    font-weight: 500;
+    margin: 6px 0 10px;
+  }
+
+  .blog-card__link:hover .blog-card__title {
+    color: var(--color-accent);
+  }
+
+  .blog-card__desc {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 10px;
+  }
+
+  .blog-card__more {
+    font-size: 0.9375rem;
+    color: var(--color-accent);
+  }
+
+  .blog-empty {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+  }
+</style>

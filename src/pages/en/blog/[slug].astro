@@ -1,0 +1,27 @@
+---
+export const prerender = true;
+
+import { getCollection } from 'astro:content';
+import BlogPost from '../../../components/BlogPost.astro';
+
+export async function getStaticPaths() {
+  const all = await getCollection('blog');
+  const enPosts = all.filter((post: any) => post.data.lang === 'en' && !post.data.draft);
+  return enPosts.map((post: any) => {
+    const translation =
+      post.data.translationKey
+        ? all.find(
+            (other: any) =>
+              other.data.lang === 'es' &&
+              !other.data.draft &&
+              other.data.translationKey === post.data.translationKey,
+          ) ?? null
+        : null;
+    return { params: { slug: post.data.slug }, props: { post, translation } };
+  });
+}
+
+const { post, translation } = Astro.props;
+---
+
+<BlogPost post={post} translation={translation} />

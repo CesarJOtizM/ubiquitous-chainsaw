@@ -41,6 +41,8 @@ export const animalAltEn: Record<CatalogAnimal, string> = {
 /** Path without leading slash, e.g. images/cuadros-mascotas/01.jpg */
 export const catalogAnimals: Record<string, CatalogAnimal> = {
   // cuadros-mascotas — reviewed
+  'images/cuadros-mascotas/12.jpg': 'dog',
+  'images/cuadros-mascotas/13.jpg': 'mixed', // cat + dogs
   'images/cuadros-mascotas/01.jpg': 'dog',
   'images/cuadros-mascotas/02.jpg': 'dog',
   'images/cuadros-mascotas/03.jpg': 'dog',
@@ -54,10 +56,14 @@ export const catalogAnimals: Record<string, CatalogAnimal> = {
   'images/cuadros-mascotas/11.jpg': 'mixed', // cat + dog
 
   // bases-acrilicas — sample reviewed; rest guessed as pet → needs Sara review
+  'images/bases-acrilicas/16.jpg': 'dog',
+  'images/bases-acrilicas/17.jpg': 'dog',
+  'images/bases-acrilicas/18.jpg': 'dog',
+  'images/bases-acrilicas/19.jpg': 'dog',
   'images/bases-acrilicas/01.jpg': 'dog',
-  'images/bases-acrilicas/02.jpg': 'dog', // pending confirm
+  'images/bases-acrilicas/02.jpg': 'cat',
   'images/bases-acrilicas/03.jpg': 'dog', // pending confirm
-  'images/bases-acrilicas/04.jpg': 'cat', // pending confirm
+  'images/bases-acrilicas/04.jpg': 'dog',
   'images/bases-acrilicas/05.jpg': 'cat',
   'images/bases-acrilicas/06.jpg': 'dog', // pending confirm
   'images/bases-acrilicas/07.jpg': 'cat', // pending confirm

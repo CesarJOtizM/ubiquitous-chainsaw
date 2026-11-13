@@ -36,7 +36,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
     title: 'Política de privacidad',
     metaTitle: 'Política de privacidad · Sac_Artx',
     metaDescription:
-      'Qué datos recoge Sac_Artx, las cookies de Google Analytics y cómo pedir que corrijamos o borremos tu información.',
+      'Qué datos recoge Sac_Artx en sacartx.art, las cookies de Google Analytics y cómo pedir que corrijamos o borremos tu información.',
     crumb: 'Privacidad',
     updated: 'Actualizada el 7 de octubre de 2026',
     intro:
@@ -80,7 +80,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'Este sitio no pide datos de pago ni documentos. El anticipo y el saldo se acuerdan por fuera, por Nequi, Daviplata, transferencia o efectivo.',
+                text: 'Este sitio no pide datos de pago ni documentos. El anticipo y el saldo se acuerdan por fuera, por Nequi, Daviplata, transferencia bancaria, llave Bre-B o tarjeta de crédito.',
               },
             ],
           },
@@ -284,9 +284,9 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
   en: {
     label: 'Personal data',
     title: 'Privacy policy',
-    metaTitle: 'Privacy policy · Sac_Artx',
+    metaTitle: 'Privacy policy and your data rights | Sac_Artx',
     metaDescription:
-      'What data Sac_Artx collects, the Google Analytics cookies, and how to ask us to correct or delete your information.',
+      'What data Sac_Artx collects on sacartx.art, the Google Analytics cookies, and how to ask us to correct or delete your information.',
     crumb: 'Privacy',
     updated: 'Updated October 7, 2026',
     intro:
@@ -330,7 +330,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'This site does not ask for payment details or identity documents. The deposit and the balance are arranged off the site, by Nequi, Daviplata, bank transfer, or cash.',
+                text: 'This site does not ask for payment details or identity documents. The deposit and the balance are arranged off the site, by Nequi, Daviplata, bank transfer, Bre-B key, or credit card.',
               },
             ],
           },

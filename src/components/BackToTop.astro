@@ -1,0 +1,151 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<button type="button" class="back-top" hidden aria-label={t('fab.backToTop')}>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+  <span class="back-top__tooltip" role="tooltip">{t('fab.backToTop')}</span>
+</button>
+
+<style>
+  .back-top {
+    position: fixed;
+    z-index: 49;
+    right: 32px;
+    bottom: 104px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(137, 70, 166, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .back-top[hidden] {
+    display: none;
+  }
+
+  .back-top:hover {
+    transform: scale(1.08);
+    background: var(--color-accent-hover);
+    box-shadow: 0 6px 28px rgba(137, 70, 166, 0.55);
+  }
+
+  .back-top:active {
+    transform: scale(0.97);
+  }
+
+  .back-top:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  .back-top__tooltip {
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    background: var(--color-text);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 6px 12px;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateY(-50%) translateX(6px);
+  }
+
+  .back-top__tooltip::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-left-color: var(--color-text);
+  }
+
+  .back-top:hover .back-top__tooltip,
+  .back-top:focus-visible .back-top__tooltip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  @media (max-width: 540px) {
+    .back-top {
+      right: 20px;
+      bottom: 90px;
+      width: 54px;
+      height: 54px;
+    }
+
+    .back-top__tooltip {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .back-top {
+      transition: none;
+    }
+
+    .back-top:hover,
+    .back-top:active {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const SHOW_AFTER = 480;
+
+  function currentButton() {
+    return document.querySelector<HTMLButtonElement>('.back-top');
+  }
+
+  function syncBackToTop() {
+    const btn = currentButton();
+    if (!btn) return;
+    btn.hidden = window.scrollY < SHOW_AFTER;
+  }
+
+  function onBackToTopClick() {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    if (location.hash) {
+      history.replaceState(null, '', `${location.pathname}${location.search}`);
+    }
+  }
+
+  function bindBackToTop() {
+    const btn = currentButton();
+    if (!btn) return;
+    if (btn.dataset.bound !== '1') {
+      btn.dataset.bound = '1';
+      btn.addEventListener('click', onBackToTopClick);
+    }
+    syncBackToTop();
+  }
+
+  window.addEventListener('scroll', syncBackToTop, { passive: true });
+  document.addEventListener('astro:page-load', bindBackToTop);
+  bindBackToTop();
+</script>

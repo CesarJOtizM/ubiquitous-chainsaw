@@ -1,0 +1,454 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from './Navbar.astro';
+import Footer from './Footer.astro';
+import WhatsAppFAB from './WhatsAppFAB.astro';
+import { aboutCopy, aboutPortrait } from '../data/about';
+import { business, founderId } from '../data/business';
+import { whatsappUrl } from '../lib/price-text';
+import { imageMeta, imageSrcSet, imageUrl } from '../lib/images';
+import {
+  aboutPath,
+  blogPath,
+  catalogPath,
+  homePath,
+  intentPath,
+  pricesPath,
+  productPath,
+  type Lang,
+} from '../i18n/paths';
+import { productEntry } from '../data/product-pages';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const copy = aboutCopy[lang];
+const SITE = business.site;
+const canonicalUrl = `${SITE}${aboutPath(lang)}`;
+const alternateEs = `${SITE}${aboutPath('es')}`;
+const alternateEn = `${SITE}${aboutPath('en')}`;
+const homeUrl = `${SITE}${homePath(lang)}`;
+const waUrl = whatsappUrl(lang);
+const portrait = imageUrl(aboutPortrait, 1200);
+
+const related = [
+  { href: intentPath('how', lang), label: lang === 'en' ? 'How it works' : 'Cómo funciona' },
+  { href: catalogPath(lang), label: lang === 'en' ? 'Catalog' : 'Catálogo' },
+  { href: pricesPath(lang), label: lang === 'en' ? 'Prices' : 'Precios' },
+  { href: productPath('paintings', lang), label: productEntry('paintings', lang).linkLabel },
+  { href: productPath('cases', lang), label: productEntry('cases', lang).linkLabel },
+  { href: blogPath(lang), label: 'Blog' },
+];
+
+const person = {
+  '@type': 'Person',
+  '@id': founderId,
+  name: business.founder,
+  jobTitle: lang === 'en' ? 'Artist' : 'Artista',
+  url: canonicalUrl,
+  image: `${SITE}${portrait}`,
+  description: copy.chapters[0].paragraphs[0],
+  nationality: { '@type': 'Country', name: 'Colombia' },
+  worksFor: { '@id': `${SITE}/#business` },
+  sameAs: [business.instagram, business.tiktok, business.facebook],
+  knowsAbout: [
+    'Pet portraits',
+    'Acrylic painting',
+    'Custom phone cases',
+    'Landscape painting',
+  ],
+};
+
+const extraJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${canonicalUrl}#profile`,
+    url: canonicalUrl,
+    name: copy.storyTitle,
+    description: copy.metaDescription,
+    inLanguage: lang === 'en' ? 'en' : 'es-CO',
+    isPartOf: { '@id': `${SITE}/#website` },
+    mainEntity: person,
+    primaryImageOfPage: `${SITE}${portrait}`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: copy.crumbHome, item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: copy.crumbCurrent, item: canonicalUrl },
+    ],
+  },
+];
+
+function sizesFor(layout: string): string {
+  if (layout === 'wide') return '(max-width: 860px) 100vw, 960px';
+  if (layout === 'pair') return '(max-width: 860px) 100vw, 42vw';
+  if (layout === 'close') return '(max-width: 860px) 100vw, 32vw';
+  return '(max-width: 860px) 100vw, 46vw';
+}
+---
+
+<BaseLayout
+  lang={lang}
+  title={copy.metaTitle}
+  description={copy.metaDescription}
+  ogUrl={canonicalUrl}
+  canonicalUrl={canonicalUrl}
+  alternateEs={alternateEs}
+  alternateEn={alternateEn}
+  markdownAlt={false}
+  extraJsonLd={extraJsonLd}
+>
+  <Navbar lang={lang} />
+  <main>
+    <div class="about-page">
+      <div class="container">
+        <header class="about-intro">
+          <nav class="about-crumb" aria-label={copy.crumbLabel}>
+            <a href={homePath(lang)}>{copy.crumbHome}</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{copy.crumbCurrent}</span>
+          </nav>
+          <p class="about-kicker">{copy.storyTitle}</p>
+        </header>
+
+        {copy.chapters.map((chapter, i) => {
+          const Heading = i === 0 ? 'h1' : 'h2';
+          const headingId = `about-${chapter.index}`;
+          return (
+            <section
+              class:list={[
+                'about-chapter',
+                `about-chapter--${chapter.layout}`,
+                { 'about-chapter--flip': chapter.side === 'image-start' },
+              ]}
+              aria-labelledby={headingId}
+            >
+              <div class="about-split">
+                <div class="about-copy reveal">
+                  <p class="about-index">
+                    <span>{chapter.index}</span>
+                    {chapter.kicker}
+                  </p>
+                  <Heading id={headingId} class="about-title">{chapter.title}</Heading>
+                  {chapter.paragraphs.map((paragraph, p) => (
+                    <p class:list={[{ 'about-signoff': chapter.layout === 'close' && p === chapter.paragraphs.length - 1 }]}>
+                      {paragraph}
+                    </p>
+                  ))}
+                  {chapter.layout === 'close' && (
+                    <a class="btn btn-primary about-cta" href={waUrl} target="_blank" rel="noopener noreferrer">
+                      {copy.cta}
+                    </a>
+                  )}
+                </div>
+
+                <div class="about-visual reveal" style={i === 0 ? 'transition-delay: 120ms' : undefined}>
+                  {chapter.images.map((image, j) => {
+                    const meta = imageMeta(image.src);
+                    const srcset = imageSrcSet(image.src, chapter.layout === 'wide' ? [640, 1024] : [480, 768, 1024]);
+                    return (
+                      <figure>
+                        <img
+                          src={imageUrl(image.src, chapter.layout === 'wide' ? 1024 : 960)}
+                          srcset={srcset || undefined}
+                          sizes={srcset ? sizesFor(chapter.layout) : undefined}
+                          width={meta?.width ?? 1024}
+                          height={meta?.height ?? 1024}
+                          alt={image.alt}
+                          loading={i === 0 && j === 0 ? 'eager' : 'lazy'}
+                          fetchpriority={i === 0 && j === 0 ? 'high' : undefined}
+                          decoding="async"
+                        />
+                        {image.caption && <figcaption>{image.caption}</figcaption>}
+                      </figure>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+          );
+        })}
+
+        <nav class="about-related" aria-label={copy.relatedHeading}>
+          <h2 class="reveal">{copy.relatedHeading}</h2>
+          <ul>
+            {related.map((link) => (
+              <li class="reveal">
+                <a href={link.href} data-astro-prefetch="viewport">{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+  <WhatsAppFAB lang={lang} />
+</BaseLayout>
+
+<style>
+  .about-page {
+    padding-bottom: clamp(64px, 8vw, 110px);
+  }
+
+  .about-intro {
+    padding-top: clamp(108px, 14vw, 148px);
+    margin-bottom: clamp(28px, 4vw, 40px);
+  }
+
+  .about-crumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 22px;
+  }
+
+  .about-crumb a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .about-crumb a:hover {
+    text-decoration: underline;
+  }
+
+  .about-kicker {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-text-muted);
+  }
+
+  .about-chapter + .about-chapter {
+    margin-top: clamp(72px, 11vw, 128px);
+  }
+
+  .about-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(28px, 4.5vw, 72px);
+    align-items: center;
+  }
+
+  .about-chapter--flip .about-copy {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .about-chapter--flip .about-visual {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .about-chapter--wide .about-split {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    gap: clamp(22px, 3vw, 36px);
+  }
+
+  .about-chapter--wide .about-copy {
+    max-width: 40rem;
+  }
+
+  .about-chapter--wide .about-visual {
+    width: min(100%, 960px);
+    margin-inline: auto;
+  }
+
+  .about-chapter--close .about-split {
+    grid-template-columns: minmax(0, 1.25fr) minmax(200px, 0.62fr);
+    align-items: end;
+  }
+
+  .about-index {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .about-index span {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.85rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--color-gold);
+    line-height: 1;
+  }
+
+  .about-title {
+    font-size: clamp(2rem, 4vw, 3.15rem);
+    font-weight: 400;
+    text-wrap: balance;
+    margin-bottom: 18px;
+  }
+
+  .about-copy p {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+
+  .about-copy p + p {
+    margin-top: 14px;
+  }
+
+  .about-signoff {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.85rem !important;
+    line-height: 1.25 !important;
+    margin-top: 22px !important;
+  }
+
+  .about-cta {
+    margin-top: 26px;
+  }
+
+  .about-visual {
+    display: grid;
+    gap: 18px;
+    min-width: 0;
+  }
+
+  .about-visual figure {
+    margin: 0;
+    min-width: 0;
+  }
+
+  .about-visual img {
+    width: 100%;
+    height: auto;
+  }
+
+  .about-chapter--split figure,
+  .about-chapter--close figure {
+    position: relative;
+  }
+
+  .about-chapter--split figure::before,
+  .about-chapter--close figure::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 18px -14px -14px 18px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(234, 153, 213, 0.5), rgba(201, 162, 39, 0.28));
+  }
+
+  .about-chapter--split img,
+  .about-chapter--close img {
+    border-radius: 22px;
+    box-shadow: 0 22px 50px rgba(42, 31, 38, 0.12);
+  }
+
+  .about-chapter--pair figure,
+  .about-chapter--wide figure {
+    background: #fff;
+    padding: 10px 10px 12px;
+    box-shadow: 0 16px 36px rgba(42, 31, 38, 0.1);
+  }
+
+  .about-chapter--wide figure {
+    border-radius: 16px;
+    padding: 12px;
+  }
+
+  .about-chapter--wide img {
+    border-radius: 8px;
+  }
+
+  .about-visual figcaption {
+    margin-top: 8px;
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    text-align: center;
+    color: var(--color-text-muted);
+  }
+
+  .about-related {
+    margin-top: clamp(80px, 12vw, 140px);
+  }
+
+  .about-related h2 {
+    font-size: clamp(1.6rem, 2.5vw, 2rem);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .about-related ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .about-related a {
+    display: inline-flex;
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .about-related a:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+    background: #fff;
+  }
+
+  .about-page a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 860px) {
+    .about-split,
+    .about-chapter--close .about-split {
+      grid-template-columns: 1fr;
+    }
+
+    .about-chapter--flip .about-copy,
+    .about-chapter--flip .about-visual {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .about-chapter--split:first-of-type .about-visual {
+      order: -1;
+    }
+
+    .about-chapter--split figure::before,
+    .about-chapter--close figure::before {
+      inset: 12px -8px -8px 10px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-related a {
+      transition: none;
+    }
+  }
+</style>

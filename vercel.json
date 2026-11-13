@@ -9,6 +9,46 @@
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
     },
     {
+      "source": "/info/retratos-de-mascotas.md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/info/retratos-perros.md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/info/retratos-gatos.md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/info/como-funciona.md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/info/retrato-mascota-fallecida.md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/info/pet-portraits.md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/info/dog-portraits.md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/info/cat-portraits.md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/info/how-it-works.md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/info/memorial-pet-portrait.md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
       "source": "/img/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
@@ -22,6 +62,36 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/retratos-mascotas-colombia",
+      "destination": "/retratos-de-mascotas/",
+      "permanent": true
+    },
+    {
+      "source": "/retratos-mascotas-colombia/",
+      "destination": "/retratos-de-mascotas/",
+      "permanent": true
+    },
+    {
+      "source": "/en/pet-portraits-colombia",
+      "destination": "/en/pet-portraits/",
+      "permanent": true
+    },
+    {
+      "source": "/en/pet-portraits-colombia/",
+      "destination": "/en/pet-portraits/",
+      "permanent": true
+    },
+    {
+      "source": "/info/retratos-mascotas-colombia.md",
+      "destination": "/info/retratos-de-mascotas.md",
+      "permanent": true
+    },
+    {
+      "source": "/info/pet-portraits-colombia.md",
+      "destination": "/info/pet-portraits.md",
+      "permanent": true
+    },
     {
       "source": "/images/:folder/:file.jpg",
       "destination": "/img/:folder/:file.jpg",

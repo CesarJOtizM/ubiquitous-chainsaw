@@ -3,10 +3,20 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
+import { sitemapLinks } from './sitemap-alternates.ts';
+
+const site = 'https://sacartx.art';
+const alternates = sitemapLinks(site);
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://sacartx.art',
+  site,
+  redirects: {
+    '/retratos-mascotas-colombia': '/retratos-de-mascotas/',
+    '/en/pet-portraits-colombia': '/en/pet-portraits/',
+    '/info/retratos-mascotas-colombia.md': '/info/retratos-de-mascotas.md',
+    '/info/pet-portraits-colombia.md': '/info/pet-portraits.md',
+  },
   devToolbar: { enabled: false },
   output: 'server',
   adapter: vercel({
@@ -17,19 +27,15 @@ export default defineConfig({
   integrations: [
     sitemap({
       customPages: [
-        'https://sacartx.art/info/preguntas.md',
-        'https://sacartx.art/llms.txt',
-        'https://sacartx.art/info/retratos-de-mascotas.md',
-        'https://sacartx.art/info/retratos-perros.md',
-        'https://sacartx.art/info/retratos-gatos.md',
-        'https://sacartx.art/info/como-funciona.md',
-        'https://sacartx.art/info/retratos-mascotas-colombia.md',
-        'https://sacartx.art/info/pet-portraits.md',
-        'https://sacartx.art/info/dog-portraits.md',
-        'https://sacartx.art/info/cat-portraits.md',
-        'https://sacartx.art/info/how-it-works.md',
-        'https://sacartx.art/info/pet-portraits-colombia.md',
+        // FAQ text has no HTML twin. llms.txt and the RSS feeds stay out:
+        // they are not pages to rank. Guide .md files duplicate an HTML route
+        // and stay out too; they are noindex markdown alternates.
+        `${site}/info/preguntas.md`,
       ],
+      serialize(item) {
+        const links = alternates.get(item.url);
+        return links ? { ...item, links } : item;
+      },
       i18n: {
         defaultLocale: 'es',
         locales: {

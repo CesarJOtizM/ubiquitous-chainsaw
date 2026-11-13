@@ -590,5 +590,117 @@
     "width": 960,
     "height": 1280,
     "size": 121855
+  },
+  "images/sobre-mi/sara-estudio.jpg": {
+    "path": "images/sobre-mi/sara-estudio.jpg",
+    "fileId": "6af66cd7ead997d09ae01710",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/sara-estudio.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 113005
+  },
+  "images/sobre-mi/paisaje-2006.jpg": {
+    "path": "images/sobre-mi/paisaje-2006.jpg",
+    "fileId": "6af66cd7ead997d09ae0181f",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/paisaje-2006.jpg",
+    "width": 1024,
+    "height": 768,
+    "size": 98220
+  },
+  "images/sobre-mi/frutas-2006.jpg": {
+    "path": "images/sobre-mi/frutas-2006.jpg",
+    "fileId": "6af66cd7ead997d09ae01974",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/frutas-2006.jpg",
+    "width": 1024,
+    "height": 768,
+    "size": 80278
+  },
+  "images/sobre-mi/funda.jpg": {
+    "path": "images/sobre-mi/funda.jpg",
+    "fileId": "6af66cd7ead997d09ae019f5",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/funda.jpg",
+    "width": 770,
+    "height": 1024,
+    "size": 91050
+  },
+  "images/sobre-mi/mensajes.jpg": {
+    "path": "images/sobre-mi/mensajes.jpg",
+    "fileId": "6af66cd8ead997d09ae01adc",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/mensajes.jpg",
+    "width": 1024,
+    "height": 818,
+    "size": 112915
+  },
+  "images/sobre-mi/pintando.jpg": {
+    "path": "images/sobre-mi/pintando.jpg",
+    "fileId": "6af66cd8ead997d09ae01bc9",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/pintando.jpg",
+    "width": 576,
+    "height": 1024,
+    "size": 71914
+  },
+  "images/sobre-mi/flores.jpg": {
+    "path": "images/sobre-mi/flores.jpg",
+    "fileId": "6af66cd8ead997d09ae01cd1",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/flores.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 98955
+  },
+  "images/sobre-mi/sara-cuadro.jpg": {
+    "path": "images/sobre-mi/sara-cuadro.jpg",
+    "fileId": "6af67490ead997d09a04b8b7",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/sara-cuadro.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 163766
+  },
+  "images/bases-acrilicas/16.jpg": {
+    "path": "images/bases-acrilicas/16.jpg",
+    "fileId": "6af68ec3ead997d09aaeac02",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/bases-acrilicas/16.jpg",
+    "width": 576,
+    "height": 1024,
+    "size": 165215
+  },
+  "images/bases-acrilicas/17.jpg": {
+    "path": "images/bases-acrilicas/17.jpg",
+    "fileId": "6af68ec4ead997d09aaeade2",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/bases-acrilicas/17.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 178407
+  },
+  "images/bases-acrilicas/18.jpg": {
+    "path": "images/bases-acrilicas/18.jpg",
+    "fileId": "6af68ec4ead997d09aaeaec7",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/bases-acrilicas/18.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 310116
+  },
+  "images/bases-acrilicas/19.jpg": {
+    "path": "images/bases-acrilicas/19.jpg",
+    "fileId": "6af68ec4ead997d09aaeaf67",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/bases-acrilicas/19.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 191003
+  },
+  "images/cuadros-mascotas/12.jpg": {
+    "path": "images/cuadros-mascotas/12.jpg",
+    "fileId": "6af68ec4ead997d09aaeb02a",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/cuadros-mascotas/12.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 154500
+  },
+  "images/cuadros-mascotas/13.jpg": {
+    "path": "images/cuadros-mascotas/13.jpg",
+    "fileId": "6af68ec4ead997d09aaeb0f7",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/cuadros-mascotas/13.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 174923
   }
 }

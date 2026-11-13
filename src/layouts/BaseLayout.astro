@@ -1,8 +1,13 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import SpeedInsights from '@vercel/speed-insights/astro';
+import PageDecor from '../components/PageDecor.astro';
+import BackToTop from '../components/BackToTop.astro';
 import '../styles/global.css';
 import { useTranslations } from '../i18n/utils';
 import { areaServed } from '../data/coverage';
+import { business, founderId, paymentMethods } from '../data/business';
+import { aboutPath } from '../i18n/paths';
 
 export interface Props {
   title?: string;
@@ -14,6 +19,13 @@ export interface Props {
   alternateEs?: string;
   alternateEn?: string;
   markdownAlt?: string | false;
+  /** Title for the markdown alternate. Only used when `markdownAlt` is set. */
+  markdownAltTitle?: string;
+  /** Open Graph type. Blog posts use `article`. */
+  ogType?: 'website' | 'article';
+  articlePublishedTime?: string;
+  articleModifiedTime?: string;
+  robots?: string;
   extraJsonLd?: object | object[];
 }
 
@@ -26,7 +38,12 @@ const {
   canonicalUrl: canonicalProp,
   alternateEs: alternateEsProp,
   alternateEn: alternateEnProp,
-  markdownAlt = `${SITE}/info/preguntas.md`,
+  markdownAlt = false,
+  markdownAltTitle,
+  ogType = 'website',
+  articlePublishedTime,
+  articleModifiedTime,
+  robots = 'index, follow',
   extraJsonLd,
 } = Astro.props;
 
@@ -67,11 +84,17 @@ const schemaOrg = {
       "url": SITE,
       "telephone": "+573016584401",
       "image": `${SITE}/brand/og-image.png`,
-      "logo": `${SITE}/brand/logo-square.png`,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${SITE}/brand/logo-square.png`,
+      },
       "founder": {
         "@type": "Person",
-        "name": "Sara Amaya Caldas",
-        "jobTitle": "Artista",
+        "@id": founderId,
+        "name": business.founder,
+        "jobTitle": lang === 'en' ? 'Artist' : 'Artista',
+        "url": `${SITE}${aboutPath(lang)}`,
+        "sameAs": [business.instagram, business.tiktok, business.facebook],
       },
       "address": {
         "@type": "PostalAddress",
@@ -82,6 +105,7 @@ const schemaOrg = {
         "https://www.instagram.com/sac_artx",
         "https://www.tiktok.com/@sac_artx",
         FB_URL,
+        business.google,
       ],
       "knowsAbout": [
         "Pet portraits",
@@ -103,7 +127,7 @@ const schemaOrg = {
       ],
       "priceRange": "$$",
       "currenciesAccepted": "COP",
-      "paymentAccepted": "Nequi, Daviplata, Transferencia bancaria, Efectivo",
+      "paymentAccepted": paymentMethods[lang === 'en' ? 'en' : 'es'],
     },
   ],
 };
@@ -136,7 +160,7 @@ const schemaOrg = {
     <!-- Primary Meta -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robots} />
     <meta name="theme-color" content="#B762C1" />
 
     <!-- Canonical & Hreflang -->
@@ -145,12 +169,23 @@ const schemaOrg = {
     <link rel="alternate" hreflang={hreflangEn} href={alternateEn} />
     <link rel="alternate" hreflang="x-default" href={alternateEs} />
     {markdownAlt && (
-      <link rel="alternate" type="text/markdown" href={markdownAlt} title="Sac_Artx FAQ, español e inglés" />
+      <link
+        rel="alternate"
+        type="text/markdown"
+        href={markdownAlt}
+        title={markdownAltTitle}
+      />
     )}
     <link rel="alternate" type="text/plain" href={`${SITE}/llms.txt`} title="Sac_Artx — resumen para IAs" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    {ogType === 'article' && articlePublishedTime && (
+      <meta property="article:published_time" content={articlePublishedTime} />
+    )}
+    {ogType === 'article' && articleModifiedTime && (
+      <meta property="article:modified_time" content={articleModifiedTime} />
+    )}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
@@ -224,6 +259,10 @@ const schemaOrg = {
         z-index: 1000;
       }
 
+      ::view-transition-group(page-decor) {
+        z-index: 0;
+      }
+
       .nav-progress {
         position: fixed;
         inset: 0 0 auto 0;
@@ -272,7 +311,11 @@ const schemaOrg = {
 
   <body>
     <div class="nav-progress" aria-hidden="true"></div>
-    <slot />
+    <PageDecor />
+    <div class="page-shell">
+      <slot />
+      <BackToTop lang={lang} />
+    </div>
 
     <script>
       document.addEventListener('astro:before-preparation', (event) => {
@@ -283,6 +326,15 @@ const schemaOrg = {
         if (event.to.pathname !== event.from.pathname && active instanceof HTMLElement && active.closest('[data-astro-transition-persist]')) {
           active.blur();
         }
+      });
+      document.addEventListener('astro:before-swap', (event) => {
+        const nextLang = event.newDocument.documentElement.lang;
+        if (!nextLang || nextLang === document.documentElement.lang) return;
+        // Persisted chrome keeps the previous language. Drop it so the
+        // incoming navbar, footer and WhatsApp button render in the new one.
+        document.querySelectorAll('[data-astro-transition-persist]').forEach((el) => {
+          el.removeAttribute('data-astro-transition-persist');
+        });
       });
       document.addEventListener('astro:after-swap', () => {
         document.documentElement.classList.remove('is-navigating');
@@ -311,6 +363,28 @@ const schemaOrg = {
       }
 
       document.addEventListener('astro:page-load', initReveal);
+    </script>
+
+    <SpeedInsights />
+    <!-- View transitions keep the script from the first page. Update its route after each swap. -->
+    <script>
+      import { computeRoute } from '@vercel/speed-insights';
+
+      function syncSpeedInsightsRoute() {
+        const el = document.querySelector('vercel-speed-insights');
+        const script = document.head.querySelector('script[src*="speed-insights/script"]');
+        if (!el || !script) return;
+        let params = {};
+        try {
+          params = JSON.parse(el.dataset.params ?? '{}');
+        } catch {
+          params = {};
+        }
+        const route = computeRoute(el.dataset.pathname ?? location.pathname, params);
+        if (route) script.dataset.route = route;
+      }
+
+      document.addEventListener('astro:page-load', syncSpeedInsightsRoute);
     </script>
   </body>
 </html>

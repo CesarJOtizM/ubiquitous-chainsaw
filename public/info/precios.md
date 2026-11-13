@@ -1,6 +1,6 @@
 # Precios de retratos de mascotas Sac_Artx en Colombia
 
-Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. Los precios siguientes están vigentes a octubre de 2026, en pesos colombianos (COP). El envío se cobra aparte.
+Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. Los precios siguientes están vigentes a octubre de 2026, en pesos colombianos (COP). El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.
 
 ## Qué es
 
@@ -12,7 +12,7 @@ Quien busca cotizar un retrato de perro, gato u otra mascota, una base acrílica
 
 ## Qué incluye
 
-Cada precio de retrato o base incluye 1 mascota, boceto digital previo y revisiones sin costo. El envío nacional va aparte.
+Cada precio de retrato o base incluye 1 mascota, boceto digital previo y revisiones sin costo. El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.
 
 ## Precios
 
@@ -58,8 +58,8 @@ Catálogo de obras terminadas: https://sacartx.art/catalogo/
 
 ## Plazo y pago
 
-El plazo es de 15 a 20 días hábiles desde el primer abono del 50%. El 50% restante se paga al terminar. El envío sale cuando el pago está completo. Medios de pago: Nequi, Daviplata, transferencia bancaria y efectivo.
+El plazo es de 15 a 20 días hábiles. El tiempo puede variar según la complejidad del diseño y la agenda. Se abona el 50% para empezar y el 50% al terminar. El envío sale cuando el pago está completo. El costo del envío lo pagas a la transportadora cuando llega a tu casa. Medios de pago: Nequi, Daviplata, transferencia bancaria, llave Bre-B y tarjetas de crédito.
 
-## Dónde
+## Envío a toda Colombia
 
-Sac_Artx pinta por encargo y envía a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. WhatsApp: +57 301 658 4401. Página de inicio: https://sacartx.art/
+Pinto por encargo y envío a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa, según la ciudad. WhatsApp: +57 301 658 4401.
