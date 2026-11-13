@@ -1,6 +1,6 @@
 ---
 import { business, coverageText } from '../data/business';
-import { homePath, type Lang } from '../i18n/paths';
+import type { Lang } from '../i18n/paths';
 import { whatsappUrl } from '../lib/price-text';
 
 interface Props {
@@ -23,6 +23,11 @@ const coverage = coverageText(lang);
         ? `Sac_Artx paints to order and ships to ${coverage}. `
         : `Sac_Artx pinta por encargo y envía a ${coverage}. `
   }
+  {
+    en
+      ? 'Shipping is not included in the price: it is charged separately, based on the city. '
+      : 'El envío no está incluido en el precio: se cobra aparte, según la ciudad. '
+  }
   <a href={whatsappUrl(lang)} target="_blank" rel="noopener noreferrer">WhatsApp: {business.phoneDisplay}</a>.
   {
     variant === 'colombia' && (
@@ -39,8 +44,6 @@ const coverage = coverageText(lang);
       </>
     )
   }
-  {' '}
-  <a href={homePath(lang)} data-astro-prefetch="viewport">{en ? 'Homepage' : 'Página de inicio'}</a>.
 </p>
 
 <style>

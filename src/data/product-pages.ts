@@ -11,7 +11,7 @@
  * the Product/AggregateOffer schema; `lineIds` selects which catalog image
  * folders feed the gallery.
  */
-import { productSlugs, type Lang, type ProductKey } from '../i18n/paths';
+import { intentPath, productSlugs, type Lang, type ProductKey } from '../i18n/paths';
 import type { CatalogLineId } from './catalog';
 import type { IntentTopic } from '../i18n/paths';
 
@@ -21,6 +21,8 @@ export type PriceSource = 'canvas' | 'base' | 'case';
 export interface ProductFaq {
   q: string;
   a: string;
+  /** Related page that expands the answer. */
+  link?: { href: string; label: string };
 }
 
 export interface ProductEntry {
@@ -83,11 +85,11 @@ const productConfig: Record<ProductKey, ProductConfig> = {
       es: {
         linkLabel: 'Cuadros en acrílico',
         category: 'Cuadros en acrílico',
-        h1: 'Cuadros en acrílico de tu mascota, pintados a mano',
-        metaTitle: 'Cuadros en acrílico de tu mascota | Sac_Artx',
+        h1: 'Cuadros en acrílico sobre lienzo, pintados a mano de tu mascota',
+        metaTitle: 'Cuadros en acrílico sobre lienzo de tu mascota | Sac_Artx',
         metaDescription:
-          'Pinto cuadros en acrílico de tu mascota desde la foto. Te mando un boceto antes de pintar y envío a toda Colombia.',
-        lead: 'Me mandas la foto y la pinto pelo a pelo en acrílico sobre lienzo. Antes de empezar te mando un boceto para que me digas si se parece.',
+          'Pinto cuadros en acrílico sobre lienzo de tu mascota, desde la foto. Te mando un boceto antes de pintar y envío a toda Colombia. El envío no está incluido.',
+        lead: 'Me mandas la foto y la plasmo pelo a pelo sobre el lienzo. Antes de empezar te mando un boceto para que te hagas una idea de cómo puede quedar.',
         whatIncluded: [
           'Acrílico sobre lienzo, desde la foto de tu mascota.',
           'Incluye 1 mascota. Si quieres otra, el valor cambia según el tamaño.',
@@ -105,18 +107,22 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: '¿Pintas mascotas que ya no están?',
-            a: 'Sí. Las pinto con las fotos que todavía guardas.',
+            a: 'Sí. Las pinto con las fotos que todavía guardas. Lo cuento en la página de',
+            link: {
+              href: intentPath('memorial', 'es'),
+              label: 'retrato de mascota fallecida',
+            },
           },
         ],
       },
       en: {
         linkLabel: 'Acrylic paintings',
         category: 'Acrylic paintings',
-        h1: 'Acrylic paintings of your pet, from your photo',
-        metaTitle: 'Acrylic pet paintings from your photo | Sac_Artx',
+        h1: 'Hand-painted acrylic on canvas of your pet',
+        metaTitle: 'Hand-painted acrylic on canvas of your pet | Sac_Artx',
         metaDescription:
-          'I paint acrylic canvases of your pet from a photo. I send a sketch before I paint, and I ship across Colombia.',
-        lead: 'Send me the photo and I paint it, hair by hair, in acrylic on canvas. Before I start I send a sketch so you can tell me if it looks like them.',
+          'I paint acrylic on canvas of your pet from a photo. I send a sketch before I paint, and I ship across Colombia. Shipping is not included.',
+        lead: 'Send me the photo and I put it on the canvas, hair by hair. Before I start I send a sketch so you can picture how it might turn out.',
         whatIncluded: [
           'Acrylic on canvas, from a photo of your pet.',
           'Includes 1 pet. Another pet changes the price, depending on the size.',
@@ -134,7 +140,11 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: 'Do you paint pets that have passed away?',
-            a: 'Yes. I paint them from the photos you still have.',
+            a: 'Yes. I paint them from the photos you still have. I explain it on the',
+            link: {
+              href: intentPath('memorial', 'en'),
+              label: 'memorial pet portrait page',
+            },
           },
         ],
       },
@@ -144,55 +154,73 @@ const productConfig: Record<ProductKey, ProductConfig> = {
     priceSource: 'base',
     lineIds: ['bases-acrilicas'],
     relatedProducts: ['paintings', 'cases'],
-    relatedIntents: ['pets'],
+    relatedIntents: ['pets', 'memorial'],
     content: {
       es: {
         linkLabel: 'Bases acrílicas',
         category: 'Bases acrílicas',
-        h1: 'Bases acrílicas con tu retrato y el nombre',
-        metaTitle: 'Bases acrílicas con retrato y nombre | Sac_Artx',
+        h1: 'Bases acrílicas con el retrato y el nombre de tu mascota',
+        metaTitle: 'Bases acrílicas con el retrato de tu mascota | Sac_Artx',
         metaDescription:
-          'Pinto tu retrato en una base acrílica, con resina y un llavero corazón con el nombre. Escríbeme por WhatsApp. Envío en Colombia.',
-        lead: 'Pinto el retrato sobre metacrilato, lo cubro con resina y te hago un llavero corazón con el nombre.',
+          'Pinto el retrato de tu mascota a mano sobre base de acrílico, con capa de resina y llavero corazón de regalo. El precio es de 1 mascota. Envío a toda Colombia, no incluido.',
+        lead: 'Pinto el retrato de tu mascota totalmente a mano sobre una base de acrílico (metacrilato) y encima lo cubro con una capa de resina que le da ese efecto vidrio y ese brillo extraordinario. Como regalo te hago un llavero en forma de corazón con el nombre que desees.',
         whatIncluded: [
-          'El retrato, pintado a mano desde tu foto.',
-          'Resina por encima de la base.',
-          'Llavero corazón con el nombre.',
-          'Una foto de cómo quedó, antes de enviarla.',
+          'Base en acrílico con capa de resina y base en madera, desde la foto de tu mascota.',
+          'Incluye 1 mascota. Si quieres otra, tiene un costo adicional.',
+          'Boceto por WhatsApp antes de pintar. Los cambios del boceto no se cobran.',
+          'Una foto de la base terminada, antes de enviarla.',
+          'Llavero en forma de corazón, de regalo, con el nombre que desees.',
         ],
         faq: [
           {
-            q: '¿Qué trae la base?',
-            a: 'El retrato, la resina y el llavero con el nombre. El envío se cobra aparte, según la ciudad.',
+            q: '¿El precio incluye el envío?',
+            a: 'No. El precio es de la base, con 1 mascota. El envío se cobra aparte, según la ciudad.',
           },
           {
             q: '¿Cómo la pido?',
-            a: 'Me escribes por WhatsApp con la foto, el tamaño y el nombre del llavero. Te mando un boceto antes de pintar.',
+            a: 'Me escribes por WhatsApp con la foto, el tamaño y el nombre del llavero. Te mando el boceto y lo ajustamos si hace falta.',
+          },
+          {
+            q: '¿Pintas mascotas que ya no están?',
+            a: 'Sí. Las pinto con las fotos que todavía guardas. Lo cuento en la página de',
+            link: {
+              href: intentPath('memorial', 'es'),
+              label: 'retrato de mascota fallecida',
+            },
           },
         ],
       },
       en: {
         linkLabel: 'Acrylic bases',
         category: 'Acrylic bases',
-        h1: 'Acrylic bases with your portrait and the name',
-        metaTitle: 'Acrylic bases with portrait and name | Sac_Artx',
+        h1: 'Acrylic bases with the portrait and name of your pet',
+        metaTitle: 'Acrylic bases with the portrait of your pet | Sac_Artx',
         metaDescription:
-          'I paint your portrait on an acrylic base, with resin and a heart keychain with the name. Message me on WhatsApp. Shipping in Colombia.',
-        lead: 'I paint the portrait on methacrylate, coat it with resin, and make you a heart keychain with the name.',
+          'I hand-paint your pet on an acrylic base, with a resin coat and a heart keychain as a gift. The price is for 1 pet. Shipping across Colombia is not included.',
+        lead: 'I paint your pet entirely by hand on an acrylic (methacrylate) base, then coat it with a layer of resin that gives it that glass look and that extraordinary shine. As a gift, I make you a heart-shaped keychain with the name you want.',
         whatIncluded: [
-          'The portrait, hand-painted from your photo.',
-          'Resin over the base.',
-          'A heart keychain with the name.',
-          'A photo of the finished piece before I ship it.',
+          'An acrylic base with a resin coat and a wooden base, from a photo of your pet.',
+          'Includes 1 pet. Another pet has an extra cost.',
+          'A WhatsApp sketch before I paint. Sketch changes are free.',
+          'A photo of the finished base before I ship it.',
+          'A heart-shaped keychain, as a gift, with the name you want.',
         ],
         faq: [
           {
-            q: 'What comes with the base?',
-            a: 'The portrait, the resin, and the keychain with the name. Shipping is charged separately, based on the city.',
+            q: 'Does the price include shipping?',
+            a: 'No. The price is for the base, with 1 pet. Shipping is charged separately, based on the city.',
           },
           {
             q: 'How do I order one?',
-            a: 'Message me on WhatsApp with the photo, the size, and the name for the keychain. I send a sketch before I paint.',
+            a: 'Message me on WhatsApp with the photo, the size, and the name for the keychain. I send the sketch, and we adjust it if it needs to.',
+          },
+          {
+            q: 'Do you paint pets that have passed away?',
+            a: 'Yes. I paint them from the photos you still have. I explain it on the',
+            link: {
+              href: intentPath('memorial', 'en'),
+              label: 'memorial pet portrait page',
+            },
           },
         ],
       },
@@ -202,7 +230,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
     priceSource: 'case',
     lineIds: ['case-mascotas', 'case-flores', 'case-anime', 'case-personalizados'],
     relatedProducts: ['paintings', 'bases'],
-    relatedIntents: ['pets'],
+    relatedIntents: ['pets', 'memorial'],
     content: {
       es: {
         linkLabel: 'Fundas personalizadas',
@@ -229,6 +257,14 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           {
             q: '¿Cómo la pido?',
             a: 'Me escribes el modelo del celular y qué quieres pintar. Te digo si lo tengo antes de empezar.',
+          },
+          {
+            q: '¿Pintas mascotas que ya no están?',
+            a: 'Sí. Las pinto con las fotos que todavía guardas. Lo cuento en la página de',
+            link: {
+              href: intentPath('memorial', 'es'),
+              label: 'retrato de mascota fallecida',
+            },
           },
         ],
       },
@@ -258,6 +294,14 @@ const productConfig: Record<ProductKey, ProductConfig> = {
             q: 'How do I order one?',
             a: 'Message me the phone model and what you want painted. I tell you if I have that model before I start.',
           },
+          {
+            q: 'Do you paint pets that have passed away?',
+            a: 'Yes. I paint them from the photos you still have. I explain it on the',
+            link: {
+              href: intentPath('memorial', 'en'),
+              label: 'memorial pet portrait page',
+            },
+          },
         ],
       },
     },
@@ -266,61 +310,85 @@ const productConfig: Record<ProductKey, ProductConfig> = {
     priceSource: 'canvas',
     lineIds: ['cuadros-personalizados'],
     relatedProducts: ['paintings', 'bases', 'cases'],
-    relatedIntents: ['pets'],
+    relatedIntents: ['pets', 'memorial'],
     content: {
       es: {
-        linkLabel: 'Cuadros de diferentes tamaños',
+        linkLabel: 'Cuadros personalizados',
         category: 'Cuadros en acrílico',
-        h1: 'Cuadros de diferentes tamaños, del más chiquito al más grande',
-        metaTitle: 'Cuadros de diferentes tamaños | Sac_Artx',
+        h1: 'Cuadros personalizados, de tu imaginación al lienzo',
+        metaTitle: 'Cuadros personalizados, de tu imaginación al lienzo | Sac_Artx',
         metaDescription:
-          'Pinto lienzos de 12×18 cm a 40×50 cm: paisajes y encargos a medida. El precio de cada tamaño está en la página. Envío en Colombia.',
-        lead: 'Hay lienzos de 12×18 cm, 20×25 cm, 28×35 cm y 40×50 cm, y un corazón de 20×20 cm. Las fotos de esta página son paisajes y encargos a medida.',
+          'Pinto paisajes, anime, ilustraciones y diseños especiales, a mano y desde tu idea. Cada diseño se cotiza según el detalle y el tamaño. El envío no está incluido.',
+        lead: 'Desde paisajes y personajes de anime hasta ilustraciones y diseños especiales. Cada cuadro es pintado a mano y creado a partir de tus ideas o imágenes favoritas.',
         whatIncluded: [
           'El lienzo, pintado a mano en el tamaño que elijas.',
-          'Boceto por WhatsApp antes de pintar. Los cambios del boceto no se cobran.',
-          'Si es un paisaje o un encargo con más detalle, te digo el precio antes de empezar.',
+          'Boceto digital por WhatsApp antes de pintar. Puedes solicitar ajustes sin costo adicional.',
+          'Cada diseño se cotiza según su complejidad, nivel de detalle y tamaño.',
         ],
         faq: [
           {
             q: '¿Qué tamaños hay?',
-            a: '12×18 cm, 20×25 cm, 28×35 cm y 40×50 cm. El corazón mide 20×20 cm. Si necesitas otro, escríbeme y lo vemos.',
+            a: 'Pinto estos tamaños: 12×18 cm, 20×25 cm, 28×35 cm y 40×50 cm. También hay un corazón de 20×20 cm. Si quieres otro tamaño, escríbeme y lo vemos.',
           },
           {
-            q: '¿Un paisaje cuesta lo mismo que un retrato?',
-            a: 'El retrato de mascota va con la tabla de abajo. Un paisaje o un encargo con más detalle lo cotizo según el tamaño.',
+            q: '¿Un paisaje cuesta lo mismo que el retrato de una mascota?',
+            a: 'El retrato de una mascota parte de los precios de la tabla e incluye 1 mascota. Un paisaje, un personaje de anime o un diseño especial también parte de ahí: el valor final depende de la complejidad, el detalle y el tamaño.',
           },
           {
             q: '¿El precio incluye el envío?',
-            a: 'No. El precio es del cuadro. El envío se cobra aparte, según la ciudad.',
+            a: 'No. El envío no está incluido en el precio. Se cobra aparte, según la ciudad.',
+          },
+          {
+            q: '¿Cómo lo pido?',
+            a: 'Me escribes por WhatsApp con la foto y el tamaño. Te mando el boceto y lo ajustamos si hace falta.',
+          },
+          {
+            q: '¿Pintas mascotas que ya no están?',
+            a: 'Sí. Las pinto con las fotos que todavía guardas. Lo cuento en la página de',
+            link: {
+              href: intentPath('memorial', 'es'),
+              label: 'retrato de mascota fallecida',
+            },
           },
         ],
       },
       en: {
-        linkLabel: 'Paintings in different sizes',
+        linkLabel: 'Custom paintings',
         category: 'Acrylic paintings',
-        h1: 'Paintings in different sizes, from the smallest to the largest',
-        metaTitle: 'Paintings in different sizes | Sac_Artx',
+        h1: 'Custom paintings, from your imagination to the canvas',
+        metaTitle: 'Custom paintings, from your imagination to the canvas | Sac_Artx',
         metaDescription:
-          'I paint canvases from 12×18 cm to 40×50 cm: landscapes and made-to-order pieces. Each size is priced on the page. Shipping in Colombia.',
-        lead: 'Canvases come in 12×18 cm, 20×25 cm, 28×35 cm, and 40×50 cm, plus a 20×20 cm heart. The photos on this page are landscapes and made-to-order pieces.',
+          'I paint landscapes, anime, illustrations, and special designs by hand, from your idea. Each design is quoted by detail and size. Shipping is not included.',
+        lead: 'From landscapes and anime characters to illustrations and special designs. Each painting is done by hand, from your ideas or a favorite image.',
         whatIncluded: [
           'The canvas, hand-painted in the size you pick.',
-          'A WhatsApp sketch before I paint. Sketch changes are free.',
-          'For a landscape or a piece with more detail, I tell you the price before I start.',
+          'A digital sketch on WhatsApp before I paint. You can ask for changes at no extra cost.',
+          'Each design is quoted by its complexity, level of detail, and size.',
         ],
         faq: [
           {
             q: 'Which sizes are there?',
-            a: '12×18 cm, 20×25 cm, 28×35 cm, and 40×50 cm. The heart is 20×20 cm. If you need another size, message me and we will look at it.',
+            a: 'I paint these sizes: 12×18 cm, 20×25 cm, 28×35 cm, and 40×50 cm. There is also a 20×20 cm heart. If you want another size, message me and we will look at it.',
           },
           {
-            q: 'Does a landscape cost the same as a portrait?',
-            a: 'A pet portrait follows the price list below. I quote a landscape, or a piece with more detail, by size.',
+            q: 'Does a landscape cost the same as a pet portrait?',
+            a: 'A pet portrait starts at the prices below and includes 1 pet. A landscape, an anime character, or a special design also starts there: the final price depends on complexity, detail, and size.',
           },
           {
             q: 'Does the price include shipping?',
-            a: 'No. The price is for the painting. Shipping is charged separately, based on the city.',
+            a: 'No. Shipping is not included in the price. It is charged separately, based on the city.',
+          },
+          {
+            q: 'How do I order one?',
+            a: 'Message me on WhatsApp with the photo and the size. I send the sketch, and we adjust it if it needs to.',
+          },
+          {
+            q: 'Do you paint pets that have passed away?',
+            a: 'Yes. I paint them from the photos you still have. I explain it on the',
+            link: {
+              href: intentPath('memorial', 'en'),
+              label: 'memorial pet portrait page',
+            },
           },
         ],
       },
@@ -330,27 +398,27 @@ const productConfig: Record<ProductKey, ProductConfig> = {
     priceSource: null,
     lineIds: [],
     relatedProducts: ['paintings', 'cases'],
-    relatedIntents: ['pets'],
+    relatedIntents: ['pets', 'memorial'],
     content: {
       es: {
-        linkLabel: 'Imanes de lienzo',
-        category: 'Imanes de lienzo',
-        h1: 'Imanes de lienzo con tu mascota',
-        metaTitle: 'Imanes de lienzo pintados a mano | Sac_Artx',
+        linkLabel: 'Minilienzo magnético',
+        category: 'Minilienzo magnético',
+        h1: 'Minilienzo magnético con el retrato de tu mascota',
+        metaTitle: 'Minilienzo magnético con el retrato de tu mascota | Sac_Artx',
         metaDescription:
-          'Pinto tu mascota en un mini lienzo de 7,6 cm con imán. Lo pegas en la nevera. Escríbeme por WhatsApp.',
-        lead: 'Pinto tu mascota en un mini lienzo de 7,6 × 7,6 cm. Atrás lleva un imán y lo pegas en la nevera.',
+          'Pinto a tu mascota en un mini lienzo de 7,5 cm, redondo o cuadrado, con imán. El precio está por confirmar: es un producto nuevo. El envío no está incluido.',
+        lead: 'Pinto a tu mascota en un mini lienzo de 7,5 × 7,5 cm, disponible en forma redonda o cuadrada. Incluye un imán en la parte trasera para que puedas decorar tu nevera o cualquier superficie metálica con un retrato único de tu mascota.',
         priceNote:
-          'El precio de este imán te lo digo por WhatsApp, antes de empezar. El envío se cobra aparte.',
+          'El precio está por confirmar: es un producto nuevo. Te lo digo por WhatsApp antes de empezar. El envío no está incluido.',
         whatIncluded: [
-          'Mini lienzo de algodón de 7,6 × 7,6 cm, pintado a mano en acrílico.',
-          'Imán atrás, listo para pegar.',
-          'Te llega pintado por mí, desde tu foto.',
+          'Mini lienzo de 7,5 × 7,5 cm, redondo o cuadrado, pintado a mano desde la foto de tu mascota.',
+          'Imán en la parte de atrás, para la nevera o cualquier superficie metálica.',
+          'Te llega pintado por mí.',
         ],
         faq: [
           {
             q: '¿De qué tamaño es?',
-            a: 'Mide 7,6 × 7,6 cm, que son 3 × 3 pulgadas. Cabe en la nevera.',
+            a: 'Mide 7,5 × 7,5 cm. Lo puedes pedir redondo o cuadrado. Sirve para la nevera o cualquier superficie metálica.',
           },
           {
             q: '¿Puedo pedir cualquier mascota?',
@@ -360,27 +428,43 @@ const productConfig: Record<ProductKey, ProductConfig> = {
             q: '¿Me llega en blanco para pintarlo yo?',
             a: 'No. Te llega pintado por mí, desde tu foto.',
           },
+          {
+            q: '¿El precio incluye el envío?',
+            a: 'No. El precio está por confirmar, porque es un producto nuevo. El envío no está incluido: se cobra aparte, según la ciudad.',
+          },
+          {
+            q: '¿Cómo lo pido?',
+            a: 'Me escribes por WhatsApp con la foto. Te mando el boceto y lo ajustamos si hace falta.',
+          },
+          {
+            q: '¿Pintas mascotas que ya no están?',
+            a: 'Sí. Las pinto con las fotos que todavía guardas. Lo cuento en la página de',
+            link: {
+              href: intentPath('memorial', 'es'),
+              label: 'retrato de mascota fallecida',
+            },
+          },
         ],
       },
       en: {
-        linkLabel: 'Canvas magnets',
-        category: 'Canvas magnets',
-        h1: 'Canvas magnets with your pet',
-        metaTitle: 'Hand-painted canvas magnets | Sac_Artx',
+        linkLabel: 'Magnetic mini canvas',
+        category: 'Magnetic mini canvas',
+        h1: "Magnetic mini canvas with your pet's portrait",
+        metaTitle: "Magnetic mini canvas with your pet's portrait | Sac_Artx",
         metaDescription:
-          'I paint your pet on a 7.6 cm mini canvas with a magnet. It sticks on the fridge. Message me on WhatsApp.',
-        lead: 'I paint your pet on a 7.6 × 7.6 cm mini canvas. A magnet on the back holds it on the fridge.',
+          'I paint your pet on a 7.5 cm mini canvas, round or square, with a magnet. The price is still to be confirmed: it is a new product. Shipping is not included.',
+        lead: 'I paint your pet on a 7.5 × 7.5 cm mini canvas, available round or square. A magnet on the back lets you decorate your fridge, or any metal surface, with a unique portrait of your pet.',
         priceNote:
-          'I will tell you the price of this magnet on WhatsApp, before I start. Shipping is charged separately.',
+          'The price is still to be confirmed: this is a new product. I will tell you on WhatsApp before I start. Shipping is not included.',
         whatIncluded: [
-          'A 7.6 × 7.6 cm cotton mini canvas, hand-painted in acrylic.',
-          'A magnet on the back, ready to stick.',
-          'It arrives painted by me, from your photo.',
+          'A 7.5 × 7.5 cm mini canvas, round or square, hand-painted from a photo of your pet.',
+          'A magnet on the back, for the fridge or any metal surface.',
+          'It arrives painted by me.',
         ],
         faq: [
           {
             q: 'How big is it?',
-            a: 'It is 7.6 × 7.6 cm, which is 3 × 3 inches. It fits on the fridge.',
+            a: 'It measures 7.5 × 7.5 cm. You can order it round or square. It works on the fridge or any metal surface.',
           },
           {
             q: 'Can I ask for any pet?',
@@ -389,6 +473,22 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           {
             q: 'Does it arrive blank for me to paint?',
             a: 'No. It arrives painted by me, from your photo.',
+          },
+          {
+            q: 'Does the price include shipping?',
+            a: 'No. The price is still to be confirmed, because this is a new product. Shipping is not included: it is charged separately, based on the city.',
+          },
+          {
+            q: 'How do I order one?',
+            a: 'Message me on WhatsApp with the photo. I send the sketch, and we adjust it if it needs to.',
+          },
+          {
+            q: 'Do you paint pets that have passed away?',
+            a: 'Yes. I paint them from the photos you still have. I explain it on the',
+            link: {
+              href: intentPath('memorial', 'en'),
+              label: 'memorial pet portrait page',
+            },
           },
         ],
       },

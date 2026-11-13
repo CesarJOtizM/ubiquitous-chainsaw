@@ -34,7 +34,7 @@ Sí. Sac_Artx pinta retratos en memoria de mascotas que ya fallecieron, a partir
 
 ## ¿Cuánto tarda y cómo se paga?
 
-El plazo es de 15 a 20 días hábiles desde el primer abono. Se paga 50% para empezar y 50% al terminar. Con el pago completo se despacha, con embalaje y número de seguimiento, a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. Por ahora no hay envíos fuera del país. Medios de pago: Nequi, Daviplata, transferencia bancaria, llave Bre-B y tarjetas de crédito. Antes de pintar se envía un boceto digital y los ajustes no tienen costo.
+El plazo es de 15 a 20 días hábiles. El tiempo puede variar según la complejidad del diseño y la agenda. Se paga 50% para empezar y 50% al terminar. Con el pago completo se despacha, con embalaje y número de seguimiento, a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. Por ahora no hay envíos fuera del país. Medios de pago: Nequi, Daviplata, transferencia bancaria, llave Bre-B y tarjetas de crédito. Antes de pintar se envía un boceto digital y los ajustes no tienen costo.
 
 # Sac_Artx frequently asked questions
 
@@ -72,4 +72,4 @@ Yes. Sac_Artx paints memorial portraits of pets that have died, from the photos 
 
 ## How long does it take and how do you pay?
 
-Turnaround is 15 to 20 business days from the first payment. You pay 50% to start and 50% when the work is finished. Once payment is complete, the piece ships to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia, with protective packaging and a tracking number. Shipping outside Colombia is not available for now. Payment methods: Nequi, Daviplata, bank transfer, Bre-B key, and credit cards. A digital sketch is sent before painting, and adjustments are free.
+Turnaround is 15 to 20 business days. Timing can vary with the complexity of the design and the current schedule. You pay 50% to start and 50% when the work is finished. Once payment is complete, the piece ships to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia, with protective packaging and a tracking number. Shipping outside Colombia is not available for now. Payment methods: Nequi, Daviplata, bank transfer, Bre-B key, and credit cards. A digital sketch is sent before painting, and adjustments are free.

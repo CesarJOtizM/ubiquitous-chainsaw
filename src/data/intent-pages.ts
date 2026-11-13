@@ -302,21 +302,21 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
     content: {
       es: {
         linkLabel: 'Cómo funciona',
-        h1: 'Cómo encargar un retrato de mascota con Sac_Artx',
-        metaTitle: 'Cómo encargar un retrato de mascota | Sac_Artx',
+        h1: '¿Cómo encargar tu retrato de mascota personalizado?',
+        metaTitle: '¿Cómo encargar tu retrato de mascota personalizado? | Sac_Artx',
         metaDescription:
-          'Cómo funciona un encargo con Sac_Artx: envías tu foto, apruebas el boceto digital y recibes tu retrato pintado a mano, con envío en toda Colombia.',
-        lead: 'Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. El encargo se hace por WhatsApp, a partir de una fotografía.',
+          'Hacer tu pedido en Sac_Artx es sencillo: foto, boceto en menos de 48 horas y retrato pintado a mano. El plazo corre desde la aprobación del boceto. El envío no está incluido.',
+        lead: 'Hacer tu pedido en Sac_Artx es muy sencillo. Sigue estos pasos y pronto tendrás una obra de arte creada especialmente para ti.',
         whatItIs:
           'El proceso de Sac_Artx tiene cinco pasos: enviar la foto, recibir un boceto digital, aprobar el diseño, pintar la obra y recibir el envío. Sitio: https://sacartx.art/',
         whoFor:
           'Quien quiere encargar un retrato de perro, gato u otra mascota, una base acrílica o una funda personalizada, con seguimiento por WhatsApp e Instagram.',
         included: [
           'Manda tu foto: envías la mejor foto de tu mascota por WhatsApp o Instagram. Sac_Artx ayuda a elegir la mejor toma. Guía: [cómo tomar la foto](/blog/como-elegir-la-mejor-foto-mascota/).',
-          'Boceto en 48 horas: recibes un adelanto digital de cómo va a quedar.',
+          'Boceto en menos de 48 horas: recibes un boceto digital de cómo puede quedar.',
           'Apruebas el diseño: se ajusta lo necesario sin cargo extra por revisiones.',
-          'Se pinta: cuando la obra está lista, recibes fotos por WhatsApp para la aprobación final.',
-          'Recibes tu obra: embalaje seguro y envío a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia, con seguimiento.',
+          'Se pinta: cada retrato es pintado a mano en acrílico. Al terminar, recibes fotografías por WhatsApp para revisar el resultado final.',
+          'Recibes tu obra: envío a toda Colombia, a cualquier parte del país, por transportadoras aliadas, con embalaje seguro y seguimiento.',
         ],
         includedOrdered: true,
         includedNote:
@@ -324,21 +324,21 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
       },
       en: {
         linkLabel: 'How it works',
-        h1: 'How to commission a pet portrait with Sac_Artx',
-        metaTitle: 'How to commission a pet portrait | Sac_Artx',
+        h1: 'How do you commission your custom pet portrait?',
+        metaTitle: 'How do you commission your custom pet portrait? | Sac_Artx',
         metaDescription:
-          'How a Sac_Artx commission works: send your photo, approve the digital sketch, and receive your hand-painted portrait, shipped across Colombia.',
-        lead: 'Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic. Commissions are placed on WhatsApp, from a photograph.',
+          'Ordering from Sac_Artx is simple: a photo, a sketch in under 48 hours, and a hand-painted portrait. The clock starts when you approve the sketch. Shipping is not included.',
+        lead: 'Ordering from Sac_Artx is simple. Follow these steps and you will soon have a work of art made just for you.',
         whatItIs:
           'The Sac_Artx process has five steps: send the photo, receive a digital sketch, approve the design, paint the piece, and receive the shipment. Website: https://sacartx.art/en/',
         whoFor:
           'Anyone commissioning a dog, cat, or other pet portrait, an acrylic base, or a personalized phone case, with follow-up on WhatsApp and Instagram.',
         included: [
           'Send your photo: you send the best photo of your pet on WhatsApp or Instagram. Sac_Artx helps you choose the best shot. Guide: [how to take the photo](/en/blog/how-to-choose-the-best-photo/).',
-          'Sketch within 48 hours: you receive a digital preview of the result.',
+          'Sketch in under 48 hours: you receive a digital sketch of how it might turn out.',
           'Approve the design: whatever is needed gets adjusted, with no extra charge for revisions.',
-          'Painting: when the piece is ready, you receive photos on WhatsApp for final approval.',
-          'Delivery: secure packaging and shipping to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia, with tracking.',
+          'Painting: each portrait is painted by hand in acrylic. When it is finished, you receive photos on WhatsApp to review the final result.',
+          'Delivery: shipping anywhere in Colombia through partner carriers, with protective packaging and tracking.',
         ],
         includedOrdered: true,
         includedNote:

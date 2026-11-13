@@ -13,7 +13,7 @@ import {
   productPath,
 } from '../i18n/paths';
 import { business } from '../data/business';
-import { canvasPrices, basePrices, casePrices, type PriceRow } from '../data/prices';
+import { canvasPrices, basePrices, casePrices, extraPetPrices, type PriceRow } from '../data/prices';
 import { cop, priceLead, leadTimeText } from '../lib/price-text';
 import { itemsForLine } from '../data/catalog';
 import { animalAltEn, animalAltEs, animalForSrc } from '../data/catalog-animals';
@@ -49,14 +49,43 @@ const highPrice = amounts.length ? Math.max(...amounts) : undefined;
 const fromWord = lang === 'en' ? 'From ' : 'Desde ';
 
 const priceItems = priceRows.map((r) => {
-  const label = [r.nameKey ? t(r.nameKey as TranslationKey) : null, r.size]
-    .filter(Boolean)
-    .join(' · ');
+  const name = r.nameKey ? t(r.nameKey as TranslationKey) : '';
+  const sizeAlreadyInName = Boolean(r.size && name.includes(r.size));
+  const label = [name || null, sizeAlreadyInName ? null : r.size].filter(Boolean).join(' · ');
+  const showFrom = r.from || entry.product === 'sizes';
   return {
     label,
-    price: `${r.from ? fromWord : ''}${cop(r.price, lang)}`,
+    price: `${showFrom ? fromWord : ''}${cop(r.price, lang)}`,
   };
 });
+
+const extraPetNote = (() => {
+  const en = lang === 'en';
+  if (entry.product === 'paintings' || entry.product === 'sizes') {
+    const min = cop(extraPetPrices.canvas.min, lang);
+    const max = cop(extraPetPrices.canvas.max, lang);
+    return entry.product === 'sizes'
+      ? en
+        ? `Prices start at these amounts for 1 pet. The final price also depends on how complex the design is. An extra pet costs ${min} to ${max}, depending on the size. If you want another size, tell me.`
+        : `Estos precios son desde, para 1 mascota. El valor también depende de lo complejo del diseño. La mascota adicional tiene un costo de ${min} a ${max}, según el tamaño. Si deseas otro tamaño, házmelo saber.`
+      : en
+        ? `These prices are for 1 pet. An extra pet costs ${min} to ${max}, depending on the size.`
+        : `Estos precios son de 1 mascota. La mascota adicional tiene un costo de ${min} a ${max}, según el tamaño.`;
+  }
+  if (entry.product === 'bases') {
+    const amount = cop(extraPetPrices.base.amount, lang);
+    return en
+      ? `These prices are for 1 pet. An extra pet costs ${amount}.`
+      : `Estos precios son de 1 mascota. La mascota adicional tiene un costo de ${amount}.`;
+  }
+  if (entry.product === 'cases') {
+    const amount = cop(extraPetPrices.case.amount, lang);
+    return en
+      ? `The pet case price is for 1 pet. An extra pet costs ${amount}.`
+      : `El precio de la funda de mascota es de 1 mascota. La mascota adicional tiene un costo de ${amount}.`;
+  }
+  return '';
+})();
 
 // Gallery built from the product's catalog lines (same approach as Catalog.astro).
 const galleryName = entry.linkLabel;
@@ -101,7 +130,7 @@ const labels =
         included: "What's included",
         prices: 'Prices',
         turnaround: 'Turnaround and payment',
-        where: 'Where',
+        where: 'Shipping across Colombia',
         faq: 'Frequently asked questions',
         related: 'Related pages',
         gallery: 'Gallery',
@@ -112,7 +141,7 @@ const labels =
         included: 'Qué incluye',
         prices: 'Precios',
         turnaround: 'Plazo y pago',
-        where: 'Dónde',
+        where: 'Envío a toda Colombia',
         faq: 'Preguntas frecuentes',
         related: 'Páginas relacionadas',
         gallery: 'Galería',
@@ -242,6 +271,7 @@ const extraJsonLd = [
                   </li>
                 ))}
               </ul>
+              {extraPetNote && <p>{extraPetNote}</p>}
             </>
           ) : (
             <p>{entry.priceNote}</p>
@@ -264,7 +294,15 @@ const extraJsonLd = [
             {entry.faq.map((item) => (
               <>
                 <dt>{item.q}</dt>
-                <dd>{item.a}</dd>
+                <dd>
+                  {item.a}
+                  {item.link && (
+                    <>
+                      {' '}
+                      <a href={item.link.href} data-astro-prefetch="viewport">{item.link.label}</a>.
+                    </>
+                  )}
+                </dd>
               </>
             ))}
           </dl>

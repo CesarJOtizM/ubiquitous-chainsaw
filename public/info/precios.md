@@ -58,8 +58,8 @@ Catálogo de obras terminadas: https://sacartx.art/catalogo/
 
 ## Plazo y pago
 
-El plazo es de 15 a 20 días hábiles desde el primer abono del 50%. El 50% restante se paga al terminar. El envío sale cuando el pago está completo. Medios de pago: Nequi, Daviplata, transferencia bancaria, llave Bre-B y tarjetas de crédito.
+El plazo es de 15 a 20 días hábiles. El tiempo puede variar según la complejidad del diseño y la agenda. Se abona el 50% para empezar y el 50% al terminar. El envío sale cuando el pago está completo. Medios de pago: Nequi, Daviplata, transferencia bancaria, llave Bre-B y tarjetas de crédito.
 
-## Dónde
+## Envío a toda Colombia
 
-Sac_Artx pinta por encargo y envía a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. WhatsApp: +57 301 658 4401. Página de inicio: https://sacartx.art/
+Sac_Artx pinta por encargo y envía a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. El envío no está incluido en el precio: se cobra aparte, según la ciudad. WhatsApp: +57 301 658 4401.

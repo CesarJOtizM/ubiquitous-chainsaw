@@ -7,8 +7,8 @@ import { useTranslations } from '../i18n/utils';
 import { blogPostPath, catalogPath, homePath, intentPath, pricesPath, type Lang } from '../i18n/paths';
 import { business, paymentMethodLabels } from '../data/business';
 import { intentEntry } from '../data/intent-pages';
-import { LEAD_TIME_DAYS, PRICE_FROM_CANVAS } from '../data/prices';
-import { cop, leadTimeText } from '../lib/price-text';
+import { LEAD_TIME_DAYS } from '../data/prices';
+import { cop } from '../lib/price-text';
 
 export interface Props {
   lang: Lang;
@@ -26,7 +26,7 @@ const alternateEn = `${SITE}${intentPath('how', 'en')}`;
 const markdownAlt = `${SITE}/info/${entry.slug}.md`;
 const homeUrl = `${SITE}${homePath(lang)}`;
 const waUrl = `https://wa.me/573016584401?text=${t('process.waMsg')}`;
-const fromPrice = cop(PRICE_FROM_CANVAS, lang);
+const fromPrice = cop(100_000, lang);
 const photoGuideHref = blogPostPath(
   lang === 'en' ? 'how-to-choose-the-best-photo' : 'como-elegir-la-mejor-foto-mascota',
   lang,
@@ -42,16 +42,16 @@ const copy = es
       ctaSecondary: 'Ver el catálogo',
       statSteps: '5 pasos',
       statStepsHint: 'de la foto a tu casa',
-      statSketch: '48 horas',
+      statSketch: 'Menos de 48 horas',
       statSketchHint: 'para el boceto digital',
       statDays: `${LEAD_TIME_DAYS.min}–${LEAD_TIME_DAYS.max} días`,
       statDaysHint: 'hábiles de pintura',
       statPay: '50%',
-      statPayHint: 'para empezar',
-      journeyLabel: 'El recorrido',
-      journeyTitle: 'Cinco pasos, con calma',
+      statPayHint: 'de anticipo',
+      journeyLabel: 'Así funciona',
+      journeyTitle: 'Cinco pasos para crear tu retrato',
       journeyLead:
-        'Envías la foto, ves un boceto digital, apruebas el diseño, Sara pinta la obra y el cuadro sale hacia tu ciudad.',
+        'Un proceso sencillo y personalizado para transformar esa fotografía especial en una obra de arte hecha a mano.',
       chip1: 'WhatsApp o Instagram',
       chip2: 'Antes de pintar',
       chip3: 'Sin costo extra',
@@ -59,22 +59,25 @@ const copy = es
       chip5: 'Con seguimiento',
       points: [
         ['Te ayudamos a elegir la mejor toma si tienes varias.', 'Si la luz falla, se puede corregir o unir fotos antes de pintar.'],
-        ['Es un adelanto digital, para que veas cómo va a quedar.', 'Todavía no es la pintura: sirve para afinar la idea.'],
+        ['Todavía no es la pintura: sirve para afinar la idea.', 'Si quieres un cambio, lo vemos antes de pintar.'],
         ['Se ajusta lo que haga falta hasta que el diseño te convenza.', 'Las revisiones del boceto no tienen cargo extra.'],
-        ['Sara pinta la obra con dedicación, en acrílico.', 'Cuando está lista, te manda fotos por WhatsApp para la aprobación final.'],
-        ['Embalaje seguro y número de seguimiento.', 'Llega a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia.'],
+        ['Cada retrato es pintado a mano en acrílico.', 'Al terminar, recibirás fotografías por WhatsApp para revisar el resultado final.'],
+        ['Embalaje seguro y número de seguimiento.', 'Llega a Bogotá, Medellín, Cali, Barranquilla y al resto del país.'],
       ],
       factsLabel: 'Precio, plazo y envío',
       noteLabel: 'Para quién y antes de pintar',
       pricesKicker: 'Precios',
-      pricesHint: 'Lienzo 12×18 cm, 1 mascota',
-      pricesBody: 'Los retratos en acrílico sobre lienzo empiezan desde este valor. El envío se cotiza aparte.',
+      pricesHint: 'Hay productos desde este valor',
+      pricesBody: 'El listado completo está en la página de precios. El envío no está incluido en el precio.',
       pricesLink: 'Ver todos los precios',
       timeKicker: 'Plazo y pago',
-      timeHint: 'desde el primer abono',
-      timeSplit: '50% al encargar · 50% al terminar',
+      timeHint: 'desde la aprobación del boceto',
+      timeSplit: '50% de anticipo · 50% al terminar',
+      timeBody:
+        'El tiempo corre desde que apruebas el boceto. Puede variar según la complejidad del diseño y siempre queda entre 15 y 20 días hábiles.',
       whereKicker: 'Dónde llega',
-      whereBody: `Sac_Artx pinta por encargo y envía a ${business.cities.join(', ')} y el resto de Colombia.`,
+      whereBody:
+        'Cada obra se crea por encargo y llega hasta la puerta de tu casa, por transportadoras aliadas. Realizamos envíos a Bogotá, Medellín, Cali, Barranquilla y a cualquier parte del país.',
       wherePhone: `WhatsApp ${business.phoneDisplay}`,
       rest: 'y el resto de Colombia',
       whoKicker: 'Para quién',
@@ -91,16 +94,16 @@ const copy = es
       ctaSecondary: 'See the catalog',
       statSteps: '5 steps',
       statStepsHint: 'from photo to doorstep',
-      statSketch: '48 hours',
+      statSketch: 'Under 48 hours',
       statSketchHint: 'for the digital sketch',
       statDays: `${LEAD_TIME_DAYS.min}–${LEAD_TIME_DAYS.max} days`,
       statDaysHint: 'of painting, business days',
       statPay: '50%',
-      statPayHint: 'to get started',
-      journeyLabel: 'The path',
-      journeyTitle: 'Five steps, unhurried',
+      statPayHint: 'deposit',
+      journeyLabel: 'How it works',
+      journeyTitle: 'Five steps to create your portrait',
       journeyLead:
-        'You send the photo, see a digital sketch, approve the design, Sara paints the piece, and it ships to your city.',
+        'A simple, personal process to turn that special photo into a work of art made by hand.',
       chip1: 'WhatsApp or Instagram',
       chip2: 'Before painting',
       chip3: 'No extra charge',
@@ -108,22 +111,25 @@ const copy = es
       chip5: 'With tracking',
       points: [
         ['We help you choose the best shot if you have several.', 'Poor light can be corrected, or several photos combined, before painting.'],
-        ['A digital preview, so you can see how it will look.', 'It is not the painting yet: it is there to shape the idea.'],
+        ['It is not the painting yet: it is there to shape the idea.', 'If you want a change, we look at it before painting starts.'],
         ['Whatever needs adjusting gets adjusted until the design feels right.', 'Sketch revisions have no extra charge.'],
-        ['Sara paints the piece by hand, in acrylic.', 'When it is ready, she sends photos on WhatsApp for final approval.'],
-        ['Protective packaging and a tracking number.', 'It ships to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia.'],
+        ['Each portrait is painted by hand in acrylic.', 'When it is finished, you receive photos on WhatsApp to review the final result.'],
+        ['Protective packaging and a tracking number.', 'It reaches any part of the country, through partner carriers.'],
       ],
       factsLabel: 'Price, turnaround, and shipping',
       noteLabel: 'Who it is for, and before painting',
       pricesKicker: 'Prices',
-      pricesHint: 'Canvas 12×18 cm, 1 pet',
-      pricesBody: 'Acrylic portraits on canvas start at this price. Shipping is quoted separately.',
+      pricesHint: 'There are products from this price',
+      pricesBody: 'The full list is on the prices page. Shipping is not included in the price.',
       pricesLink: 'See every price',
       timeKicker: 'Turnaround and payment',
-      timeHint: 'from the first payment',
-      timeSplit: '50% to start · 50% when it is finished',
+      timeHint: 'from sketch approval',
+      timeSplit: '50% deposit · 50% when it is finished',
+      timeBody:
+        'The clock starts when you approve the sketch. It can vary with the complexity of the design, and it always stays between 15 and 20 business days.',
       whereKicker: 'Where it ships',
-      whereBody: `Sac_Artx paints to order and ships to ${business.cities.join(', ')} and the rest of Colombia.`,
+      whereBody:
+        'Each piece is made to order and arrives at your door, through partner carriers. We ship to Bogotá, Medellín, Cali, Barranquilla, and anywhere in the country.',
       wherePhone: `WhatsApp ${business.phoneDisplay}`,
       rest: 'and the rest of Colombia',
       whoKicker: 'Who it is for',
@@ -197,8 +203,6 @@ const extraJsonLd = [
     })),
   },
 ];
-
-const turnaround = leadTimeText(lang);
 ---
 
 <BaseLayout
@@ -324,7 +328,7 @@ const turnaround = leadTimeText(lang);
           <p class="how-fact__value">{copy.statDays}</p>
           <p class="how-fact__hint">{copy.timeHint}</p>
           <p class="how-fact__split">{copy.timeSplit}</p>
-          <p>{turnaround}</p>
+          <p>{copy.timeBody}</p>
           <ul class="how-pills" aria-label={copy.payLabel}>
             {copy.pays.map((pay) => (
               <li>{pay}</li>
@@ -607,7 +611,7 @@ const turnaround = leadTimeText(lang);
     margin: 0;
     font-family: var(--font-heading);
     font-size: clamp(1.45rem, 2vw, 1.85rem);
-    line-height: 1;
+    line-height: 1.15;
     color: var(--color-text);
   }
 

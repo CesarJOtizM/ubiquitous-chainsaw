@@ -14,7 +14,7 @@ import {
   LEAD_TIME_DAYS,
 } from '../data/prices';
 import { business, paymentMethods, coverageText } from '../data/business';
-import { homePath, catalogPath, type Lang } from '../i18n/paths';
+import { catalogPath, type Lang } from '../i18n/paths';
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -111,8 +111,8 @@ export function priceSummaryHow(lang: Lang): string {
 export function leadTimeText(lang: Lang): string {
   const { min, max } = LEAD_TIME_DAYS;
   return lang === 'en'
-    ? `Turnaround is ${min} to ${max} business days from the first 50% payment. The remaining 50% is paid when the work is finished. The piece ships once payment is complete. Payment methods: ${paymentMethods.en}.`
-    : `El plazo es de ${min} a ${max} días hábiles desde el primer abono del 50%. El 50% restante se paga al terminar. El envío sale cuando el pago está completo. Medios de pago: ${paymentMethods.es}.`;
+    ? `Turnaround is ${min} to ${max} business days. Timing can vary with the complexity of the design and the current schedule. You pay 50% to start and 50% when it is finished. The piece ships once payment is complete. Payment methods: ${paymentMethods.en}.`
+    : `El plazo es de ${min} a ${max} días hábiles. El tiempo puede variar según la complejidad del diseño y la agenda. Se abona el 50% para empezar y el 50% al terminar. El envío sale cuando el pago está completo. Medios de pago: ${paymentMethods.es}.`;
 }
 
 /** Greeting prefilled when someone opens WhatsApp from a page. */
@@ -131,18 +131,21 @@ export function whatsappUrl(lang: Lang): string {
 /** "Where / Dónde" paragraph for generated markdown. HTML pages render the links themselves. */
 export function whereText(lang: Lang, variant: 'studio' | 'colombia' = 'studio'): string {
   const coverage = coverageText(lang);
-  const home = `${business.site}${homePath(lang)}`;
   const wa = `[${business.phoneDisplay}](${whatsappUrl(lang)})`;
   const ig = `[Instagram](${business.instagram})`;
   const tk = `[TikTok](${business.tiktok})`;
+  const shippingNote =
+    lang === 'en'
+      ? 'Shipping is not included in the price: it is charged separately, based on the city.'
+      : 'El envío no está incluido en el precio: se cobra aparte, según la ciudad.';
   if (variant === 'colombia') {
     return lang === 'en'
-      ? `Shipping coverage: ${coverage}. WhatsApp: ${wa}. ${ig} and ${tk}: ${business.handle}. Homepage: ${home}`
-      : `Cobertura de envío: ${coverage}. WhatsApp: ${wa}. ${ig} y ${tk}: ${business.handle}. Página de inicio: ${home}`;
+      ? `Shipping coverage: ${coverage}. ${shippingNote} WhatsApp: ${wa}. ${ig} and ${tk}: ${business.handle}.`
+      : `Cobertura de envío: ${coverage}. ${shippingNote} WhatsApp: ${wa}. ${ig} y ${tk}: ${business.handle}.`;
   }
   return lang === 'en'
-    ? `Sac_Artx paints to order and ships to ${coverage}. WhatsApp: ${wa}. Homepage: ${home}`
-    : `Sac_Artx pinta por encargo y envía a ${coverage}. WhatsApp: ${wa}. Página de inicio: ${home}`;
+    ? `Sac_Artx paints to order and ships to ${coverage}. ${shippingNote} WhatsApp: ${wa}.`
+    : `Sac_Artx pinta por encargo y envía a ${coverage}. ${shippingNote} WhatsApp: ${wa}.`;
 }
 
 /** Localized section headings shared by HTML and generated markdown. */
@@ -153,7 +156,7 @@ export const sectionLabels: Record<Lang, Record<string, string>> = {
     included: 'Qué incluye',
     prices: 'Precios',
     turnaround: 'Plazo y pago',
-    where: 'Dónde',
+    where: 'Envío a toda Colombia',
   },
   en: {
     whatItIs: 'What it is',
@@ -161,6 +164,6 @@ export const sectionLabels: Record<Lang, Record<string, string>> = {
     included: 'What is included',
     prices: 'Prices',
     turnaround: 'Turnaround and payment',
-    where: 'Where',
+    where: 'Shipping across Colombia',
   },
 };
