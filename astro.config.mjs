@@ -26,6 +26,10 @@ export default defineConfig({
   }),
   integrations: [
     sitemap({
+      filter(page) {
+        // The product feed is a file for ChatGPT Business Hub, not a page to rank.
+        return !page.includes('/feeds/');
+      },
       customPages: [
         // FAQ text has no HTML twin. llms.txt and the RSS feeds stay out:
         // they are not pages to rank. Guide .md files duplicate an HTML route

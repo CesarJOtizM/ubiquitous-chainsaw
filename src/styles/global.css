@@ -13,12 +13,17 @@
   --color-bg-alt: #FAE8F8;
   --color-bg-card: #F5E8FA;
   --color-text: #2A1F26;
-  --color-text-muted: #8A7280;
+  /* #6E5866 keeps muted copy above 4.5:1 on the page background. */
+  --color-text-muted: #6E5866;
   --color-accent: #B762C1;
+  /* Small text. The brand pink fails 4.5:1 below 24px. */
+  --color-accent-text: #7A348F;
   --color-accent-hover: #8946A6;
   --color-sage: #B762C1;
   --color-border: #EAD0F0;
   --color-gold: #C9A227;
+  /* Gold as text. The decorative gold fails contrast on white and blush. */
+  --color-gold-text: #6B5606;
   --color-lavender: #EA99D5;
   --color-btn: #8946A6;
   --color-btn-hover: #B762C1;
@@ -57,6 +62,13 @@ img, picture, video, canvas, svg {
 
 input, button, textarea, select {
   font: inherit;
+}
+
+/* In-text links stay underlined. Tailwind's preflight drops the browser default,
+   and color alone fails the link-in-text check. */
+main :is(p, dd) a:not(.btn) {
+  text-decoration-line: underline;
+  text-underline-offset: 0.16em;
 }
 
 /* Container */
@@ -396,7 +408,7 @@ input, button, textarea, select {
 }
 
 .btn-outline {
-  background: transparent;
+  background: var(--color-bg);
   color: var(--color-btn);
   border: 1.5px solid var(--color-btn);
 }
@@ -424,7 +436,7 @@ input, button, textarea, select {
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-sage);
+  color: var(--color-accent-text);
   margin-bottom: 12px;
 }
 
