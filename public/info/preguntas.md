@@ -1,6 +1,6 @@
 # Preguntas frecuentes de Sac_Artx
 
-> Precios vigentes a octubre de 2026, en pesos colombianos (COP). El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa. Pinto por encargo y envío a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. WhatsApp: +57 301 658 4401. Fotos de referencia: [catálogo](https://sacartx.art/catalogo/).
+> Precios vigentes a noviembre de 2026, en pesos colombianos (COP). El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa. Pinto por encargo y envío a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia. WhatsApp: +57 301 658 4401. Fotos de referencia: [catálogo](https://sacartx.art/catalogo/).
 
 ## ¿Cuánto cuesta un retrato de mascota?
 
@@ -38,7 +38,7 @@ El plazo es de 15 a 20 días hábiles. El tiempo puede variar según la compleji
 
 # Sac_Artx frequently asked questions
 
-> Prices current as of October 2026, in Colombian pesos (COP). Shipping is cash on delivery with the carrier: you pay it when it arrives at your home. I paint to order and ship to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia. WhatsApp: +57 301 658 4401. Reference photos: [catalog](https://sacartx.art/en/catalog/).
+> Prices current as of November 2026, in Colombian pesos (COP). Shipping is cash on delivery with the carrier: you pay it when it arrives at your home. I paint to order and ship to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia. WhatsApp: +57 301 658 4401. Reference photos: [catalog](https://sacartx.art/en/catalog/).
 
 ## How much does a pet portrait cost?
 

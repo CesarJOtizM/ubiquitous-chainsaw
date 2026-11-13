@@ -158,8 +158,10 @@ const extraJsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'Product',
+    '@id': `${canonicalUrl}#product`,
     name: entry.h1,
     description: entry.metaDescription,
+    url: canonicalUrl,
     ...(schemaImages.length ? { image: schemaImages } : {}),
     brand: { '@type': 'Brand', name: 'Sac_Artx' },
     category: entry.category,

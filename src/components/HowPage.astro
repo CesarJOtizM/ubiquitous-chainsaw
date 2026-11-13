@@ -31,7 +31,6 @@ const photoGuideHref = blogPostPath(
   lang === 'en' ? 'how-to-choose-the-best-photo' : 'como-elegir-la-mejor-foto-mascota',
   lang,
 );
-const photoGuideUrl = `${SITE}${photoGuideHref}`;
 
 const es = lang === 'es';
 
@@ -187,20 +186,6 @@ const extraJsonLd = [
       { '@type': 'ListItem', position: 1, name: t('prices.crumbHome'), item: homeUrl },
       { '@type': 'ListItem', position: 2, name: entry.linkLabel, item: canonicalUrl },
     ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: entry.h1,
-    description: entry.metaDescription,
-    totalTime: 'P20D',
-    step: steps.map((step, i) => ({
-      '@type': 'HowToStep',
-      position: i + 1,
-      name: step.title,
-      text: step.body,
-      ...(i === 0 ? { url: photoGuideUrl } : {}),
-    })),
   },
 ];
 ---

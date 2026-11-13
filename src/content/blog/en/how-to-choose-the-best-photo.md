@@ -1,8 +1,7 @@
 ---
 title: "What photo do I need to paint my pet?"
 description: "A guide to the best reference photo: distance, focus, and natural light, with real examples of what works and what to avoid."
-pubDate: 2025-02-10
-updatedDate: 2026-11-12
+pubDate: 2026-10-28T12:00:00.000Z
 lang: "en"
 slug: "how-to-choose-the-best-photo"
 translationKey: "best-photo-guide"

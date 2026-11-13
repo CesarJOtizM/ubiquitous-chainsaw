@@ -14,6 +14,8 @@ export const business = {
   instagram: 'https://www.instagram.com/sac_artx',
   tiktok: 'https://www.tiktok.com/@sac_artx',
   facebook: 'https://www.facebook.com/profile.php?id=61561180858722',
+  /** Knowledge Graph id of the Google Business profile. Stable; the share.google link redirects here. */
+  google: 'https://www.google.com/search?kgmid=/g/11nqy08987',
   cities: ['Bogotá', 'Medellín', 'Cali', 'Barranquilla'],
 } as const;
 

@@ -23,12 +23,10 @@ export default defineConfig({
   integrations: [
     sitemap({
       customPages: [
-        // FAQ text has no HTML twin. Guide .md files duplicate an HTML route
-        // and stay out of the sitemap; they are noindex markdown alternates.
+        // FAQ text has no HTML twin. llms.txt and the RSS feeds stay out:
+        // they are not pages to rank. Guide .md files duplicate an HTML route
+        // and stay out too; they are noindex markdown alternates.
         'https://sacartx.art/info/preguntas.md',
-        'https://sacartx.art/llms.txt',
-        'https://sacartx.art/rss.xml',
-        'https://sacartx.art/en/rss.xml',
       ],
       i18n: {
         defaultLocale: 'es',

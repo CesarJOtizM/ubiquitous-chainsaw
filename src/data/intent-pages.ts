@@ -97,6 +97,29 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Una foto del trabajo terminado, antes de enviarlo.',
           'Embalaje y número de seguimiento dentro de Colombia.',
         ],
+        sections: [
+          {
+            heading: '¿Lienzo o base acrílica para el retrato de tu mascota?',
+            paragraphs: [
+              'El lienzo es acrílico sobre tela. El de 12×18 cm cuesta $120.000 por 1 mascota. Siguen 20×25 cm ($160.000), 28×35 cm ($220.000), 40×50 cm ($270.000) y el corazón de 20×20 cm ($150.000).',
+              'La base es metacrilato con resina, efecto vidrio, y el nombre en la madera. Mide 10×15 cm ($130.000) o 12×18 cm ($150.000) e incluye un llavero corazón. La funda de celular con la mascota cuesta $100.000. Una mascota adicional suma $30.000 a $50.000 en el cuadro, $25.000 en la base y $20.000 en la funda.',
+            ],
+            links: [
+              { href: '/producto/cuadros-en-acrilico/', label: 'Cuadros en acrílico' },
+              { href: '/producto/bases-acrilicas/', label: 'Bases acrílicas' },
+            ],
+          },
+          {
+            heading: '¿Qué animales pinto además de perro y gato?',
+            paragraphs: [
+              'Pinto loro, conejo, caballo, hámster, paloma y cualquier animal del que tengas una foto de la cara. Los ojos y las orejas salen de esa toma. Perro y gato tienen guía propia, con piezas reales del catálogo.',
+            ],
+            links: [
+              { href: '/blog/como-pinto-el-retrato-de-tu-perro/', label: 'Cómo pinto un retrato de perro' },
+              { href: '/blog/como-pinto-el-retrato-de-tu-gato/', label: 'Cómo pinto un retrato de gato' },
+            ],
+          },
+        ],
       },
       en: {
         linkLabel: 'Pet portraits',
@@ -115,6 +138,29 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Sketch changes are free.',
           'A photo of the finished piece before I ship it.',
           'Packaging and a tracking number within Colombia.',
+        ],
+        sections: [
+          {
+            heading: 'Canvas or an acrylic base for your pet’s portrait?',
+            paragraphs: [
+              'The canvas is acrylic on cloth. The 12×18 cm size is COP 120,000 for 1 pet. Then 20×25 cm (COP 160,000), 28×35 cm (COP 220,000), 40×50 cm (COP 270,000), and the 20×20 cm heart (COP 150,000).',
+              'The base is methacrylate with resin, a glass effect, and the name on the wood. It is 10×15 cm (COP 130,000) or 12×18 cm (COP 150,000) and includes a heart keychain. A phone case with the pet is COP 100,000. An extra pet adds COP 30,000 to 50,000 on a canvas, COP 25,000 on a base, and COP 20,000 on a case.',
+            ],
+            links: [
+              { href: '/en/product/acrylic-paintings/', label: 'Acrylic paintings' },
+              { href: '/en/product/acrylic-bases/', label: 'Acrylic bases' },
+            ],
+          },
+          {
+            heading: 'Which animals do I paint besides dogs and cats?',
+            paragraphs: [
+              'I paint parrots, rabbits, horses, hamsters, pigeons, and any animal you have a face photo of. The eyes and the ears come from that shot. Dogs and cats each have their own guide, with real pieces from the catalog.',
+            ],
+            links: [
+              { href: '/en/blog/how-i-paint-your-dog-portrait/', label: 'How I paint a dog portrait' },
+              { href: '/en/blog/how-i-paint-your-cat-portrait/', label: 'How I paint a cat portrait' },
+            ],
+          },
         ],
       },
     },
@@ -155,6 +201,10 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
                 href: '/blog/como-elegir-la-mejor-foto-mascota/',
                 label: 'Guía para elegir la foto',
               },
+              {
+                href: '/blog/como-pinto-el-retrato-de-tu-perro/',
+                label: 'Cómo pinto un retrato de perro, con fotos',
+              },
             ],
           },
           {
@@ -194,6 +244,10 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
               {
                 href: '/en/blog/how-to-choose-the-best-photo/',
                 label: 'Guide to choosing the photo',
+              },
+              {
+                href: '/en/blog/how-i-paint-your-dog-portrait/',
+                label: 'How I paint a dog portrait, with photos',
               },
             ],
           },
@@ -243,6 +297,10 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
                 href: '/blog/como-elegir-la-mejor-foto-mascota/',
                 label: 'Guía para elegir la foto',
               },
+              {
+                href: '/blog/como-pinto-el-retrato-de-tu-gato/',
+                label: 'Cómo pinto un retrato de gato, con fotos',
+              },
             ],
           },
           {
@@ -283,6 +341,10 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
                 href: '/en/blog/how-to-choose-the-best-photo/',
                 label: 'Guide to choosing the photo',
               },
+              {
+                href: '/en/blog/how-i-paint-your-cat-portrait/',
+                label: 'How I paint a cat portrait, with photos',
+              },
             ],
           },
           {
@@ -319,6 +381,14 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Una foto del trabajo terminado, antes de enviarlo.',
           'Embalaje y número de seguimiento dentro de Colombia.',
         ],
+        sections: [
+          {
+            heading: '¿Sirve una foto vieja o incompleta de la mascota que ya no está?',
+            paragraphs: [
+              'Sí. Uso la foto que guardas, aunque no sea reciente. Si la luz es mala, la corrijo. Si tienes varias tomas, las uno para ver la cara completa antes de pintar. En la base de Fionita, uno de los dos perros negros lleva alas de ángel y el nombre queda en la madera. El boceto llega por WhatsApp y los cambios de ese boceto no se cobran.',
+            ],
+          },
+        ],
       },
       en: {
         linkLabel: 'Memorial pet portrait',
@@ -337,6 +407,14 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Sketch changes are free.',
           'A photo of the finished piece before I ship it.',
           'Packaging and a tracking number within Colombia.',
+        ],
+        sections: [
+          {
+            heading: 'Does an old or incomplete photo work for a pet who is gone?',
+            paragraphs: [
+              'Yes. I use the photo you kept, even if it is not recent. If the light is poor, I correct it. If you have several shots, I join them so I can see the whole face before I paint. On Fionita’s base, one of the two black dogs has angel wings and the name is on the wood. The sketch arrives on WhatsApp, and changes to that sketch are free.',
+            ],
+          },
         ],
       },
     },

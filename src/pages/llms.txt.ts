@@ -76,6 +76,7 @@ function pagesSection(lang: Lang): string[] {
       ...intentLinks('en'),
       `- [Instagram](${business.instagram}): ${business.handle}`,
       `- [TikTok](${business.tiktok}): ${business.handle}`,
+      `- [Google Business Profile](${business.google})`,
       `- [FAQ in text](${SITE}/info/preguntas.md)`,
     ];
   }
@@ -89,6 +90,7 @@ function pagesSection(lang: Lang): string[] {
     ...intentLinks('es'),
     `- [Instagram](${business.instagram}): ${business.handle}`,
     `- [TikTok](${business.tiktok}): ${business.handle}`,
+    `- [Ficha de Google](${business.google})`,
     `- [Preguntas frecuentes en texto](${SITE}/info/preguntas.md)`,
   ];
 }

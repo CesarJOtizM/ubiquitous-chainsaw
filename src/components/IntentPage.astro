@@ -7,6 +7,8 @@ import WhereParagraph from './WhereParagraph.astro';
 import { useTranslations } from '../i18n/utils';
 import { catalogPath, homePath, intentPath, pricesPath } from '../i18n/paths';
 import { business } from '../data/business';
+import { areaServed } from '../data/coverage';
+import { basePrices, canvasPrices, LEAD_TIME_DAYS, PRICE_CASE_PET } from '../data/prices';
 import {
   priceLead,
   priceGroups,
@@ -44,6 +46,12 @@ const showProfiles = profileTopics.has(topic);
 const pricesLabel = t('prices.navLabel');
 const catalogLabel = lang === 'en' ? 'Catalog' : 'Catálogo';
 
+const serviceAmounts = [
+  ...canvasPrices.map((row) => row.price),
+  ...basePrices.map((row) => row.price),
+  PRICE_CASE_PET,
+];
+
 const extraJsonLd = [
   {
     '@context': 'https://schema.org',
@@ -55,6 +63,33 @@ const extraJsonLd = [
     inLanguage: lang === 'en' ? 'en' : 'es-CO',
     isPartOf: { '@id': `${SITE}/#website` },
     about: { '@id': `${SITE}/#business` },
+    mainEntity: { '@id': `${canonicalUrl}#service` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${canonicalUrl}#service`,
+    name: entry.h1,
+    description: entry.metaDescription,
+    url: canonicalUrl,
+    serviceType: entry.linkLabel,
+    provider: { '@id': `${SITE}/#business` },
+    areaServed,
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'COP',
+      lowPrice: Math.min(...serviceAmounts),
+      highPrice: Math.max(...serviceAmounts),
+      offerCount: serviceAmounts.length,
+      availability: 'https://schema.org/InStock',
+      url: canonicalUrl,
+      deliveryLeadTime: {
+        '@type': 'QuantitativeValue',
+        minValue: LEAD_TIME_DAYS.min,
+        maxValue: LEAD_TIME_DAYS.max,
+        unitCode: 'DAY',
+      },
+    },
   },
   {
     '@context': 'https://schema.org',

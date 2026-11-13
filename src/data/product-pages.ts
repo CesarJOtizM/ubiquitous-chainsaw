@@ -106,6 +106,10 @@ const productConfig: Record<ProductKey, ProductConfig> = {
             a: 'Me escribes por WhatsApp con la foto y el tamaño. Te mando el boceto y lo ajustamos si hace falta.',
           },
           {
+            q: '¿Desde cuándo corre el plazo?',
+            a: 'El plazo de 15 a 20 días hábiles corre cuando apruebas el boceto. Antes de eso ajustamos el boceto por WhatsApp y esos cambios no se cobran. El envío sale con el pago completo.',
+          },
+          {
             q: '¿Pintas mascotas que ya no están?',
             a: 'Sí. Las pinto con las fotos que todavía guardas. Lo cuento en la página de',
             link: {
@@ -137,6 +141,10 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           {
             q: 'How do I order one?',
             a: 'Message me on WhatsApp with the photo and the size. I send the sketch, and we adjust it if it needs to.',
+          },
+          {
+            q: 'When does the turnaround start?',
+            a: 'The 15 to 20 business days start when you approve the sketch. Before that we adjust the sketch on WhatsApp, and those changes are free. The piece ships once payment is complete.',
           },
           {
             q: 'Do you paint pets that have passed away?',
@@ -244,11 +252,12 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           'La funda con el diseño que elijas.',
           'Resina por encima, para proteger la pintura.',
           'Debes confirmar la disponibilidad de la referencia del celular antes de empezar.',
+          'En una funda de mascota caben de 1 a 3 animales. Cada mascota adicional cuesta $20.000. El envío se paga aparte, a la transportadora.',
         ],
         faq: [
           {
             q: '¿Qué puedo pedir?',
-            a: 'Tu mascota, flores prensadas, un personaje de anime o un diseño tuyo. Si quieres flores, pregúntame qué colores tengo.',
+            a: 'La funda de tu mascota cuesta $100.000. Las flores prensadas cuestan $40.000. Flores prensadas con un diseño básico pintado cuestan $55.000. Un anime o un logo va desde $100.000. Confirmas el modelo del celular antes de que empiece. Si quieres flores, pregúntame qué colores tengo.',
           },
           {
             q: '¿El precio incluye el envío?',
@@ -275,16 +284,17 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         metaTitle: 'Custom hand-painted phone cases | Sac_Artx',
         metaDescription:
           'I paint phone cases of your pet, pressed flowers, anime, or your design, sealed with resin. Message me on WhatsApp. Shipping across Colombia.',
-        lead: 'I paint your phone case and seal it with resin. It can be your pet, pressed flowers, an anime character, or a design you send me.',
+        lead: 'I paint your phone case and seal it with resin. It can be your pet, pressed flowers, an anime character, or a design you send me. A pet case is COP 100,000, pressed flowers are COP 40,000, flowers with a basic painting are COP 55,000, and anime starts at COP 100,000.',
         whatIncluded: [
           'The case with the design you pick.',
           'Resin on top, to protect the paint.',
           'Confirm your phone model is available before I start.',
+          'A pet case fits 1 to 3 animals. Each extra pet costs COP 20,000. Shipping is paid separately, to the carrier, when the case arrives.',
         ],
         faq: [
           {
             q: 'What can I ask for?',
-            a: 'Your pet, pressed flowers, an anime character, or a design of yours. If you want flowers, ask me which colors I have.',
+            a: 'A case with your pet is COP 100,000. Pressed flowers are COP 40,000. Pressed flowers with a basic painted design are COP 55,000. Anime or a logo starts at COP 100,000. You confirm the phone model before I start. If you want flowers, ask me which colors I have.',
           },
           {
             q: 'Does the price include shipping?',

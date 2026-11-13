@@ -1,8 +1,7 @@
 ---
 title: "¿Qué foto necesito para pintar a mi mascota?"
 description: "Guía para elegir la mejor referencia: distancia, enfoque y luz natural, con ejemplos reales de qué foto sirve para pintar a tu mascota."
-pubDate: 2025-02-10
-updatedDate: 2026-11-12
+pubDate: 2026-10-28T12:00:00.000Z
 lang: "es"
 slug: "como-elegir-la-mejor-foto-mascota"
 translationKey: "best-photo-guide"

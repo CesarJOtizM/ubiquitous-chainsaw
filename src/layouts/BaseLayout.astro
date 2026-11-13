@@ -84,7 +84,10 @@ const schemaOrg = {
       "url": SITE,
       "telephone": "+573016584401",
       "image": `${SITE}/brand/og-image.png`,
-      "logo": `${SITE}/brand/logo-square.png`,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${SITE}/brand/logo-square.png`,
+      },
       "founder": {
         "@type": "Person",
         "@id": founderId,
@@ -102,6 +105,7 @@ const schemaOrg = {
         "https://www.instagram.com/sac_artx",
         "https://www.tiktok.com/@sac_artx",
         FB_URL,
+        business.google,
       ],
       "knowsAbout": [
         "Pet portraits",
