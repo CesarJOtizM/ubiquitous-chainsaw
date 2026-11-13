@@ -34,7 +34,7 @@ const WA_URL = `https://wa.me/573016584401?text=${t('hero.waMsg')}`;
 
   <div class="hero__inner container">
     <!-- Left: hero image -->
-    <div class="hero__image-wrap reveal">
+    <div class="hero__image-wrap">
       <div class="hero__placeholder" aria-label={t('hero.imageAlt')}>
         <Image
           src={heroImg}
@@ -52,15 +52,15 @@ const WA_URL = `https://wa.me/573016584401?text=${t('hero.waMsg')}`;
 
     <!-- Right: content -->
     <div class="hero__content">
-      <h1 class="hero__label reveal" id="hero-title">{t('hero.label')}</h1>
-      <p class="hero__title reveal">
+      <h1 class="hero__label" id="hero-title">{t('hero.label')}</h1>
+      <p class="hero__title">
         {t('hero.title')}<br />
         <em>{t('hero.titleEm')}</em>
       </p>
-      <p class="hero__tagline reveal">
+      <p class="hero__tagline">
         {t('hero.tagline')}
       </p>
-      <div class="hero__ctas reveal">
+      <div class="hero__ctas">
         <a href={WA_URL} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
           {t('hero.ctaPrimary')}
         </a>
@@ -70,7 +70,7 @@ const WA_URL = `https://wa.me/573016584401?text=${t('hero.waMsg')}`;
       </div>
 
       <!-- Stats / Social proof -->
-      <div class="hero__stats reveal">
+      <div class="hero__stats">
         <div class="hero__stat">
           <strong>{t('hero.stat1Value')}</strong>
           <span>{t('hero.stat1Label')}</span>
