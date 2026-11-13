@@ -3,10 +3,14 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
+import { sitemapLinks } from './sitemap-alternates.ts';
+
+const site = 'https://sacartx.art';
+const alternates = sitemapLinks(site);
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://sacartx.art',
+  site,
   redirects: {
     '/retratos-mascotas-colombia': '/retratos-de-mascotas/',
     '/en/pet-portraits-colombia': '/en/pet-portraits/',
@@ -26,8 +30,12 @@ export default defineConfig({
         // FAQ text has no HTML twin. llms.txt and the RSS feeds stay out:
         // they are not pages to rank. Guide .md files duplicate an HTML route
         // and stay out too; they are noindex markdown alternates.
-        'https://sacartx.art/info/preguntas.md',
+        `${site}/info/preguntas.md`,
       ],
+      serialize(item) {
+        const links = alternates.get(item.url);
+        return links ? { ...item, links } : item;
+      },
       i18n: {
         defaultLocale: 'es',
         locales: {
