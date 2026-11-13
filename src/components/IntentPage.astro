@@ -9,8 +9,7 @@ import { catalogPath, homePath, intentPath, pricesPath } from '../i18n/paths';
 import { business } from '../data/business';
 import {
   priceLead,
-  priceBullets,
-  priceSummaryColombiaIntro,
+  priceGroups,
   leadTimeText,
   sectionLabels,
 } from '../lib/price-text';
@@ -34,12 +33,7 @@ const alternateEn = `${SITE}${intentPath(topic, 'en')}`;
 const markdownAlt = `${SITE}/info/${entry.slug}.md`;
 const homeUrl = `${SITE}${homePath(lang)}`;
 
-// Generated price section.
-const isSummary = entry.priceVariant === 'summaryColombia' || entry.priceVariant === 'summaryHow';
-const bullets = isSummary
-  ? []
-  : priceBullets(lang, entry.noun, { suggested: entry.priceVariant === 'bulletsSuggested' });
-const summaryIntro = entry.priceVariant === 'summaryColombia' ? priceSummaryColombiaIntro(lang) : '';
+const groups = priceGroups(lang, entry.noun, { suggested: entry.priceVariant === 'bulletsSuggested' });
 
 const relatedLinks = entry.related.map((relTopic) => {
   const rel = intentEntry(relTopic, lang);
@@ -141,29 +135,27 @@ const extraJsonLd = [
 
         <section class="intent-section">
           <h2>{labels.prices}</h2>
-          {isSummary ? (
-            <p>
-              {summaryIntro}{' '}
-              <a href={pricesPath(lang)} data-astro-prefetch="viewport">
-                {lang === 'en' ? 'Full price list' : 'Lista de precios'}
-              </a>.
-            </p>
-          ) : (
-            <>
-              <p>{priceLead(lang)}</p>
+          <p>{priceLead(lang)}</p>
+          {groups.map((group) => (
+            <div class="intent-prices">
+              <h3>{group.title}</h3>
               <ul>
-                {bullets.map((b) => (
-                  <li>{b}</li>
+                {group.lines.map((line) => (
+                  <li>
+                    <span>{line.label}</span>
+                    <span class="intent-prices__value">{line.value}</span>
+                  </li>
                 ))}
               </ul>
-              <p>
-                {lang === 'en' ? 'Catalog of finished pieces: ' : 'Catálogo de obras terminadas: '}
-                <a href={catalogPath(lang)} data-astro-prefetch="viewport">
-                  {lang === 'en' ? 'see the catalog' : 'ver el catálogo'}
-                </a>.
-              </p>
-            </>
-          )}
+              {group.note && <p>{group.note}</p>}
+            </div>
+          ))}
+          <p>
+            {lang === 'en' ? 'Catalog of finished pieces: ' : 'Catálogo de obras terminadas: '}
+            <a href={catalogPath(lang)} data-astro-prefetch="viewport">
+              {lang === 'en' ? 'see the catalog' : 'ver el catálogo'}
+            </a>.
+          </p>
         </section>
 
         <section class="intent-section">
@@ -298,5 +290,43 @@ const extraJsonLd = [
   .intent-related {
     border-top: 1px solid var(--color-border, rgba(0, 0, 0, 0.1));
     padding-top: clamp(24px, 3vw, 32px);
+  }
+
+  .intent-prices {
+    margin-top: 20px;
+  }
+
+  .intent-prices h3 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0 0 4px;
+  }
+
+  .intent-section .intent-prices ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    gap: 0;
+  }
+
+  .intent-prices li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    border-bottom: 1px solid var(--color-border, rgba(0, 0, 0, 0.1));
+    padding: 8px 0;
+  }
+
+  .intent-prices__value {
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .intent-prices p {
+    margin-top: 8px;
+    color: var(--color-text-muted);
   }
 </style>

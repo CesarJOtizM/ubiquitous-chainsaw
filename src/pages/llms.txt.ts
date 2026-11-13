@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { business, coverageText } from '../data/business';
 import {
   priceLead,
-  priceBullets,
+  priceGroupMarkdown,
   leadTimeText,
 } from '../lib/price-text';
 import {
@@ -45,14 +45,14 @@ const extraPriceNotes: Record<Lang, string[]> = {
 };
 
 function priceSection(lang: Lang): string[] {
-  const heading = lang === 'en' ? '### Prices (COP, shipping extra)' : '## Precios (COP, envío aparte)';
-  const bullets = priceBullets(lang, lang === 'en' ? 'pet' : 'mascota', { suggested: true });
+  const heading = lang === 'en' ? '### Prices (COP, cash on delivery)' : '## Precios (COP, envío contra entrega)';
+  const noun = lang === 'en' ? 'pet' : 'mascota';
   return [
     heading,
     '',
     priceLead(lang),
     '',
-    ...bullets.map((b) => `- ${b}`),
+    ...priceGroupMarkdown(lang, noun, { suggested: true }),
     ...extraPriceNotes[lang].map((n) => `- ${n}`),
   ];
 }

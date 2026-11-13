@@ -1,7 +1,7 @@
 ---
 import { business, coverageText } from '../data/business';
 import type { Lang } from '../i18n/paths';
-import { whatsappUrl } from '../lib/price-text';
+import { shippingNote, whatsappUrl } from '../lib/price-text';
 
 interface Props {
   lang: Lang;
@@ -20,14 +20,10 @@ const coverage = coverageText(lang);
         ? `Shipping coverage: ${coverage}. `
         : `Cobertura de envío: ${coverage}. `
       : en
-        ? `Sac_Artx paints to order and ships to ${coverage}. `
-        : `Sac_Artx pinta por encargo y envía a ${coverage}. `
+        ? `I paint to order and ship to ${coverage}. `
+        : `Pinto por encargo y envío a ${coverage}. `
   }
-  {
-    en
-      ? 'Shipping is not included in the price: it is charged separately, based on the city. '
-      : 'El envío no está incluido en el precio: se cobra aparte, según la ciudad. '
-  }
+  {shippingNote(lang)}{' '}
   <a href={whatsappUrl(lang)} target="_blank" rel="noopener noreferrer">WhatsApp: {business.phoneDisplay}</a>.
   {
     variant === 'colombia' && (

@@ -10,92 +10,119 @@ import {
   extraPetPrices,
   PRICE_CASE_PET,
   PRICE_FROM_CANVAS,
-  PRICE_FROM_BASE,
   LEAD_TIME_DAYS,
 } from '../data/prices';
 import { business, paymentMethods, coverageText } from '../data/business';
 import { catalogPath, type Lang } from '../i18n/paths';
-
-const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 /** Format a COP amount per language: "$120.000" (es) / "COP 120,000" (en). */
 export function cop(n: number, lang: Lang): string {
   return lang === 'en' ? `COP ${n.toLocaleString('en-US')}` : `$${n.toLocaleString('de-DE')}`;
 }
 
-const canvasBySize = (lang: Lang) =>
-  canvasPrices
-    .filter((r) => !r.special)
-    .map((r) => `${cop(r.price, lang)} (${r.size})`)
-    .join(', ');
-
-const heart = () => canvasPrices.find((r) => r.special)!;
-const baseBySize = (lang: Lang) =>
-  basePrices.map((r) => `${cop(r.price, lang)} (${r.size})`).join(', ');
+export type PriceLine = { label: string; value: string };
+export type PriceGroup = { title: string; lines: PriceLine[]; note?: string };
 
 /** Intro line of the Prices section (no month/year). */
 export function priceLead(lang: Lang): string {
   return lang === 'en'
-    ? 'Prices in Colombian pesos (COP). Shipping is extra.'
-    : 'Precios en pesos colombianos (COP). El envío se cobra aparte.';
+    ? 'Prices in Colombian pesos (COP). Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.'
+    : 'Precios en pesos colombianos (COP). El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.';
+}
+
+/** Shipping is paid to the carrier on delivery, not billed with the commission. */
+export function shippingNote(lang: Lang): string {
+  return lang === 'en'
+    ? 'Shipping is cash on delivery with the carrier: you pay it when it arrives at your home, based on the city.'
+    : 'El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa, según la ciudad.';
 }
 
 /**
- * Full price bullet list for a detailed topic (dogs, cats, pets).
+ * Prices for a detailed topic (dogs, cats, pets), one size per line.
  * `noun` is the singular animal word in the page language.
  */
-export function priceBullets(lang: Lang, noun: string, opts: { suggested?: boolean } = {}): string[] {
-  const h = heart();
-  const bullets: string[] =
-    lang === 'en'
-      ? [
-          `Acrylic ${noun} portrait on canvas, 1 ${noun}: ${canvasBySize('en')}. Special ${h.size} heart edition: ${cop(h.price, 'en')}.`,
-          `Extra ${noun} on a canvas: ${cop(extraPetPrices.canvas.min, 'en')} to ${extraPetPrices.canvas.max.toLocaleString('en-US')} depending on size.`,
-        ]
-      : [
-          `Retrato en acrílico sobre lienzo, 1 ${noun}: ${canvasBySize('es')}. Edición especial corazón ${h.size}: ${cop(h.price, 'es')}.`,
-          `${cap(noun)} adicional en un cuadro: ${cop(extraPetPrices.canvas.min, 'es')} a ${cop(extraPetPrices.canvas.max, 'es')} según el tamaño.`,
-        ];
+export function priceGroups(lang: Lang, noun: string, opts: { suggested?: boolean } = {}): PriceGroup[] {
+  const en = lang === 'en';
+  const canvasMin = cop(extraPetPrices.canvas.min, lang);
+  const canvasMax = cop(extraPetPrices.canvas.max, lang);
+  const baseExtra = cop(extraPetPrices.base.amount, lang);
+  const caseExtra = cop(extraPetPrices.case.amount, lang);
+  const extraNote = en
+    ? `An extra pet costs ${canvasMin} to ${canvasMax}, depending on the size.`
+    : `La mascota adicional tiene un costo de ${canvasMin} a ${canvasMax}, según el tamaño.`;
+
+  const groups: PriceGroup[] = [
+    {
+      title: en ? `Canvas, 1 ${noun}` : `Lienzo, 1 ${noun}`,
+      lines: canvasPrices.map((row) => ({
+        label: row.special ? (en ? `Heart ${row.size}` : `Corazón ${row.size}`) : row.size!,
+        value: cop(row.price, lang),
+      })),
+      note: extraNote,
+    },
+  ];
 
   if (opts.suggested) {
-    bullets.push(
-      lang === 'en'
-        ? 'Suggested pets per piece: 12×18 cm canvas, 1 to 5; 20×25 and 28×35 cm, 1 to 6; 40×50 cm, 1 to 10; heart edition, 1 pet; acrylic base 10×15 cm, 1 to 4, and 12×18 cm, 1 to 5; phone case, 1 to 3.'
-        : 'Mascotas sugeridas por pieza: cuadro 12×18 cm, de 1 a 5; 20×25 y 28×35 cm, de 1 a 6; 40×50 cm, de 1 a 10; cuadro corazón, 1 mascota; base acrílica 10×15 cm, de 1 a 4, y 12×18 cm, de 1 a 5; funda, de 1 a 3.'
-    );
+    groups.push({
+      title: en ? 'How many pets fit' : 'Cuántas mascotas caben',
+      lines: en
+        ? [
+            { label: '12×18 cm painting', value: '1 to 5' },
+            { label: '20×25 or 28×35 cm painting', value: '1 to 6' },
+            { label: '40×50 cm painting', value: '1 to 10' },
+            { label: 'Heart painting', value: '1' },
+            { label: '10×15 cm base', value: '1 to 4' },
+            { label: '12×18 cm base', value: '1 to 5' },
+            { label: 'Phone case', value: '1 to 3' },
+          ]
+        : [
+            { label: 'Cuadro 12×18 cm', value: '1 a 5' },
+            { label: 'Cuadro 20×25 o 28×35 cm', value: '1 a 6' },
+            { label: 'Cuadro 40×50 cm', value: '1 a 10' },
+            { label: 'Cuadro corazón', value: '1' },
+            { label: 'Base 10×15 cm', value: '1 a 4' },
+            { label: 'Base 12×18 cm', value: '1 a 5' },
+            { label: 'Funda', value: '1 a 3' },
+          ],
+    });
   }
 
-  bullets.push(
-    lang === 'en'
-      ? `Acrylic base, includes a heart keychain with the name: ${baseBySize('en')}. Extra ${noun}: ${cop(extraPetPrices.base.amount, 'en')}.`
-      : `Base acrílica, incluye llavero corazón con nombre: ${baseBySize('es')}. ${cap(noun)} adicional: ${cop(extraPetPrices.base.amount, 'es')}.`
+  groups.push(
+    {
+      title: en ? 'Acrylic base' : 'Base acrílica',
+      lines: basePrices.map((row) => ({ label: row.size!, value: cop(row.price, lang) })),
+      note: en
+        ? `Includes a heart keychain with the name. An extra pet costs ${baseExtra}.`
+        : `Incluye llavero corazón con el nombre. La mascota adicional tiene un costo de ${baseExtra}.`,
+    },
+    {
+      title: en ? 'Phone case' : 'Funda de celular',
+      lines: [{ label: `1 ${noun}`, value: cop(PRICE_CASE_PET, lang) }],
+      note: en
+        ? `An extra pet costs ${caseExtra}.`
+        : `La mascota adicional tiene un costo de ${caseExtra}.`,
+    },
   );
-  bullets.push(
-    lang === 'en'
-      ? `Phone case with a ${noun}: ${cop(PRICE_CASE_PET, 'en')}. Extra ${noun}: ${cop(extraPetPrices.case.amount, 'en')}.`
-      : `Funda de celular con ${noun}: ${cop(PRICE_CASE_PET, 'es')}. ${cap(noun)} adicional: ${cop(extraPetPrices.case.amount, 'es')}.`
-  );
-  return bullets;
+
+  return groups;
+}
+
+/** Markdown lines for the same groups: a title, then one size per bullet. */
+export function priceGroupMarkdown(lang: Lang, noun: string, opts: { suggested?: boolean } = {}): string[] {
+  const blocks: string[] = [];
+  for (const group of priceGroups(lang, noun, opts)) {
+    blocks.push(`**${group.title}**`, '');
+    for (const line of group.lines) blocks.push(`- ${line.label}: ${line.value}`);
+    if (group.note) blocks.push('', group.note);
+    blocks.push('');
+  }
+  return blocks;
 }
 
 /** Catalog link line used after the price bullets. */
 export function catalogLine(lang: Lang): string {
   const url = `${business.site}${catalogPath(lang)}`;
   return lang === 'en' ? `Catalog of finished pieces: ${url}` : `Catálogo de obras terminadas: ${url}`;
-}
-
-/** Colombia price sentence without the trailing list URL. */
-export function priceSummaryColombiaIntro(lang: Lang): string {
-  return lang === 'en'
-    ? `${priceLead('en')} Canvas portraits from ${cop(PRICE_FROM_CANVAS, 'en')} (12×18 cm, 1 pet). Acrylic bases from ${cop(PRICE_FROM_BASE, 'en')}. Pet phone case ${cop(PRICE_CASE_PET, 'en')}.`
-    : `${priceLead('es')} Retratos en lienzo desde ${cop(PRICE_FROM_CANVAS, 'es')} (12×18 cm, 1 mascota). Bases desde ${cop(PRICE_FROM_BASE, 'es')}. Funda de mascota ${cop(PRICE_CASE_PET, 'es')}.`;
-}
-
-/** Short price summary for the Colombia (shipping) topic. */
-export function priceSummaryColombia(lang: Lang): string {
-  const prices = `${business.site}/info/${lang === 'en' ? 'prices' : 'precios'}.md`;
-  const tail = lang === 'en' ? `Full list: ${prices}` : `Detalle: ${prices}`;
-  return `${priceSummaryColombiaIntro(lang)} ${tail}`;
 }
 
 /** Short price summary for the How-it-works topic. */
@@ -111,8 +138,8 @@ export function priceSummaryHow(lang: Lang): string {
 export function leadTimeText(lang: Lang): string {
   const { min, max } = LEAD_TIME_DAYS;
   return lang === 'en'
-    ? `Turnaround is ${min} to ${max} business days. Timing can vary with the complexity of the design and the current schedule. You pay 50% to start and 50% when it is finished. The piece ships once payment is complete. Payment methods: ${paymentMethods.en}.`
-    : `El plazo es de ${min} a ${max} días hábiles. El tiempo puede variar según la complejidad del diseño y la agenda. Se abona el 50% para empezar y el 50% al terminar. El envío sale cuando el pago está completo. Medios de pago: ${paymentMethods.es}.`;
+    ? `Turnaround is ${min} to ${max} business days. Timing can vary with the complexity of the design and the current schedule. You pay 50% to start and 50% when it is finished. The piece ships once payment is complete. You pay the shipping cost to the carrier when it arrives at your home. Payment methods: ${paymentMethods.en}.`
+    : `El plazo es de ${min} a ${max} días hábiles. El tiempo puede variar según la complejidad del diseño y la agenda. Se abona el 50% para empezar y el 50% al terminar. El envío sale cuando el pago está completo. El costo del envío lo pagas a la transportadora cuando llega a tu casa. Medios de pago: ${paymentMethods.es}.`;
 }
 
 /** Greeting prefilled when someone opens WhatsApp from a page. */
@@ -134,18 +161,15 @@ export function whereText(lang: Lang, variant: 'studio' | 'colombia' = 'studio')
   const wa = `[${business.phoneDisplay}](${whatsappUrl(lang)})`;
   const ig = `[Instagram](${business.instagram})`;
   const tk = `[TikTok](${business.tiktok})`;
-  const shippingNote =
-    lang === 'en'
-      ? 'Shipping is not included in the price: it is charged separately, based on the city.'
-      : 'El envío no está incluido en el precio: se cobra aparte, según la ciudad.';
+  const note = shippingNote(lang);
   if (variant === 'colombia') {
     return lang === 'en'
-      ? `Shipping coverage: ${coverage}. ${shippingNote} WhatsApp: ${wa}. ${ig} and ${tk}: ${business.handle}.`
-      : `Cobertura de envío: ${coverage}. ${shippingNote} WhatsApp: ${wa}. ${ig} y ${tk}: ${business.handle}.`;
+      ? `Shipping coverage: ${coverage}. ${note} WhatsApp: ${wa}. ${ig} and ${tk}: ${business.handle}.`
+      : `Cobertura de envío: ${coverage}. ${note} WhatsApp: ${wa}. ${ig} y ${tk}: ${business.handle}.`;
   }
   return lang === 'en'
-    ? `Sac_Artx paints to order and ships to ${coverage}. ${shippingNote} WhatsApp: ${wa}.`
-    : `Sac_Artx pinta por encargo y envía a ${coverage}. ${shippingNote} WhatsApp: ${wa}.`;
+    ? `I paint to order and ship to ${coverage}. ${note} WhatsApp: ${wa}.`
+    : `Pinto por encargo y envío a ${coverage}. ${note} WhatsApp: ${wa}.`;
 }
 
 /** Localized section headings shared by HTML and generated markdown. */

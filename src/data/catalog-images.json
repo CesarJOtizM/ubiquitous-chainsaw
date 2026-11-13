@@ -646,5 +646,13 @@
     "width": 768,
     "height": 1024,
     "size": 98955
+  },
+  "images/sobre-mi/sara-cuadro.jpg": {
+    "path": "images/sobre-mi/sara-cuadro.jpg",
+    "fileId": "6af67490ead997d09a04b8b7",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/sobre-mi/sara-cuadro.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 163766
   }
 }

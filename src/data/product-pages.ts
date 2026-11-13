@@ -88,7 +88,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Cuadros en acrílico sobre lienzo, pintados a mano de tu mascota',
         metaTitle: 'Cuadros en acrílico sobre lienzo de tu mascota | Sac_Artx',
         metaDescription:
-          'Pinto cuadros en acrílico sobre lienzo de tu mascota, desde la foto. Te mando un boceto antes de pintar y envío a toda Colombia. El envío no está incluido.',
+          'Pinto cuadros en acrílico sobre lienzo de tu mascota, desde la foto. Te mando un boceto antes de pintar y envío a toda Colombia. El envío va contra entrega con la transportadora.',
         lead: 'Me mandas la foto y la plasmo pelo a pelo sobre el lienzo. Antes de empezar te mando un boceto para que te hagas una idea de cómo puede quedar.',
         whatIncluded: [
           'Acrílico sobre lienzo, desde la foto de tu mascota.',
@@ -99,7 +99,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         faq: [
           {
             q: '¿El precio incluye el envío?',
-            a: 'No. El precio es del cuadro. El envío se cobra aparte, según la ciudad.',
+            a: 'No. El precio es del cuadro. El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.',
           },
           {
             q: '¿Cómo lo pido?',
@@ -121,7 +121,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Hand-painted acrylic on canvas of your pet',
         metaTitle: 'Hand-painted acrylic on canvas of your pet | Sac_Artx',
         metaDescription:
-          'I paint acrylic on canvas of your pet from a photo. I send a sketch before I paint, and I ship across Colombia. Shipping is not included.',
+          'I paint acrylic on canvas of your pet from a photo. I send a sketch before I paint, and I ship across Colombia. Shipping is cash on delivery with the carrier.',
         lead: 'Send me the photo and I put it on the canvas, hair by hair. Before I start I send a sketch so you can picture how it might turn out.',
         whatIncluded: [
           'Acrylic on canvas, from a photo of your pet.',
@@ -132,7 +132,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         faq: [
           {
             q: 'Does the price include shipping?',
-            a: 'No. The price is for the painting. Shipping is charged separately, based on the city.',
+            a: 'No. The price is for the painting. Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.',
           },
           {
             q: 'How do I order one?',
@@ -162,7 +162,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Bases acrílicas con el retrato y el nombre de tu mascota',
         metaTitle: 'Bases acrílicas con el retrato de tu mascota | Sac_Artx',
         metaDescription:
-          'Pinto el retrato de tu mascota a mano sobre base de acrílico, con capa de resina y llavero corazón de regalo. El precio es de 1 mascota. Envío a toda Colombia, no incluido.',
+          'Pinto el retrato de tu mascota a mano sobre base de acrílico, con capa de resina y llavero corazón de regalo. El precio es de 1 mascota. El envío va contra entrega con la transportadora.',
         lead: 'Pinto el retrato de tu mascota totalmente a mano sobre una base de acrílico (metacrilato) y encima lo cubro con una capa de resina que le da ese efecto vidrio y ese brillo extraordinario. Como regalo te hago un llavero en forma de corazón con el nombre que desees.',
         whatIncluded: [
           'Base en acrílico con capa de resina y base en madera, desde la foto de tu mascota.',
@@ -174,7 +174,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         faq: [
           {
             q: '¿El precio incluye el envío?',
-            a: 'No. El precio es de la base, con 1 mascota. El envío se cobra aparte, según la ciudad.',
+            a: 'No. El precio es de la base, con 1 mascota. El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.',
           },
           {
             q: '¿Cómo la pido?',
@@ -196,7 +196,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Acrylic bases with the portrait and name of your pet',
         metaTitle: 'Acrylic bases with the portrait of your pet | Sac_Artx',
         metaDescription:
-          'I hand-paint your pet on an acrylic base, with a resin coat and a heart keychain as a gift. The price is for 1 pet. Shipping across Colombia is not included.',
+          'I hand-paint your pet on an acrylic base, with a resin coat and a heart keychain as a gift. The price is for 1 pet. Shipping is cash on delivery with the carrier.',
         lead: 'I paint your pet entirely by hand on an acrylic (methacrylate) base, then coat it with a layer of resin that gives it that glass look and that extraordinary shine. As a gift, I make you a heart-shaped keychain with the name you want.',
         whatIncluded: [
           'An acrylic base with a resin coat and a wooden base, from a photo of your pet.',
@@ -208,7 +208,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         faq: [
           {
             q: 'Does the price include shipping?',
-            a: 'No. The price is for the base, with 1 pet. Shipping is charged separately, based on the city.',
+            a: 'No. The price is for the base, with 1 pet. Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.',
           },
           {
             q: 'How do I order one?',
@@ -252,7 +252,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: '¿El precio incluye el envío?',
-            a: 'No. El precio es de la funda. El envío se cobra aparte, según la ciudad.',
+            a: 'No. El precio es de la funda. El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.',
           },
           {
             q: '¿Cómo la pido?',
@@ -288,7 +288,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: 'Does the price include shipping?',
-            a: 'No. The price is for the case. Shipping is charged separately, based on the city.',
+            a: 'No. The price is for the case. Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.',
           },
           {
             q: 'How do I order one?',
@@ -318,7 +318,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Cuadros personalizados, de tu imaginación al lienzo',
         metaTitle: 'Cuadros personalizados, de tu imaginación al lienzo | Sac_Artx',
         metaDescription:
-          'Pinto paisajes, anime, ilustraciones y diseños especiales, a mano y desde tu idea. Cada diseño se cotiza según el detalle y el tamaño. El envío no está incluido.',
+          'Pinto paisajes, anime, ilustraciones y diseños especiales, a mano y desde tu idea. Cada diseño se cotiza según el detalle y el tamaño. El envío va contra entrega con la transportadora.',
         lead: 'Desde paisajes y personajes de anime hasta ilustraciones y diseños especiales. Cada cuadro es pintado a mano y creado a partir de tus ideas o imágenes favoritas.',
         whatIncluded: [
           'El lienzo, pintado a mano en el tamaño que elijas.',
@@ -336,7 +336,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: '¿El precio incluye el envío?',
-            a: 'No. El envío no está incluido en el precio. Se cobra aparte, según la ciudad.',
+            a: 'No. El precio es de la obra. El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.',
           },
           {
             q: '¿Cómo lo pido?',
@@ -358,7 +358,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Custom paintings, from your imagination to the canvas',
         metaTitle: 'Custom paintings, from your imagination to the canvas | Sac_Artx',
         metaDescription:
-          'I paint landscapes, anime, illustrations, and special designs by hand, from your idea. Each design is quoted by detail and size. Shipping is not included.',
+          'I paint landscapes, anime, illustrations, and special designs by hand, from your idea. Each design is quoted by detail and size. Shipping is cash on delivery with the carrier.',
         lead: 'From landscapes and anime characters to illustrations and special designs. Each painting is done by hand, from your ideas or a favorite image.',
         whatIncluded: [
           'The canvas, hand-painted in the size you pick.',
@@ -376,7 +376,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: 'Does the price include shipping?',
-            a: 'No. Shipping is not included in the price. It is charged separately, based on the city.',
+            a: 'No. The price is for the piece. Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.',
           },
           {
             q: 'How do I order one?',
@@ -406,10 +406,10 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Minilienzo magnético con el retrato de tu mascota',
         metaTitle: 'Minilienzo magnético con el retrato de tu mascota | Sac_Artx',
         metaDescription:
-          'Pinto a tu mascota en un mini lienzo de 7,5 cm, redondo o cuadrado, con imán. El precio está por confirmar: es un producto nuevo. El envío no está incluido.',
+          'Pinto a tu mascota en un mini lienzo de 7,5 cm, redondo o cuadrado, con imán. El precio está por confirmar: es un producto nuevo. El envío va contra entrega con la transportadora.',
         lead: 'Pinto a tu mascota en un mini lienzo de 7,5 × 7,5 cm, disponible en forma redonda o cuadrada. Incluye un imán en la parte trasera para que puedas decorar tu nevera o cualquier superficie metálica con un retrato único de tu mascota.',
         priceNote:
-          'El precio está por confirmar: es un producto nuevo. Te lo digo por WhatsApp antes de empezar. El envío no está incluido.',
+          'El precio está por confirmar: es un producto nuevo. Te lo digo por WhatsApp antes de empezar. El envío va contra entrega: lo pagas a la transportadora cuando llega a tu casa.',
         whatIncluded: [
           'Mini lienzo de 7,5 × 7,5 cm, redondo o cuadrado, pintado a mano desde la foto de tu mascota.',
           'Imán en la parte de atrás, para la nevera o cualquier superficie metálica.',
@@ -430,7 +430,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: '¿El precio incluye el envío?',
-            a: 'No. El precio está por confirmar, porque es un producto nuevo. El envío no está incluido: se cobra aparte, según la ciudad.',
+            a: 'No. El precio está por confirmar, porque es un producto nuevo. El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.',
           },
           {
             q: '¿Cómo lo pido?',
@@ -452,10 +452,10 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: "Magnetic mini canvas with your pet's portrait",
         metaTitle: "Magnetic mini canvas with your pet's portrait | Sac_Artx",
         metaDescription:
-          'I paint your pet on a 7.5 cm mini canvas, round or square, with a magnet. The price is still to be confirmed: it is a new product. Shipping is not included.',
+          'I paint your pet on a 7.5 cm mini canvas, round or square, with a magnet. The price is still to be confirmed: it is a new product. Shipping is cash on delivery with the carrier.',
         lead: 'I paint your pet on a 7.5 × 7.5 cm mini canvas, available round or square. A magnet on the back lets you decorate your fridge, or any metal surface, with a unique portrait of your pet.',
         priceNote:
-          'The price is still to be confirmed: this is a new product. I will tell you on WhatsApp before I start. Shipping is not included.',
+          'The price is still to be confirmed: this is a new product. I will tell you on WhatsApp before I start. Shipping is cash on delivery: you pay the carrier when it arrives at your home.',
         whatIncluded: [
           'A 7.5 × 7.5 cm mini canvas, round or square, hand-painted from a photo of your pet.',
           'A magnet on the back, for the fridge or any metal surface.',
@@ -476,7 +476,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: 'Does the price include shipping?',
-            a: 'No. The price is still to be confirmed, because this is a new product. Shipping is not included: it is charged separately, based on the city.',
+            a: 'No. The price is still to be confirmed, because this is a new product. Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.',
           },
           {
             q: 'How do I order one?',

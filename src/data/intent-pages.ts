@@ -6,11 +6,11 @@
  * The Prices / Turnaround / Where sections are generated from src/lib/price-text.ts
  * so numbers and the "current as of ..." date never drift or go stale.
  *
- * Prose is preserved verbatim from the original public/info/*.md files.
+ * Prose is the page voice, in the first person. Prices and dates stay in src/lib/price-text.ts.
  */
 import { intentSlugs, intentTopics, type IntentTopic, type Lang } from '../i18n/paths';
 
-export type PriceVariant = 'bullets' | 'bulletsSuggested' | 'summaryColombia' | 'summaryHow';
+export type PriceVariant = 'bullets' | 'bulletsSuggested' | 'summaryHow';
 export type WhereVariant = 'studio' | 'colombia';
 
 export interface IntentEntry {
@@ -68,44 +68,44 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
     noun: { es: 'mascota', en: 'pet' },
     priceVariant: 'bulletsSuggested',
     whereVariant: 'studio',
-    related: ['dogs', 'cats', 'colombia', 'memorial'],
+    related: ['dogs', 'cats', 'memorial'],
     content: {
       es: {
         linkLabel: 'Retratos de mascotas',
-        h1: 'Retratos de mascotas pintados a mano en acrílico en Colombia',
-        metaTitle: 'Retratos de mascotas personalizados desde foto | Sac_Artx',
+        h1: 'Pinto retratos de mascotas a mano en acrílico, desde tu foto',
+        metaTitle: 'Retratos de mascotas personalizados desde tu foto | Sac_Artx',
         metaDescription:
-          'Retratos de mascotas personalizados, pintados a mano en acrílico desde tu foto. Encargo por WhatsApp, boceto previo y envío a toda Colombia.',
-        lead: 'Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. Cada retrato se hace por encargo a partir de una fotografía enviada por WhatsApp.',
+          'Pinto el retrato de tu mascota a mano en acrílico, desde tu foto. Perro, gato, loro, conejo, caballo o la que sea. Te mando un boceto antes de pintar y envío a toda Colombia.',
+        lead: 'Me mandas la foto y pinto a tu mascota a mano en acrílico. Perro, gato, loro, conejo, caballo, hámster, paloma o la que sea: la pinto desde tu foto.',
         whatItIs:
-          'Sac_Artx pinta a mano retratos de mascotas en acrílico sobre lienzo o sobre base de metacrilato. El encargo empieza con una foto. Antes de pintar se envía un boceto digital, con revisiones sin costo.',
+          'La pinto sobre lienzo o sobre base de acrílico (metacrilato). Me escribes por WhatsApp con la foto y, antes de pintar, te mando un boceto. Los cambios del boceto no se cobran.',
         whoFor:
-          'Perros, gatos, conejos, caballos, palomas y cualquier otro animal que importe. También se pintan retratos en memoria de mascotas que ya no están, a partir de las fotos disponibles.',
+          'Para ti, si quieres el retrato de tu mascota, regalarlo o tenerlo cerca. También pinto a quienes ya no están, con las fotos que todavía guardas.',
         included: [
-          'Retrato pintado a mano en acrílico sobre lienzo o base acrílica.',
-          'Boceto digital previo a la pintura.',
-          'Revisiones del boceto sin costo extra.',
-          'Foto de aprobación final antes del envío.',
+          'Retrato pintado a mano en acrílico sobre lienzo o base acrílica, desde tu foto.',
+          'Boceto por WhatsApp antes de pintar.',
+          'Los cambios del boceto no se cobran.',
+          'Una foto del trabajo terminado, antes de enviarlo.',
           'Embalaje y número de seguimiento dentro de Colombia.',
         ],
       },
       en: {
         linkLabel: 'Pet portraits',
-        h1: 'Hand-painted acrylic pet portraits in Colombia',
-        metaTitle: 'Custom acrylic pet portraits from photo | Sac_Artx',
+        h1: 'I paint pet portraits by hand in acrylic, from your photo',
+        metaTitle: 'Custom acrylic pet portraits from your photo | Sac_Artx',
         metaDescription:
-          'Custom pet portraits hand-painted in acrylic from your photo. Commission on WhatsApp, free sketch, and shipping across Colombia.',
-        lead: 'Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic. Each portrait is commissioned from a photograph sent on WhatsApp.',
+          'I paint your pet by hand in acrylic, from your photo. Dog, cat, parrot, rabbit, horse, or whichever is yours. I send a sketch before I paint, and I ship across Colombia.',
+        lead: 'Send me the photo and I paint your pet by hand in acrylic. Dog, cat, parrot, rabbit, horse, hamster, pigeon, or whichever is yours: I paint it from your photo.',
         whatItIs:
-          'Sac_Artx hand-paints pet portraits in acrylic on canvas or on an acrylic (methacrylate) base. A commission starts with a photo. A digital sketch is sent before painting, and revisions are free.',
+          'I paint it on canvas or on an acrylic (methacrylate) base. You message me on WhatsApp with the photo, and before I paint I send a sketch. Sketch changes are free.',
         whoFor:
-          'Dogs, cats, rabbits, horses, pigeons, and any other animal that matters. Memorial portraits of pets that have passed away are also available from the photos you have.',
+          'For you, if you want a portrait of your pet, a gift, or to keep them close. I also paint pets who are no longer here, from the photos you still have.',
         included: [
-          'Hand-painted acrylic portrait on canvas or acrylic base.',
-          'Digital sketch before painting.',
-          'Sketch revisions at no extra charge.',
-          'Final approval photo before shipping.',
-          'Protective packaging and a tracking number within Colombia.',
+          'A portrait painted by hand in acrylic on canvas or an acrylic base, from your photo.',
+          'A WhatsApp sketch before I paint.',
+          'Sketch changes are free.',
+          'A photo of the finished piece before I ship it.',
+          'Packaging and a tracking number within Colombia.',
         ],
       },
     },
@@ -202,52 +202,6 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
       },
     },
   },
-  colombia: {
-    noun: { es: 'mascota', en: 'pet' },
-    priceVariant: 'summaryColombia',
-    whereVariant: 'colombia',
-    related: ['pets', 'how'],
-    content: {
-      es: {
-        linkLabel: 'Retratos de mascotas en Colombia',
-        h1: 'Retratos de mascotas en acrílico con envío a Colombia',
-        metaTitle: 'Retratos de mascotas en acrílico con envío en Colombia',
-        metaDescription:
-          '¿Dónde hacen retratos de mascotas en Colombia? Sac_Artx pinta tu mascota a mano en acrílico y envía a Bogotá, Medellín, Cali y todo el país.',
-        lead: 'Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. Realiza envíos a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia.',
-        whatItIs:
-          'Sac_Artx pinta a mano retratos de mascotas en acrílico sobre lienzo o sobre base de metacrilato, por encargo, a partir de una fotografía. También ofrece bases acrílicas, fundas de celular personalizadas y paisajes.',
-        whoFor:
-          'Personas en Colombia que buscan un artista que pinte a su perro, gato u otra mascota y entregue el cuadro en su ciudad. No hace falta visitar el estudio: el encargo y el envío son a distancia.',
-        included: [
-          'Retrato pintado a mano en acrílico.',
-          'Boceto digital previo y revisiones sin costo.',
-          'Embalaje seguro.',
-          'Envío a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia, con número de seguimiento.',
-          'Por ahora no hay envíos fuera del país.',
-        ],
-      },
-      en: {
-        linkLabel: 'Pet portraits in Colombia',
-        h1: 'Acrylic pet portraits with shipping across Colombia',
-        metaTitle: 'Pet portraits with shipping across Colombia | Sac_Artx',
-        metaDescription:
-          'Acrylic pet portraits shipped across Colombia. Sac_Artx paints your dog or cat from a photo and delivers to Bogotá, Medellín, Cali and beyond.',
-        lead: 'Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic. Orders ship to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia.',
-        whatItIs:
-          'Sac_Artx hand-paints pet portraits in acrylic on canvas or on an acrylic (methacrylate) base, commissioned from a photograph. The studio also offers acrylic bases, personalized phone cases, and landscapes.',
-        whoFor:
-          'People in Colombia who want an artist to paint their dog, cat, or other pet and deliver the piece to their city. There is no need to visit the studio: commissions and shipping are remote.',
-        included: [
-          'Hand-painted acrylic portrait.',
-          'Digital sketch beforehand and free revisions.',
-          'Secure packaging.',
-          'Shipping to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia, with a tracking number.',
-          'Shipping outside Colombia is not available for now.',
-        ],
-      },
-    },
-  },
   memorial: {
     noun: { es: 'mascota', en: 'pet' },
     priceVariant: 'bullets',
@@ -256,40 +210,40 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
     content: {
       es: {
         linkLabel: 'Retrato de mascota fallecida',
-        h1: 'Retrato de mascota fallecida, pintado a mano en acrílico',
+        h1: 'Retrato de mascota fallecida: lo pinto a mano, desde las fotos que guardas',
         metaTitle: 'Retrato de mascota fallecida en acrílico · Sac_Artx',
         metaDescription:
-          'Sac_Artx pinta un retrato de mascota fallecida en acrílico desde las fotos que conservas. Boceto previo y envío a toda Colombia.',
-        lead: 'Un retrato de mascota fallecida en Sac_Artx es un cuadro pintado a mano en acrílico, a partir de las fotos que conservas. Sara Amaya Caldas lo hace por encargo en Colombia: envías la foto por WhatsApp, recibes un boceto digital antes de pintar y el cuadro sale a todo el país.',
+          'Pinto el retrato de tu mascota que ya no está, en acrílico, desde las fotos que todavía guardas. Te mando un boceto antes de pintar y envío a toda Colombia.',
+        lead: 'Si ya no está contigo, la pinto con las fotos que todavía guardas. Me escribes por WhatsApp, te mando un boceto antes de pintar y te envío el cuadro a toda Colombia.',
         whatItIs:
-          'Sac_Artx pinta el retrato en memoria sobre lienzo o sobre base de metacrilato. Sirve la foto que tengas, aunque no sea reciente. Si la luz es mala o hay varias tomas, se puede mejorar la iluminación o unirlas antes de pintar.',
+          'Lo pinto sobre lienzo o sobre base de acrílico (metacrilato). Sirve la foto que tengas, aunque no sea reciente. Si la luz es mala o tienes varias tomas, puedo mejorar la iluminación o unirlas antes de pintar.',
         whoFor:
-          'Quien perdió a su perro, gato u otra mascota y quiere tenerlo cerca, y quien encarga el cuadro como recuerdo para otra persona. El proceso es el mismo que el de un retrato de una mascota que sigue en casa, con el cuidado que merece el recuerdo.',
+          'Para ti, si perdiste a tu perro, gato u otra mascota y quieres tenerlo cerca. También si el cuadro es un recuerdo para otra persona. El proceso es el mismo que cuando tu mascota sigue en casa, con el cuidado que merece el recuerdo.',
         included: [
-          'Retrato pintado a mano en acrílico sobre lienzo o base acrílica, desde las fotos que conservas.',
-          'Boceto digital previo a la pintura.',
-          'Revisiones del boceto sin costo extra.',
-          'Foto de aprobación final antes del envío.',
+          'Retrato pintado a mano en acrílico sobre lienzo o base acrílica, desde las fotos que todavía guardas.',
+          'Boceto por WhatsApp antes de pintar.',
+          'Los cambios del boceto no se cobran.',
+          'Una foto del trabajo terminado, antes de enviarlo.',
           'Embalaje y número de seguimiento dentro de Colombia.',
         ],
       },
       en: {
         linkLabel: 'Memorial pet portrait',
-        h1: 'A memorial pet portrait, hand-painted in acrylic',
+        h1: 'A memorial pet portrait: I paint it by hand, from the photos you kept',
         metaTitle: 'Memorial pet portrait from a photo · Sac_Artx',
         metaDescription:
-          'Sac_Artx paints a memorial pet portrait in acrylic from the photos you kept. A sketch comes first, and shipping covers Colombia.',
-        lead: 'A memorial pet portrait from Sac_Artx is a painting made by hand in acrylic, from the photos you still have. Sara Amaya Caldas paints it to order in Colombia: you send the photo on WhatsApp, you receive a digital sketch before painting, and the piece ships across the country.',
+          'I paint the portrait of your pet who is no longer here, in acrylic, from the photos you still have. I send a sketch before I paint, and I ship across Colombia.',
+        lead: 'If they are no longer with you, I paint them from the photos you still have. You message me on WhatsApp, I send a sketch before I paint, and I ship the piece across Colombia.',
         whatItIs:
-          'Sac_Artx paints the memorial portrait on canvas or on a methacrylate base. The photo you have is enough, even if it is not recent. If the light is poor or you have several shots, the lighting can be improved or the photos combined before painting.',
+          'I paint it on canvas or on an acrylic (methacrylate) base. The photo you have is enough, even if it is not recent. If the light is poor or you have several shots, I can improve the lighting or combine them before I paint.',
         whoFor:
-          'Anyone who lost a dog, cat, or other pet and wants them close, and anyone commissioning the painting as a keepsake for someone else. The process is the same as a portrait of a pet who is still here, with the care the memory deserves.',
+          'For you, if you lost your dog, cat, or another pet and want them close. Also if the painting is a keepsake for someone else. The process is the same as when your pet is still at home, with the care the memory deserves.',
         included: [
-          'Hand-painted acrylic portrait on canvas or an acrylic base, from the photos you kept.',
-          'Digital sketch before painting.',
-          'Sketch revisions at no extra charge.',
-          'Final approval photo before shipping.',
-          'Protective packaging and a tracking number within Colombia.',
+          'A portrait painted by hand in acrylic on canvas or an acrylic base, from the photos you still have.',
+          'A WhatsApp sketch before I paint.',
+          'Sketch changes are free.',
+          'A photo of the finished piece before I ship it.',
+          'Packaging and a tracking number within Colombia.',
         ],
       },
     },
@@ -298,14 +252,14 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
     noun: { es: 'mascota', en: 'pet' },
     priceVariant: 'summaryHow',
     whereVariant: 'studio',
-    related: ['pets', 'colombia'],
+    related: ['pets'],
     content: {
       es: {
         linkLabel: 'Cómo funciona',
         h1: '¿Cómo encargar tu retrato de mascota personalizado?',
         metaTitle: '¿Cómo encargar tu retrato de mascota personalizado? | Sac_Artx',
         metaDescription:
-          'Hacer tu pedido en Sac_Artx es sencillo: foto, boceto en menos de 48 horas y retrato pintado a mano. El plazo corre desde la aprobación del boceto. El envío no está incluido.',
+          'Hacer tu pedido en Sac_Artx es sencillo: foto, boceto en menos de 48 horas y retrato pintado a mano. El plazo corre desde la aprobación del boceto. El envío va contra entrega con la transportadora.',
         lead: 'Hacer tu pedido en Sac_Artx es muy sencillo. Sigue estos pasos y pronto tendrás una obra de arte creada especialmente para ti.',
         whatItIs:
           'El proceso de Sac_Artx tiene cinco pasos: enviar la foto, recibir un boceto digital, aprobar el diseño, pintar la obra y recibir el envío. Sitio: https://sacartx.art/',
@@ -316,7 +270,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Boceto en menos de 48 horas: recibes un boceto digital de cómo puede quedar.',
           'Apruebas el diseño: se ajusta lo necesario sin cargo extra por revisiones.',
           'Se pinta: cada retrato es pintado a mano en acrílico. Al terminar, recibes fotografías por WhatsApp para revisar el resultado final.',
-          'Recibes tu obra: envío a toda Colombia, a cualquier parte del país, por transportadoras aliadas, con embalaje seguro y seguimiento.',
+          'Recibes tu obra: envío a toda Colombia, a cualquier parte del país, por transportadoras aliadas, con embalaje seguro y seguimiento. El costo del envío lo pagas a la transportadora cuando llega a tu casa.',
         ],
         includedOrdered: true,
         includedNote:
@@ -327,7 +281,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
         h1: 'How do you commission your custom pet portrait?',
         metaTitle: 'How do you commission your custom pet portrait? | Sac_Artx',
         metaDescription:
-          'Ordering from Sac_Artx is simple: a photo, a sketch in under 48 hours, and a hand-painted portrait. The clock starts when you approve the sketch. Shipping is not included.',
+          'Ordering from Sac_Artx is simple: a photo, a sketch in under 48 hours, and a hand-painted portrait. The clock starts when you approve the sketch. Shipping is cash on delivery with the carrier.',
         lead: 'Ordering from Sac_Artx is simple. Follow these steps and you will soon have a work of art made just for you.',
         whatItIs:
           'The Sac_Artx process has five steps: send the photo, receive a digital sketch, approve the design, paint the piece, and receive the shipment. Website: https://sacartx.art/en/',
@@ -338,7 +292,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Sketch in under 48 hours: you receive a digital sketch of how it might turn out.',
           'Approve the design: whatever is needed gets adjusted, with no extra charge for revisions.',
           'Painting: each portrait is painted by hand in acrylic. When it is finished, you receive photos on WhatsApp to review the final result.',
-          'Delivery: shipping anywhere in Colombia through partner carriers, with protective packaging and tracking.',
+          'Delivery: shipping anywhere in Colombia through partner carriers, with protective packaging and tracking. You pay the shipping cost to the carrier when it arrives at your home.',
         ],
         includedOrdered: true,
         includedNote:

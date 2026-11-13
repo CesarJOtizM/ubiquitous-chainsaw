@@ -6,9 +6,8 @@
  */
 import {
   priceLead,
-  priceBullets,
+  priceGroupMarkdown,
   catalogLine,
-  priceSummaryColombia,
   priceSummaryHow,
   leadTimeText,
   whereText,
@@ -40,15 +39,16 @@ function includedBlock(entry: IntentEntry): string[] {
 function priceBlock(entry: IntentEntry): string[] {
   const { lang, noun, priceVariant } = entry;
   switch (priceVariant) {
-    case 'summaryColombia':
-      return [priceSummaryColombia(lang)];
     case 'summaryHow':
       return [priceSummaryHow(lang)];
     case 'bullets':
-    case 'bulletsSuggested': {
-      const bullets = priceBullets(lang, noun, { suggested: priceVariant === 'bulletsSuggested' });
-      return [priceLead(lang), '', ...bullets.map((b) => `- ${b}`), '', catalogLine(lang)];
-    }
+    case 'bulletsSuggested':
+      return [
+        priceLead(lang),
+        '',
+        ...priceGroupMarkdown(lang, noun, { suggested: priceVariant === 'bulletsSuggested' }),
+        catalogLine(lang),
+      ];
   }
 }
 

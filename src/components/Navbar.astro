@@ -53,7 +53,7 @@ function isCurrent(key: string) {
   if (key === 'about') return isAboutPath(path);
   if (key === 'blog') return isBlogIndexPath(path) || isBlogPostPath(path);
   if (product && key === product) return true;
-  if (key === 'pets' || key === 'memorial' || key === 'colombia') return topic === key;
+  if (key === 'pets' || key === 'memorial') return topic === key;
   return false;
 }
 
@@ -78,7 +78,6 @@ const groups: { title: string; links: NavLink[] }[] = [
     links: [
       { href: intentPath('pets', lang), label: t('nav.pets'), hint: t('nav.petsHint'), key: 'pets' },
       { href: intentPath('memorial', lang), label: t('nav.memorial'), hint: t('nav.memorialHint'), key: 'memorial' },
-      { href: intentPath('colombia', lang), label: t('nav.colombia'), hint: t('nav.colombiaHint'), key: 'colombia' },
     ],
   },
 ];
@@ -710,7 +709,7 @@ const primary: NavLink[] = [
     if (topic === 'how') keys.add('how');
     else if (topic) {
       keys.add('retratos');
-      if (topic === 'pets' || topic === 'memorial' || topic === 'colombia') keys.add(topic);
+      if (topic === 'pets' || topic === 'memorial') keys.add(topic);
     }
     return keys;
   }

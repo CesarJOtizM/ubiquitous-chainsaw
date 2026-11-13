@@ -23,6 +23,36 @@
   ],
   "redirects": [
     {
+      "source": "/retratos-mascotas-colombia",
+      "destination": "/retratos-de-mascotas/",
+      "permanent": true
+    },
+    {
+      "source": "/retratos-mascotas-colombia/",
+      "destination": "/retratos-de-mascotas/",
+      "permanent": true
+    },
+    {
+      "source": "/en/pet-portraits-colombia",
+      "destination": "/en/pet-portraits/",
+      "permanent": true
+    },
+    {
+      "source": "/en/pet-portraits-colombia/",
+      "destination": "/en/pet-portraits/",
+      "permanent": true
+    },
+    {
+      "source": "/info/retratos-mascotas-colombia.md",
+      "destination": "/info/retratos-de-mascotas.md",
+      "permanent": true
+    },
+    {
+      "source": "/info/pet-portraits-colombia.md",
+      "destination": "/info/pet-portraits.md",
+      "permanent": true
+    },
+    {
       "source": "/images/:folder/:file.jpg",
       "destination": "/img/:folder/:file.jpg",
       "permanent": true

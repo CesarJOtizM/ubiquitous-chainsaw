@@ -55,7 +55,7 @@ const images = {
   case: '/images/sobre-mi/funda.jpg',
   messages: '/images/sobre-mi/mensajes.jpg',
   painting: '/images/sobre-mi/pintando.jpg',
-  flowers: '/images/sobre-mi/flores.jpg',
+  closing: '/images/sobre-mi/sara-cuadro.jpg',
 } as const;
 
 export const aboutPortrait = images.studio;
@@ -181,8 +181,8 @@ export const aboutCopy: Record<Lang, AboutCopy> = {
         ],
         images: [
           {
-            src: images.flowers,
-            alt: 'Cuadro vertical de una planta con flores durazno, pintado en tres paneles y enmarcado en madera.',
+            src: images.closing,
+            alt: 'Sara Amaya sostiene un cuadro pintado a mano con retratos de varias mascotas.',
           },
         ],
       },
@@ -308,8 +308,8 @@ export const aboutCopy: Record<Lang, AboutCopy> = {
         ],
         images: [
           {
-            src: images.flowers,
-            alt: 'Vertical painting of a plant with peach-colored flowers, painted across three panels and set in a wooden frame.',
+            src: images.closing,
+            alt: 'Sara Amaya holds a hand-painted canvas with portraits of several pets.',
           },
         ],
       },

@@ -36,7 +36,6 @@ export const intentSlugs = {
   pets: { es: 'retratos-de-mascotas', en: 'pet-portraits' },
   dogs: { es: 'retratos-perros', en: 'dog-portraits' },
   cats: { es: 'retratos-gatos', en: 'cat-portraits' },
-  colombia: { es: 'retratos-mascotas-colombia', en: 'pet-portraits-colombia' },
   how: { es: 'como-funciona', en: 'how-it-works' },
   memorial: { es: 'retrato-mascota-fallecida', en: 'memorial-pet-portrait' },
 } as const;

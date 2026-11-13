@@ -87,7 +87,7 @@ const extraJsonLd = [
 function sizesFor(layout: string): string {
   if (layout === 'wide') return '(max-width: 860px) 100vw, 960px';
   if (layout === 'pair') return '(max-width: 860px) 100vw, 42vw';
-  if (layout === 'close') return '(max-width: 860px) 280px, 32vw';
+  if (layout === 'close') return '(max-width: 860px) 100vw, 32vw';
   return '(max-width: 860px) 100vw, 46vw';
 }
 ---
@@ -338,11 +338,13 @@ function sizesFor(layout: string): string {
     height: auto;
   }
 
-  .about-chapter--split figure {
+  .about-chapter--split figure,
+  .about-chapter--close figure {
     position: relative;
   }
 
-  .about-chapter--split figure::before {
+  .about-chapter--split figure::before,
+  .about-chapter--close figure::before {
     content: '';
     position: absolute;
     z-index: -1;
@@ -351,13 +353,13 @@ function sizesFor(layout: string): string {
     background: linear-gradient(145deg, rgba(234, 153, 213, 0.5), rgba(201, 162, 39, 0.28));
   }
 
-  .about-chapter--split img {
+  .about-chapter--split img,
+  .about-chapter--close img {
     border-radius: 22px;
     box-shadow: 0 22px 50px rgba(42, 31, 38, 0.12);
   }
 
   .about-chapter--pair figure,
-  .about-chapter--close figure,
   .about-chapter--wide figure {
     background: #fff;
     padding: 10px 10px 12px;
@@ -438,12 +440,8 @@ function sizesFor(layout: string): string {
       order: -1;
     }
 
-    .about-chapter--close .about-visual {
-      max-width: 280px;
-      margin-inline: auto;
-    }
-
-    .about-chapter--split figure::before {
+    .about-chapter--split figure::before,
+    .about-chapter--close figure::before {
       inset: 12px -8px -8px 10px;
     }
   }
