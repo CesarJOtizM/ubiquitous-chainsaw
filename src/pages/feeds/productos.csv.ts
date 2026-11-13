@@ -1,11 +1,11 @@
 import type { APIRoute } from 'astro';
-import { buildOpenAiProductFeed } from '../../lib/openai-product-feed';
+import { buildOpenAiProductFeed, FEED_KIND } from '../../lib/openai-product-feed';
 
 export const prerender = true;
 
-/** Hosted product feed for ChatGPT Business Hub. Paste this URL; it is the file, not a product page. */
+/** Full catalog. Use the per-type feeds when the Hub accepts more than one file. */
 export const GET: APIRoute = () =>
-  new Response(buildOpenAiProductFeed(), {
+  new Response(buildOpenAiProductFeed(FEED_KIND.ALL), {
     headers: {
       'Content-Type': 'text/csv; charset=utf-8',
       'X-Robots-Tag': 'noindex',
