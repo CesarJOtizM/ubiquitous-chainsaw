@@ -1,0 +1,56 @@
+---
+import { business, coverageText } from '../data/business';
+import { homePath, type Lang } from '../i18n/paths';
+import { whatsappUrl } from '../lib/price-text';
+
+interface Props {
+  lang: Lang;
+  variant?: 'studio' | 'colombia';
+}
+
+const { lang, variant = 'studio' } = Astro.props;
+const en = lang === 'en';
+const coverage = coverageText(lang);
+---
+
+<p>
+  {
+    variant === 'colombia'
+      ? en
+        ? `Shipping coverage: ${coverage}. `
+        : `Cobertura de envío: ${coverage}. `
+      : en
+        ? `Sac_Artx paints to order and ships to ${coverage}. `
+        : `Sac_Artx pinta por encargo y envía a ${coverage}. `
+  }
+  <a href={whatsappUrl(lang)} target="_blank" rel="noopener noreferrer">WhatsApp: {business.phoneDisplay}</a>.
+  {
+    variant === 'colombia' && (
+      <>
+        {' '}
+        <a href={business.instagram} target="_blank" rel="noopener noreferrer">
+          Instagram
+        </a>
+        {en ? ' and ' : ' y '}
+        <a href={business.tiktok} target="_blank" rel="noopener noreferrer">
+          TikTok
+        </a>
+        {`: ${business.handle}.`}
+      </>
+    )
+  }
+  {' '}
+  <a href={homePath(lang)} data-astro-prefetch="viewport">{en ? 'Homepage' : 'Página de inicio'}</a>.
+</p>
+
+<style>
+  a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  a:hover {
+    color: var(--color-accent-hover);
+  }
+</style>

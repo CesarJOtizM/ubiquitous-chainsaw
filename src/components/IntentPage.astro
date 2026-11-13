@@ -3,20 +3,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from './Navbar.astro';
 import Footer from './Footer.astro';
 import WhatsAppFAB from './WhatsAppFAB.astro';
+import WhereParagraph from './WhereParagraph.astro';
 import { useTranslations } from '../i18n/utils';
 import { catalogPath, homePath, intentPath, pricesPath } from '../i18n/paths';
 import { business } from '../data/business';
 import {
   priceLead,
   priceBullets,
-  catalogLine,
-  priceSummaryColombia,
-  priceSummaryHow,
+  priceSummaryColombiaIntro,
   leadTimeText,
-  whereText,
   sectionLabels,
 } from '../lib/price-text';
 import { intentEntry, type IntentEntry } from '../data/intent-pages';
+import { profileTopics } from '../lib/intent-markdown';
 
 export interface Props {
   entry: IntentEntry;
@@ -40,18 +39,14 @@ const isSummary = entry.priceVariant === 'summaryColombia' || entry.priceVariant
 const bullets = isSummary
   ? []
   : priceBullets(lang, entry.noun, { suggested: entry.priceVariant === 'bulletsSuggested' });
-const summary =
-  entry.priceVariant === 'summaryColombia'
-    ? priceSummaryColombia(lang)
-    : entry.priceVariant === 'summaryHow'
-      ? priceSummaryHow(lang)
-      : '';
+const summaryIntro = entry.priceVariant === 'summaryColombia' ? priceSummaryColombiaIntro(lang) : '';
 
 const relatedLinks = entry.related.map((relTopic) => {
   const rel = intentEntry(relTopic, lang);
   return { href: intentPath(relTopic, lang), label: rel.linkLabel };
 });
 const relatedTitle = lang === 'en' ? 'Related pages' : 'Páginas relacionadas';
+const showProfiles = profileTopics.has(topic);
 const pricesLabel = t('prices.navLabel');
 const catalogLabel = lang === 'en' ? 'Catalog' : 'Catálogo';
 
@@ -107,7 +102,18 @@ const extraJsonLd = [
       <div class="container intent-body">
         <section class="intent-section">
           <h2>{labels.whatItIs}</h2>
-          <p>{entry.whatItIs}</p>
+          <p>
+            {entry.whatItIs}
+            {showProfiles && (
+              <>
+                {' '}
+                <a href={business.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+                {lang === 'en' ? ' and ' : ' y '}
+                <a href={business.tiktok} target="_blank" rel="noopener noreferrer">TikTok</a>
+                {`: ${business.handle}.`}
+              </>
+            )}
+          </p>
         </section>
 
         <section class="intent-section">
@@ -136,7 +142,12 @@ const extraJsonLd = [
         <section class="intent-section">
           <h2>{labels.prices}</h2>
           {isSummary ? (
-            <p>{summary}</p>
+            <p>
+              {summaryIntro}{' '}
+              <a href={pricesPath(lang)} data-astro-prefetch="viewport">
+                {lang === 'en' ? 'Full price list' : 'Lista de precios'}
+              </a>.
+            </p>
           ) : (
             <>
               <p>{priceLead(lang)}</p>
@@ -145,7 +156,12 @@ const extraJsonLd = [
                   <li>{b}</li>
                 ))}
               </ul>
-              <p>{catalogLine(lang)}</p>
+              <p>
+                {lang === 'en' ? 'Catalog of finished pieces: ' : 'Catálogo de obras terminadas: '}
+                <a href={catalogPath(lang)} data-astro-prefetch="viewport">
+                  {lang === 'en' ? 'see the catalog' : 'ver el catálogo'}
+                </a>.
+              </p>
             </>
           )}
         </section>
@@ -157,7 +173,7 @@ const extraJsonLd = [
 
         <section class="intent-section">
           <h2>{labels.where}</h2>
-          <p>{whereText(lang, entry.whereVariant)}</p>
+          <WhereParagraph lang={lang} variant={entry.whereVariant} />
         </section>
 
         <nav class="intent-related" aria-label={relatedTitle}>

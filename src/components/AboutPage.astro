@@ -5,7 +5,8 @@ import Footer from './Footer.astro';
 import WhatsAppFAB from './WhatsAppFAB.astro';
 import { aboutCopy } from '../data/about';
 import { business, founderId } from '../data/business';
-import { leadTimeText, whereText } from '../lib/price-text';
+import { leadTimeText, whatsappUrl } from '../lib/price-text';
+import WhereParagraph from './WhereParagraph.astro';
 import {
   aboutPath,
   blogPath,
@@ -30,7 +31,7 @@ const canonicalUrl = `${SITE}${aboutPath(lang)}`;
 const alternateEs = `${SITE}${aboutPath('es')}`;
 const alternateEn = `${SITE}${aboutPath('en')}`;
 const homeUrl = `${SITE}${homePath(lang)}`;
-const waUrl = `https://wa.me/${business.phone.replace(/\D/g, '')}`;
+const waUrl = whatsappUrl(lang);
 
 const related = [
   { href: intentPath('how', lang), label: lang === 'en' ? 'How it works' : 'Cómo funciona' },
@@ -146,7 +147,7 @@ const extraJsonLd = [
 
         <section class="about-section">
           <h2>{copy.shipsHeading}</h2>
-          <p>{whereText(lang, 'studio')}</p>
+          <WhereParagraph lang={lang} />
         </section>
 
         <section class="about-section">
@@ -204,6 +205,7 @@ const extraJsonLd = [
   }
 
   .about-crumb a,
+  .about-section a,
   .about-contact a,
   .about-related a {
     color: var(--color-accent);
@@ -211,6 +213,7 @@ const extraJsonLd = [
   }
 
   .about-crumb a:hover,
+  .about-section a:hover,
   .about-contact a:hover,
   .about-related a:hover {
     text-decoration: underline;

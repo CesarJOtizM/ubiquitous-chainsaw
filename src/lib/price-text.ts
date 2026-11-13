@@ -84,12 +84,18 @@ export function catalogLine(lang: Lang): string {
   return lang === 'en' ? `Catalog of finished pieces: ${url}` : `Catálogo de obras terminadas: ${url}`;
 }
 
+/** Colombia price sentence without the trailing list URL. */
+export function priceSummaryColombiaIntro(lang: Lang): string {
+  return lang === 'en'
+    ? `${priceLead('en')} Canvas portraits from ${cop(PRICE_FROM_CANVAS, 'en')} (12×18 cm, 1 pet). Acrylic bases from ${cop(PRICE_FROM_BASE, 'en')}. Pet phone case ${cop(PRICE_CASE_PET, 'en')}.`
+    : `${priceLead('es')} Retratos en lienzo desde ${cop(PRICE_FROM_CANVAS, 'es')} (12×18 cm, 1 mascota). Bases desde ${cop(PRICE_FROM_BASE, 'es')}. Funda de mascota ${cop(PRICE_CASE_PET, 'es')}.`;
+}
+
 /** Short price summary for the Colombia (shipping) topic. */
 export function priceSummaryColombia(lang: Lang): string {
   const prices = `${business.site}/info/${lang === 'en' ? 'prices' : 'precios'}.md`;
-  return lang === 'en'
-    ? `${priceLead('en')} Canvas portraits from ${cop(PRICE_FROM_CANVAS, 'en')} (12×18 cm, 1 pet). Acrylic bases from ${cop(PRICE_FROM_BASE, 'en')}. Pet phone case ${cop(PRICE_CASE_PET, 'en')}. Full list: ${prices}`
-    : `${priceLead('es')} Retratos en lienzo desde ${cop(PRICE_FROM_CANVAS, 'es')} (12×18 cm, 1 mascota). Bases desde ${cop(PRICE_FROM_BASE, 'es')}. Funda de mascota ${cop(PRICE_CASE_PET, 'es')}. Detalle: ${prices}`;
+  const tail = lang === 'en' ? `Full list: ${prices}` : `Detalle: ${prices}`;
+  return `${priceSummaryColombiaIntro(lang)} ${tail}`;
 }
 
 /** Short price summary for the How-it-works topic. */
@@ -109,18 +115,34 @@ export function leadTimeText(lang: Lang): string {
     : `El plazo es de ${min} a ${max} días hábiles desde el primer abono del 50%. El 50% restante se paga al terminar. El envío sale cuando el pago está completo. Medios de pago: ${paymentMethods.es}.`;
 }
 
-/** "Where / Dónde" paragraph. variant 'colombia' adds social handles. */
+/** Greeting prefilled when someone opens WhatsApp from a page. */
+export function whatsappGreeting(lang: Lang): string {
+  return lang === 'en'
+    ? "Hello! I'd like to commission a portrait"
+    : '¡Hola! Me gustaría encargar un retrato';
+}
+
+/** wa.me link with the greeting already written in the chat. */
+export function whatsappUrl(lang: Lang): string {
+  const digits = business.phone.replace(/\D/g, '');
+  return `https://wa.me/${digits}?text=${encodeURIComponent(whatsappGreeting(lang))}`;
+}
+
+/** "Where / Dónde" paragraph for generated markdown. HTML pages render the links themselves. */
 export function whereText(lang: Lang, variant: 'studio' | 'colombia' = 'studio'): string {
   const coverage = coverageText(lang);
   const home = `${business.site}${homePath(lang)}`;
+  const wa = `[${business.phoneDisplay}](${whatsappUrl(lang)})`;
+  const ig = `[Instagram](${business.instagram})`;
+  const tk = `[TikTok](${business.tiktok})`;
   if (variant === 'colombia') {
     return lang === 'en'
-      ? `Shipping coverage: ${coverage}. WhatsApp: ${business.phoneDisplay}. Instagram and TikTok: ${business.handle}. Homepage: ${home}`
-      : `Cobertura de envío: ${coverage}. WhatsApp: ${business.phoneDisplay}. Instagram y TikTok: ${business.handle}. Página de inicio: ${home}`;
+      ? `Shipping coverage: ${coverage}. WhatsApp: ${wa}. ${ig} and ${tk}: ${business.handle}. Homepage: ${home}`
+      : `Cobertura de envío: ${coverage}. WhatsApp: ${wa}. ${ig} y ${tk}: ${business.handle}. Página de inicio: ${home}`;
   }
   return lang === 'en'
-    ? `Sac_Artx paints to order and ships to ${coverage}. WhatsApp: ${business.phoneDisplay}. Homepage: ${home}`
-    : `Sac_Artx pinta por encargo y envía a ${coverage}. WhatsApp: ${business.phoneDisplay}. Página de inicio: ${home}`;
+    ? `Sac_Artx paints to order and ships to ${coverage}. WhatsApp: ${wa}. Homepage: ${home}`
+    : `Sac_Artx pinta por encargo y envía a ${coverage}. WhatsApp: ${wa}. Página de inicio: ${home}`;
 }
 
 /** Localized section headings shared by HTML and generated markdown. */

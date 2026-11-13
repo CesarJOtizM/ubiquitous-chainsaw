@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from './Navbar.astro';
 import Footer from './Footer.astro';
 import WhatsAppFAB from './WhatsAppFAB.astro';
+import WhereParagraph from './WhereParagraph.astro';
 import { useTranslations, type TranslationKey } from '../i18n/utils';
 import {
   catalogPath,
@@ -13,7 +14,7 @@ import {
 } from '../i18n/paths';
 import { business } from '../data/business';
 import { canvasPrices, basePrices, casePrices, type PriceRow } from '../data/prices';
-import { cop, priceLead, leadTimeText, whereText } from '../lib/price-text';
+import { cop, priceLead, leadTimeText } from '../lib/price-text';
 import { itemsForLine } from '../data/catalog';
 import { animalAltEn, animalAltEs, animalForSrc } from '../data/catalog-animals';
 import { imageDimensions, imageSrcSet, imageUrl } from '../lib/images';
@@ -254,7 +255,7 @@ const extraJsonLd = [
 
         <section class="product-section">
           <h2>{labels.where}</h2>
-          <p>{whereText(lang, 'studio')}</p>
+          <WhereParagraph lang={lang} />
         </section>
 
         <section class="product-section">

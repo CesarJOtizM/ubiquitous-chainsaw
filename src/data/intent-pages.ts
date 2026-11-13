@@ -78,7 +78,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Retratos de mascotas personalizados, pintados a mano en acrílico desde tu foto. Encargo por WhatsApp, boceto previo y envío a toda Colombia.',
         lead: 'Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. Cada retrato se hace por encargo a partir de una fotografía enviada por WhatsApp.',
         whatItIs:
-          'Sac_Artx pinta a mano retratos de mascotas en acrílico sobre lienzo o sobre base de metacrilato. El encargo empieza con una foto. Antes de pintar se envía un boceto digital, con revisiones sin costo. Instagram y TikTok: @sac_artx. Sitio: https://sacartx.art/',
+          'Sac_Artx pinta a mano retratos de mascotas en acrílico sobre lienzo o sobre base de metacrilato. El encargo empieza con una foto. Antes de pintar se envía un boceto digital, con revisiones sin costo.',
         whoFor:
           'Perros, gatos, conejos, caballos, palomas y cualquier otro animal que importe. También se pintan retratos en memoria de mascotas que ya no están, a partir de las fotos disponibles.',
         included: [
@@ -97,7 +97,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Custom pet portraits hand-painted in acrylic from your photo. Commission on WhatsApp, free sketch, and shipping across Colombia.',
         lead: 'Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic. Each portrait is commissioned from a photograph sent on WhatsApp.',
         whatItIs:
-          'Sac_Artx hand-paints pet portraits in acrylic on canvas or on an acrylic (methacrylate) base. A commission starts with a photo. A digital sketch is sent before painting, and revisions are free. Instagram and TikTok: @sac_artx. Website: https://sacartx.art/en/',
+          'Sac_Artx hand-paints pet portraits in acrylic on canvas or on an acrylic (methacrylate) base. A commission starts with a photo. A digital sketch is sent before painting, and revisions are free.',
         whoFor:
           'Dogs, cats, rabbits, horses, pigeons, and any other animal that matters. Memorial portraits of pets that have passed away are also available from the photos you have.',
         included: [
@@ -124,7 +124,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Retrato de tu perro pintado a mano en acrílico desde una foto. Cualquier raza, boceto previo sin costo y envío a toda Colombia.',
         lead: 'Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de perros pintados a mano en acrílico. Cada retrato se hace por encargo a partir de una fotografía enviada por WhatsApp.',
         whatItIs:
-          'Sac_Artx pinta a mano el retrato de tu perro en acrílico sobre lienzo o sobre base de metacrilato. El encargo empieza con una foto. Antes de pintar se envía un boceto digital, con revisiones sin costo. Instagram y TikTok: @sac_artx. Sitio: https://sacartx.art/',
+          'Sac_Artx pinta a mano el retrato de tu perro en acrílico sobre lienzo o sobre base de metacrilato. El encargo empieza con una foto. Antes de pintar se envía un boceto digital, con revisiones sin costo.',
         whoFor:
           'Dueños de perros en Colombia que quieren un cuadro personalizado, un regalo o un retrato en memoria. Se aceptan perros de cualquier raza o mestizos. Se pueden incluir varias mascotas en el mismo cuadro; la cantidad sugerida depende del tamaño.',
         included: [
@@ -143,7 +143,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Your dog hand-painted in acrylic from a photo. Any breed, free sketch before painting, and shipping across Colombia. Memorial portraits available.',
         lead: 'Sac_Artx is a studio in Colombia, specializing in custom dog portraits hand-painted in acrylic. Each portrait is commissioned from a photograph sent on WhatsApp.',
         whatItIs:
-          'Sac_Artx hand-paints your dog in acrylic on canvas or on an acrylic (methacrylate) base. A commission starts with a photo. A digital sketch is sent before painting, and revisions are free. Instagram and TikTok: @sac_artx. Website: https://sacartx.art/en/',
+          'Sac_Artx hand-paints your dog in acrylic on canvas or on an acrylic (methacrylate) base. A commission starts with a photo. A digital sketch is sent before painting, and revisions are free.',
         whoFor:
           'Dog owners in Colombia who want a custom painting, a gift, or a memorial portrait. Any breed or mixed breed is welcome. Several pets can share one painting; the suggested number depends on the size.',
         included: [
@@ -170,7 +170,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Retrato de tu gato pintado a mano en acrílico desde una foto. Cualquier raza, boceto previo sin costo y envío a toda Colombia.',
         lead: 'Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de gatos pintados a mano en acrílico. Cada retrato se hace por encargo a partir de una fotografía enviada por WhatsApp.',
         whatItIs:
-          'Sac_Artx pinta a mano el retrato de tu gato en acrílico sobre lienzo o sobre base de metacrilato. El encargo empieza con una foto. Antes de pintar se envía un boceto digital, con revisiones sin costo. Instagram y TikTok: @sac_artx. Sitio: https://sacartx.art/',
+          'Sac_Artx pinta a mano el retrato de tu gato en acrílico sobre lienzo o sobre base de metacrilato. El encargo empieza con una foto. Antes de pintar se envía un boceto digital, con revisiones sin costo.',
         whoFor:
           'Dueños de gatos en Colombia que quieren un cuadro personalizado, un regalo o un retrato en memoria. Se aceptan gatos de cualquier raza o mestizos. Se pueden incluir varias mascotas en el mismo cuadro; la cantidad sugerida depende del tamaño.',
         included: [
@@ -189,7 +189,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Your cat hand-painted in acrylic from a photo. Any breed, free sketch before painting, and shipping across Colombia. Memorial portraits available.',
         lead: 'Sac_Artx is a studio in Colombia, specializing in custom cat portraits hand-painted in acrylic. Each portrait is commissioned from a photograph sent on WhatsApp.',
         whatItIs:
-          'Sac_Artx hand-paints your cat in acrylic on canvas or on an acrylic (methacrylate) base. A commission starts with a photo. A digital sketch is sent before painting, and revisions are free. Instagram and TikTok: @sac_artx. Website: https://sacartx.art/en/',
+          'Sac_Artx hand-paints your cat in acrylic on canvas or on an acrylic (methacrylate) base. A commission starts with a photo. A digital sketch is sent before painting, and revisions are free.',
         whoFor:
           'Cat owners in Colombia who want a custom painting, a gift, or a memorial portrait. Any breed or mixed breed is welcome. Several pets can share one painting; the suggested number depends on the size.',
         included: [
@@ -216,7 +216,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           '¿Dónde hacen retratos de mascotas en Colombia? Sac_Artx pinta tu mascota a mano en acrílico y envía a Bogotá, Medellín, Cali y todo el país.',
         lead: 'Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. Realiza envíos a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia.',
         whatItIs:
-          'Sac_Artx pinta a mano retratos de mascotas en acrílico sobre lienzo o sobre base de metacrilato, por encargo, a partir de una fotografía. También ofrece bases acrílicas, fundas de celular personalizadas y paisajes. Sitio: https://sacartx.art/',
+          'Sac_Artx pinta a mano retratos de mascotas en acrílico sobre lienzo o sobre base de metacrilato, por encargo, a partir de una fotografía. También ofrece bases acrílicas, fundas de celular personalizadas y paisajes.',
         whoFor:
           'Personas en Colombia que buscan un artista que pinte a su perro, gato u otra mascota y entregue el cuadro en su ciudad. No hace falta visitar el estudio: el encargo y el envío son a distancia.',
         included: [
@@ -235,7 +235,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Acrylic pet portraits shipped across Colombia. Sac_Artx paints your dog or cat from a photo and delivers to Bogotá, Medellín, Cali and beyond.',
         lead: 'Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic. Orders ship to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia.',
         whatItIs:
-          'Sac_Artx hand-paints pet portraits in acrylic on canvas or on an acrylic (methacrylate) base, commissioned from a photograph. The studio also offers acrylic bases, personalized phone cases, and landscapes. Website: https://sacartx.art/en/',
+          'Sac_Artx hand-paints pet portraits in acrylic on canvas or on an acrylic (methacrylate) base, commissioned from a photograph. The studio also offers acrylic bases, personalized phone cases, and landscapes.',
         whoFor:
           'People in Colombia who want an artist to paint their dog, cat, or other pet and deliver the piece to their city. There is no need to visit the studio: commissions and shipping are remote.',
         included: [
@@ -262,7 +262,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Sac_Artx pinta un retrato de mascota fallecida en acrílico desde las fotos que conservas. Boceto previo y envío a toda Colombia.',
         lead: 'Un retrato de mascota fallecida en Sac_Artx es un cuadro pintado a mano en acrílico, a partir de las fotos que conservas. Sara Amaya Caldas lo hace por encargo en Colombia: envías la foto por WhatsApp, recibes un boceto digital antes de pintar y el cuadro sale a todo el país.',
         whatItIs:
-          'Sac_Artx pinta el retrato en memoria sobre lienzo o sobre base de metacrilato. Sirve la foto que tengas, aunque no sea reciente. Si la luz es mala o hay varias tomas, se puede mejorar la iluminación o unirlas antes de pintar. Instagram y TikTok: @sac_artx.',
+          'Sac_Artx pinta el retrato en memoria sobre lienzo o sobre base de metacrilato. Sirve la foto que tengas, aunque no sea reciente. Si la luz es mala o hay varias tomas, se puede mejorar la iluminación o unirlas antes de pintar.',
         whoFor:
           'Quien perdió a su perro, gato u otra mascota y quiere tenerlo cerca, y quien encarga el cuadro como recuerdo para otra persona. El proceso es el mismo que el de un retrato de una mascota que sigue en casa, con el cuidado que merece el recuerdo.',
         included: [
@@ -281,7 +281,7 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           'Sac_Artx paints a memorial pet portrait in acrylic from the photos you kept. A sketch comes first, and shipping covers Colombia.',
         lead: 'A memorial pet portrait from Sac_Artx is a painting made by hand in acrylic, from the photos you still have. Sara Amaya Caldas paints it to order in Colombia: you send the photo on WhatsApp, you receive a digital sketch before painting, and the piece ships across the country.',
         whatItIs:
-          'Sac_Artx paints the memorial portrait on canvas or on a methacrylate base. The photo you have is enough, even if it is not recent. If the light is poor or you have several shots, the lighting can be improved or the photos combined before painting. Instagram and TikTok: @sac_artx.',
+          'Sac_Artx paints the memorial portrait on canvas or on a methacrylate base. The photo you have is enough, even if it is not recent. If the light is poor or you have several shots, the lighting can be improved or the photos combined before painting.',
         whoFor:
           'Anyone who lost a dog, cat, or other pet and wants them close, and anyone commissioning the painting as a keepsake for someone else. The process is the same as a portrait of a pet who is still here, with the care the memory deserves.',
         included: [
