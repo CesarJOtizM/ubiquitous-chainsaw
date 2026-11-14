@@ -3,7 +3,6 @@ import { ClientRouter } from 'astro:transitions';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import PageDecor from '../components/PageDecor.astro';
 import BackToTop from '../components/BackToTop.astro';
-import MeasurementNotice from '../components/MeasurementNotice.astro';
 import '../styles/global.css';
 import { useTranslations } from '../i18n/utils';
 import { areaServed } from '../data/coverage';
@@ -140,6 +139,23 @@ const schemaOrg = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Google tag (gtag.js). GT- sends to the connected GA4 property G-DGVQ013LLR. -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=GT-T94TPG7N"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'GT-T94TPG7N');
+    </script>
+
+    <!-- Microsoft Clarity. init inserts the tag for project zd9zexpe6f. -->
+    <script>
+      import Clarity from '@microsoft/clarity';
+
+      Clarity.init('zd9zexpe6f');
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon"      href="/favicon.ico" />
@@ -356,7 +372,6 @@ const schemaOrg = {
       document.addEventListener('astro:page-load', initReveal);
     </script>
 
-    <MeasurementNotice lang={lang} />
     <SpeedInsights />
     <!-- View transitions keep the script from the first page. Update its route after each swap. -->
     <script>
