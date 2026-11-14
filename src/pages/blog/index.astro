@@ -64,7 +64,8 @@ const extraJsonLd = [
   canonicalUrl={canonicalUrl}
   alternateEs={alternateEs}
   alternateEn={alternateEn}
-  markdownAlt={false}
+  markdownAlt="https://sacartx.art/info/blog.md"
+  markdownAltTitle="Guías de Sac_Artx en texto"
   extraJsonLd={extraJsonLd}
 >
   <Navbar lang={lang} />
@@ -78,10 +79,11 @@ const extraJsonLd = [
             <span aria-current="page">Blog</span>
           </nav>
           <p class="section-label">Guías y consejos</p>
-          <h1 class="blog-hero__title">Blog</h1>
+          <h1 class="blog-hero__title">¿Cómo encargar un retrato de tu mascota en Sac_Artx?</h1>
           <p class="blog-hero__intro">
-            Te cuento cómo encargar un retrato: qué foto sirve, cómo pinto un perro y cómo pinto un gato,
-            con piezas reales del catálogo, y qué esperar del boceto, el plazo y el envío a Colombia.
+            Sara Amaya Caldas escribe estas guías desde Sac_Artx, un estudio en Colombia.
+            Cada entrada responde una pregunta: qué foto sirve, cómo pinta un perro y cómo pinta un gato,
+            con piezas reales del catálogo, el boceto, el plazo y el envío.
           </p>
         </div>
       </header>
@@ -140,8 +142,10 @@ const extraJsonLd = [
   }
 
   .blog-hero__title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
     font-weight: 400;
+    line-height: 1.15;
+    max-width: 18em;
     margin: 8px 0 12px;
   }
 

@@ -13,9 +13,9 @@ import {
   whereText,
   sectionLabels,
 } from './price-text';
-import { business } from '../data/business';
+import { business, makerSentence } from '../data/business';
 import type { IntentEntry } from '../data/intent-pages';
-import type { IntentTopic } from '../i18n/paths';
+import { intentPath, type IntentTopic } from '../i18n/paths';
 
 /** Portrait pages that name the studio profiles in the "what it is" section. */
 export const profileTopics = new Set<IntentTopic>(['pets', 'dogs', 'cats', 'memorial']);
@@ -70,7 +70,11 @@ export function intentMarkdown(entry: IntentEntry): string {
   const parts: string[] = [
     `# ${entry.h1}`,
     '',
+    `> ${entry.lang === 'en' ? 'Cite this page' : 'Citar esta página'}: ${business.site}${intentPath(entry.topic, entry.lang)}`,
+    '',
     entry.lead,
+    '',
+    makerSentence(entry.lang),
     '',
     `## ${labels.whatItIs}`,
     '',

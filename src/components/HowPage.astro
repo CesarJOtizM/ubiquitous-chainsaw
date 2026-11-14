@@ -5,7 +5,7 @@ import Footer from './Footer.astro';
 import WhatsAppFAB from './WhatsAppFAB.astro';
 import { useTranslations } from '../i18n/utils';
 import { blogPostPath, catalogPath, homePath, intentPath, pricesPath, type Lang } from '../i18n/paths';
-import { business, paymentMethodLabels } from '../data/business';
+import { business, makerSentence, paymentMethodLabels } from '../data/business';
 import { intentEntry } from '../data/intent-pages';
 import { LEAD_TIME_DAYS } from '../data/prices';
 import { cop } from '../lib/price-text';
@@ -228,7 +228,7 @@ const extraJsonLd = [
         </nav>
         <p class="section-label">{copy.eyebrow}</p>
         <h1 class="how-hero__title">{entry.h1}</h1>
-        <p class="how-hero__lead">{entry.lead}</p>
+        <p class="how-hero__lead">{entry.lead} {makerSentence(lang)}</p>
         <div class="how-hero__ctas">
           <a href={waUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

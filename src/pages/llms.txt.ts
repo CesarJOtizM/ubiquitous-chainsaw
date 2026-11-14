@@ -5,16 +5,8 @@ import {
   priceGroupMarkdown,
   leadTimeText,
 } from '../lib/price-text';
-import {
-  catalogPath,
-  homePath,
-  intentPath,
-  intentTopics,
-  pricesPath,
-  privacyPath,
-  type Lang,
-} from '../i18n/paths';
-import { intentEntry } from '../data/intent-pages';
+import { homePath, type Lang } from '../i18n/paths';
+import { llmsIndex } from '../lib/info-docs';
 
 export const prerender = true;
 
@@ -57,45 +49,18 @@ function priceSection(lang: Lang): string[] {
   ];
 }
 
-function intentLinks(lang: Lang): string[] {
-  return intentTopics.map((topic) => {
-    const entry = intentEntry(topic, lang);
-    return `- [${entry.linkLabel}](${url(intentPath(topic, lang))})`;
-  });
-}
-
-function pagesSection(lang: Lang): string[] {
-  if (lang === 'en') {
-    return [
-      '### Pages',
-      '',
-      `- [Homepage](${url(homePath('en'))})`,
-      `- [Prices](${url(pricesPath('en'))})`,
-      `- [Catalog](${url(catalogPath('en'))})`,
-      `- [Privacy](${url(privacyPath('en'))})`,
-      ...intentLinks('en'),
-      `- [Instagram](${business.instagram}): ${business.handle}`,
-      `- [TikTok](${business.tiktok}): ${business.handle}`,
-      `- [Google Business Profile](${business.google})`,
-      `- [FAQ in text](${SITE}/info/preguntas.md)`,
-    ];
-  }
+function socialLines(lang: Lang): string[] {
+  const google = lang === 'en' ? 'Google Business Profile' : 'Ficha de Google';
   return [
-    '## Páginas',
-    '',
-    `- [Inicio](${url(homePath('es'))})`,
-    `- [Precios](${url(pricesPath('es'))})`,
-    `- [Catálogo](${url(catalogPath('es'))})`,
-    `- [Privacidad](${url(privacyPath('es'))})`,
-    ...intentLinks('es'),
     `- [Instagram](${business.instagram}): ${business.handle}`,
     `- [TikTok](${business.tiktok}): ${business.handle}`,
-    `- [Ficha de Google](${business.google})`,
-    `- [Preguntas frecuentes en texto](${SITE}/info/preguntas.md)`,
+    `- [${google}](${business.google})`,
   ];
 }
 
-function buildLlmsTxt(): string {
+async function buildLlmsTxt(): Promise<string> {
+  const esPages = await llmsIndex('es');
+  const enPages = await llmsIndex('en');
   const lines: string[] = [
     '# Sac_Artx',
     '',
@@ -107,7 +72,9 @@ function buildLlmsTxt(): string {
     '',
     ...priceSection('es'),
     '',
-    ...pagesSection('es'),
+    ...esPages,
+    '',
+    ...socialLines('es'),
     '',
     '## English',
     '',
@@ -119,12 +86,14 @@ function buildLlmsTxt(): string {
     '',
     ...priceSection('en'),
     '',
-    ...pagesSection('en'),
+    ...enPages,
+    '',
+    ...socialLines('en'),
   ];
   return lines.join('\n') + '\n';
 }
 
-export const GET: APIRoute = () =>
-  new Response(buildLlmsTxt(), {
+export const GET: APIRoute = async () =>
+  new Response(await buildLlmsTxt(), {
     headers: { 'Content-Type': 'text/plain; charset=utf-8' },
   });

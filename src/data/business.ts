@@ -38,3 +38,10 @@ export function coverageText(lang: Lang): string {
   const tail = lang === 'en' ? 'and the rest of Colombia' : 'y el resto de Colombia';
   return `${business.cities.join(', ')} ${tail}`;
 }
+
+/** One sentence an agent can quote: who paints, the studio, the country. */
+export function makerSentence(lang: Lang): string {
+  return lang === 'en'
+    ? `Sara Amaya Caldas paints this at ${business.name}, a studio in Colombia.`
+    : `Lo pinta Sara Amaya Caldas en ${business.name}, un estudio en Colombia.`;
+}

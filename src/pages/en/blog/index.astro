@@ -64,7 +64,8 @@ const extraJsonLd = [
   canonicalUrl={canonicalUrl}
   alternateEs={alternateEs}
   alternateEn={alternateEn}
-  markdownAlt={false}
+  markdownAlt="https://sacartx.art/info/blog-en.md"
+  markdownAltTitle="Sac_Artx guides in text"
   extraJsonLd={extraJsonLd}
 >
   <Navbar lang={lang} />
@@ -78,10 +79,11 @@ const extraJsonLd = [
             <span aria-current="page">Blog</span>
           </nav>
           <p class="section-label">Guides and tips</p>
-          <h1 class="blog-hero__title">Blog</h1>
+          <h1 class="blog-hero__title">How do you commission a pet portrait from Sac_Artx?</h1>
           <p class="blog-hero__intro">
-            I write about commissioning a portrait: which photo works, how I paint a dog and how I paint a cat,
-            with real pieces from the catalog, and what to expect from the sketch, the turnaround, and shipping across Colombia.
+            Sara Amaya Caldas writes these guides from Sac_Artx, a studio in Colombia.
+            Each post answers one question: which photo works, how she paints a dog, and how she paints a cat,
+            with real catalog pieces, the sketch, the turnaround, and shipping.
           </p>
         </div>
       </header>
@@ -140,8 +142,10 @@ const extraJsonLd = [
   }
 
   .blog-hero__title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
     font-weight: 400;
+    line-height: 1.15;
+    max-width: 18em;
     margin: 8px 0 12px;
   }
 

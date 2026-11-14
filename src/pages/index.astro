@@ -18,7 +18,13 @@ const lang = 'es' as const;
 const t = useTranslations(lang);
 ---
 
-<BaseLayout lang={lang} title={t('home.metaTitle')} description={t('home.metaDescription')}>
+<BaseLayout
+  lang={lang}
+  title={t('home.metaTitle')}
+  description={t('home.metaDescription')}
+  markdownAlt="https://sacartx.art/info/inicio.md"
+  markdownAltTitle="Sac_Artx en texto"
+>
   <Navbar lang={lang} />
   <main>
     <Hero lang={lang} />

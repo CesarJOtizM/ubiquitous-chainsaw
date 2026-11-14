@@ -33,7 +33,7 @@ const WHATSAPP = 'https://wa.me/573016584401';
 export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
   es: {
     label: 'Datos personales',
-    title: 'Política de privacidad',
+    title: '¿Qué datos personales trata Sac_Artx?',
     metaTitle: 'Política de privacidad · Sac_Artx',
     metaDescription:
       'Qué datos recoge Sac_Artx en sacartx.art, las cookies de Google Analytics y Microsoft Clarity, y cómo pedir que corrijamos o borremos tu información.',
@@ -44,7 +44,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
     sections: [
       {
         id: 'responsable',
-        title: 'Quién responde por tus datos',
+        title: '¿Quién responde por tus datos?',
         blocks: [
           {
             type: 'p',
@@ -66,7 +66,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'datos',
-        title: 'Qué datos recogemos',
+        title: '¿Qué datos recoge Sac_Artx?',
         blocks: [
           {
             type: 'p',
@@ -96,7 +96,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'cookies',
-        title: 'Cookies, analítica y alojamiento',
+        title: '¿Qué cookies y mediciones usa sacartx.art?',
         blocks: [
           {
             type: 'p',
@@ -190,7 +190,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'optout',
-        title: 'Cómo dejar de ser medido',
+        title: '¿Cómo dejas de ser medido?',
         blocks: [
           {
             type: 'ul',
@@ -216,7 +216,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'derechos',
-        title: 'Tus derechos',
+        title: '¿Qué derechos tienes sobre tus datos?',
         blocks: [
           {
             type: 'p',
@@ -242,7 +242,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'procedimiento',
-        title: 'Consultas y reclamos',
+        title: '¿Cómo haces una consulta o un reclamo?',
         blocks: [
           {
             type: 'p',
@@ -274,7 +274,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'encargados',
-        title: 'Quién más trata los datos',
+        title: '¿Quién más trata los datos?',
         blocks: [
           {
             type: 'p',
@@ -288,7 +288,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'conservacion',
-        title: 'Cuánto tiempo los guardamos',
+        title: '¿Cuánto tiempo guarda Sac_Artx los datos?',
         blocks: [
           {
             type: 'p',
@@ -302,7 +302,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'cambios',
-        title: 'Cambios',
+        title: '¿Cuándo cambia esta política?',
         blocks: [
           {
             type: 'p',
@@ -318,7 +318,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
   },
   en: {
     label: 'Personal data',
-    title: 'Privacy policy',
+    title: 'What personal data does Sac_Artx process?',
     metaTitle: 'Privacy policy and your data rights | Sac_Artx',
     metaDescription:
       'What data Sac_Artx collects on sacartx.art, the Google Analytics and Microsoft Clarity cookies, and how to ask us to correct or delete your information.',
@@ -329,7 +329,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
     sections: [
       {
         id: 'responsable',
-        title: 'Who is responsible for your data',
+        title: 'Who is responsible for your data?',
         blocks: [
           {
             type: 'p',
@@ -351,7 +351,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'datos',
-        title: 'What we collect',
+        title: 'What data does Sac_Artx collect?',
         blocks: [
           {
             type: 'p',
@@ -381,7 +381,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'cookies',
-        title: 'Cookies, analytics, and hosting',
+        title: 'Which cookies and measurements does sacartx.art use?',
         blocks: [
           {
             type: 'p',
@@ -475,7 +475,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'optout',
-        title: 'How to stop being measured',
+        title: 'How do you stop being measured?',
         blocks: [
           {
             type: 'ul',
@@ -501,7 +501,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'derechos',
-        title: 'Your rights',
+        title: 'What rights do you have over your data?',
         blocks: [
           {
             type: 'p',
@@ -527,7 +527,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'procedimiento',
-        title: 'Questions and complaints',
+        title: 'How do you ask a question or file a complaint?',
         blocks: [
           {
             type: 'p',
@@ -559,7 +559,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'encargados',
-        title: 'Who else processes the data',
+        title: 'Who else processes the data?',
         blocks: [
           {
             type: 'p',
@@ -573,7 +573,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'conservacion',
-        title: 'How long we keep it',
+        title: 'How long does Sac_Artx keep the data?',
         blocks: [
           {
             type: 'p',
@@ -587,7 +587,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
       },
       {
         id: 'cambios',
-        title: 'Changes',
+        title: 'When does this policy change?',
         blocks: [
           {
             type: 'p',

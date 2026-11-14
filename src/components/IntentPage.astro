@@ -6,7 +6,7 @@ import WhatsAppFAB from './WhatsAppFAB.astro';
 import WhereParagraph from './WhereParagraph.astro';
 import { useTranslations } from '../i18n/utils';
 import { catalogPath, homePath, intentPath, pricesPath } from '../i18n/paths';
-import { business } from '../data/business';
+import { business, makerSentence } from '../data/business';
 import { areaServed } from '../data/coverage';
 import { basePrices, canvasPrices, LEAD_TIME_DAYS, PRICE_CASE_PET } from '../data/prices';
 import {
@@ -125,7 +125,7 @@ const extraJsonLd = [
             <span aria-current="page">{entry.linkLabel}</span>
           </nav>
           <h1 class="intent-hero__title">{entry.h1}</h1>
-          <p class="intent-hero__intro">{entry.lead}</p>
+          <p class="intent-hero__intro">{entry.lead} {makerSentence(lang)}</p>
         </div>
       </header>
 

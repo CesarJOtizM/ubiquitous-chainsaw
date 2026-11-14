@@ -127,7 +127,8 @@ const extraJsonLd = [blogPosting, breadcrumb];
   canonicalUrl={canonicalUrl}
   alternateEs={alternateEs}
   alternateEn={alternateEn}
-  markdownAlt={false}
+  markdownAlt={`${SITE}/info/${data.slug}.md`}
+  markdownAltTitle={data.title}
   extraJsonLd={extraJsonLd}
 >
   <Navbar lang={lang} langSwitchHref={langSwitchHref} />

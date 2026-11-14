@@ -175,19 +175,19 @@ export function whereText(lang: Lang, variant: 'studio' | 'colombia' = 'studio')
 /** Localized section headings shared by HTML and generated markdown. */
 export const sectionLabels: Record<Lang, Record<string, string>> = {
   es: {
-    whatItIs: 'Qué es',
-    whoFor: 'Para quién',
-    included: 'Qué incluye',
-    prices: 'Precios',
-    turnaround: 'Plazo y pago',
-    where: 'Envío a toda Colombia',
+    whatItIs: '¿Qué es este encargo de Sac_Artx?',
+    whoFor: '¿Para quién es este encargo?',
+    included: '¿Qué incluye el encargo?',
+    prices: '¿Cuánto cuesta?',
+    turnaround: '¿Cuánto tarda y cómo se paga?',
+    where: '¿A qué ciudades de Colombia envía Sac_Artx?',
   },
   en: {
-    whatItIs: 'What it is',
-    whoFor: 'Who it is for',
-    included: 'What is included',
-    prices: 'Prices',
-    turnaround: 'Turnaround and payment',
-    where: 'Shipping across Colombia',
+    whatItIs: 'What is this Sac_Artx commission?',
+    whoFor: 'Who is this commission for?',
+    included: 'What does the commission include?',
+    prices: 'How much does it cost?',
+    turnaround: 'How long does it take and how do you pay?',
+    where: 'Which cities in Colombia does Sac_Artx ship to?',
   },
 };

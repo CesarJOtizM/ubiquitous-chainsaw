@@ -12,7 +12,7 @@ import {
   pricesPath,
   productPath,
 } from '../i18n/paths';
-import { business } from '../data/business';
+import { business, makerSentence } from '../data/business';
 import { canvasPrices, basePrices, casePrices, extraPetPrices, type PriceRow } from '../data/prices';
 import { cop, priceLead, leadTimeText } from '../lib/price-text';
 import { itemsForLine } from '../data/catalog';
@@ -142,10 +142,10 @@ const relatedLinks = [
 const labels =
   lang === 'en'
     ? {
-        included: "What's included",
-        prices: 'Prices',
-        turnaround: 'Turnaround and payment',
-        where: 'Shipping across Colombia',
+        included: 'What does the commission include?',
+        prices: 'How much does it cost?',
+        turnaround: 'How long does it take and how do you pay?',
+        where: 'Which cities in Colombia does Sac_Artx ship to?',
         faq: 'Frequently asked questions',
         related: 'Related pages',
         gallery: 'Gallery',
@@ -157,10 +157,10 @@ const labels =
         catalog: 'Catalog',
       }
     : {
-        included: 'Qué incluye',
-        prices: 'Precios',
-        turnaround: 'Plazo y pago',
-        where: 'Envío a toda Colombia',
+        included: '¿Qué incluye el encargo?',
+        prices: '¿Cuánto cuesta?',
+        turnaround: '¿Cuánto tarda y cómo se paga?',
+        where: '¿A qué ciudades de Colombia envía Sac_Artx?',
         faq: 'Preguntas frecuentes',
         related: 'Páginas relacionadas',
         gallery: 'Galería',
@@ -242,6 +242,18 @@ const extraJsonLd = [
     : []),
   {
     '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: entry.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.link ? `${item.a} ${item.link.label}.` : item.a,
+      },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: labels.crumbHome, item: homeUrl },
@@ -260,7 +272,8 @@ const extraJsonLd = [
   canonicalUrl={canonicalUrl}
   alternateEs={alternateEs}
   alternateEn={alternateEn}
-  markdownAlt={false}
+  markdownAlt={`${SITE}/info/${entry.slug}.md`}
+  markdownAltTitle={entry.metaTitle}
   extraJsonLd={extraJsonLd}
 >
   <Navbar lang={lang} />
@@ -278,7 +291,7 @@ const extraJsonLd = [
                 <span aria-current="page">{entry.linkLabel}</span>
               </nav>
               <h1 class="product-hero__title">{entry.h1}</h1>
-              <p class="product-hero__intro">{entry.lead}</p>
+              <p class="product-hero__intro">{entry.lead} {makerSentence(lang)}</p>
             </div>
             {poster && (
               <figure class="product-hero__poster">

@@ -100,7 +100,8 @@ function sizesFor(layout: string): string {
   canonicalUrl={canonicalUrl}
   alternateEs={alternateEs}
   alternateEn={alternateEn}
-  markdownAlt={false}
+  markdownAlt={`${SITE}/info/${lang === 'en' ? 'about' : 'sobre-mi'}.md`}
+  markdownAltTitle={copy.metaTitle}
   extraJsonLd={extraJsonLd}
 >
   <Navbar lang={lang} />
@@ -114,6 +115,7 @@ function sizesFor(layout: string): string {
             <span aria-current="page">{copy.crumbCurrent}</span>
           </nav>
           <p class="about-kicker">{copy.storyTitle}</p>
+          <p class="about-lead">{copy.lead}</p>
         </header>
 
         {copy.chapters.map((chapter, i) => {
@@ -227,6 +229,14 @@ function sizesFor(layout: string): string {
     font-weight: 400;
     line-height: 1.2;
     color: var(--color-text-muted);
+  }
+
+  .about-lead {
+    max-width: 42rem;
+    margin: 18px 0 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text);
   }
 
   .about-chapter + .about-chapter {

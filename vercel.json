@@ -51,6 +51,10 @@
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
     },
     {
+      "source": "/info/:file(inicio|home|catalogo|catalog|sobre-mi|about|privacidad|privacy|blog-en|blog|cuadros-en-acrilico|bases-acrilicas|fundas-personalizadas|cuadros-de-diferentes-tamanos|imanes-de-lienzo|acrylic-paintings|acrylic-bases|custom-phone-cases|paintings-different-sizes|canvas-magnets|como-elegir-la-mejor-foto-mascota|como-pinto-el-retrato-de-tu-gato|como-pinto-el-retrato-de-tu-perro|how-to-choose-the-best-photo|how-i-paint-your-dog-portrait|how-i-paint-your-cat-portrait).md",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
       "source": "/img/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }

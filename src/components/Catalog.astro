@@ -56,9 +56,9 @@ const lines = catalogLines.map((line) => {
         <span aria-current="page">{t('catalog.title')}</span>
       </nav>
       <p class="section-label">{t('catalog.label')}</p>
-      <h1 class="catalog-hero__title">{t('catalog.title')}</h1>
+      <h1 class="catalog-hero__title">{t('catalog.h1')}</h1>
       <p class="catalog-hero__subtitle">
-        {t('catalog.subtitle')}{' '}
+        {t('catalog.answer')} {t('catalog.subtitle')}{' '}
         <a href={pricesHref} class="catalog-hero__link">{t('catalog.pricesLink')}</a>
       </p>
     </div>
@@ -226,9 +226,10 @@ const lines = catalogLines.map((line) => {
 
   .catalog-hero__title {
     font-family: var(--font-heading);
-    font-size: clamp(52px, 8vw, 88px);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
     font-weight: 400;
-    line-height: 0.95;
+    line-height: 1.15;
+    max-width: 18em;
     color: var(--color-text);
     margin-bottom: 16px;
   }

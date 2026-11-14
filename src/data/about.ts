@@ -40,6 +40,8 @@ export interface AboutCopy {
   metaTitle: string;
   metaDescription: string;
   storyTitle: string;
+  /** Direct answer above the story, so an agent can quote who Sara is. */
+  lead: string;
   chapters: AboutChapter[];
   cta: string;
   relatedHeading: string;
@@ -66,6 +68,7 @@ export const aboutCopy: Record<Lang, AboutCopy> = {
     metaDescription:
       'Sara Amaya cuenta cómo nació Sac_Artx: su primer cuadro en 2006, las fundas pintadas a mano y los retratos de mascotas que empezaron como un pasatiempo.',
     storyTitle: 'La historia detrás de Sac_Artx',
+    lead: 'Sara Amaya Caldas es la artista de Sac_Artx, un estudio en Colombia. Pinta retratos de mascotas a mano en acrílico, paisajes y fundas de celular. Su primer cuadro es de 2006.',
     cta: 'Escríbeme por WhatsApp',
     relatedHeading: 'También te puede servir',
     crumbHome: 'Inicio',
@@ -193,6 +196,7 @@ export const aboutCopy: Record<Lang, AboutCopy> = {
     metaDescription:
       'Sara Amaya tells how Sac_Artx began: her first painting in 2006, hand-painted phone cases, and the pet portraits that grew out of a hobby.',
     storyTitle: 'The story behind Sac_Artx',
+    lead: 'Sara Amaya Caldas is the artist behind Sac_Artx, a studio in Colombia. She hand-paints pet portraits in acrylic, plus landscapes and phone cases. Her first painting is from 2006.',
     cta: 'Message me on WhatsApp',
     relatedHeading: 'You may also like',
     crumbHome: 'Home',

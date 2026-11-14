@@ -1,25 +1,19 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
-import { intentPages } from '../../data/intent-pages';
-import { intentMarkdown } from '../../lib/intent-markdown';
+import { collectInfoDocs } from '../../lib/info-docs';
 
 export const prerender = true;
 
-const entries = Object.values(intentPages);
+export const getStaticPaths = (async () => {
+  const docs = await collectInfoDocs();
+  return docs.map((doc) => ({ params: { slug: doc.slug }, props: { markdown: doc.markdown } }));
+}) satisfies GetStaticPaths;
 
-export const getStaticPaths = (() =>
-  entries.map((entry) => ({ params: { slug: entry.slug } }))) satisfies GetStaticPaths;
-
-export const GET: APIRoute = ({ params }) => {
-  const entry = entries.find((e) => e.slug === params.slug);
-  if (!entry) {
-    return new Response('Not found', { status: 404 });
-  }
-  return new Response(intentMarkdown(entry), {
+export const GET: APIRoute = ({ props }) =>
+  new Response(props.markdown, {
     headers: {
       'Content-Type': 'text/markdown; charset=utf-8',
-      // The HTML guide is the URL that should rank. This file stays as the
-      // markdown alternate for citation tools.
+      // The HTML page is the URL that should rank. This file is the
+      // markdown alternate agents fetch.
       'X-Robots-Tag': 'noindex, follow',
     },
   });
-};

@@ -18,7 +18,14 @@ const lang = 'en' as const;
 const t = useTranslations(lang);
 ---
 
-<BaseLayout lang={lang} ogUrl="https://sacartx.art/en/" title={t('home.metaTitle')} description={t('home.metaDescription')}>
+<BaseLayout
+  lang={lang}
+  ogUrl="https://sacartx.art/en/"
+  title={t('home.metaTitle')}
+  description={t('home.metaDescription')}
+  markdownAlt="https://sacartx.art/info/home.md"
+  markdownAltTitle="Sac_Artx in text"
+>
   <Navbar lang={lang} />
   <main>
     <Hero lang={lang} />
