@@ -38,6 +38,9 @@ export interface ProductEntry {
   priceNote?: string;
   /** Catalog line ids feeding the gallery. */
   lineIds: CatalogLineId[];
+  /** Optional hero image, for a product that does not have a gallery yet. */
+  posterSrc?: string;
+  posterAlt?: string;
   /** Other product pages to cross-link. */
   relatedProducts: ProductKey[];
   /** Relevant intent (guide) pages to cross-link. */
@@ -65,6 +68,7 @@ type Content = Pick<
   | 'whatIncluded'
   | 'faq'
   | 'priceNote'
+  | 'posterAlt'
 >;
 
 interface ProductConfig {
@@ -72,6 +76,7 @@ interface ProductConfig {
   lineIds: CatalogLineId[];
   relatedProducts: ProductKey[];
   relatedIntents: IntentTopic[];
+  posterSrc?: string;
   content: Record<Lang, Content>;
 }
 
@@ -407,6 +412,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
   magnets: {
     priceSource: null,
     lineIds: [],
+    posterSrc: '/images/imanes/proximamente.jpg',
     relatedProducts: ['paintings', 'cases'],
     relatedIntents: ['pets', 'memorial'],
     content: {
@@ -418,6 +424,8 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         metaDescription:
           'Pinto a tu mascota en un mini lienzo de 7,5 cm, redondo o cuadrado, con imán. Producto nuevo: el precio está por confirmar. Envío contra entrega.',
         lead: 'Pinto a tu mascota en un mini lienzo de 7,5 × 7,5 cm, disponible en forma redonda o cuadrada. Incluye un imán en la parte trasera para que puedas decorar tu nevera o cualquier superficie metálica con un retrato único de tu mascota.',
+        posterAlt:
+          'Próximamente: minilienzos magnéticos redondos y cuadrados con retratos de perros y gatos.',
         priceNote:
           'El precio está por confirmar: es un producto nuevo. Te lo digo por WhatsApp antes de empezar. El envío va contra entrega: lo pagas a la transportadora cuando llega a tu casa.',
         whatIncluded: [
@@ -464,6 +472,8 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         metaDescription:
           'I paint your pet on a 7.5 cm mini canvas, round or square, with a magnet. New product: the price is still to be confirmed. Cash on delivery.',
         lead: 'I paint your pet on a 7.5 × 7.5 cm mini canvas, available round or square. A magnet on the back lets you decorate your fridge, or any metal surface, with a unique portrait of your pet.',
+        posterAlt:
+          'Coming soon: round and square magnetic mini canvases with dog and cat portraits.',
         priceNote:
           'The price is still to be confirmed: this is a new product. I will tell you on WhatsApp before I start. Shipping is cash on delivery: you pay the carrier when it arrives at your home.',
         whatIncluded: [
@@ -518,6 +528,7 @@ export function productEntry(product: ProductKey, lang: Lang): ProductEntry {
     altSlug: productSlugs[product][otherLang],
     priceSource: config.priceSource,
     lineIds: config.lineIds,
+    posterSrc: config.posterSrc,
     relatedProducts: config.relatedProducts,
     relatedIntents: config.relatedIntents,
     ...content,

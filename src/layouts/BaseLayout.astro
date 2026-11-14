@@ -140,6 +140,42 @@ const schemaOrg = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- On localhost, drop any script whose URL is clarity.ms.
+         GTM injects that tag; the npm init below is skipped separately. -->
+    <script is:inline>
+      (function () {
+        var host = location.hostname;
+        if (host !== 'localhost' && host !== '127.0.0.1' && host !== '::1') return;
+
+        var proto = HTMLScriptElement.prototype;
+        var srcDesc = Object.getOwnPropertyDescriptor(proto, 'src');
+        if (srcDesc && srcDesc.get && srcDesc.set) {
+          Object.defineProperty(proto, 'src', {
+            configurable: true,
+            enumerable: srcDesc.enumerable,
+            get: function () {
+              return srcDesc.get.call(this);
+            },
+            set: function (value) {
+              if (String(value).indexOf('clarity.ms') !== -1) return;
+              srcDesc.set.call(this, value);
+            },
+          });
+        }
+
+        var setAttribute = proto.setAttribute;
+        proto.setAttribute = function (name, value) {
+          if (
+            String(name).toLowerCase() === 'src' &&
+            String(value).indexOf('clarity.ms') !== -1
+          ) {
+            return;
+          }
+          return setAttribute.call(this, name, value);
+        };
+      })();
+    </script>
+
     <!-- Google Tag Manager. Container GTM-KZK6S278. -->
     <script is:inline>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -159,11 +195,18 @@ const schemaOrg = {
       gtag('config', 'GT-T94TPG7N');
     </script>
 
-    <!-- Microsoft Clarity. init inserts the tag for project zd9zexpe6f. -->
+    <!-- Microsoft Clarity. init inserts the tag for project zd9zexpe6f.
+         The import stays behind the host check so localhost does not download it. -->
     <script>
-      import Clarity from '@microsoft/clarity';
+      const host = location.hostname;
+      const isLocal =
+        host === 'localhost' || host === '127.0.0.1' || host === '::1';
 
-      Clarity.init('zd9zexpe6f');
+      if (!isLocal) {
+        import('@microsoft/clarity').then((mod) => {
+          mod.default.init('zd9zexpe6f');
+        });
+      }
     </script>
 
     <!-- Favicon -->

@@ -20,6 +20,7 @@ import { animalAltEn, animalAltEs, animalForSrc } from '../data/catalog-animals'
 import { imageDimensions, imageSrcSet, imageUrl } from '../lib/images';
 import { intentEntry } from '../data/intent-pages';
 import { productEntry, type ProductEntry } from '../data/product-pages';
+import { googleReviews, googleReviewUrl } from '../data/google-reviews';
 
 export interface Props {
   entry: ProductEntry;
@@ -92,6 +93,15 @@ const extraPetNote = (() => {
   return '';
 })();
 
+const poster = entry.posterSrc
+  ? {
+      src: imageUrl(entry.posterSrc, 800),
+      srcset: imageSrcSet(entry.posterSrc, [480, 800, 1024]),
+      ...imageDimensions(entry.posterSrc, 800),
+      alt: entry.posterAlt || entry.h1,
+    }
+  : null;
+
 // Gallery built from the product's catalog lines (same approach as Catalog.astro).
 const galleryName = entry.linkLabel;
 const gallery = entry.lineIds.flatMap((id) =>
@@ -139,6 +149,10 @@ const labels =
         faq: 'Frequently asked questions',
         related: 'Related pages',
         gallery: 'Gallery',
+        reviews: 'Google reviews',
+        reviewsNote: 'The text is the original review, in Spanish.',
+        reviewsOnGoogle: 'See on Google',
+        reviewsStars: 'out of 5 on Google',
         crumbHome: t('prices.crumbHome'),
         catalog: 'Catalog',
       }
@@ -150,36 +164,47 @@ const labels =
         faq: 'Preguntas frecuentes',
         related: 'Páginas relacionadas',
         gallery: 'Galería',
+        reviews: 'Reseñas en Google',
+        reviewsNote: '',
+        reviewsOnGoogle: 'Ver en Google',
+        reviewsStars: 'de 5 en Google',
         crumbHome: t('prices.crumbHome'),
         catalog: 'Catálogo',
       };
 
+const reviews = googleReviews[entry.product] ?? [];
+
+// Product snippets need a real offer. Quote-only and unpublished prices stay
+// out of Product schema so Search Console does not flag an incomplete product.
+const hasOffer = lowPrice !== undefined && highPrice !== undefined && !quoteOnly;
+
 const extraJsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    '@id': `${canonicalUrl}#product`,
-    name: entry.h1,
-    description: entry.metaDescription,
-    url: canonicalUrl,
-    ...(schemaImages.length ? { image: schemaImages } : {}),
-    brand: { '@type': 'Brand', name: 'Sac_Artx' },
-    category: entry.category,
-    ...(lowPrice !== undefined && highPrice !== undefined && !quoteOnly
-      ? {
+  ...(hasOffer
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Product',
+          '@id': `${canonicalUrl}#product`,
+          name: entry.h1,
+          description: entry.metaDescription,
+          url: canonicalUrl,
+          ...(schemaImages.length ? { image: schemaImages } : {}),
+          brand: { '@type': 'Brand', name: 'Sac_Artx' },
+          category: entry.category,
           offers: {
             '@type': 'AggregateOffer',
             priceCurrency: 'COP',
             lowPrice,
             highPrice,
+            offerCount: priceRows.length,
             availability: 'https://schema.org/InStock',
             areaServed: { '@type': 'Country', name: 'Colombia' },
             url: canonicalUrl,
             seller: { '@id': `${SITE}/#business` },
           },
-        }
-      : {}),
-  },
+        },
+      ]
+    : []),
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -206,17 +231,35 @@ const extraJsonLd = [
   <Navbar lang={lang} />
   <main>
     <div class="product-page">
-      <header class="product-hero">
+      <header class:list={['product-hero', { 'product-hero--poster': Boolean(poster) }]}>
         <div class="container">
-          <nav class="product-crumb" aria-label={lang === 'en' ? 'Breadcrumb' : 'Miga de pan'}>
-            <a href={homePath(lang)}>{labels.crumbHome}</a>
-            <span aria-hidden="true">/</span>
-            <a href={catalogPath(lang)}>{labels.catalog}</a>
-            <span aria-hidden="true">/</span>
-            <span aria-current="page">{entry.linkLabel}</span>
-          </nav>
-          <h1 class="product-hero__title">{entry.h1}</h1>
-          <p class="product-hero__intro">{entry.lead}</p>
+          <div class="product-hero__layout">
+            <div>
+              <nav class="product-crumb" aria-label={lang === 'en' ? 'Breadcrumb' : 'Miga de pan'}>
+                <a href={homePath(lang)}>{labels.crumbHome}</a>
+                <span aria-hidden="true">/</span>
+                <a href={catalogPath(lang)}>{labels.catalog}</a>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page">{entry.linkLabel}</span>
+              </nav>
+              <h1 class="product-hero__title">{entry.h1}</h1>
+              <p class="product-hero__intro">{entry.lead}</p>
+            </div>
+            {poster && (
+              <figure class="product-hero__poster">
+                <img
+                  src={poster.src}
+                  srcset={poster.srcset || undefined}
+                  sizes="(max-width: 800px) 100vw, 440px"
+                  alt={poster.alt}
+                  width={poster.width}
+                  height={poster.height}
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </figure>
+            )}
+          </div>
         </div>
       </header>
 
@@ -295,6 +338,34 @@ const extraJsonLd = [
           <WhereParagraph lang={lang} />
         </section>
 
+        {reviews.length > 0 && (
+          <section class="product-section" aria-labelledby="product-reviews-title">
+            <h2 id="product-reviews-title">{labels.reviews}</h2>
+            {labels.reviewsNote && <p class="product-reviews__note">{labels.reviewsNote}</p>}
+            <ul class="product-reviews">
+              {reviews.map((review) => (
+                <li>
+                  <blockquote class="product-reviews__quote">
+                    <p>{review.quote}</p>
+                  </blockquote>
+                  <footer class="product-reviews__meta">
+                    <span
+                      class="product-reviews__stars"
+                      aria-label={`${review.stars} ${labels.reviewsStars}`}
+                    >
+                      {'⭐'.repeat(review.stars)}
+                    </span>
+                    <strong>{review.author}</strong>
+                    <a href={googleReviewUrl} target="_blank" rel="noopener noreferrer">
+                      {labels.reviewsOnGoogle}
+                    </a>
+                  </footer>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         <section class="product-section">
           <h2>{labels.faq}</h2>
           <dl class="product-faq">
@@ -372,6 +443,38 @@ const extraJsonLd = [
     font-size: 1.0625rem;
     color: var(--color-text-muted);
     line-height: 1.65;
+  }
+
+  .product-hero__layout {
+    display: block;
+  }
+
+  .product-hero--poster .product-hero__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 440px);
+    gap: clamp(28px, 4vw, 56px);
+    align-items: center;
+  }
+
+  .product-hero__poster {
+    margin: 0;
+  }
+
+  .product-hero__poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 16px 40px rgba(42, 31, 38, 0.12);
+  }
+
+  @media (max-width: 800px) {
+    .product-hero--poster .product-hero__layout {
+      grid-template-columns: 1fr;
+    }
+
+    .product-hero__poster {
+      max-width: 440px;
+    }
   }
 
   .product-body {
@@ -454,6 +557,47 @@ const extraJsonLd = [
   .product-prices__price {
     font-weight: 500;
     white-space: nowrap;
+  }
+
+  .product-section > ul.product-reviews {
+    list-style: none;
+    padding: 0;
+    gap: 16px;
+  }
+
+  .product-reviews li {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-gold);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+
+  .product-reviews__quote {
+    margin: 0;
+  }
+
+  .product-reviews__quote p {
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  .product-reviews__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 12px;
+    margin-top: 12px;
+    font-size: 0.9375rem;
+  }
+
+  .product-reviews__stars {
+    letter-spacing: 1px;
+  }
+
+  .product-reviews__note {
+    color: var(--color-text-muted);
+    margin-bottom: 12px;
   }
 
   .product-faq {
