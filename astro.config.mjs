@@ -11,6 +11,10 @@ const alternates = sitemapLinks(site);
 // https://astro.build/config
 export default defineConfig({
   site,
+  build: {
+    // Component CSS over 4 KB was a second request that blocked the first paint.
+    inlineStylesheets: 'always',
+  },
   redirects: {
     '/retratos-mascotas-colombia': '/retratos-de-mascotas/',
     '/en/pet-portraits-colombia': '/en/pet-portraits/',
