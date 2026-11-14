@@ -370,12 +370,6 @@ export const ui = {
     'footer.nav.faq': 'Preguntas frecuentes',
     'footer.nav.contact': 'Contacto',
     'footer.privacy': 'Privacidad',
-    'measure.label': 'Medición',
-    'measure.title': 'Cómo medimos la visita',
-    'measure.body': 'Si aceptas, Google Analytics y Microsoft Clarity miden esta visita: páginas, clics, desplazamientos y una grabación de la sesión. Si rechazas, el sitio sigue igual y esas herramientas no se cargan.',
-    'measure.privacy': 'Política de privacidad',
-    'measure.accept': 'Aceptar',
-    'measure.reject': 'Rechazar',
 
     // whatsapp fab
     'fab.ariaLabel': 'Contactar por WhatsApp para encargar',
@@ -765,12 +759,6 @@ export const ui = {
     'footer.nav.faq': 'FAQ',
     'footer.nav.contact': 'Contact',
     'footer.privacy': 'Privacy',
-    'measure.label': 'Measurement',
-    'measure.title': 'How we measure this visit',
-    'measure.body': 'If you accept, Google Analytics and Microsoft Clarity measure this visit: pages, clicks, scrolling, and a session recording. If you reject, the site works the same and those tools do not load.',
-    'measure.privacy': 'Privacy policy',
-    'measure.accept': 'Accept',
-    'measure.reject': 'Reject',
 
     // whatsapp fab
     'fab.ariaLabel': 'Contact via WhatsApp to commission',
