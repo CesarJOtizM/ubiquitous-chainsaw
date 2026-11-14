@@ -90,6 +90,13 @@ function sizesFor(layout: string): string {
   if (layout === 'close') return '(max-width: 860px) 100vw, 32vw';
   return '(max-width: 860px) 100vw, 46vw';
 }
+
+const lcpSrc = copy.chapters[0]?.images[0]?.src;
+const lcpSizes = '(max-width: 860px) 92vw, 46vw';
+const lcpSrcset = lcpSrc ? imageSrcSet(lcpSrc, [480, 768, 1024]) : '';
+const lcpPreload = lcpSrc
+  ? { src: imageUrl(lcpSrc, 480), srcset: lcpSrcset, sizes: lcpSizes }
+  : undefined;
 ---
 
 <BaseLayout
@@ -103,6 +110,7 @@ function sizesFor(layout: string): string {
   markdownAlt={`${SITE}/info/${lang === 'en' ? 'about' : 'sobre-mi'}.md`}
   markdownAltTitle={copy.metaTitle}
   extraJsonLd={extraJsonLd}
+  preloadImage={lcpPreload}
 >
   <Navbar lang={lang} />
   <main>
@@ -149,16 +157,19 @@ function sizesFor(layout: string): string {
                   )}
                 </div>
 
-                <div class="about-visual reveal" style={i === 0 ? 'transition-delay: 120ms' : undefined}>
+                <div class:list={['about-visual', { reveal: i !== 0 }]}>
                   {chapter.images.map((image, j) => {
                     const meta = imageMeta(image.src);
-                    const srcset = imageSrcSet(image.src, chapter.layout === 'wide' ? [640, 1024] : [480, 768, 1024]);
+                    const isLcp = i === 0 && j === 0;
+                    const srcset = isLcp
+                      ? lcpSrcset
+                      : imageSrcSet(image.src, chapter.layout === 'wide' ? [640, 1024] : [480, 768, 1024]);
                     return (
                       <figure>
                         <img
-                          src={imageUrl(image.src, chapter.layout === 'wide' ? 1024 : 960)}
+                          src={imageUrl(image.src, isLcp ? 480 : chapter.layout === 'wide' ? 1024 : 960)}
                           srcset={srcset || undefined}
-                          sizes={srcset ? sizesFor(chapter.layout) : undefined}
+                          sizes={srcset ? (isLcp ? lcpSizes : sizesFor(chapter.layout)) : undefined}
                           width={meta?.width ?? 1024}
                           height={meta?.height ?? 1024}
                           alt={image.alt}

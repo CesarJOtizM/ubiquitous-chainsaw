@@ -93,10 +93,12 @@ const extraPetNote = (() => {
   return '';
 })();
 
+const posterSizes = '(max-width: 800px) 92vw, 440px';
 const poster = entry.posterSrc
   ? {
-      src: imageUrl(entry.posterSrc, 800),
-      srcset: imageSrcSet(entry.posterSrc, [480, 800, 1024]),
+      src: imageUrl(entry.posterSrc, 480),
+      srcset: imageSrcSet(entry.posterSrc, [360, 480, 800]),
+      sizes: posterSizes,
       ...imageDimensions(entry.posterSrc, 800),
       alt: entry.posterAlt || entry.h1,
     }
@@ -275,6 +277,7 @@ const extraJsonLd = [
   markdownAlt={`${SITE}/info/${entry.slug}.md`}
   markdownAltTitle={entry.metaTitle}
   extraJsonLd={extraJsonLd}
+  preloadImage={poster ? { src: poster.src, srcset: poster.srcset, sizes: poster.sizes } : undefined}
 >
   <Navbar lang={lang} />
   <main>
@@ -298,7 +301,7 @@ const extraJsonLd = [
                 <img
                   src={poster.src}
                   srcset={poster.srcset || undefined}
-                  sizes="(max-width: 800px) 100vw, 440px"
+                  sizes={poster.sizes}
                   alt={poster.alt}
                   width={poster.width}
                   height={poster.height}
@@ -327,7 +330,7 @@ const extraJsonLd = [
                     height={item.height}
                     loading={index === 0 && !poster ? 'eager' : 'lazy'}
                     fetchpriority={index === 0 && !poster ? 'high' : undefined}
-                    decoding={index === 0 && !poster ? 'sync' : 'async'}
+                    decoding="async"
                   />
                 </li>
               ))}

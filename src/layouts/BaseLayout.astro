@@ -1,6 +1,5 @@
 ---
 import { ClientRouter } from 'astro:transitions';
-import SpeedInsights from '@vercel/speed-insights/astro';
 import PageDecor from '../components/PageDecor.astro';
 import BackToTop from '../components/BackToTop.astro';
 import MeasureNotice from '../components/MeasureNotice.astro';
@@ -191,25 +190,45 @@ const schemaOrg = {
       })();
     </script>
 
-    <!-- Google Tag Manager and Google tag start after load, so they do not compete with the first image. -->
+    <!-- Analytics starts after the first paint, or on the first tap. -->
     <script is:inline>
-      window.addEventListener('load', function () {
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-KZK6S278');
+      (function () {
+        var started = false;
+        function startAnalytics() {
+          if (started) return;
+          started = true;
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-KZK6S278');
 
-        var gtagScript = document.createElement('script');
-        gtagScript.async = true;
-        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=GT-T94TPG7N';
-        document.head.appendChild(gtagScript);
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', 'GT-T94TPG7N');
-      });
+          var gtagScript = document.createElement('script');
+          gtagScript.async = true;
+          gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=GT-T94TPG7N';
+          document.head.appendChild(gtagScript);
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'GT-T94TPG7N');
+          document.dispatchEvent(new Event('sacartx:analytics'));
+        }
+
+        function whenIdle() {
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(startAnalytics, { timeout: 4000 });
+          } else {
+            setTimeout(startAnalytics, 4000);
+          }
+        }
+
+        window.addEventListener('load', function () {
+          setTimeout(whenIdle, 2000);
+        });
+        window.addEventListener('pointerdown', startAnalytics, { once: true, passive: true });
+        window.addEventListener('keydown', startAnalytics, { once: true });
+      })();
     </script>
 
     <!-- Microsoft Clarity, project zd9zexpe6f. Loads only after the visitor accepts. -->
@@ -280,15 +299,17 @@ const schemaOrg = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Logo font — preload so Sac_Artx does not flash between routes -->
-    <link rel="preload" href="/fonts/Brightwall.ttf" as="font" type="font/ttf" crossorigin />
+    <!-- The logo font waits when a page already preloads its LCP image. -->
+    {!preloadImage && (
+      <link rel="preload" href="/fonts/Brightwall.ttf" as="font" type="font/ttf" crossorigin />
+    )}
     {preloadImage && (
       <link
         rel="preload"
         as="image"
         href={preloadImage.src}
-        imagesrcset={preloadImage.srcset}
-        imagesizes={preloadImage.sizes}
+        imagesrcset={preloadImage.srcset || undefined}
+        imagesizes={preloadImage.srcset ? preloadImage.sizes : undefined}
         fetchpriority="high"
       />
     )}
@@ -464,26 +485,32 @@ const schemaOrg = {
       document.addEventListener('astro:page-load', initReveal);
     </script>
 
-    <SpeedInsights />
-    <!-- View transitions keep the script from the first page. Update its route after each swap. -->
+    <!-- Speed Insights joins analytics, after the first paint. -->
     <script>
-      import { computeRoute } from '@vercel/speed-insights';
+      type InsightHandle = { setRoute: (route: string | null) => void } | null;
+      let insights: InsightHandle = null;
+      let insightsStarting = false;
 
-      function syncSpeedInsightsRoute() {
-        const el = document.querySelector('vercel-speed-insights');
-        const script = document.head.querySelector('script[src*="speed-insights/script"]');
-        if (!el || !script) return;
-        let params = {};
-        try {
-          params = JSON.parse(el.dataset.params ?? '{}');
-        } catch {
-          params = {};
-        }
-        const route = computeRoute(el.dataset.pathname ?? location.pathname, params);
-        if (route) script.dataset.route = route;
+      async function startSpeedInsights() {
+        if (insights || insightsStarting) return;
+        insightsStarting = true;
+        const { injectSpeedInsights, computeRoute } = await import('@vercel/speed-insights');
+        insights = injectSpeedInsights({
+          framework: 'astro',
+          route: computeRoute(location.pathname, {}),
+        });
       }
 
-      document.addEventListener('astro:page-load', syncSpeedInsightsRoute);
+      document.addEventListener('sacartx:analytics', () => {
+        void startSpeedInsights();
+      });
+
+      document.addEventListener('astro:page-load', () => {
+        if (!insights) return;
+        void import('@vercel/speed-insights').then(({ computeRoute }) => {
+          insights?.setRoute(computeRoute(location.pathname, {}));
+        });
+      });
     </script>
   </body>
 </html>
