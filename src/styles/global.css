@@ -372,6 +372,19 @@ main :is(p, dd) a:not(.btn) {
   }
 }
 
+/* Skip layout of below-the-fold homepage sections on phones. */
+@media (max-width: 768px) {
+  #servicios,
+  #proceso,
+  #catalogo,
+  #testimonios,
+  #faq,
+  #contacto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 720px;
+  }
+}
+
 /* Button base */
 .btn {
   display: inline-flex;

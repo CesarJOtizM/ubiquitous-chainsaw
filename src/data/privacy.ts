@@ -159,7 +159,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
               { text: '_clsk', emphasis: true },
               { text: '. El identificador del proyecto es ' },
               { text: 'zd9zexpe6f', emphasis: true },
-              { text: '. Esas grabaciones las guarda Microsoft según su política.' },
+              { text: '. Esas grabaciones las guarda Microsoft según su política. Clarity no se carga hasta que aceptas el aviso del sitio. Si lo rechazas, no arranca.' },
             ],
           },
           {
@@ -202,7 +202,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
               ],
               [
                 {
-                  text: 'Para dejar de ser medido por Microsoft Clarity, bloquea clarity.ms en tu navegador o borra las cookies _clck y _clsk de sacartx.art.',
+                  text: 'Si ya aceptaste Clarity, recházalo borrando los datos de sacartx.art en tu navegador, o bloquea clarity.ms. También puedes borrar las cookies _clck y _clsk.',
                 },
               ],
               [
@@ -444,7 +444,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
               { text: '_clsk', emphasis: true },
               { text: '. The project ID is ' },
               { text: 'zd9zexpe6f', emphasis: true },
-              { text: '. Microsoft stores those recordings under its own policy.' },
+              { text: '. Microsoft stores those recordings under its own policy. Clarity does not load until you accept the notice on the site. If you decline, it never starts.' },
             ],
           },
           {
@@ -487,7 +487,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
               ],
               [
                 {
-                  text: 'To stop Microsoft Clarity from measuring you, block clarity.ms in your browser or delete the _clck and _clsk cookies for sacartx.art.',
+                  text: 'If you already accepted Clarity, decline it by clearing sacartx.art site data in your browser, or block clarity.ms. You can also delete the _clck and _clsk cookies.',
                 },
               ],
               [

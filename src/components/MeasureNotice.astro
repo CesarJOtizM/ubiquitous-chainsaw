@@ -1,0 +1,150 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+const privacyHref = lang === 'en' ? '/en/privacy/' : '/privacidad/';
+---
+
+<div
+  id="measure-notice"
+  class="measure-notice"
+  role="region"
+  aria-label={t('measure.label')}
+  transition:persist="measure-notice"
+>
+  <p class="measure-notice__text">
+    {t('measure.notice')}
+    <a href={privacyHref}>{t('measure.privacy')}</a>
+  </p>
+  <div class="measure-notice__actions">
+    <button type="button" class="measure-notice__reject" data-measure="off">
+      {t('measure.reject')}
+    </button>
+    <button type="button" class="measure-notice__accept" data-measure="on">
+      {t('measure.accept')}
+    </button>
+  </div>
+</div>
+
+<script>
+  const storageKey = 'sacartx-measure';
+  const pageWindow = window as Window & { __sacartxMeasureBound?: boolean };
+
+  function chosen(): string | null {
+    try {
+      return localStorage.getItem(storageKey);
+    } catch {
+      return null;
+    }
+  }
+
+  function hideNotice() {
+    document.getElementById('measure-notice')?.setAttribute('hidden', '');
+  }
+
+  function applyChoice(value: string) {
+    try {
+      localStorage.setItem(storageKey, value);
+    } catch {
+      // Private mode can block storage. The choice still holds for this view.
+    }
+    document.documentElement.dataset.measure = value;
+    hideNotice();
+    if (value === 'on') {
+      document.dispatchEvent(new Event('sacartx:measure'));
+    }
+  }
+
+  if (!pageWindow.__sacartxMeasureBound) {
+    pageWindow.__sacartxMeasureBound = true;
+    document.addEventListener('click', (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const button = target.closest<HTMLButtonElement>('[data-measure]');
+      if (!button || !button.closest('#measure-notice')) return;
+      const value = button.getAttribute('data-measure');
+      if (value === 'on' || value === 'off') applyChoice(value);
+    });
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    if (chosen()) hideNotice();
+  });
+</script>
+
+<style>
+  :global(html[data-measure]) .measure-notice {
+    display: none;
+  }
+
+  .measure-notice {
+    position: fixed;
+    z-index: 1200;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 20px;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 14px 16px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    border: 1px solid var(--color-border, rgba(44, 44, 44, 0.16));
+    border-radius: 8px;
+  }
+
+  .measure-notice[hidden] {
+    display: none;
+  }
+
+  .measure-notice__text {
+    margin: 0;
+    flex: 1 1 280px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .measure-notice__text a {
+    color: var(--color-accent-text);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .measure-notice__actions {
+    display: flex;
+    gap: 8px;
+    flex: 0 0 auto;
+  }
+
+  .measure-notice__reject,
+  .measure-notice__accept {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .measure-notice__reject {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid rgba(44, 44, 44, 0.28);
+  }
+
+  .measure-notice__accept {
+    background: var(--color-btn, #8946a6);
+    color: #fff;
+    border: 1px solid transparent;
+  }
+</style>

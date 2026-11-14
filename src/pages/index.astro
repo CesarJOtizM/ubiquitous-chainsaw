@@ -13,9 +13,18 @@ import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFAB from '../components/WhatsAppFAB.astro';
 import { useTranslations } from '../i18n/utils';
+import { getImage } from 'astro:assets';
+import heroImg from '../assets/hero.jpeg';
 
 const lang = 'es' as const;
 const t = useTranslations(lang);
+const heroSizes = '(max-width: 768px) 92vw, 540px';
+const heroPreload = await getImage({
+  src: heroImg,
+  format: 'webp',
+  widths: [480, 768, 1280],
+  quality: 70,
+});
 ---
 
 <BaseLayout
@@ -24,6 +33,11 @@ const t = useTranslations(lang);
   description={t('home.metaDescription')}
   markdownAlt="https://sacartx.art/info/inicio.md"
   markdownAltTitle="Sac_Artx en texto"
+  preloadImage={{
+    src: heroPreload.src,
+    srcset: heroPreload.srcSet.attribute,
+    sizes: heroSizes,
+  }}
 >
   <Navbar lang={lang} />
   <main>

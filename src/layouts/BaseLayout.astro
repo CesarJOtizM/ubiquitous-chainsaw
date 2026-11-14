@@ -3,6 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import PageDecor from '../components/PageDecor.astro';
 import BackToTop from '../components/BackToTop.astro';
+import MeasureNotice from '../components/MeasureNotice.astro';
 import '../styles/global.css';
 import { useTranslations } from '../i18n/utils';
 import { areaServed } from '../data/coverage';
@@ -27,6 +28,8 @@ export interface Props {
   articleModifiedTime?: string;
   robots?: string;
   extraJsonLd?: object | object[];
+  /** Responsive hero image, preloaded from the document head. */
+  preloadImage?: { src: string; srcset: string; sizes: string };
 }
 
 const SITE = 'https://sacartx.art';
@@ -45,6 +48,7 @@ const {
   articleModifiedTime,
   robots = 'index, follow',
   extraJsonLd,
+  preloadImage,
 } = Astro.props;
 
 const htmlLang = lang === 'en' ? 'en' : 'es-CO';
@@ -140,12 +144,22 @@ const schemaOrg = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- On localhost, drop any script whose URL is clarity.ms.
-         GTM injects that tag; the npm init below is skipped separately. -->
+    <!-- Clarity stays off until the visitor accepts. Also stays off on localhost. -->
     <script is:inline>
       (function () {
         var host = location.hostname;
-        if (host !== 'localhost' && host !== '127.0.0.1' && host !== '::1') return;
+        var local = host === 'localhost' || host === '127.0.0.1' || host === '::1';
+        try {
+          var saved = localStorage.getItem('sacartx-measure');
+          if (saved === 'on' || saved === 'off') {
+            document.documentElement.dataset.measure = saved;
+          }
+        } catch (e) {}
+
+        function clarityAllowed() {
+          if (local) return false;
+          return document.documentElement.dataset.measure === 'on';
+        }
 
         var proto = HTMLScriptElement.prototype;
         var srcDesc = Object.getOwnPropertyDescriptor(proto, 'src');
@@ -157,7 +171,7 @@ const schemaOrg = {
               return srcDesc.get.call(this);
             },
             set: function (value) {
-              if (String(value).indexOf('clarity.ms') !== -1) return;
+              if (String(value).indexOf('clarity.ms') !== -1 && !clarityAllowed()) return;
               srcDesc.set.call(this, value);
             },
           });
@@ -167,7 +181,8 @@ const schemaOrg = {
         proto.setAttribute = function (name, value) {
           if (
             String(name).toLowerCase() === 'src' &&
-            String(value).indexOf('clarity.ms') !== -1
+            String(value).indexOf('clarity.ms') !== -1 &&
+            !clarityAllowed()
           ) {
             return;
           }
@@ -176,37 +191,42 @@ const schemaOrg = {
       })();
     </script>
 
-    <!-- Google Tag Manager. Container GTM-KZK6S278. -->
+    <!-- Google Tag Manager and Google tag start after load, so they do not compete with the first image. -->
     <script is:inline>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-KZK6S278');
+      window.addEventListener('load', function () {
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KZK6S278');
+
+        var gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=GT-T94TPG7N';
+        document.head.appendChild(gtagScript);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'GT-T94TPG7N');
+      });
     </script>
 
-    <!-- Google tag (gtag.js). GT- sends to the connected GA4 property G-DGVQ013LLR. -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=GT-T94TPG7N"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', 'GT-T94TPG7N');
-    </script>
-
-    <!-- Microsoft Clarity. init inserts the tag for project zd9zexpe6f.
-         The import stays behind the host check so localhost does not download it. -->
+    <!-- Microsoft Clarity, project zd9zexpe6f. Loads only after the visitor accepts. -->
     <script>
-      const host = location.hostname;
-      const isLocal =
-        host === 'localhost' || host === '127.0.0.1' || host === '::1';
+      const clarityHost = location.hostname;
+      const clarityLocal =
+        clarityHost === 'localhost' || clarityHost === '127.0.0.1' || clarityHost === '::1';
 
-      if (!isLocal) {
+      function startClarity() {
+        if (clarityLocal || document.documentElement.dataset.measure !== 'on') return;
         import('@microsoft/clarity').then((mod) => {
           mod.default.init('zd9zexpe6f');
         });
       }
+
+      startClarity();
+      document.addEventListener('sacartx:measure', startClarity);
     </script>
 
     <!-- Favicon -->
@@ -262,6 +282,16 @@ const schemaOrg = {
 
     <!-- Logo font — preload so Sac_Artx does not flash between routes -->
     <link rel="preload" href="/fonts/Brightwall.ttf" as="font" type="font/ttf" crossorigin />
+    {preloadImage && (
+      <link
+        rel="preload"
+        as="image"
+        href={preloadImage.src}
+        imagesrcset={preloadImage.srcset}
+        imagesizes={preloadImage.sizes}
+        fetchpriority="high"
+      />
+    )}
 
     <!-- Google Fonts — non-blocking load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -379,6 +409,7 @@ const schemaOrg = {
       ></iframe>
     </noscript>
     <div class="nav-progress" aria-hidden="true"></div>
+    <MeasureNotice lang={lang} />
     <PageDecor />
     <div class="page-shell">
       <slot />

@@ -325,8 +325,9 @@ const extraJsonLd = [
                     alt={item.alt}
                     width={item.width}
                     height={item.height}
-                    loading="lazy"
-                    decoding="async"
+                    loading={index === 0 && !poster ? 'eager' : 'lazy'}
+                    fetchpriority={index === 0 && !poster ? 'high' : undefined}
+                    decoding={index === 0 && !poster ? 'sync' : 'async'}
                   />
                 </li>
               ))}
