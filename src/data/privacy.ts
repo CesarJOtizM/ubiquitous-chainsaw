@@ -36,9 +36,9 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
     title: 'Política de privacidad',
     metaTitle: 'Política de privacidad · Sac_Artx',
     metaDescription:
-      'Qué datos recoge Sac_Artx en sacartx.art, las cookies de Google Analytics y cómo pedir que corrijamos o borremos tu información.',
+      'Qué datos recoge Sac_Artx en sacartx.art, las cookies de Google Analytics y Microsoft Clarity, y cómo pedir que corrijamos o borremos tu información.',
     crumb: 'Privacidad',
-    updated: 'Actualizada el 7 de octubre de 2026',
+    updated: 'Actualizada el 13 de noviembre de 2026',
     intro:
       'Esta página dice qué datos personales trata Sac_Artx en sacartx.art, para qué los usa y cómo pedir que los corrijamos o los borremos. Está hecha para cumplir la Ley 1581 de 2012.',
     sections: [
@@ -136,6 +136,26 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
+                text: 'También usamos Microsoft Clarity para ver cómo se recorre el sitio: clics, desplazamientos, mapas de calor y grabaciones de la sesión. Clarity puede enmascarar lo que escribes en los formularios. No lo usamos para mostrar publicidad.',
+              },
+            ],
+          },
+          {
+            type: 'p',
+            parts: [
+              { text: 'Microsoft Clarity puede utilizar cookies, como ' },
+              { text: '_clck', emphasis: true },
+              { text: ' y ' },
+              { text: '_clsk', emphasis: true },
+              { text: '. El identificador del proyecto es ' },
+              { text: 'zd9zexpe6f', emphasis: true },
+              { text: '. Esas grabaciones las guarda Microsoft según su política.' },
+            ],
+          },
+          {
+            type: 'p',
+            parts: [
+              {
                 text: 'El sitio está alojado y desplegado mediante Vercel. Como proveedor de infraestructura, Vercel puede procesar determinados datos técnicos necesarios para entregar el sitio, mantener su funcionamiento, detectar errores y proteger la infraestructura frente a abusos o amenazas.',
               },
             ],
@@ -169,6 +189,11 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
                 { text: 'Instala el complemento de inhabilitación de Google Analytics: ' },
                 { text: 'tools.google.com/dlpage/gaoptout', href: GA_OPT_OUT, external: true },
                 { text: '.' },
+              ],
+              [
+                {
+                  text: 'Para dejar de ser medido por Microsoft Clarity, bloquea clarity.ms en tu navegador o borra las cookies _clck y _clsk de sacartx.art.',
+                },
               ],
               [
                 {
@@ -245,7 +270,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'Para responder el formulario usamos Resend, que envía el correo al estudio. Para medir visitas usamos Google. Para alojar y entregar el sitio usamos Vercel. Esos proveedores pueden tratar los datos fuera de Colombia, solo para prestar ese servicio. No los autorizamos a usarlos para su propia publicidad.',
+                text: 'Para responder el formulario usamos Resend, que envía el correo al estudio. Para medir visitas usamos Google y Microsoft Clarity. Para alojar y entregar el sitio usamos Vercel. Esos proveedores pueden tratar los datos fuera de Colombia, solo para prestar ese servicio. No los autorizamos a usarlos para su propia publicidad.',
               },
             ],
           },
@@ -259,7 +284,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'Las consultas del formulario se conservan el tiempo necesario para responder y, si hay un encargo, para llevarlo. Esas consultas se envían por correo con Resend. No armamos una base aparte con las visitas: esa medición la guarda Google Analytics según su política. Los registros técnicos del alojamiento los trata Vercel según sus propias condiciones.',
+                text: 'Las consultas del formulario se conservan el tiempo necesario para responder y, si hay un encargo, para llevarlo. Esas consultas se envían por correo con Resend. No armamos una base aparte con las visitas: esa medición la guardan Google Analytics y Microsoft Clarity según sus políticas. Los registros técnicos del alojamiento los trata Vercel según sus propias condiciones.',
               },
             ],
           },
@@ -286,9 +311,9 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
     title: 'Privacy policy',
     metaTitle: 'Privacy policy and your data rights | Sac_Artx',
     metaDescription:
-      'What data Sac_Artx collects on sacartx.art, the Google Analytics cookies, and how to ask us to correct or delete your information.',
+      'What data Sac_Artx collects on sacartx.art, the Google Analytics and Microsoft Clarity cookies, and how to ask us to correct or delete your information.',
     crumb: 'Privacy',
-    updated: 'Updated October 7, 2026',
+    updated: 'Updated November 13, 2026',
     intro:
       'This page explains what personal data Sac_Artx processes on sacartx.art, why we use it, and how to ask us to correct or delete it. It follows Colombia’s Law 1581 of 2012.',
     sections: [
@@ -386,6 +411,26 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
+                text: 'We also use Microsoft Clarity to see how people move through the site: clicks, scrolling, heatmaps, and session recordings. Clarity can mask what you type in forms. We do not use it to show advertising.',
+              },
+            ],
+          },
+          {
+            type: 'p',
+            parts: [
+              { text: 'Microsoft Clarity may use cookies such as ' },
+              { text: '_clck', emphasis: true },
+              { text: ' and ' },
+              { text: '_clsk', emphasis: true },
+              { text: '. The project ID is ' },
+              { text: 'zd9zexpe6f', emphasis: true },
+              { text: '. Microsoft stores those recordings under its own policy.' },
+            ],
+          },
+          {
+            type: 'p',
+            parts: [
+              {
                 text: 'The site is hosted and deployed with Vercel. As an infrastructure provider, Vercel may process certain technical data needed to deliver the site, keep it running, detect errors, and protect the infrastructure against abuse or threats.',
               },
             ],
@@ -419,6 +464,11 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
                 { text: 'Install the Google Analytics opt-out add-on: ' },
                 { text: 'tools.google.com/dlpage/gaoptout', href: GA_OPT_OUT, external: true },
                 { text: '.' },
+              ],
+              [
+                {
+                  text: 'To stop Microsoft Clarity from measuring you, block clarity.ms in your browser or delete the _clck and _clsk cookies for sacartx.art.',
+                },
               ],
               [
                 {
@@ -495,7 +545,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'To reply to the form we use Resend, which emails the studio. To measure visits we use Google. To host and deliver the site we use Vercel. Those providers may process the data outside Colombia, only to provide that service. We do not authorize them to use it for their own advertising.',
+                text: 'To reply to the form we use Resend, which emails the studio. To measure visits we use Google and Microsoft Clarity. To host and deliver the site we use Vercel. Those providers may process the data outside Colombia, only to provide that service. We do not authorize them to use it for their own advertising.',
               },
             ],
           },
@@ -509,7 +559,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'Form inquiries are kept for as long as we need to reply and, if there is a commission, to complete it. Those inquiries are emailed through Resend. We do not keep a separate copy of visit measurements: Google Analytics stores that measurement under its own policy. Technical hosting logs are handled by Vercel under Vercel’s terms.',
+                text: 'Form inquiries are kept for as long as we need to reply and, if there is a commission, to complete it. Those inquiries are emailed through Resend. We do not keep a separate copy of visit measurements: Google Analytics and Microsoft Clarity store that measurement under their own policies. Technical hosting logs are handled by Vercel under Vercel’s terms.',
               },
             ],
           },
