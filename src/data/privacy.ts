@@ -127,6 +127,16 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
           {
             type: 'p',
             parts: [
+              { text: 'El sitio también carga Google Tag Manager, contenedor ' },
+              { text: 'GTM-KZK6S278', emphasis: true },
+              {
+                text: '. Tag Manager puede activar las etiquetas configuradas en ese contenedor. Las cookies dependen de esas etiquetas.',
+              },
+            ],
+          },
+          {
+            type: 'p',
+            parts: [
               {
                 text: 'La información recopilada mediante Google Analytics se utiliza para analizar y mejorar el sitio. No utilizamos Google Analytics para mostrar publicidad personalizada desde este sitio.',
               },
@@ -397,6 +407,16 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
               { text: '. The site loads the Google tag ' },
               { text: 'GT-T94TPG7N', emphasis: true },
               { text: ', which sends that measurement to Analytics.' },
+            ],
+          },
+          {
+            type: 'p',
+            parts: [
+              { text: 'The site also loads Google Tag Manager, container ' },
+              { text: 'GTM-KZK6S278', emphasis: true },
+              {
+                text: '. Tag Manager can fire the tags configured in that container. The cookies depend on those tags.',
+              },
             ],
           },
           {
