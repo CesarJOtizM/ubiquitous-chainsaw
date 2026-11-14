@@ -173,6 +173,40 @@ const labels =
       };
 
 const reviews = googleReviews[entry.product] ?? [];
+const reviewCount = reviews.length;
+const ratingTotal = reviews.reduce((sum, review) => sum + review.stars, 0);
+const ratingValue = reviewCount ? Math.round((ratingTotal / reviewCount) * 10) / 10 : 0;
+const ratingLabel = Number.isInteger(ratingValue) ? String(ratingValue) : ratingValue.toFixed(1);
+const reviewsSummary =
+  lang === 'en'
+    ? `${ratingLabel} out of 5 · ${reviewCount} ${reviewCount === 1 ? 'review' : 'reviews'}`
+    : `${ratingLabel} de 5 · ${reviewCount} ${reviewCount === 1 ? 'reseña' : 'reseñas'}`;
+
+const productReviewSchema =
+  reviewCount > 0
+    ? {
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue,
+          bestRating: 5,
+          worstRating: 1,
+          reviewCount,
+          ratingCount: reviewCount,
+        },
+        review: reviews.map((review) => ({
+          '@type': 'Review',
+          author: { '@type': 'Person', name: review.author },
+          reviewBody: review.quote,
+          inLanguage: 'es',
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: review.stars,
+            bestRating: 5,
+            worstRating: 1,
+          },
+        })),
+      }
+    : null;
 
 // Product snippets need a real offer. Quote-only and unpublished prices stay
 // out of Product schema so Search Console does not flag an incomplete product.
@@ -191,6 +225,7 @@ const extraJsonLd = [
           ...(schemaImages.length ? { image: schemaImages } : {}),
           brand: { '@type': 'Brand', name: 'Sac_Artx' },
           category: entry.category,
+          ...(productReviewSchema ?? {}),
           offers: {
             '@type': 'AggregateOffer',
             priceCurrency: 'COP',
@@ -341,6 +376,7 @@ const extraJsonLd = [
         {reviews.length > 0 && (
           <section class="product-section" aria-labelledby="product-reviews-title">
             <h2 id="product-reviews-title">{labels.reviews}</h2>
+            <p class="product-reviews__summary">{reviewsSummary}</p>
             {labels.reviewsNote && <p class="product-reviews__note">{labels.reviewsNote}</p>}
             <ul class="product-reviews">
               {reviews.map((review) => (
@@ -593,6 +629,11 @@ const extraJsonLd = [
 
   .product-reviews__stars {
     letter-spacing: 1px;
+  }
+
+  .product-reviews__summary {
+    font-weight: 600;
+    margin-bottom: 8px;
   }
 
   .product-reviews__note {

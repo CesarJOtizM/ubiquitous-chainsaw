@@ -1,7 +1,9 @@
 /**
  * Google Business reviews quoted on the product page the studio assigns.
- * Visible text only. They are not copied into Product review or aggregateRating
- * schema: Google asks sites to collect those ratings themselves.
+ * The same quotes feed that page's Product aggregateRating and review markup.
+ * ratingValue is their average; reviewCount is this list's length.
+ * The Google profile stays a visible link only. Review.url is omitted so the
+ * review is the quote on this page, not a rating pulled from another site.
  */
 import type { ProductKey } from '../i18n/paths';
 import { business } from './business';

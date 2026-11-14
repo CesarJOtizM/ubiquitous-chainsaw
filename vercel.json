@@ -1,4 +1,6 @@
 {
+  "installCommand": "env -u npm_config_cache_dir npm install",
+  "buildCommand": "env -u npm_config_cache_dir npm run build",
   "headers": [
     {
       "source": "/info/precios.md",
