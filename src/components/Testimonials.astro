@@ -148,11 +148,10 @@ const reviewsJsonLd = {
     </div>
 
     <!-- Desktop grid / Mobile scroll -->
-    <div class="testimonials__grid" role="list">
+    <div class="testimonials__grid">
       {testimonials.map((testimonial, i) => (
         <article
           class="testimonial-card reveal"
-          role="listitem"
           style={`transition-delay: ${i * 120}ms`}
           aria-label={`${lang === 'en' ? 'Testimonial from' : 'Testimonio de'} ${testimonial.author}`}
         >
@@ -161,7 +160,7 @@ const reviewsJsonLd = {
             <div class="testimonial-card__artwork testimonial-card__artwork--photo">
               <img
                 src={imageUrl(testimonial.image, 640)}
-                srcset={imageSrcSet(testimonial.image, [640, 1024]) || undefined}
+                srcset={imageSrcSet(testimonial.image, [360, 640, 960]) || undefined}
                 sizes="(max-width: 768px) 85vw, 320px"
                 alt={testimonial.alt || artworkAlt(testimonial.image)}
                 class="testimonial-card__artwork-img"
