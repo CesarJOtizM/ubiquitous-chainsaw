@@ -97,7 +97,7 @@ const posterSizes = '(max-width: 800px) 92vw, 440px';
 const poster = entry.posterSrc
   ? {
       src: imageUrl(entry.posterSrc, 480),
-      srcset: imageSrcSet(entry.posterSrc, [360, 480, 800]),
+      srcset: imageSrcSet(entry.posterSrc, [360, 480, 640, 800]),
       sizes: posterSizes,
       ...imageDimensions(entry.posterSrc, 800),
       alt: entry.posterAlt || entry.h1,
@@ -113,7 +113,7 @@ const gallery = entry.lineIds.flatMap((id) =>
     const dims = imageDimensions(item.src, 800);
     return {
       src: imageUrl(item.src, 640),
-      srcset: imageSrcSet(item.src, [640, 1024]),
+      srcset: imageSrcSet(item.src, [360, 560, 840]),
       width: dims.width,
       height: dims.height,
       alt: `${animalLabel} — ${galleryName} ${String(index + 1).padStart(2, '0')} · Sac_Artx`,

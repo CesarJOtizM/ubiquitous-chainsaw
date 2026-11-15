@@ -33,7 +33,7 @@ const lines = catalogLines.map((line) => {
       const dims = imageDimensions(item.src, 800);
       return {
         src: imageUrl(item.src, 640),
-        srcset: imageSrcSet(item.src, [640, 1024]),
+        srcset: imageSrcSet(item.src, [360, 560, 840]),
         fullSrc: imageUrl(item.src, 1600),
         originalSrc: item.src,
         width: dims.width,

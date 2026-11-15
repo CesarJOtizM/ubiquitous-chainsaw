@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from '../i18n/utils';
+import Wordmark from './Wordmark.astro';
 import {
   aboutPath,
   alternatePath,
@@ -100,7 +101,7 @@ const primary: NavLink[] = [
         class="navbar__logo"
         aria-label={lang === 'en' ? 'Sac_Artx — home' : 'Sac_Artx — inicio'}
       >
-        Sac_Artx
+        <Wordmark />
       </a>
 
       <nav class="navbar__desktop" aria-label={t('nav.desktopLabel')}>
@@ -288,10 +289,7 @@ const primary: NavLink[] = [
   }
 
   .navbar__logo {
-    font-family: var(--font-logo);
     font-size: 28px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
     color: var(--color-text);
     text-decoration: none;
     transition: color 0.2s;

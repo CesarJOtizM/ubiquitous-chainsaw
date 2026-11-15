@@ -28,7 +28,7 @@ const featured = catalogLines
       price: t(line.price),
       href: `${catalogHref}#${line.id}`,
       src: first ? imageUrl(first.src, 640) : '',
-      srcset: first ? imageSrcSet(first.src, [640, 1024]) : '',
+      srcset: first ? imageSrcSet(first.src, [360, 480, 680, 1024]) : '',
       width: dims.width,
       height: dims.height,
       alt: first ? `${animalLabel} — ${name} · Sac_Artx` : name,

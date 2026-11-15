@@ -17,17 +17,17 @@ Una foto desde muy arriba aplasta la cara. Necesito los ojos, las orejas y los b
 
 <div class="photo-pair">
   <figure class="photo-card">
-    <img src="/img/cuadros-mascotas/06.jpg?tr=w-1200,f-auto,q-80" alt="Retrato de gato pintado a mano en acrílico sobre lienzo, catálogo de Sac_Artx" width="768" height="1024" loading="lazy" decoding="async" />
+    <img src="/img/cuadros-mascotas/06.jpg?tr=w-1200,f-auto,q-80" srcset="/img/cuadros-mascotas/06.jpg?tr=w-360,f-auto,q-80 360w, /img/cuadros-mascotas/06.jpg?tr=w-560,f-auto,q-80 560w, /img/cuadros-mascotas/06.jpg?tr=w-720,f-auto,q-80 720w, /img/cuadros-mascotas/06.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Retrato de gato pintado a mano en acrílico sobre lienzo, catálogo de Sac_Artx" width="768" height="1024" loading="lazy" decoding="async" />
     <figcaption>Lienzo. Ojos, orejas y pelaje salen de la foto.</figcaption>
   </figure>
   <figure class="photo-card">
-    <img src="/img/bases-acrilicas/02.jpg?tr=w-1200,f-auto,q-80" alt="Retrato de gato en base de acrílico con resina, catálogo de Sac_Artx" width="720" height="960" loading="lazy" decoding="async" />
+    <img src="/img/bases-acrilicas/02.jpg?tr=w-1200,f-auto,q-80" srcset="/img/bases-acrilicas/02.jpg?tr=w-360,f-auto,q-80 360w, /img/bases-acrilicas/02.jpg?tr=w-560,f-auto,q-80 560w, /img/bases-acrilicas/02.jpg?tr=w-720,f-auto,q-80 720w, /img/bases-acrilicas/02.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Retrato de gato en base de acrílico con resina, catálogo de Sac_Artx" width="720" height="960" loading="lazy" decoding="async" />
     <figcaption>Base de acrílico con resina, efecto vidrio.</figcaption>
   </figure>
 </div>
 
 <figure class="photo-card">
-  <img src="/img/cuadros-mascotas/04.jpg?tr=w-1200,f-auto,q-80" alt="Retrato de gato en acrílico sobre lienzo, de frente, catálogo de Sac_Artx" width="1200" height="900" loading="lazy" decoding="async" />
+  <img src="/img/cuadros-mascotas/04.jpg?tr=w-1200,f-auto,q-80" srcset="/img/cuadros-mascotas/04.jpg?tr=w-480,f-auto,q-80 480w, /img/cuadros-mascotas/04.jpg?tr=w-720,f-auto,q-80 720w, /img/cuadros-mascotas/04.jpg?tr=w-1080,f-auto,q-80 1080w, /img/cuadros-mascotas/04.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 92vw, 720px" alt="Retrato de gato en acrílico sobre lienzo, de frente, catálogo de Sac_Artx" width="1200" height="900" loading="lazy" decoding="async" />
   <figcaption>Otro lienzo. La cara va de frente o en tres cuartos, no desde arriba.</figcaption>
 </figure>
 

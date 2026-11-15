@@ -25,11 +25,11 @@ Lo ideal es tomar la foto a una distancia en la que pueda apreciar bien sus rasg
 
 <div class="photo-pair">
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/perla-lejos.jpg?tr=w-1200,f-auto,q-80" alt="Gata tricolor sentada al fondo de un pasillo, tan lejos que casi no se distinguen los ojos ni el pelaje" width="1200" height="1600" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/perla-lejos.jpg?tr=w-1200,f-auto,q-80" srcset="/img/blog/mejor-foto/perla-lejos.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/perla-lejos.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/perla-lejos.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/perla-lejos.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Gata tricolor sentada al fondo de un pasillo, tan lejos que casi no se distinguen los ojos ni el pelaje" width="1200" height="1600" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--no">Evitar</span> Muy lejos: la carita se pierde</figcaption>
   </figure>
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/perla-cerca.jpg?tr=w-1200,f-auto,q-80" alt="La misma gata más cerca de la cámara, con ojos, bigotes y pelaje fáciles de ver" width="1200" height="1600" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/perla-cerca.jpg?tr=w-1200,f-auto,q-80" srcset="/img/blog/mejor-foto/perla-cerca.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/perla-cerca.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/perla-cerca.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/perla-cerca.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="La misma gata más cerca de la cámara, con ojos, bigotes y pelaje fáciles de ver" width="1200" height="1600" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--yes">Mejor</span> Más cerca: se distinguen sus rasgos</figcaption>
   </figure>
 </div>
@@ -44,11 +44,11 @@ Esto me permite observar mejor sus características y trabajar en un retrato que
 
 <div class="photo-pair">
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/perla-desenfocada.jpg?tr=w-1200,f-auto,q-80" alt="Gata tricolor en la cama con la cara desenfocada y los ojos poco definidos" width="1200" height="1600" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/perla-desenfocada.jpg?tr=w-1200,f-auto,q-80" srcset="/img/blog/mejor-foto/perla-desenfocada.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/perla-desenfocada.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/perla-desenfocada.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/perla-desenfocada.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Gata tricolor en la cama con la cara desenfocada y los ojos poco definidos" width="1200" height="1600" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--no">Evitar</span> Borrosa: no se leen los detalles</figcaption>
   </figure>
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/perla-enfocada.jpg?tr=w-1200,f-auto,q-80" alt="La misma gata enfocada, con ojos azules, bigotes y textura del pelaje definidos" width="1200" height="1600" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/perla-enfocada.jpg?tr=w-1200,f-auto,q-80" srcset="/img/blog/mejor-foto/perla-enfocada.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/perla-enfocada.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/perla-enfocada.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/perla-enfocada.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="La misma gata enfocada, con ojos azules, bigotes y textura del pelaje definidos" width="1200" height="1600" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--yes">Mejor</span> Nítida: ojos y pelaje definidos</figcaption>
   </figure>
 </div>
@@ -63,11 +63,11 @@ Cuando la imagen tiene poca iluminación, algunos colores y rasgos pueden perder
 
 <div class="photo-pair">
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/perla-oscura.jpg?tr=w-1200,f-auto,q-80" alt="Gata tricolor fotografiada con muy poca luz, con el pelaje y los ojos perdidos en sombra" width="1200" height="1600" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/perla-oscura.jpg?tr=w-1200,f-auto,q-80" srcset="/img/blog/mejor-foto/perla-oscura.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/perla-oscura.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/perla-oscura.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/perla-oscura.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Gata tricolor fotografiada con muy poca luz, con el pelaje y los ojos perdidos en sombra" width="1200" height="1600" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--no">Evitar</span> Poca luz: se pierden los colores</figcaption>
   </figure>
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/perla-clara.jpg?tr=w-1200,f-auto,q-80" alt="La misma gata con luz natural suave, pelaje blanco, naranja y negro bien visible" width="1200" height="1600" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/perla-clara.jpg?tr=w-1200,f-auto,q-80" srcset="/img/blog/mejor-foto/perla-clara.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/perla-clara.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/perla-clara.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/perla-clara.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="La misma gata con luz natural suave, pelaje blanco, naranja y negro bien visible" width="1200" height="1600" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--yes">Mejor</span> Luz suave: se ven sus tonos reales</figcaption>
   </figure>
 </div>
@@ -85,11 +85,11 @@ Estas son algunas características que busco en una imagen:
 
 <div class="photo-pair">
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/referencia-ideal-1.jpg?tr=w-1400,f-auto,q-80" alt="Gata tricolor junto a una ventana, con ojos azules, pelaje nítido y luz natural" width="1400" height="1867" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/referencia-ideal-1.jpg?tr=w-1400,f-auto,q-80" srcset="/img/blog/mejor-foto/referencia-ideal-1.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/referencia-ideal-1.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/referencia-ideal-1.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/referencia-ideal-1.jpg?tr=w-1400,f-auto,q-80 1400w" sizes="(max-width: 760px) 46vw, 352px" alt="Gata tricolor junto a una ventana, con ojos azules, pelaje nítido y luz natural" width="1400" height="1867" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--yes">Ideal</span> Luz de ventana, ojos y pelaje claros</figcaption>
   </figure>
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/referencia-ideal-2.jpg?tr=w-1400,f-auto,q-80" alt="Gata tricolor recostada junto a la ventana, de cuerpo entero y con la mirada visible" width="1400" height="2998" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/referencia-ideal-2.jpg?tr=w-1400,f-auto,q-80" srcset="/img/blog/mejor-foto/referencia-ideal-2.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/referencia-ideal-2.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/referencia-ideal-2.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/referencia-ideal-2.jpg?tr=w-1400,f-auto,q-80 1400w" sizes="(max-width: 760px) 46vw, 352px" alt="Gata tricolor recostada junto a la ventana, de cuerpo entero y con la mirada visible" width="1400" height="2998" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--yes">Ideal</span> Cerca, con cara y cuerpo a la vista</figcaption>
   </figure>
 </div>

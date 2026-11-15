@@ -1,0 +1,17 @@
+---
+// Brightwall lettering traced to a path: no 700 KB font download and no shift when it arrives.
+import wordmarkUrl from '../assets/wordmark.svg?url';
+---
+
+<svg class="wordmark" aria-hidden="true" focusable="false">
+  <use href={`${wordmarkUrl}#wordmark`} width="100%" height="100%" />
+</svg>
+
+<style>
+  .wordmark {
+    display: block;
+    width: 4.91em;
+    height: 1.83em;
+    fill: currentColor;
+  }
+</style>

@@ -17,17 +17,17 @@ On canvas, the acrylic sits on cloth. On a base, the portrait sits on methacryla
 
 <div class="photo-pair">
   <figure class="photo-card">
-    <img src="/img/cuadros-mascotas/12.jpg?tr=w-1200,f-auto,q-80" alt="Hand-painted acrylic dog portrait on canvas, from the Sac_Artx catalog" width="768" height="1024" loading="lazy" decoding="async" />
+    <img src="/img/cuadros-mascotas/12.jpg?tr=w-1200,f-auto,q-80" srcset="/img/cuadros-mascotas/12.jpg?tr=w-360,f-auto,q-80 360w, /img/cuadros-mascotas/12.jpg?tr=w-560,f-auto,q-80 560w, /img/cuadros-mascotas/12.jpg?tr=w-720,f-auto,q-80 720w, /img/cuadros-mascotas/12.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Hand-painted acrylic dog portrait on canvas, from the Sac_Artx catalog" width="768" height="1024" loading="lazy" decoding="async" />
     <figcaption>Canvas. Ears, muzzle, and coat come from the photo.</figcaption>
   </figure>
   <figure class="photo-card">
-    <img src="/img/bases-acrilicas/16.jpg?tr=w-1200,f-auto,q-80" alt="Dog portrait on an acrylic base with resin, from the Sac_Artx catalog" width="576" height="1024" loading="lazy" decoding="async" />
+    <img src="/img/bases-acrilicas/16.jpg?tr=w-1200,f-auto,q-80" srcset="/img/bases-acrilicas/16.jpg?tr=w-360,f-auto,q-80 360w, /img/bases-acrilicas/16.jpg?tr=w-560,f-auto,q-80 560w, /img/bases-acrilicas/16.jpg?tr=w-720,f-auto,q-80 720w, /img/bases-acrilicas/16.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Dog portrait on an acrylic base with resin, from the Sac_Artx catalog" width="576" height="1024" loading="lazy" decoding="async" />
     <figcaption>Base. The name goes on the wood.</figcaption>
   </figure>
 </div>
 
 <figure class="photo-card">
-  <img src="/img/cuadros-mascotas/01.jpg?tr=w-1200,f-auto,q-80" alt="A second hand-painted acrylic dog portrait on canvas, facing the camera, Sac_Artx catalog" width="1200" height="900" loading="lazy" decoding="async" />
+  <img src="/img/cuadros-mascotas/01.jpg?tr=w-1200,f-auto,q-80" srcset="/img/cuadros-mascotas/01.jpg?tr=w-480,f-auto,q-80 480w, /img/cuadros-mascotas/01.jpg?tr=w-720,f-auto,q-80 720w, /img/cuadros-mascotas/01.jpg?tr=w-1080,f-auto,q-80 1080w, /img/cuadros-mascotas/01.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 92vw, 720px" alt="A second hand-painted acrylic dog portrait on canvas, facing the camera, Sac_Artx catalog" width="1200" height="900" loading="lazy" decoding="async" />
   <figcaption>Another canvas. The face is front-on or three-quarter, in daylight.</figcaption>
 </figure>
 

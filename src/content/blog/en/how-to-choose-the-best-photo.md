@@ -25,11 +25,11 @@ The ideal distance is close enough to read their features clearly and, if possib
 
 <div class="photo-pair">
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/perla-lejos.jpg?tr=w-1200,f-auto,q-80" alt="Calico cat sitting far down a hallway, too small to read the eyes or fur" width="1200" height="1600" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/perla-lejos.jpg?tr=w-1200,f-auto,q-80" srcset="/img/blog/mejor-foto/perla-lejos.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/perla-lejos.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/perla-lejos.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/perla-lejos.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Calico cat sitting far down a hallway, too small to read the eyes or fur" width="1200" height="1600" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--no">Avoid</span> Too far: the face gets lost</figcaption>
   </figure>
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/perla-cerca.jpg?tr=w-1200,f-auto,q-80" alt="The same cat closer to the camera, with eyes, whiskers, and fur easy to see" width="1200" height="1600" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/perla-cerca.jpg?tr=w-1200,f-auto,q-80" srcset="/img/blog/mejor-foto/perla-cerca.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/perla-cerca.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/perla-cerca.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/perla-cerca.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="The same cat closer to the camera, with eyes, whiskers, and fur easy to see" width="1200" height="1600" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--yes">Better</span> Closer: the features read clearly</figcaption>
   </figure>
 </div>
@@ -44,11 +44,11 @@ That lets me study their character and work toward a portrait that looks as much
 
 <div class="photo-pair">
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/perla-desenfocada.jpg?tr=w-1200,f-auto,q-80" alt="Calico cat on a bed with a soft, out-of-focus face" width="1200" height="1600" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/perla-desenfocada.jpg?tr=w-1200,f-auto,q-80" srcset="/img/blog/mejor-foto/perla-desenfocada.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/perla-desenfocada.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/perla-desenfocada.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/perla-desenfocada.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Calico cat on a bed with a soft, out-of-focus face" width="1200" height="1600" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--no">Avoid</span> Blurry: the details disappear</figcaption>
   </figure>
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/perla-enfocada.jpg?tr=w-1200,f-auto,q-80" alt="The same cat in focus, with blue eyes, whiskers, and fur texture defined" width="1200" height="1600" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/perla-enfocada.jpg?tr=w-1200,f-auto,q-80" srcset="/img/blog/mejor-foto/perla-enfocada.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/perla-enfocada.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/perla-enfocada.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/perla-enfocada.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="The same cat in focus, with blue eyes, whiskers, and fur texture defined" width="1200" height="1600" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--yes">Better</span> Sharp: eyes and fur are defined</figcaption>
   </figure>
 </div>
@@ -63,11 +63,11 @@ When the image is too dark, some colors and features disappear into the shadows.
 
 <div class="photo-pair">
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/perla-oscura.jpg?tr=w-1200,f-auto,q-80" alt="Calico cat photographed in very low light, with fur and eyes lost in shadow" width="1200" height="1600" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/perla-oscura.jpg?tr=w-1200,f-auto,q-80" srcset="/img/blog/mejor-foto/perla-oscura.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/perla-oscura.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/perla-oscura.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/perla-oscura.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Calico cat photographed in very low light, with fur and eyes lost in shadow" width="1200" height="1600" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--no">Avoid</span> Too dark: the colors disappear</figcaption>
   </figure>
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/perla-clara.jpg?tr=w-1200,f-auto,q-80" alt="The same cat in soft natural light, with white, orange, and black fur easy to see" width="1200" height="1600" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/perla-clara.jpg?tr=w-1200,f-auto,q-80" srcset="/img/blog/mejor-foto/perla-clara.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/perla-clara.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/perla-clara.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/perla-clara.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="The same cat in soft natural light, with white, orange, and black fur easy to see" width="1200" height="1600" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--yes">Better</span> Soft light: the true tones show</figcaption>
   </figure>
 </div>
@@ -85,11 +85,11 @@ These are the qualities I look for:
 
 <div class="photo-pair">
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/referencia-ideal-1.jpg?tr=w-1400,f-auto,q-80" alt="Calico cat by a window, with blue eyes, sharp fur, and natural light" width="1400" height="1867" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/referencia-ideal-1.jpg?tr=w-1400,f-auto,q-80" srcset="/img/blog/mejor-foto/referencia-ideal-1.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/referencia-ideal-1.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/referencia-ideal-1.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/referencia-ideal-1.jpg?tr=w-1400,f-auto,q-80 1400w" sizes="(max-width: 760px) 46vw, 352px" alt="Calico cat by a window, with blue eyes, sharp fur, and natural light" width="1400" height="1867" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--yes">Ideal</span> Window light, clear eyes and fur</figcaption>
   </figure>
   <figure class="photo-card">
-    <img src="/img/blog/mejor-foto/referencia-ideal-2.jpg?tr=w-1400,f-auto,q-80" alt="Calico cat lying by the window, with face and much of the body in frame" width="1400" height="2998" loading="lazy" decoding="async" />
+    <img src="/img/blog/mejor-foto/referencia-ideal-2.jpg?tr=w-1400,f-auto,q-80" srcset="/img/blog/mejor-foto/referencia-ideal-2.jpg?tr=w-360,f-auto,q-80 360w, /img/blog/mejor-foto/referencia-ideal-2.jpg?tr=w-560,f-auto,q-80 560w, /img/blog/mejor-foto/referencia-ideal-2.jpg?tr=w-720,f-auto,q-80 720w, /img/blog/mejor-foto/referencia-ideal-2.jpg?tr=w-1400,f-auto,q-80 1400w" sizes="(max-width: 760px) 46vw, 352px" alt="Calico cat lying by the window, with face and much of the body in frame" width="1400" height="2998" loading="lazy" decoding="async" />
     <figcaption><span class="photo-tag photo-tag--yes">Ideal</span> Close, with face and body in view</figcaption>
   </figure>
 </div>
