@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
@@ -15,6 +15,27 @@ export default defineConfig({
     // Component CSS over 4 KB was a second request that blocked the first paint.
     inlineStylesheets: 'always',
   },
+  // Self-hosted with metric-matched fallbacks: no Google connections, no shift on swap.
+  fonts: [
+    {
+      name: 'Cormorant Garamond',
+      cssVariable: '--font-cormorant',
+      provider: fontProviders.google(),
+      weights: ['300 700'],
+      styles: ['normal', 'italic'],
+      subsets: ['latin'],
+      fallbacks: ['Georgia', 'serif'],
+    },
+    {
+      name: 'DM Sans',
+      cssVariable: '--font-dm-sans',
+      provider: fontProviders.google(),
+      weights: ['300 700'],
+      styles: ['normal'],
+      subsets: ['latin'],
+      fallbacks: ['system-ui', 'sans-serif'],
+    },
+  ],
   redirects: {
     '/retratos-mascotas-colombia': '/retratos-de-mascotas/',
     '/en/pet-portraits-colombia': '/en/pet-portraits/',

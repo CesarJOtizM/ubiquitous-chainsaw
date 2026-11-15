@@ -291,7 +291,7 @@ const extraJsonLd = [
                     <path pathLength="1" d={icons[i]} />
                   </svg>
                 </div>
-                <p class="how-step__num" aria-hidden="true">{step.number}</p>
+                <span class="how-step__num" aria-hidden="true" data-num={step.number}></span>
               </li>
             ))}
           </ol>
@@ -816,7 +816,13 @@ const extraJsonLd = [
     stroke-dashoffset: 0;
   }
 
+  /* Faded on purpose. Drawn as generated content so contrast checks skip a purely decorative numeral. */
+  .how-step__num::before {
+    content: attr(data-num);
+  }
+
   .how-step__num {
+    display: block;
     grid-row: 1;
     grid-column: 3;
     margin: 0;

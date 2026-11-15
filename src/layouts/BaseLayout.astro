@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import { Font } from 'astro:assets';
 import PageDecor from '../components/PageDecor.astro';
 import BackToTop from '../components/BackToTop.astro';
 import MeasureNotice from '../components/MeasureNotice.astro';
@@ -203,16 +204,7 @@ const schemaOrg = {
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-KZK6S278');
-
-          var gtagScript = document.createElement('script');
-          gtagScript.async = true;
-          gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=GT-T94TPG7N';
-          document.head.appendChild(gtagScript);
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          window.gtag = gtag;
-          gtag('js', new Date());
-          gtag('config', 'GT-T94TPG7N');
+          // GT-T94TPG7N is fired by the GTM container. A direct gtag.js load doubled it.
           document.dispatchEvent(new Event('sacartx:analytics'));
         }
 
@@ -300,10 +292,6 @@ const schemaOrg = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- The logo font waits when a page already preloads its LCP image. -->
-    {!preloadImage && (
-      <link rel="preload" href="/fonts/Brightwall.ttf" as="font" type="font/ttf" crossorigin />
-    )}
     {preloadImage && (
       <link
         rel="preload"
@@ -315,21 +303,8 @@ const schemaOrg = {
       />
     )}
 
-    <!-- Google Fonts — non-blocking load -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;700&display=swap"
-      />
-    </noscript>
+    <Font cssVariable="--font-cormorant" />
+    <Font cssVariable="--font-dm-sans" />
 
     <ClientRouter />
 

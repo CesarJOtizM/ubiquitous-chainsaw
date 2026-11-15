@@ -1,20 +1,12 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Brightwall";
-  src: url("/fonts/Brightwall.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 @theme {
   --color-bg: #FFF5FB;
   --color-bg-alt: #FAE8F8;
   --color-bg-card: #F5E8FA;
   --color-text: #2A1F26;
-  /* #6E5866 keeps muted copy above 4.5:1 on the page background. */
-  --color-text-muted: #6E5866;
+  /* Stays above 4.5:1 where copy sits over the PageDecor blobs and brushes, not just the plain background. */
+  --color-text-muted: #5E4957;
   --color-accent: #B762C1;
   /* Small text. The brand pink fails 4.5:1 below 24px. */
   --color-accent-text: #7A348F;
@@ -30,9 +22,8 @@
   --color-whatsapp: #25D366;
   --color-memorial: #9B8AA0;
 
-  --font-heading: "Cormorant Garamond", Georgia, serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
-  --font-logo: "Brightwall", "Cormorant Garamond", serif;
+  --font-heading: var(--font-cormorant);
+  --font-body: var(--font-dm-sans);
 }
 
 /* Base */

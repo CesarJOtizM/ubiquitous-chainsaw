@@ -17,17 +17,17 @@ En el lienzo el acrílico va sobre tela. En la base, el retrato va sobre metacri
 
 <div class="photo-pair">
   <figure class="photo-card">
-    <img src="/img/cuadros-mascotas/12.jpg?tr=w-1200,f-auto,q-80" alt="Retrato de perro pintado a mano en acrílico sobre lienzo, catálogo de Sac_Artx" width="768" height="1024" loading="lazy" decoding="async" />
+    <img src="/img/cuadros-mascotas/12.jpg?tr=w-1200,f-auto,q-80" srcset="/img/cuadros-mascotas/12.jpg?tr=w-360,f-auto,q-80 360w, /img/cuadros-mascotas/12.jpg?tr=w-560,f-auto,q-80 560w, /img/cuadros-mascotas/12.jpg?tr=w-720,f-auto,q-80 720w, /img/cuadros-mascotas/12.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Retrato de perro pintado a mano en acrílico sobre lienzo, catálogo de Sac_Artx" width="768" height="1024" loading="lazy" decoding="async" />
     <figcaption>Lienzo. Orejas, hocico y pelaje salen de la foto.</figcaption>
   </figure>
   <figure class="photo-card">
-    <img src="/img/bases-acrilicas/16.jpg?tr=w-1200,f-auto,q-80" alt="Retrato de perro en base de acrílico con resina, catálogo de Sac_Artx" width="576" height="1024" loading="lazy" decoding="async" />
+    <img src="/img/bases-acrilicas/16.jpg?tr=w-1200,f-auto,q-80" srcset="/img/bases-acrilicas/16.jpg?tr=w-360,f-auto,q-80 360w, /img/bases-acrilicas/16.jpg?tr=w-560,f-auto,q-80 560w, /img/bases-acrilicas/16.jpg?tr=w-720,f-auto,q-80 720w, /img/bases-acrilicas/16.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Retrato de perro en base de acrílico con resina, catálogo de Sac_Artx" width="576" height="1024" loading="lazy" decoding="async" />
     <figcaption>Base. El nombre va en la madera.</figcaption>
   </figure>
 </div>
 
 <figure class="photo-card">
-  <img src="/img/cuadros-mascotas/01.jpg?tr=w-1200,f-auto,q-80" alt="Otro retrato de perro en acrílico sobre lienzo, visto de frente, catálogo de Sac_Artx" width="1200" height="900" loading="lazy" decoding="async" />
+  <img src="/img/cuadros-mascotas/01.jpg?tr=w-1200,f-auto,q-80" srcset="/img/cuadros-mascotas/01.jpg?tr=w-480,f-auto,q-80 480w, /img/cuadros-mascotas/01.jpg?tr=w-720,f-auto,q-80 720w, /img/cuadros-mascotas/01.jpg?tr=w-1080,f-auto,q-80 1080w, /img/cuadros-mascotas/01.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 92vw, 720px" alt="Otro retrato de perro en acrílico sobre lienzo, visto de frente, catálogo de Sac_Artx" width="1200" height="900" loading="lazy" decoding="async" />
   <figcaption>Otro lienzo. La cara va de frente o en tres cuartos, con luz de día.</figcaption>
 </figure>
 

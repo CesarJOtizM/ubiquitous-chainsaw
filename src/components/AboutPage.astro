@@ -93,7 +93,7 @@ function sizesFor(layout: string): string {
 
 const lcpSrc = copy.chapters[0]?.images[0]?.src;
 const lcpSizes = '(max-width: 860px) 92vw, 46vw';
-const lcpSrcset = lcpSrc ? imageSrcSet(lcpSrc, [480, 768, 1024]) : '';
+const lcpSrcset = lcpSrc ? imageSrcSet(lcpSrc, [480, 640, 768, 1024]) : '';
 const lcpPreload = lcpSrc
   ? { src: imageUrl(lcpSrc, 480), srcset: lcpSrcset, sizes: lcpSizes }
   : undefined;
@@ -163,7 +163,7 @@ const lcpPreload = lcpSrc
                     const isLcp = i === 0 && j === 0;
                     const srcset = isLcp
                       ? lcpSrcset
-                      : imageSrcSet(image.src, chapter.layout === 'wide' ? [640, 1024] : [480, 768, 1024]);
+                      : imageSrcSet(image.src, chapter.layout === 'wide' ? [640, 768, 1024] : [480, 640, 768, 1024]);
                     return (
                       <figure>
                         <img

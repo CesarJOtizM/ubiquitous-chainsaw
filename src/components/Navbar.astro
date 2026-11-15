@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from '../i18n/utils';
+import Wordmark from './Wordmark.astro';
 import {
   aboutPath,
   alternatePath,
@@ -100,7 +101,7 @@ const primary: NavLink[] = [
         class="navbar__logo"
         aria-label={lang === 'en' ? 'Sac_Artx — home' : 'Sac_Artx — inicio'}
       >
-        Sac_Artx
+        <Wordmark />
       </a>
 
       <nav class="navbar__desktop" aria-label={t('nav.desktopLabel')}>
@@ -161,10 +162,9 @@ const primary: NavLink[] = [
         <a
           href={langSwitchHref}
           class="navbar__lang-switch"
-          aria-label={t('nav.langSwitchLabel')}
           hreflang={otherLang}
         >
-          {t('nav.langSwitch')}
+          {t('nav.langSwitch')}<span class="sr-only"> — {t('nav.langSwitchLabel')}</span>
         </a>
         <a href={WA_URL} class="btn btn-whatsapp navbar__cta" target="_blank" rel="noopener noreferrer">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -228,10 +228,9 @@ const primary: NavLink[] = [
       <a
         href={langSwitchHref}
         class="mobile-menu__lang-switch"
-        aria-label={t('nav.langSwitchLabel')}
         hreflang={otherLang}
       >
-        {t('nav.langSwitch')}
+        {t('nav.langSwitch')}<span class="sr-only"> — {t('nav.langSwitchLabel')}</span>
       </a>
       <a href={WA_URL} class="mobile-menu__wa" target="_blank" rel="noopener noreferrer">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -288,10 +287,7 @@ const primary: NavLink[] = [
   }
 
   .navbar__logo {
-    font-family: var(--font-logo);
     font-size: 28px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
     color: var(--color-text);
     text-decoration: none;
     transition: color 0.2s;

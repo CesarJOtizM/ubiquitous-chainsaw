@@ -17,17 +17,17 @@ A photo from high above flattens the face. I need the eyes, the ears, and the wh
 
 <div class="photo-pair">
   <figure class="photo-card">
-    <img src="/img/cuadros-mascotas/06.jpg?tr=w-1200,f-auto,q-80" alt="Hand-painted acrylic cat portrait on canvas, from the Sac_Artx catalog" width="768" height="1024" loading="lazy" decoding="async" />
+    <img src="/img/cuadros-mascotas/06.jpg?tr=w-1200,f-auto,q-80" srcset="/img/cuadros-mascotas/06.jpg?tr=w-360,f-auto,q-80 360w, /img/cuadros-mascotas/06.jpg?tr=w-560,f-auto,q-80 560w, /img/cuadros-mascotas/06.jpg?tr=w-720,f-auto,q-80 720w, /img/cuadros-mascotas/06.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Hand-painted acrylic cat portrait on canvas, from the Sac_Artx catalog" width="768" height="1024" loading="lazy" decoding="async" />
     <figcaption>Canvas. Eyes, ears, and coat come from the photo.</figcaption>
   </figure>
   <figure class="photo-card">
-    <img src="/img/bases-acrilicas/02.jpg?tr=w-1200,f-auto,q-80" alt="Cat portrait on an acrylic base with resin, from the Sac_Artx catalog" width="720" height="960" loading="lazy" decoding="async" />
+    <img src="/img/bases-acrilicas/02.jpg?tr=w-1200,f-auto,q-80" srcset="/img/bases-acrilicas/02.jpg?tr=w-360,f-auto,q-80 360w, /img/bases-acrilicas/02.jpg?tr=w-560,f-auto,q-80 560w, /img/bases-acrilicas/02.jpg?tr=w-720,f-auto,q-80 720w, /img/bases-acrilicas/02.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 46vw, 352px" alt="Cat portrait on an acrylic base with resin, from the Sac_Artx catalog" width="720" height="960" loading="lazy" decoding="async" />
     <figcaption>Acrylic base with resin, a glass effect.</figcaption>
   </figure>
 </div>
 
 <figure class="photo-card">
-  <img src="/img/cuadros-mascotas/04.jpg?tr=w-1200,f-auto,q-80" alt="Hand-painted acrylic cat portrait on canvas, facing forward, Sac_Artx catalog" width="1200" height="900" loading="lazy" decoding="async" />
+  <img src="/img/cuadros-mascotas/04.jpg?tr=w-1200,f-auto,q-80" srcset="/img/cuadros-mascotas/04.jpg?tr=w-480,f-auto,q-80 480w, /img/cuadros-mascotas/04.jpg?tr=w-720,f-auto,q-80 720w, /img/cuadros-mascotas/04.jpg?tr=w-1080,f-auto,q-80 1080w, /img/cuadros-mascotas/04.jpg?tr=w-1200,f-auto,q-80 1200w" sizes="(max-width: 760px) 92vw, 720px" alt="Hand-painted acrylic cat portrait on canvas, facing forward, Sac_Artx catalog" width="1200" height="900" loading="lazy" decoding="async" />
   <figcaption>Another canvas. The face is front-on or three-quarter, not from above.</figcaption>
 </figure>
 
