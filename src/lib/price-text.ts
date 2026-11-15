@@ -161,11 +161,13 @@ export function whereText(lang: Lang, variant: 'studio' | 'colombia' = 'studio')
   const wa = `[${business.phoneDisplay}](${whatsappUrl(lang)})`;
   const ig = `[Instagram](${business.instagram})`;
   const tk = `[TikTok](${business.tiktok})`;
+  const yt = `[YouTube](${business.youtube})`;
+  const profiles = lang === 'en' ? `${ig}, ${tk}, and ${yt}` : `${ig}, ${tk} y ${yt}`;
   const note = shippingNote(lang);
   if (variant === 'colombia') {
     return lang === 'en'
-      ? `Shipping coverage: ${coverage}. ${note} WhatsApp: ${wa}. ${ig} and ${tk}: ${business.handle}.`
-      : `Cobertura de envío: ${coverage}. ${note} WhatsApp: ${wa}. ${ig} y ${tk}: ${business.handle}.`;
+      ? `Shipping coverage: ${coverage}. ${note} WhatsApp: ${wa}. ${profiles}: ${business.handle}.`
+      : `Cobertura de envío: ${coverage}. ${note} WhatsApp: ${wa}. ${profiles}: ${business.handle}.`;
   }
   return lang === 'en'
     ? `I paint to order and ship to ${coverage}. ${note} WhatsApp: ${wa}.`

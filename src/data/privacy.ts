@@ -88,7 +88,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'Si nos escribes por WhatsApp, Instagram, TikTok o Facebook, sales de este sitio. Esos servicios tratan tus datos con su propia política.',
+                text: 'Si nos escribes por WhatsApp, Instagram, TikTok, Facebook o YouTube, sales de este sitio. Esos servicios tratan tus datos con su propia política.',
               },
             ],
           },
@@ -373,7 +373,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'If you write to us on WhatsApp, Instagram, TikTok, or Facebook, you leave this site. Those services process your data under their own policies.',
+                text: 'If you write to us on WhatsApp, Instagram, TikTok, Facebook, or YouTube, you leave this site. Those services process your data under their own policies.',
               },
             ],
           },

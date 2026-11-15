@@ -54,6 +54,7 @@ function socialLines(lang: Lang): string[] {
   return [
     `- [Instagram](${business.instagram}): ${business.handle}`,
     `- [TikTok](${business.tiktok}): ${business.handle}`,
+    `- [YouTube](${business.youtube}): ${business.handle}`,
     `- [${google}](${business.google})`,
   ];
 }

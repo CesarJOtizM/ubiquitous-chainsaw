@@ -24,8 +24,9 @@ export const profileTopics = new Set<IntentTopic>(['pets', 'dogs', 'cats', 'memo
 export function profileSentence(entry: IntentEntry): string {
   const ig = `[Instagram](${business.instagram})`;
   const tk = `[TikTok](${business.tiktok})`;
-  const conj = entry.lang === 'en' ? 'and' : 'y';
-  return `${ig} ${conj} ${tk}: ${business.handle}.`;
+  const yt = `[YouTube](${business.youtube})`;
+  const list = entry.lang === 'en' ? `${ig}, ${tk}, and ${yt}` : `${ig}, ${tk} y ${yt}`;
+  return `${list}: ${business.handle}.`;
 }
 
 function sectionBlock(entry: IntentEntry): string[] {

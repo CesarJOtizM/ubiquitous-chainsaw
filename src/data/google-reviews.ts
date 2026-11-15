@@ -44,4 +44,12 @@ export const googleReviews: Partial<Record<ProductKey, readonly GoogleReview[]>>
         'Realmente muy recomendado, me encantó mi case, me gustó mucho ver a mi gata plasmada, no sólo es una fotografía porque cada pincelazo fue el resultado de un gran esfuerzo y finalmente mi gatita linda. Me encantó',
     },
   ],
+  sizes: [
+    {
+      author: 'Stephania Sánchez',
+      stars: 5,
+      quote:
+        'Fue un muy bonito detalle y encantada con la calidad y detalle de la pintura.',
+    },
+  ],
 };

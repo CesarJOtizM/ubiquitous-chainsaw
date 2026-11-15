@@ -97,7 +97,7 @@ const schemaOrg = {
         "name": business.founder,
         "jobTitle": lang === 'en' ? 'Artist' : 'Artista',
         "url": `${SITE}${aboutPath(lang)}`,
-        "sameAs": [business.instagram, business.tiktok, business.facebook],
+        "sameAs": [business.instagram, business.tiktok, business.facebook, business.youtube],
       },
       "address": {
         "@type": "PostalAddress",
@@ -108,6 +108,7 @@ const schemaOrg = {
         "https://www.instagram.com/sac_artx",
         "https://www.tiktok.com/@sac_artx",
         FB_URL,
+        business.youtube,
         business.google,
       ],
       "knowsAbout": [
