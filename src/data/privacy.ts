@@ -27,6 +27,7 @@ export type PrivacyCopy = {
 };
 
 const GA_OPT_OUT = 'https://tools.google.com/dlpage/gaoptout';
+const META_PRIVACY = 'https://www.facebook.com/privacy/policy';
 const SIC = 'https://www.sic.gov.co/';
 const WHATSAPP = 'https://wa.me/573016584401';
 
@@ -36,9 +37,9 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
     title: '¿Qué datos personales trata Sac_Artx?',
     metaTitle: 'Política de privacidad · Sac_Artx',
     metaDescription:
-      'Qué datos recoge Sac_Artx en sacartx.art, las cookies de Google Analytics y Microsoft Clarity, y cómo pedir que corrijamos o borremos tu información.',
+      'Qué datos recoge Sac_Artx en sacartx.art, las cookies de Google Analytics, Meta y Microsoft Clarity, y cómo pedir que corrijamos o borremos tu información.',
     crumb: 'Privacidad',
-    updated: 'Actualizada el 13 de noviembre de 2026',
+    updated: 'Actualizada el 18 de noviembre de 2026',
     intro:
       'Esta página dice qué datos personales trata Sac_Artx en sacartx.art, para qué los usa y cómo pedir que los corrijamos o los borremos. Está hecha para cumplir la Ley 1581 de 2012.',
     sections: [
@@ -146,6 +147,28 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
+                text: 'También usamos el píxel de Meta para medir las visitas y saber si los anuncios de Facebook e Instagram traen gente al sitio. Meta puede usar esa medición para medir y mejorar esos anuncios.',
+              },
+            ],
+          },
+          {
+            type: 'p',
+            parts: [
+              { text: 'El píxel de Meta puede utilizar cookies, como ' },
+              { text: '_fbp', emphasis: true },
+              { text: ' y ' },
+              { text: '_fbc', emphasis: true },
+              { text: '. El identificador del píxel es ' },
+              { text: '2969052133475792', emphasis: true },
+              { text: '. Esos datos los trata Meta según su ' },
+              { text: 'política de privacidad', href: META_PRIVACY, external: true },
+              { text: '.' },
+            ],
+          },
+          {
+            type: 'p',
+            parts: [
+              {
                 text: 'También usamos Microsoft Clarity para ver cómo se recorre el sitio: clics, desplazamientos, mapas de calor y grabaciones de la sesión. Clarity puede enmascarar lo que escribes en los formularios. No lo usamos para mostrar publicidad.',
               },
             ],
@@ -199,6 +222,11 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
                 { text: 'Instala el complemento de inhabilitación de Google Analytics: ' },
                 { text: 'tools.google.com/dlpage/gaoptout', href: GA_OPT_OUT, external: true },
                 { text: '.' },
+              ],
+              [
+                {
+                  text: 'Para dejar de ser medido por el píxel de Meta, bloquea connect.facebook.net o borra las cookies _fbp y _fbc.',
+                },
               ],
               [
                 {
@@ -280,7 +308,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'Para responder el formulario usamos Resend, que envía el correo al estudio. Para medir visitas usamos Google y Microsoft Clarity. Para alojar y entregar el sitio usamos Vercel. Esos proveedores pueden tratar los datos fuera de Colombia, solo para prestar ese servicio. No los autorizamos a usarlos para su propia publicidad.',
+                text: 'Para responder el formulario usamos Resend, que envía el correo al estudio. Para medir visitas usamos Google y Microsoft Clarity. Para medir las visitas que llegan desde anuncios usamos Meta. Para alojar y entregar el sitio usamos Vercel. Esos proveedores pueden tratar los datos fuera de Colombia, solo para prestar ese servicio. Resend, Google, Microsoft y Vercel no están autorizados a usar esos datos para su propia publicidad. Meta trata los datos del píxel según su política, también para medir anuncios.',
               },
             ],
           },
@@ -294,7 +322,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'Las consultas del formulario se conservan el tiempo necesario para responder y, si hay un encargo, para llevarlo. Esas consultas se envían por correo con Resend. No armamos una base aparte con las visitas: esa medición la guardan Google Analytics y Microsoft Clarity según sus políticas. Los registros técnicos del alojamiento los trata Vercel según sus propias condiciones.',
+                text: 'Las consultas del formulario se conservan el tiempo necesario para responder y, si hay un encargo, para llevarlo. Esas consultas se envían por correo con Resend. No armamos una base aparte con las visitas: esa medición la guardan Google Analytics, Meta y Microsoft Clarity según sus políticas. Los registros técnicos del alojamiento los trata Vercel según sus propias condiciones.',
               },
             ],
           },
@@ -321,9 +349,9 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
     title: 'What personal data does Sac_Artx process?',
     metaTitle: 'Privacy policy and your data rights | Sac_Artx',
     metaDescription:
-      'What data Sac_Artx collects on sacartx.art, the Google Analytics and Microsoft Clarity cookies, and how to ask us to correct or delete your information.',
+      'What data Sac_Artx collects on sacartx.art, the Google Analytics, Meta, and Microsoft Clarity cookies, and how to ask us to correct or delete your information.',
     crumb: 'Privacy',
-    updated: 'Updated November 13, 2026',
+    updated: 'Updated November 18, 2026',
     intro:
       'This page explains what personal data Sac_Artx processes on sacartx.art, why we use it, and how to ask us to correct or delete it. It follows Colombia’s Law 1581 of 2012.',
     sections: [
@@ -431,6 +459,28 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
+                text: 'We also use the Meta pixel to measure visits and to see whether Facebook and Instagram ads bring people to the site. Meta may use that measurement to measure and improve those ads.',
+              },
+            ],
+          },
+          {
+            type: 'p',
+            parts: [
+              { text: 'The Meta pixel may use cookies such as ' },
+              { text: '_fbp', emphasis: true },
+              { text: ' and ' },
+              { text: '_fbc', emphasis: true },
+              { text: '. The pixel ID is ' },
+              { text: '2969052133475792', emphasis: true },
+              { text: '. Meta handles that data under its ' },
+              { text: 'privacy policy', href: META_PRIVACY, external: true },
+              { text: '.' },
+            ],
+          },
+          {
+            type: 'p',
+            parts: [
+              {
                 text: 'We also use Microsoft Clarity to see how people move through the site: clicks, scrolling, heatmaps, and session recordings. Clarity can mask what you type in forms. We do not use it to show advertising.',
               },
             ],
@@ -484,6 +534,11 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
                 { text: 'Install the Google Analytics opt-out add-on: ' },
                 { text: 'tools.google.com/dlpage/gaoptout', href: GA_OPT_OUT, external: true },
                 { text: '.' },
+              ],
+              [
+                {
+                  text: 'To stop the Meta pixel from measuring you, block connect.facebook.net or delete the _fbp and _fbc cookies.',
+                },
               ],
               [
                 {
@@ -565,7 +620,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'To reply to the form we use Resend, which emails the studio. To measure visits we use Google and Microsoft Clarity. To host and deliver the site we use Vercel. Those providers may process the data outside Colombia, only to provide that service. We do not authorize them to use it for their own advertising.',
+                text: 'To reply to the form we use Resend, which emails the studio. To measure visits we use Google and Microsoft Clarity. To measure visits that come from ads we use Meta. To host and deliver the site we use Vercel. Those providers may process the data outside Colombia, only to provide that service. Resend, Google, Microsoft, and Vercel are not authorized to use that data for their own advertising. Meta handles pixel data under its own policy, including to measure ads.',
               },
             ],
           },
@@ -579,7 +634,7 @@ export const privacyCopy: Record<'es' | 'en', PrivacyCopy> = {
             type: 'p',
             parts: [
               {
-                text: 'Form inquiries are kept for as long as we need to reply and, if there is a commission, to complete it. Those inquiries are emailed through Resend. We do not keep a separate copy of visit measurements: Google Analytics and Microsoft Clarity store that measurement under their own policies. Technical hosting logs are handled by Vercel under Vercel’s terms.',
+                text: 'Form inquiries are kept for as long as we need to reply and, if there is a commission, to complete it. Those inquiries are emailed through Resend. We do not keep a separate copy of visit measurements: Google Analytics, Meta, and Microsoft Clarity store that measurement under their own policies. Technical hosting logs are handled by Vercel under Vercel’s terms.',
               },
             ],
           },

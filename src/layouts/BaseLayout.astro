@@ -154,6 +154,20 @@ const schemaOrg = {
       })(window,document,'script','dataLayer','GTM-KZK6S278');
     </script>
 
+    <!-- Meta Pixel -->
+    <script is:inline>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '2969052133475792');
+      fbq('track', 'PageView');
+    </script>
+
     <!-- Clarity stays off until the visitor accepts. Also stays off on localhost. -->
     <script is:inline>
       (function () {
@@ -382,6 +396,16 @@ const schemaOrg = {
         style="display:none;visibility:hidden"
       ></iframe>
     </noscript>
+    <!-- Meta Pixel (noscript) -->
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=2969052133475792&ev=PageView&noscript=1"
+        alt=""
+      />
+    </noscript>
     <div class="nav-progress" aria-hidden="true"></div>
     <MeasureNotice lang={lang} />
     <PageDecor />
@@ -436,6 +460,20 @@ const schemaOrg = {
       }
 
       document.addEventListener('astro:page-load', initReveal);
+    </script>
+
+    <!-- Later client navigations get their own Meta PageView. The first one is in the head. -->
+    <script is:inline>
+      (function () {
+        var first = true;
+        document.addEventListener('astro:page-load', function () {
+          if (first) {
+            first = false;
+            return;
+          }
+          if (typeof fbq === 'function') fbq('track', 'PageView');
+        });
+      })();
     </script>
 
     <!-- Speed Insights starts after the first paint, or on the first tap. -->
