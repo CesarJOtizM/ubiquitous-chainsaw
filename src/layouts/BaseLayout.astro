@@ -145,6 +145,15 @@ const schemaOrg = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Google Tag Manager. The container fires Google tag GT-T94TPG7N. -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-KZK6S278');
+    </script>
+
     <!-- Clarity stays off until the visitor accepts. Also stays off on localhost. -->
     <script is:inline>
       (function () {
@@ -189,38 +198,6 @@ const schemaOrg = {
           }
           return setAttribute.call(this, name, value);
         };
-      })();
-    </script>
-
-    <!-- Analytics starts after the first paint, or on the first tap. -->
-    <script is:inline>
-      (function () {
-        var started = false;
-        function startAnalytics() {
-          if (started) return;
-          started = true;
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-KZK6S278');
-          // GT-T94TPG7N is fired by the GTM container. A direct gtag.js load doubled it.
-          document.dispatchEvent(new Event('sacartx:analytics'));
-        }
-
-        function whenIdle() {
-          if ('requestIdleCallback' in window) {
-            requestIdleCallback(startAnalytics, { timeout: 4000 });
-          } else {
-            setTimeout(startAnalytics, 4000);
-          }
-        }
-
-        window.addEventListener('load', function () {
-          setTimeout(whenIdle, 2000);
-        });
-        window.addEventListener('pointerdown', startAnalytics, { once: true, passive: true });
-        window.addEventListener('keydown', startAnalytics, { once: true });
       })();
     </script>
 
@@ -461,7 +438,7 @@ const schemaOrg = {
       document.addEventListener('astro:page-load', initReveal);
     </script>
 
-    <!-- Speed Insights joins analytics, after the first paint. -->
+    <!-- Speed Insights starts after the first paint, or on the first tap. -->
     <script>
       type InsightHandle = { setRoute: (route: string | null) => void } | null;
       let insights: InsightHandle = null;
@@ -477,9 +454,22 @@ const schemaOrg = {
         });
       }
 
-      document.addEventListener('sacartx:analytics', () => {
-        void startSpeedInsights();
+      function whenIdle() {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(() => void startSpeedInsights(), { timeout: 4000 });
+        } else {
+          setTimeout(() => void startSpeedInsights(), 4000);
+        }
+      }
+
+      window.addEventListener('load', () => {
+        setTimeout(whenIdle, 2000);
       });
+      window.addEventListener('pointerdown', () => void startSpeedInsights(), {
+        once: true,
+        passive: true,
+      });
+      window.addEventListener('keydown', () => void startSpeedInsights(), { once: true });
 
       document.addEventListener('astro:page-load', () => {
         if (!insights) return;
