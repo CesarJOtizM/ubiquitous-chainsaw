@@ -52,7 +52,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter(page) {
-        // The product feed is a file for ChatGPT Business Hub, not a page to rank.
+        // Product files for ChatGPT and Merchant Center, not pages to rank.
         return !page.includes('/feeds/');
       },
       customPages: [
