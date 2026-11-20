@@ -1,0 +1,67 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Privacy from '../components/Privacy.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFAB from '../components/WhatsAppFAB.astro';
+import { returnsCopy } from '../data/returns';
+
+const lang = 'es' as const;
+const copy = returnsCopy[lang];
+const url = 'https://sacartx.art/devoluciones/';
+const homeUrl = 'https://sacartx.art/';
+
+const extraJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
+    url,
+    name: copy.metaTitle,
+    description: copy.metaDescription,
+    inLanguage: 'es-CO',
+    isPartOf: { '@id': 'https://sacartx.art/#website' },
+    about: { '@id': 'https://sacartx.art/#business' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Inicio',
+        item: homeUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: copy.crumb,
+        item: url,
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title={copy.metaTitle}
+  description={copy.metaDescription}
+  ogUrl={url}
+  canonicalUrl={url}
+  alternateEs={url}
+  alternateEn="https://sacartx.art/en/returns/"
+  markdownAlt="https://sacartx.art/info/devoluciones.md"
+  markdownAltTitle="Devoluciones de Sac_Artx en texto"
+  extraJsonLd={extraJsonLd}
+>
+  <Navbar lang={lang} />
+  <main>
+    <Privacy lang={lang} copy={copy} />
+  </main>
+  <Footer lang={lang} />
+  <WhatsAppFAB lang={lang} />
+</BaseLayout>

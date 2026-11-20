@@ -16,6 +16,7 @@ import {
   intentTopics,
   pricesPath,
   privacyPath,
+  returnsPath,
   productKeys,
   productPath,
 } from './src/i18n/paths.ts';
@@ -67,6 +68,7 @@ export function sitemapLinks(site: string) {
     [catalogPath('es'), catalogPath('en')],
     [pricesPath('es'), pricesPath('en')],
     [privacyPath('es'), privacyPath('en')],
+    [returnsPath('es'), returnsPath('en')],
     [aboutPath('es'), aboutPath('en')],
     [blogPath('es'), blogPath('en')],
     ...intentTopics.map((topic) => [intentPath(topic, 'es'), intentPath(topic, 'en')] as [string, string]),

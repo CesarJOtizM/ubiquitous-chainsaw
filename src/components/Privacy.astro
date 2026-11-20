@@ -1,16 +1,17 @@
 ---
 import { homePath } from '../i18n/paths';
 import { useTranslations } from '../i18n/utils';
-import { privacyCopy, type PrivacyPart } from '../data/privacy';
+import { privacyCopy, type PrivacyCopy, type PrivacyPart } from '../data/privacy';
 
 export interface Props {
   lang?: 'es' | 'en';
+  copy?: PrivacyCopy;
 }
 
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 const home = homePath(lang);
-const copy = privacyCopy[lang];
+const copy = Astro.props.copy ?? privacyCopy[lang];
 
 function linkAttrs(part: PrivacyPart) {
   if (!part.external) return {};

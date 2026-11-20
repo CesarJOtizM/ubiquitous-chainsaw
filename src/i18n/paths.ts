@@ -16,6 +16,10 @@ export function privacyPath(lang: Lang) {
   return lang === 'en' ? '/en/privacy/' : '/privacidad/';
 }
 
+export function returnsPath(lang: Lang) {
+  return lang === 'en' ? '/en/returns/' : '/devoluciones/';
+}
+
 /** About page path, e.g. '/sobre-mi/' or '/en/about/'. */
 export function aboutPath(lang: Lang) {
   return lang === 'en' ? '/en/about/' : '/sobre-mi/';
@@ -107,6 +111,11 @@ export function isPrivacyPath(pathname: string) {
   return path.endsWith('/privacy') || path.endsWith('/privacidad');
 }
 
+export function isReturnsPath(pathname: string) {
+  const path = pathname.replace(/\/+$/, '');
+  return path.endsWith('/returns') || path.endsWith('/devoluciones');
+}
+
 export function isAboutPath(pathname: string) {
   const path = pathname.replace(/\/+$/, '');
   return path === '/sobre-mi' || path === '/en/about';
@@ -127,6 +136,7 @@ export function alternatePath(pathname: string, otherLang: Lang) {
   if (isCatalogPath(pathname)) return catalogPath(otherLang);
   if (isPricesPath(pathname)) return pricesPath(otherLang);
   if (isPrivacyPath(pathname)) return privacyPath(otherLang);
+  if (isReturnsPath(pathname)) return returnsPath(otherLang);
   if (isAboutPath(pathname)) return aboutPath(otherLang);
   // Blog index pages are reciprocal. Blog posts resolve their own post-to-post
   // target via Navbar's langSwitchHref prop (needs the collection); the pathname

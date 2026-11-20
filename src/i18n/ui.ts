@@ -376,6 +376,7 @@ export const ui = {
     'footer.nav.process': 'Proceso',
     'footer.nav.faq': 'Preguntas frecuentes',
     'footer.nav.contact': 'Contacto',
+    'footer.returns': 'Devoluciones',
     'footer.privacy': 'Privacidad',
 
     // whatsapp fab
@@ -772,6 +773,7 @@ export const ui = {
     'footer.nav.process': 'Process',
     'footer.nav.faq': 'FAQ',
     'footer.nav.contact': 'Contact',
+    'footer.returns': 'Returns',
     'footer.privacy': 'Privacy',
 
     // whatsapp fab

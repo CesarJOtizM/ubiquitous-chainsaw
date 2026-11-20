@@ -10,7 +10,8 @@ import { business, makerSentence } from '../data/business';
 import { catalogLines } from '../data/catalog';
 import { googleReviews } from '../data/google-reviews';
 import { intentPages } from '../data/intent-pages';
-import { privacyCopy, type PrivacyPart } from '../data/privacy';
+import { privacyCopy, type PrivacyCopy, type PrivacyPart } from '../data/privacy';
+import { returnsCopy } from '../data/returns';
 import { productEntry } from '../data/product-pages';
 import {
   basePrices,
@@ -27,6 +28,7 @@ import {
   homePath,
   pricesPath,
   privacyPath,
+  returnsPath,
   productKeys,
   productPath,
   type Lang,
@@ -233,12 +235,11 @@ function privacyParts(parts: PrivacyPart[]): string {
     .join('');
 }
 
-function privacyMarkdown(lang: Lang): string {
-  const copy = privacyCopy[lang];
+function policyMarkdown(lang: Lang, copy: PrivacyCopy, htmlPath: string): string {
   const lines = [
     `# ${copy.title}`,
     '',
-    cite(lang, privacyPath(lang)),
+    cite(lang, htmlPath),
     '',
     copy.updated,
     '',
@@ -255,6 +256,14 @@ function privacyMarkdown(lang: Lang): string {
     ]),
   ];
   return lines.join('\n');
+}
+
+function privacyMarkdown(lang: Lang): string {
+  return policyMarkdown(lang, privacyCopy[lang], privacyPath(lang));
+}
+
+function returnsMarkdown(lang: Lang): string {
+  return policyMarkdown(lang, returnsCopy[lang], returnsPath(lang));
 }
 
 function blogIndexMarkdown(
@@ -335,6 +344,8 @@ export async function collectInfoDocs(): Promise<InfoDoc[]> {
     { slug: 'about', markdown: aboutMarkdown('en') },
     { slug: 'privacidad', markdown: privacyMarkdown('es') },
     { slug: 'privacy', markdown: privacyMarkdown('en') },
+    { slug: 'devoluciones', markdown: returnsMarkdown('es') },
+    { slug: 'returns', markdown: returnsMarkdown('en') },
   ];
 
   for (const lang of ['es', 'en'] as const) {
@@ -461,6 +472,12 @@ export async function llmsIndex(lang: Lang): Promise<string[]> {
       md: lang === 'en' ? 'privacy' : 'privacidad',
       html: privacyPath(lang),
       blurb: privacyCopy[lang].metaDescription,
+    },
+    {
+      label: lang === 'en' ? 'Returns' : 'Devoluciones',
+      md: lang === 'en' ? 'returns' : 'devoluciones',
+      html: returnsPath(lang),
+      blurb: returnsCopy[lang].metaDescription,
     },
     faq,
   ];
