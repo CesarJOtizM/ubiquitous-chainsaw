@@ -6,7 +6,7 @@
 
 Un retrato de mascota en acrílico sobre lienzo empieza desde {es:canvas-12x18} COP (12×18 cm, 1 mascota). Los demás tamaños son {es:canvas-20x25} (20×25 cm), {es:canvas-28x35} (28×35 cm) y {es:canvas-40x50} (40×50 cm). La edición especial corazón de 20×20 cm cuesta {es:canvas-heart-20x20}.
 
-Las bases acrílicas cuestan {es:base-10x15} (10×15 cm) y {es:base-12x18} (12×18 cm), e incluyen llavero corazón con nombre. Una funda de celular con tu mascota cuesta {es:case-pet}. Las fundas de flores prensadas cuestan {es:case-flowers} y la funda flores + pintura (flores prensadas con diseño básico en pintura), {es:case-flowers-custom}. Un anime o un logo va desde {es:case-logo-anime}. Un minilienzo magnético de 7,5 cm cuesta {es:magnet}; con otro producto, {es:magnet-addon}. Los paisajes y encargos a medida se cotizan según tamaño y complejidad.
+Las bases acrílicas cuestan {es:base-10x15} (10×15 cm) y {es:base-12x18} (12×18 cm), e incluyen llavero corazón con nombre. Una funda de celular con tu mascota cuesta {es:case-pet}. Las fundas de flores prensadas cuestan {es:case-flowers} y la funda flores + pintura (flores prensadas con diseño básico en pintura), {es:case-flowers-custom}. Un anime o un logo va desde {es:case-logo-anime}. Los paisajes y encargos a medida se cotizan según tamaño y complejidad.
 
 Una mascota adicional suma entre {es:extra-canvas-min} y {es:extra-canvas-max} en un cuadro, {es:extra-base} en una base y {es:extra-case} en una funda. Mascotas sugeridas por pieza: cuadro 12×18 cm, de 1 a 5; 20×25 y 28×35 cm, de 1 a 6; 40×50 cm, de 1 a 10; cuadro corazón, 1 mascota; base acrílica 10×15 cm, de 1 a 4, y 12×18 cm, de 1 a 5; funda, de 1 a 3.
 
@@ -44,7 +44,7 @@ El plazo es de 15 a 20 días hábiles. El tiempo puede variar según la compleji
 
 An acrylic pet portrait on canvas starts at {en:canvas-12x18} (12×18 cm, 1 pet). Other sizes are {en:canvas-20x25} (20×25 cm), {en:canvas-28x35} (28×35 cm), and {en:canvas-40x50} (40×50 cm). The special 20×20 cm heart edition is {en:canvas-heart-20x20}.
 
-Acrylic bases are {en:base-10x15} (10×15 cm) and {en:base-12x18} (12×18 cm), and include a heart keychain with the pet's name. A phone case with your pet is {en:case-pet}. Pressed flower cases are {en:case-flowers} and the flowers + painting case (pressed flowers with a basic painted design) is {en:case-flowers-custom}. Anime or a logo starts at {en:case-logo-anime}. A 7.5 cm magnetic mini canvas is {en:magnet}; with another product, {en:magnet-addon}. Landscapes and made-to-order pieces are quoted based on size and complexity.
+Acrylic bases are {en:base-10x15} (10×15 cm) and {en:base-12x18} (12×18 cm), and include a heart keychain with the pet's name. A phone case with your pet is {en:case-pet}. Pressed flower cases are {en:case-flowers} and the flowers + painting case (pressed flowers with a basic painted design) is {en:case-flowers-custom}. Anime or a logo starts at {en:case-logo-anime}. Landscapes and made-to-order pieces are quoted based on size and complexity.
 
 An extra pet adds {en:extra-canvas-to} on a canvas, {en:extra-base} on a base, and {en:extra-case} on a case. Suggested pets per piece: 12×18 cm canvas, 1 to 5; 20×25 and 28×35 cm, 1 to 6; 40×50 cm, 1 to 10; heart edition, 1 pet; acrylic base 10×15 cm, 1 to 4, and 12×18 cm, 1 to 5; phone case, 1 to 3.
 

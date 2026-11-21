@@ -13,7 +13,7 @@ import {
   productPath,
 } from '../i18n/paths';
 import { business, makerSentence } from '../data/business';
-import { canvasPrices, basePrices, casePrices, magnetPrices, extraPetPrices, type PriceRow } from '../data/prices';
+import { canvasPrices, basePrices, casePrices, extraPetPrices, type PriceRow } from '../data/prices';
 import { cop, priceLead, leadTimeText } from '../lib/price-text';
 import { itemsForLine } from '../data/catalog';
 import { animalAltEn, animalAltEs, animalForSrc } from '../data/catalog-animals';
@@ -42,7 +42,6 @@ const priceTables: Record<Exclude<ProductEntry['priceSource'], null>, PriceRow[]
   canvas: canvasPrices,
   base: basePrices,
   case: casePrices,
-  magnet: magnetPrices,
 };
 const priceRows = entry.priceSource ? priceTables[entry.priceSource] : [];
 const offerRows = priceRows.filter((row) => !row.companion);

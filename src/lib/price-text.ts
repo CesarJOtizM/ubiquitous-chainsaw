@@ -10,7 +10,6 @@ import {
   canvasPrices,
   casePrices,
   extraPetPrices,
-  magnetPrices,
   PRICE_FROM_CANVAS,
   LEAD_TIME_DAYS,
   type PriceRow,
@@ -49,7 +48,8 @@ export function formatPriceToken(id: string, lang: Lang): string | undefined {
   if (id === 'extra-base') return cop(extraPetPrices.base.amount, lang);
   if (id === 'extra-case') return cop(extraPetPrices.case.amount, lang);
   const row = priceById.get(id);
-  return row ? cop(row.price, lang) : undefined;
+  if (!row || row.published === false) return undefined;
+  return cop(row.price, lang);
 }
 
 const PRICE_TOKEN = /\{(?:(es|en):)?([a-z0-9-]+)\}/g;
@@ -181,19 +181,6 @@ export function priceGroups(lang: Lang, noun: string, opts: { suggested?: boolea
       note: en
         ? `An extra pet costs ${caseExtra}.`
         : `La mascota adicional tiene un costo de ${caseExtra}.`,
-    },
-    {
-      title: en ? 'Magnetic mini canvas' : 'Minilienzo magnético',
-      lines: magnetPrices.map((row) => ({
-        label: row.companion
-          ? en
-            ? 'With another product'
-            : 'Con otro producto'
-          : en
-            ? 'On its own'
-            : 'Solo',
-        value: cop(row.price, lang),
-      })),
     },
   );
 

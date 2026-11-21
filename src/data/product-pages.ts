@@ -17,7 +17,7 @@ import type { CatalogLineId } from './catalog';
 import type { IntentTopic } from '../i18n/paths';
 
 /** Which canonical price table in prices.ts drives this product. */
-export type PriceSource = 'canvas' | 'base' | 'case' | 'magnet';
+export type PriceSource = 'canvas' | 'base' | 'case';
 
 export interface ProductFaq {
   q: string;
@@ -411,7 +411,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
     },
   },
   magnets: {
-    priceSource: 'magnet',
+    priceSource: null,
     lineIds: [],
     posterSrc: '/images/imanes/proximamente.jpg',
     relatedProducts: ['paintings', 'cases'],
@@ -423,12 +423,12 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Minilienzo magnético con el retrato de tu mascota',
         metaTitle: 'Minilienzo magnético con el retrato de tu mascota | Sac_Artx',
         metaDescription:
-          'Pinto a tu mascota en un mini lienzo de 7,5 cm, redondo o cuadrado, con imán. Cuesta {magnet}. Con otro producto, {magnet-addon}. Envío contra entrega.',
+          'Pinto a tu mascota en un mini lienzo de 7,5 cm, redondo o cuadrado, con imán. Próximamente: todavía no está a la venta.',
         lead: 'Pinto a tu mascota en un mini lienzo de 7,5 × 7,5 cm, disponible en forma redonda o cuadrada. Incluye un imán en la parte trasera para que puedas decorar tu nevera o cualquier superficie metálica con un retrato único de tu mascota.',
         posterAlt:
           'Próximamente: minilienzos magnéticos redondos y cuadrados con retratos de perros y gatos.',
         priceNote:
-          'Solo cuesta {magnet}. Si lo pides junto con otro producto, {magnet-addon}. El envío va contra entrega: lo pagas a la transportadora cuando llega a tu casa.',
+          'Próximamente. Todavía no está a la venta, así que no tiene precio publicado. Cuando salga, el envío va contra entrega: lo pagas a la transportadora cuando llega a tu casa.',
         whatIncluded: [
           'Mini lienzo de 7,5 × 7,5 cm, redondo o cuadrado, pintado a mano desde la foto de tu mascota.',
           'Imán en la parte de atrás, para la nevera o cualquier superficie metálica.',
@@ -449,7 +449,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: '¿El precio incluye el envío?',
-            a: 'No. El precio es del minilienzo. El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.',
+            a: 'Todavía no. Sigue en próximamente y no tiene precio publicado. Cuando salga, el envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.',
           },
           {
             q: '¿Cómo lo pido?',
@@ -471,12 +471,12 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: "Magnetic mini canvas with your pet's portrait",
         metaTitle: "Magnetic mini canvas with your pet's portrait | Sac_Artx",
         metaDescription:
-          'I paint your pet on a 7.5 cm mini canvas, round or square, with a magnet. It is {magnet}. With another product, {magnet-addon}. Cash on delivery.',
+          'I paint your pet on a 7.5 cm mini canvas, round or square, with a magnet. Coming soon: it is not for sale yet.',
         lead: 'I paint your pet on a 7.5 × 7.5 cm mini canvas, available round or square. A magnet on the back lets you decorate your fridge, or any metal surface, with a unique portrait of your pet.',
         posterAlt:
           'Coming soon: round and square magnetic mini canvases with dog and cat portraits.',
         priceNote:
-          'On its own it is {magnet}. Ordered with another product, it is {magnet-addon}. Shipping is cash on delivery: you pay the carrier when it arrives at your home.',
+          'Coming soon. It is not for sale yet, so there is no published price. When it is available, shipping is cash on delivery: you pay the carrier when it arrives at your home.',
         whatIncluded: [
           'A 7.5 × 7.5 cm mini canvas, round or square, hand-painted from a photo of your pet.',
           'A magnet on the back, for the fridge or any metal surface.',
@@ -497,7 +497,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: 'Does the price include shipping?',
-            a: 'No. The price is for the mini canvas. Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.',
+            a: 'Not yet. It is still coming soon and has no published price. When it is available, shipping is cash on delivery with the carrier: you pay it when it arrives at your home.',
           },
           {
             q: 'How do I order one?',

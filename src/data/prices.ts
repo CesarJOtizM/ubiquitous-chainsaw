@@ -16,6 +16,8 @@ export type PriceRow = {
   from?: boolean;
   /** Price when bought with another product. Shown in tables, not as its own offer. */
   companion?: boolean;
+  /** False while the product is still "próximamente". Kept here, left out of public lists. */
+  published?: boolean;
 };
 
 export const canvasPrices: PriceRow[] = [
@@ -71,12 +73,14 @@ export const casePrices: PriceRow[] = [
   },
 ];
 
+/** Not for sale yet. The page stays on "próximamente" until these rows are published. */
 export const magnetPrices: PriceRow[] = [
   {
     id: 'magnet',
     size: '7,5×7,5 cm',
     nameKey: 'prices.magnetAlone',
     price: 85_000,
+    published: false,
   },
   {
     id: 'magnet-addon',
@@ -84,6 +88,7 @@ export const magnetPrices: PriceRow[] = [
     nameKey: 'prices.magnetAddon',
     price: 72_000,
     companion: true,
+    published: false,
   },
 ];
 
@@ -111,7 +116,7 @@ export const PRICE_FROM_BASE = basePrices[0]!.price;
 export const PRICE_CASE_PET = rowById('case-pet').price;
 /** Cheapest standalone published price. Companion discounts are not included. */
 export const PRICE_FROM_PUBLISHED = Math.min(
-  ...allPriceRows.filter((row) => !row.companion).map((row) => row.price),
+  ...allPriceRows.filter((row) => row.published !== false && !row.companion).map((row) => row.price),
 );
 export const LEAD_TIME_DAYS = { min: 15, max: 20 } as const;
 export const CURRENCY = 'COP' as const;

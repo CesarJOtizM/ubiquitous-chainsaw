@@ -38,7 +38,7 @@ export const ui = {
     'nav.sizes': 'Cuadros personalizados',
     'nav.sizesHint': 'Paisajes, anime e ilustraciones, de tu idea al lienzo.',
     'nav.magnets': 'Minilienzo magnético',
-    'nav.magnetsHint': 'Mini lienzo de 7,5 cm, redondo o cuadrado, con imán. {magnet}. Con otro producto, {magnet-addon}.',
+    'nav.magnetsHint': 'Mini lienzo de 7,5 cm, redondo o cuadrado, con imán. Próximamente.',
     'nav.pets': 'La mascota que tengas',
     'nav.petsHint': 'Perro, gato, loro, conejo, caballo, hámster, paloma o la que sea. La pinto desde tu foto.',
     'nav.dogs': 'Retratos de perros',
@@ -79,7 +79,6 @@ export const ui = {
     'services.tab.cuadros': 'Cuadros',
     'services.tab.bases': 'Bases acrílicas',
     'services.tab.cases': 'Fundas',
-    'services.tab.magnets': 'Minilienzos',
     // cuadros tab
     'services.cuadros.colSize': 'Tamaño',
     'services.cuadros.colPrice': 'Precio',
@@ -432,7 +431,7 @@ export const ui = {
     'nav.sizes': 'Custom paintings',
     'nav.sizesHint': 'Landscapes, anime, and illustrations, from your idea to the canvas.',
     'nav.magnets': 'Magnetic mini canvas',
-    'nav.magnetsHint': 'A 7.5 cm mini canvas, round or square, with a magnet. {magnet}. With another product, {magnet-addon}.',
+    'nav.magnetsHint': 'A 7.5 cm mini canvas, round or square, with a magnet. Coming soon.',
     'nav.pets': 'Whichever pet you have',
     'nav.petsHint': 'Dog, cat, parrot, rabbit, horse, hamster, pigeon, or whichever is yours. I paint it from your photo.',
     'nav.dogs': 'Dog portraits',
@@ -473,7 +472,6 @@ export const ui = {
     'services.tab.cuadros': 'Paintings',
     'services.tab.bases': 'Acrylic Bases',
     'services.tab.cases': 'Phone Cases',
-    'services.tab.magnets': 'Mini canvases',
     // cuadros tab
     'services.cuadros.colSize': 'Size',
     'services.cuadros.colPrice': 'Price',
