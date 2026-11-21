@@ -11,6 +11,7 @@
  * the Product/AggregateOffer schema; `lineIds` selects which catalog image
  * folders feed the gallery.
  */
+import { withPriceTokens } from '../lib/price-text';
 import { intentPath, productSlugs, type Lang, type ProductKey } from '../i18n/paths';
 import type { CatalogLineId } from './catalog';
 import type { IntentTopic } from '../i18n/paths';
@@ -257,12 +258,12 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           'La funda con el diseño que elijas.',
           'Resina por encima, para proteger la pintura.',
           'Debes confirmar la disponibilidad de la referencia del celular antes de empezar.',
-          'En una funda de mascota caben de 1 a 3 animales. Cada mascota adicional cuesta $20.000. El envío se paga aparte, a la transportadora.',
+          'En una funda de mascota caben de 1 a 3 animales. Cada mascota adicional cuesta {extra-case}. El envío se paga aparte, a la transportadora.',
         ],
         faq: [
           {
             q: '¿Qué puedo pedir?',
-            a: 'La funda de tu mascota cuesta $100.000. Las flores prensadas cuestan $40.000. Flores prensadas con un diseño básico pintado cuestan $55.000. Un anime o un logo va desde $100.000. Confirmas el modelo del celular antes de que empiece. Si quieres flores, pregúntame qué colores tengo.',
+            a: 'La funda de tu mascota cuesta {case-pet}. Las flores prensadas cuestan {case-flowers}. Flores prensadas con un diseño básico pintado cuestan {case-flowers-custom}. Un anime o un logo va desde {case-logo-anime}. Confirmas el modelo del celular antes de que empiece. Si quieres flores, pregúntame qué colores tengo.',
           },
           {
             q: '¿El precio incluye el envío?',
@@ -289,17 +290,17 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         metaTitle: 'Custom hand-painted phone cases | Sac_Artx',
         metaDescription:
           'I paint phone cases of your pet, pressed flowers, anime, or your design, sealed with resin. Message me on WhatsApp. Shipping across Colombia.',
-        lead: 'I paint your phone case and seal it with resin. It can be your pet, pressed flowers, an anime character, or a design you send me. A pet case is COP 100,000, pressed flowers are COP 40,000, flowers with a basic painting are COP 55,000, and anime starts at COP 100,000.',
+        lead: 'I paint your phone case and seal it with resin. It can be your pet, pressed flowers, an anime character, or a design you send me. A pet case is {case-pet}, pressed flowers are {case-flowers}, flowers with a basic painting are {case-flowers-custom}, and anime starts at {case-logo-anime}.',
         whatIncluded: [
           'The case with the design you pick.',
           'Resin on top, to protect the paint.',
           'Confirm your phone model is available before I start.',
-          'A pet case fits 1 to 3 animals. Each extra pet costs COP 20,000. Shipping is paid separately, to the carrier, when the case arrives.',
+          'A pet case fits 1 to 3 animals. Each extra pet costs {extra-case}. Shipping is paid separately, to the carrier, when the case arrives.',
         ],
         faq: [
           {
             q: 'What can I ask for?',
-            a: 'A case with your pet is COP 100,000. Pressed flowers are COP 40,000. Pressed flowers with a basic painted design are COP 55,000. Anime or a logo starts at COP 100,000. You confirm the phone model before I start. If you want flowers, ask me which colors I have.',
+            a: 'A case with your pet is {case-pet}. Pressed flowers are {case-flowers}. Pressed flowers with a basic painted design are {case-flowers-custom}. Anime or a logo starts at {case-logo-anime}. You confirm the phone model before I start. If you want flowers, ask me which colors I have.',
           },
           {
             q: 'Does the price include shipping?',
@@ -422,12 +423,12 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Minilienzo magnético con el retrato de tu mascota',
         metaTitle: 'Minilienzo magnético con el retrato de tu mascota | Sac_Artx',
         metaDescription:
-          'Pinto a tu mascota en un mini lienzo de 7,5 cm, redondo o cuadrado, con imán. Producto nuevo: el precio está por confirmar. Envío contra entrega.',
+          'Pinto a tu mascota en un mini lienzo de 7,5 cm, redondo o cuadrado, con imán. Próximamente: todavía no está a la venta.',
         lead: 'Pinto a tu mascota en un mini lienzo de 7,5 × 7,5 cm, disponible en forma redonda o cuadrada. Incluye un imán en la parte trasera para que puedas decorar tu nevera o cualquier superficie metálica con un retrato único de tu mascota.',
         posterAlt:
           'Próximamente: minilienzos magnéticos redondos y cuadrados con retratos de perros y gatos.',
         priceNote:
-          'El precio está por confirmar: es un producto nuevo. Te lo digo por WhatsApp antes de empezar. El envío va contra entrega: lo pagas a la transportadora cuando llega a tu casa.',
+          'Próximamente. Todavía no está a la venta, así que no tiene precio publicado. Cuando salga, el envío va contra entrega: lo pagas a la transportadora cuando llega a tu casa.',
         whatIncluded: [
           'Mini lienzo de 7,5 × 7,5 cm, redondo o cuadrado, pintado a mano desde la foto de tu mascota.',
           'Imán en la parte de atrás, para la nevera o cualquier superficie metálica.',
@@ -448,7 +449,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: '¿El precio incluye el envío?',
-            a: 'No. El precio está por confirmar, porque es un producto nuevo. El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.',
+            a: 'Todavía no. Sigue en próximamente y no tiene precio publicado. Cuando salga, el envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.',
           },
           {
             q: '¿Cómo lo pido?',
@@ -470,12 +471,12 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: "Magnetic mini canvas with your pet's portrait",
         metaTitle: "Magnetic mini canvas with your pet's portrait | Sac_Artx",
         metaDescription:
-          'I paint your pet on a 7.5 cm mini canvas, round or square, with a magnet. New product: the price is still to be confirmed. Cash on delivery.',
+          'I paint your pet on a 7.5 cm mini canvas, round or square, with a magnet. Coming soon: it is not for sale yet.',
         lead: 'I paint your pet on a 7.5 × 7.5 cm mini canvas, available round or square. A magnet on the back lets you decorate your fridge, or any metal surface, with a unique portrait of your pet.',
         posterAlt:
           'Coming soon: round and square magnetic mini canvases with dog and cat portraits.',
         priceNote:
-          'The price is still to be confirmed: this is a new product. I will tell you on WhatsApp before I start. Shipping is cash on delivery: you pay the carrier when it arrives at your home.',
+          'Coming soon. It is not for sale yet, so there is no published price. When it is available, shipping is cash on delivery: you pay the carrier when it arrives at your home.',
         whatIncluded: [
           'A 7.5 × 7.5 cm mini canvas, round or square, hand-painted from a photo of your pet.',
           'A magnet on the back, for the fridge or any metal surface.',
@@ -496,7 +497,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: 'Does the price include shipping?',
-            a: 'No. The price is still to be confirmed, because this is a new product. Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.',
+            a: 'Not yet. It is still coming soon and has no published price. When it is available, shipping is cash on delivery with the carrier: you pay it when it arrives at your home.',
           },
           {
             q: 'How do I order one?',
@@ -531,6 +532,6 @@ export function productEntry(product: ProductKey, lang: Lang): ProductEntry {
     posterSrc: config.posterSrc,
     relatedProducts: config.relatedProducts,
     relatedIntents: config.relatedIntents,
-    ...content,
+    ...withPriceTokens(content, lang),
   };
 }

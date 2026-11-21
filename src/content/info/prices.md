@@ -1,6 +1,6 @@
 # Sac_Artx pet portrait prices in Colombia
 
-Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic. The prices below are current as of October 2026, in Colombian pesos (COP). Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.
+Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic. The prices below are in Colombian pesos (COP). Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.
 
 ## What it is
 
@@ -20,13 +20,13 @@ Each portrait or base price includes 1 pet, a digital sketch beforehand, and fre
 
 | Size | Price |
 |------|-------|
-| 12×18 cm | COP 120,000 |
-| 20×25 cm | COP 160,000 |
-| 28×35 cm | COP 220,000 |
-| 40×50 cm | COP 270,000 |
-| Special 20×20 cm heart edition | COP 150,000 |
+| 12×18 cm | {canvas-12x18} |
+| 20×25 cm | {canvas-20x25} |
+| 28×35 cm | {canvas-28x35} |
+| 40×50 cm | {canvas-40x50} |
+| Special 20×20 cm heart edition | {canvas-heart-20x20} |
 
-Extra pet on a canvas: COP 30,000 to 50,000 depending on size. Suggested pets: 12×18 cm, 1 to 5; 20×25 and 28×35 cm, 1 to 6; 40×50 cm, 1 to 10. The heart edition is recommended for a single pet.
+Extra pet on a canvas: {extra-canvas-to} depending on size. Suggested pets: 12×18 cm, 1 to 5; 20×25 and 28×35 cm, 1 to 6; 40×50 cm, 1 to 10. The heart edition is recommended for a single pet.
 
 ### Acrylic bases
 
@@ -34,21 +34,21 @@ They include a heart keychain with the name.
 
 | Size | Price |
 |------|-------|
-| 10×15 cm | COP 130,000 |
-| 12×18 cm | COP 150,000 |
+| 10×15 cm | {base-10x15} |
+| 12×18 cm | {base-12x18} |
 
-Extra pet on a base: COP 25,000. Suggested pets: 10×15 cm, 1 to 4; 12×18 cm, 1 to 5.
+Extra pet on a base: {extra-base}. Suggested pets: 10×15 cm, 1 to 4; 12×18 cm, 1 to 5.
 
 ### Phone cases
 
 | Type | Price |
 |------|-------|
-| Pressed flower cases | COP 40,000 |
-| Flowers + painting case (pressed flowers with a basic painted design) | COP 55,000 |
-| Logo / anime / image | From COP 100,000 (by complexity) |
-| Pet (1 included) | COP 100,000 |
+| Pressed flower cases | {case-flowers} |
+| Flowers + painting case (pressed flowers with a basic painted design) | {case-flowers-custom} |
+| Logo / anime / image | From {case-logo-anime} (by complexity) |
+| Pet (1 included) | {case-pet} |
 
-Extra pet on a case: COP 20,000. Suggested pets: 1 to 3. For flower cases, ask which colors are available; all of them are protected by a resin coat.
+Extra pet on a case: {extra-case}. Suggested pets: 1 to 3. For flower cases, ask which colors are available; all of them are protected by a resin coat.
 
 ### Landscapes and custom commissions
 

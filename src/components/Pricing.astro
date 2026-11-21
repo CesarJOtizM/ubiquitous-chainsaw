@@ -2,6 +2,7 @@
 import { useTranslations } from '../i18n/utils';
 import { homePath } from '../i18n/paths';
 import { canvasPrices, basePrices, casePrices } from '../data/prices';
+import { priceCell } from '../lib/price-text';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -14,19 +15,19 @@ const WA_URL = `https://wa.me/573016584401?text=${encodeURIComponent(t('prices.w
 
 const canvasRows = canvasPrices.map((row) => ({
   label: row.nameKey ? t(row.nameKey as Parameters<typeof t>[0]) : row.size!,
-  price: row.priceLabel,
+  price: priceCell(row, lang),
   special: !!row.special,
 }));
 
 const baseRows = basePrices.map((row) => ({
   name: t(row.nameKey as Parameters<typeof t>[0]),
   size: row.size!,
-  price: row.priceLabel,
+  price: priceCell(row, lang),
 }));
 
 const caseRows = casePrices.map((row, i) => ({
   name: t(row.nameKey as Parameters<typeof t>[0]),
-  price: row.priceLabel,
+  price: priceCell(row, lang),
   desc: t(`services.cases.desc${i + 1}` as Parameters<typeof t>[0]),
   highlight: i === casePrices.length - 1,
 }));

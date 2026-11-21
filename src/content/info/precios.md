@@ -1,6 +1,6 @@
 # Precios de retratos de mascotas Sac_Artx en Colombia
 
-Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. Los precios siguientes están vigentes a octubre de 2026, en pesos colombianos (COP). El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.
+Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. Los precios siguientes están en pesos colombianos (COP). El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.
 
 ## Qué es
 
@@ -20,13 +20,13 @@ Cada precio de retrato o base incluye 1 mascota, boceto digital previo y revisio
 
 | Tamaño | Precio |
 |--------|--------|
-| 12×18 cm | $120.000 |
-| 20×25 cm | $160.000 |
-| 28×35 cm | $220.000 |
-| 40×50 cm | $270.000 |
-| Edición especial corazón 20×20 cm | $150.000 |
+| 12×18 cm | {canvas-12x18} |
+| 20×25 cm | {canvas-20x25} |
+| 28×35 cm | {canvas-28x35} |
+| 40×50 cm | {canvas-40x50} |
+| Edición especial corazón 20×20 cm | {canvas-heart-20x20} |
 
-Mascota adicional en un cuadro: $30.000 a $50.000 según el tamaño. Mascotas sugeridas: 12×18 cm, de 1 a 5; 20×25 y 28×35 cm, de 1 a 6; 40×50 cm, de 1 a 10. La edición corazón se recomienda para una sola mascota.
+Mascota adicional en un cuadro: {extra-canvas-min} a {extra-canvas-max} según el tamaño. Mascotas sugeridas: 12×18 cm, de 1 a 5; 20×25 y 28×35 cm, de 1 a 6; 40×50 cm, de 1 a 10. La edición corazón se recomienda para una sola mascota.
 
 ### Bases acrílicas
 
@@ -34,21 +34,21 @@ Incluyen llavero corazón con nombre.
 
 | Tamaño | Precio |
 |--------|--------|
-| 10×15 cm | $130.000 |
-| 12×18 cm | $150.000 |
+| 10×15 cm | {base-10x15} |
+| 12×18 cm | {base-12x18} |
 
-Mascota adicional en una base: $25.000. Mascotas sugeridas: 10×15 cm, de 1 a 4; 12×18 cm, de 1 a 5.
+Mascota adicional en una base: {extra-base}. Mascotas sugeridas: 10×15 cm, de 1 a 4; 12×18 cm, de 1 a 5.
 
 ### Fundas de celular
 
 | Tipo | Precio |
 |------|--------|
-| Fundas de flores prensadas | $40.000 |
-| Funda flores + pintura (flores prensadas con diseño básico en pintura) | $55.000 |
-| Logo / anime / imagen | Desde $100.000 (según complejidad) |
-| Mascota (1 incluida) | $100.000 |
+| Fundas de flores prensadas | {case-flowers} |
+| Funda flores + pintura (flores prensadas con diseño básico en pintura) | {case-flowers-custom} |
+| Logo / anime / imagen | Desde {case-logo-anime} (según complejidad) |
+| Mascota (1 incluida) | {case-pet} |
 
-Mascota adicional en una funda: $20.000. Mascotas sugeridas: de 1 a 3. En las fundas de flores, pregunta qué colores hay disponibles; todas van protegidas con una capa de resina.
+Mascota adicional en una funda: {extra-case}. Mascotas sugeridas: de 1 a 3. En las fundas de flores, pregunta qué colores hay disponibles; todas van protegidas con una capa de resina.
 
 ### Paisajes y encargos a medida
 

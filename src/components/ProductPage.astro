@@ -44,7 +44,8 @@ const priceTables: Record<Exclude<ProductEntry['priceSource'], null>, PriceRow[]
   case: casePrices,
 };
 const priceRows = entry.priceSource ? priceTables[entry.priceSource] : [];
-const amounts = priceRows.map((r) => r.price);
+const offerRows = priceRows.filter((row) => !row.companion);
+const amounts = offerRows.map((r) => r.price);
 const lowPrice = amounts.length ? Math.min(...amounts) : undefined;
 const highPrice = amounts.length ? Math.max(...amounts) : undefined;
 const fromWord = lang === 'en' ? 'From ' : 'Desde ';
@@ -233,7 +234,7 @@ const extraJsonLd = [
             priceCurrency: 'COP',
             lowPrice,
             highPrice,
-            offerCount: priceRows.length,
+            offerCount: offerRows.length,
             availability: 'https://schema.org/InStock',
             areaServed: { '@type': 'Country', name: 'Colombia' },
             url: canonicalUrl,

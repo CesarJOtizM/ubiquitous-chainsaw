@@ -5,19 +5,83 @@
  * month/year date is baked into prose.
  */
 import {
-  canvasPrices,
+  allPriceRows,
   basePrices,
+  canvasPrices,
+  casePrices,
   extraPetPrices,
-  PRICE_CASE_PET,
   PRICE_FROM_CANVAS,
   LEAD_TIME_DAYS,
+  type PriceRow,
 } from '../data/prices';
 import { business, paymentMethods, coverageText } from '../data/business';
 import { catalogPath, type Lang } from '../i18n/paths';
 
-/** Format a COP amount per language: "$120.000" (es) / "COP 120,000" (en). */
+const priceById = new Map(allPriceRows.map((row) => [row.id, row]));
+
+/** Format a COP amount per language: "$170.000" (es) / "COP 170,000" (en). */
 export function cop(n: number, lang: Lang): string {
   return lang === 'en' ? `COP ${n.toLocaleString('en-US')}` : `$${n.toLocaleString('de-DE')}`;
+}
+
+/** Table cell: the amount, with "Desde" / "From" when the row is a starting price. */
+export function priceCell(row: PriceRow, lang: Lang): string {
+  const amount = cop(row.price, lang);
+  if (!row.from) return amount;
+  return lang === 'en' ? `From ${amount}` : `Desde ${amount}`;
+}
+
+function canvasRange(lang: Lang, style: 'dash' | 'to'): string {
+  const min = cop(extraPetPrices.canvas.min, lang);
+  const maxBare = extraPetPrices.canvas.max.toLocaleString(lang === 'en' ? 'en-US' : 'de-DE');
+  const max = lang === 'en' ? maxBare : `$${maxBare}`;
+  if (style === 'dash') return `${min} – ${max}`;
+  return `${min} ${lang === 'en' ? 'to' : 'a'} ${max}`;
+}
+
+/** Resolve one price token. `undefined` means the id is not a price. */
+export function formatPriceToken(id: string, lang: Lang): string | undefined {
+  if (id === 'extra-canvas-min') return cop(extraPetPrices.canvas.min, lang);
+  if (id === 'extra-canvas-max') return cop(extraPetPrices.canvas.max, lang);
+  if (id === 'extra-canvas-dash') return canvasRange(lang, 'dash');
+  if (id === 'extra-canvas-to') return canvasRange(lang, 'to');
+  if (id === 'extra-base') return cop(extraPetPrices.base.amount, lang);
+  if (id === 'extra-case') return cop(extraPetPrices.case.amount, lang);
+  const row = priceById.get(id);
+  if (!row || row.published === false) return undefined;
+  return cop(row.price, lang);
+}
+
+const PRICE_TOKEN = /\{(?:(es|en):)?([a-z0-9-]+)\}/g;
+
+/**
+ * Replace price tokens in prose. `{canvas-12x18}` uses `lang`.
+ * `{es:canvas-12x18}` forces a language, for a file that mixes both.
+ * `{n}` is left alone: the catalog uses it for a photo count.
+ */
+export function applyPrices(text: string, lang: Lang): string {
+  return text.replace(PRICE_TOKEN, (full, forced: string | undefined, id: string) => {
+    if (id === 'n') return full;
+    const value = formatPriceToken(id, (forced as Lang | undefined) ?? lang);
+    if (value === undefined) {
+      throw new Error(`Token de precio desconocido: {${forced ? `${forced}:` : ''}${id}}`);
+    }
+    return value;
+  });
+}
+
+/** Walk strings in page copy and fill price tokens. */
+export function withPriceTokens<T>(value: T, lang: Lang): T {
+  if (typeof value === 'string') return applyPrices(value, lang) as T;
+  if (Array.isArray(value)) return value.map((item) => withPriceTokens(item, lang)) as T;
+  if (value && typeof value === 'object') {
+    const out: Record<string, unknown> = {};
+    for (const [key, item] of Object.entries(value as Record<string, unknown>)) {
+      out[key] = withPriceTokens(item, lang);
+    }
+    return out as T;
+  }
+  return value;
 }
 
 export type PriceLine = { label: string; value: string };
@@ -97,7 +161,23 @@ export function priceGroups(lang: Lang, noun: string, opts: { suggested?: boolea
     },
     {
       title: en ? 'Phone case' : 'Funda de celular',
-      lines: [{ label: `1 ${noun}`, value: cop(PRICE_CASE_PET, lang) }],
+      lines: casePrices.map((row) => ({
+        label:
+          row.id === 'case-flowers'
+            ? en
+              ? 'Pressed flowers'
+              : 'Flores prensadas'
+            : row.id === 'case-flowers-custom'
+              ? en
+                ? 'Flowers + painting'
+                : 'Flores + pintura'
+              : row.id === 'case-logo-anime'
+                ? en
+                  ? 'Logo / anime / image'
+                  : 'Logo / anime / imagen'
+                : `1 ${noun}`,
+        value: priceCell(row, lang),
+      })),
       note: en
         ? `An extra pet costs ${caseExtra}.`
         : `La mascota adicional tiene un costo de ${caseExtra}.`,

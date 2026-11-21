@@ -5,6 +5,9 @@
  * Facts come from the same data the HTML pages render. Nothing is invented.
  */
 import { getCollection } from 'astro:content';
+import preciosMd from '../content/info/precios.md?raw';
+import pricesMd from '../content/info/prices.md?raw';
+import preguntasMd from '../content/info/preguntas.md?raw';
 import { aboutCopy } from '../data/about';
 import { business, makerSentence } from '../data/business';
 import { catalogLines } from '../data/catalog';
@@ -35,7 +38,7 @@ import {
   type ProductKey,
 } from '../i18n/paths';
 import { intentMarkdown } from './intent-markdown';
-import { cop, leadTimeText, priceLead, whereText } from './price-text';
+import { applyPrices, cop, leadTimeText, priceLead, whereText } from './price-text';
 
 export type InfoDoc = { slug: string; markdown: string };
 
@@ -44,7 +47,7 @@ const SITE = business.site;
 function t(lang: Lang, key: string): string {
   const table = ui[lang] as Record<string, string>;
   const fallback = ui.es as Record<string, string>;
-  return table[key] ?? fallback[key] ?? key;
+  return applyPrices(table[key] ?? fallback[key] ?? key, lang);
 }
 
 function cite(lang: Lang, htmlPath: string): string {
@@ -308,7 +311,7 @@ function blogPostMarkdown(post: {
     lang === 'en'
       ? `Author: ${business.founder}, ${business.name}. Published: ${published}.`
       : `Autora: ${business.founder}, ${business.name}. Publicado: ${published}.`;
-  const body = (post.body ?? '')
+  const body = applyPrices(post.body ?? '', lang)
     .replace(/\]\(\//g, `](${SITE}/`)
     .replace(/src="\//g, `src="${SITE}/`);
   return [`# ${data.title}`, '', cite(lang, blogPostPath(data.slug, lang)), '', author, '', data.description, '', body.trim(), ''].join(
@@ -321,7 +324,19 @@ type BlogEntry = {
   body?: string;
 };
 
-/** Every generated /info/<slug>.md document. Static precios, prices and preguntas stay in public/. */
+/** Prices and FAQ markdown. Tokens are filled from src/data/prices.ts. */
+const infoTemplates = {
+  precios: { lang: 'es' as const, source: preciosMd },
+  prices: { lang: 'en' as const, source: pricesMd },
+  preguntas: { lang: 'es' as const, source: preguntasMd },
+};
+
+function infoTemplate(name: keyof typeof infoTemplates): string {
+  const doc = infoTemplates[name];
+  return `${applyPrices(doc.source, doc.lang).trimEnd()}\n`;
+}
+
+/** Every generated /info/<slug>.md document, including prices and the FAQ. */
 export async function collectInfoDocs(): Promise<InfoDoc[]> {
   const posts = (await getCollection('blog')) as BlogEntry[];
   const live = posts.filter((post) => !post.data.draft);
@@ -346,6 +361,9 @@ export async function collectInfoDocs(): Promise<InfoDoc[]> {
     { slug: 'privacy', markdown: privacyMarkdown('en') },
     { slug: 'devoluciones', markdown: returnsMarkdown('es') },
     { slug: 'returns', markdown: returnsMarkdown('en') },
+    { slug: 'precios', markdown: infoTemplate('precios') },
+    { slug: 'prices', markdown: infoTemplate('prices') },
+    { slug: 'preguntas', markdown: infoTemplate('preguntas') },
   ];
 
   for (const lang of ['es', 'en'] as const) {

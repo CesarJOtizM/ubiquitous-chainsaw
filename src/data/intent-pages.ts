@@ -8,6 +8,7 @@
  *
  * Prose is the page voice, in the first person. Prices and dates stay in src/lib/price-text.ts.
  */
+import { withPriceTokens } from '../lib/price-text';
 import { intentSlugs, intentTopics, type IntentTopic, type Lang } from '../i18n/paths';
 
 export type PriceVariant = 'bullets' | 'bulletsSuggested' | 'summaryHow';
@@ -101,8 +102,8 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           {
             heading: '¿Lienzo o base acrílica para el retrato de tu mascota?',
             paragraphs: [
-              'El lienzo es acrílico sobre tela. El de 12×18 cm cuesta $120.000 por 1 mascota. Siguen 20×25 cm ($160.000), 28×35 cm ($220.000), 40×50 cm ($270.000) y el corazón de 20×20 cm ($150.000).',
-              'La base es metacrilato con resina, efecto vidrio, y el nombre en la madera. Mide 10×15 cm ($130.000) o 12×18 cm ($150.000) e incluye un llavero corazón. La funda de celular con la mascota cuesta $100.000. Una mascota adicional suma $30.000 a $50.000 en el cuadro, $25.000 en la base y $20.000 en la funda.',
+              'El lienzo es acrílico sobre tela. El de 12×18 cm cuesta {canvas-12x18} por 1 mascota. Siguen 20×25 cm ({canvas-20x25}), 28×35 cm ({canvas-28x35}), 40×50 cm ({canvas-40x50}) y el corazón de 20×20 cm ({canvas-heart-20x20}).',
+              'La base es metacrilato con resina, efecto vidrio, y el nombre en la madera. Mide 10×15 cm ({base-10x15}) o 12×18 cm ({base-12x18}) e incluye un llavero corazón. La funda de celular con la mascota cuesta {case-pet}. Una mascota adicional suma {extra-canvas-min} a {extra-canvas-max} en el cuadro, {extra-base} en la base y {extra-case} en la funda.',
             ],
             links: [
               { href: '/producto/cuadros-en-acrilico/', label: 'Cuadros en acrílico' },
@@ -143,8 +144,8 @@ const topicConfig: Record<IntentTopic, TopicConfig> = {
           {
             heading: 'Canvas or an acrylic base for your pet’s portrait?',
             paragraphs: [
-              'The canvas is acrylic on cloth. The 12×18 cm size is COP 120,000 for 1 pet. Then 20×25 cm (COP 160,000), 28×35 cm (COP 220,000), 40×50 cm (COP 270,000), and the 20×20 cm heart (COP 150,000).',
-              'The base is methacrylate with resin, a glass effect, and the name on the wood. It is 10×15 cm (COP 130,000) or 12×18 cm (COP 150,000) and includes a heart keychain. A phone case with the pet is COP 100,000. An extra pet adds COP 30,000 to 50,000 on a canvas, COP 25,000 on a base, and COP 20,000 on a case.',
+              'The canvas is acrylic on cloth. The 12×18 cm size is {canvas-12x18} for 1 pet. Then 20×25 cm ({canvas-20x25}), 28×35 cm ({canvas-28x35}), 40×50 cm ({canvas-40x50}), and the 20×20 cm heart ({canvas-heart-20x20}).',
+              'The base is methacrylate with resin, a glass effect, and the name on the wood. It is 10×15 cm ({base-10x15}) or 12×18 cm ({base-12x18}) and includes a heart keychain. A phone case with the pet is {case-pet}. An extra pet adds {extra-canvas-to} on a canvas, {extra-base} on a base, and {extra-case} on a case.',
             ],
             links: [
               { href: '/en/product/acrylic-paintings/', label: 'Acrylic paintings' },
@@ -488,7 +489,7 @@ function buildEntry(topic: IntentTopic, lang: Lang): IntentEntry {
     priceVariant: cfg.priceVariant,
     whereVariant: cfg.whereVariant,
     related: cfg.related,
-    ...content,
+    ...withPriceTokens(content, lang),
   };
 }
 
