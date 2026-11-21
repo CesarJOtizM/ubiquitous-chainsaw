@@ -9,7 +9,7 @@ tags: ["retratos de perros", "acrílico", "Sac_Artx"]
 cover: "/img/cuadros-mascotas/12.jpg?tr=w-1200,f-auto,q-80"
 ---
 
-Pinto el retrato de tu perro a mano, en acrílico, desde la foto que me mandas por WhatsApp. Sirve cualquier raza o mestizo, un solo perro o varios en la misma pieza. El lienzo más pequeño (12×18 cm, 1 perro) cuesta $120.000 COP. El envío va contra entrega a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia.
+Pinto el retrato de tu perro a mano, en acrílico, desde la foto que me mandas por WhatsApp. Sirve cualquier raza o mestizo, un solo perro o varios en la misma pieza. El lienzo más pequeño (12×18 cm, 1 perro) cuesta {canvas-12x18} COP. El envío va contra entrega a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia.
 
 ## ¿Cómo queda un retrato de perro en lienzo y en base?
 
@@ -41,16 +41,16 @@ La guía de la foto, con ejemplos de qué evitar, está en [qué foto necesito p
 
 ## ¿Cuánto cuesta el retrato de un perro y cuánto tarda?
 
-Precios de 1 perro, en pesos colombianos. Una mascota adicional en el cuadro suma entre $30.000 y $50.000, según el tamaño.
+Precios de 1 perro, en pesos colombianos. Una mascota adicional en el cuadro suma entre {extra-canvas-min} y {extra-canvas-max}, según el tamaño.
 
-- Lienzo 12×18 cm: $120.000
-- Lienzo 20×25 cm: $160.000
-- Lienzo 28×35 cm: $220.000
-- Lienzo 40×50 cm: $270.000
-- Corazón 20×20 cm: $150.000
-- Base 10×15 cm: $130.000, con llavero corazón
-- Base 12×18 cm: $150.000, con llavero corazón
-- Funda de celular con el perro: $100.000
+- Lienzo 12×18 cm: {canvas-12x18}
+- Lienzo 20×25 cm: {canvas-20x25}
+- Lienzo 28×35 cm: {canvas-28x35}
+- Lienzo 40×50 cm: {canvas-40x50}
+- Corazón 20×20 cm: {canvas-heart-20x20}
+- Base 10×15 cm: {base-10x15}, con llavero corazón
+- Base 12×18 cm: {base-12x18}, con llavero corazón
+- Funda de celular con el perro: {case-pet}
 
 El plazo es de 15 a 20 días hábiles y corre cuando apruebas el boceto. Te mando el boceto por WhatsApp en menos de 48 horas y los cambios de ese boceto no se cobran. Pagas el 50% para empezar y el 50% al terminar. El envío lo pagas a la transportadora cuando llega a tu casa.
 

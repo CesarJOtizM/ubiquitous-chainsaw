@@ -3,7 +3,9 @@ import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
+import { satteri } from '@astrojs/markdown-satteri';
 import { sitemapLinks } from './sitemap-alternates.ts';
+import { priceTokenPlugin } from './src/lib/remark-prices.ts';
 
 const site = 'https://sacartx.art';
 const alternates = sitemapLinks(site);
@@ -41,6 +43,11 @@ export default defineConfig({
     '/en/pet-portraits-colombia': '/en/pet-portraits/',
     '/info/retratos-mascotas-colombia.md': '/info/retratos-de-mascotas.md',
     '/info/pet-portraits-colombia.md': '/info/pet-portraits.md',
+  },
+  markdown: {
+    processor: satteri({
+      mdastPlugins: [priceTokenPlugin],
+    }),
   },
   devToolbar: { enabled: false },
   output: 'server',

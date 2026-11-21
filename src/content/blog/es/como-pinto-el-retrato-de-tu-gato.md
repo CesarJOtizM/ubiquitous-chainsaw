@@ -9,7 +9,7 @@ tags: ["retratos de gatos", "acrílico", "Sac_Artx"]
 cover: "/img/cuadros-mascotas/06.jpg?tr=w-1200,f-auto,q-80"
 ---
 
-Pinto el retrato de tu gato a mano, en acrílico, desde la foto que me mandas por WhatsApp. Sirve pelo corto o largo. Los ojos, los bigotes y las manchas salen de esa foto, no de una raza genérica. El lienzo más pequeño (12×18 cm, 1 gato) cuesta $120.000 COP. El envío va contra entrega a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia.
+Pinto el retrato de tu gato a mano, en acrílico, desde la foto que me mandas por WhatsApp. Sirve pelo corto o largo. Los ojos, los bigotes y las manchas salen de esa foto, no de una raza genérica. El lienzo más pequeño (12×18 cm, 1 gato) cuesta {canvas-12x18} COP. El envío va contra entrega a Bogotá, Medellín, Cali, Barranquilla y el resto de Colombia.
 
 ## ¿Cómo pinto las manchas y los bigotes de un gato?
 
@@ -41,15 +41,15 @@ La guía general de la foto está en [qué foto necesito para pintar a mi mascot
 
 ## ¿Cuánto cuesta el retrato de un gato?
 
-El precio es el mismo que el de un perro, porque la pieza es el lienzo, la base o la funda, no la especie. Una mascota adicional en el cuadro suma entre $30.000 y $50.000.
+El precio es el mismo que el de un perro, porque la pieza es el lienzo, la base o la funda, no la especie. Una mascota adicional en el cuadro suma entre {extra-canvas-min} y {extra-canvas-max}.
 
-- Lienzo 12×18 cm: $120.000
-- Lienzo 20×25 cm: $160.000
-- Lienzo 28×35 cm: $220.000
-- Lienzo 40×50 cm: $270.000
-- Corazón 20×20 cm: $150.000
-- Base 10×15 cm: $130.000, con llavero corazón
-- Base 12×18 cm: $150.000, con llavero corazón
-- Funda de celular con el gato: $100.000
+- Lienzo 12×18 cm: {canvas-12x18}
+- Lienzo 20×25 cm: {canvas-20x25}
+- Lienzo 28×35 cm: {canvas-28x35}
+- Lienzo 40×50 cm: {canvas-40x50}
+- Corazón 20×20 cm: {canvas-heart-20x20}
+- Base 10×15 cm: {base-10x15}, con llavero corazón
+- Base 12×18 cm: {base-12x18}, con llavero corazón
+- Funda de celular con el gato: {case-pet}
 
 El plazo es de 15 a 20 días hábiles desde que apruebas el boceto. Pagas el 50% para empezar y el 50% al terminar. Me escribes al +57 301 658 4401 con la foto y el tamaño. La página del servicio es [retratos de gatos](/retratos-gatos/). El equivalente para perros, con otras fotos, está en [cómo pinto el retrato de tu perro](/blog/como-pinto-el-retrato-de-tu-perro/).

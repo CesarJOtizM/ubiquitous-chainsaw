@@ -1,7 +1,8 @@
 ---
 import { useTranslations } from '../i18n/utils';
 import { homePath } from '../i18n/paths';
-import { canvasPrices, basePrices, casePrices } from '../data/prices';
+import { canvasPrices, basePrices, casePrices, magnetPrices } from '../data/prices';
+import { priceCell } from '../lib/price-text';
 
 export interface Props {
   lang?: 'es' | 'en';
@@ -14,19 +15,19 @@ const WA_URL = `https://wa.me/573016584401?text=${encodeURIComponent(t('prices.w
 
 const canvasRows = canvasPrices.map((row) => ({
   label: row.nameKey ? t(row.nameKey as Parameters<typeof t>[0]) : row.size!,
-  price: row.priceLabel,
+  price: priceCell(row, lang),
   special: !!row.special,
 }));
 
 const baseRows = basePrices.map((row) => ({
   name: t(row.nameKey as Parameters<typeof t>[0]),
   size: row.size!,
-  price: row.priceLabel,
+  price: priceCell(row, lang),
 }));
 
 const caseRows = casePrices.map((row, i) => ({
   name: t(row.nameKey as Parameters<typeof t>[0]),
-  price: row.priceLabel,
+  price: priceCell(row, lang),
   desc: t(`services.cases.desc${i + 1}` as Parameters<typeof t>[0]),
   highlight: i === casePrices.length - 1,
 }));
@@ -34,6 +35,11 @@ const caseRows = casePrices.map((row, i) => ({
 const canvasPets = [t('pets.l1'), t('pets.l2'), t('pets.l3'), t('pets.l4')];
 const basePets = [t('pets.l5'), t('pets.l6')];
 const casePets = [t('pets.l7')];
+
+const magnetRows = magnetPrices.map((row) => ({
+  name: t(row.nameKey as Parameters<typeof t>[0]),
+  price: priceCell(row, lang),
+}));
 
 const faqs = [
   { q: t('prices.faq1.q'), a: t('prices.faq1.a') },
@@ -124,6 +130,19 @@ const faqs = [
           {casePets.map((entry) => <li>{entry}</li>)}
         </ul>
       </div>
+    </section>
+
+    <section class="pricing-block" aria-labelledby="prices-magnets">
+      <h2 id="prices-magnets" class="pricing-block__title">{t('prices.magnetsTitle')}</h2>
+      <ul class="pricing-cards">
+        {magnetRows.map((row) => (
+          <li class="pricing-card">
+            <h3 class="pricing-card__name">{row.name}</h3>
+            <span class="pricing-card__price">{row.price}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="pricing-block__note">{t('prices.magnetsNote')}</p>
     </section>
 
     <section class="pricing-block pricing-block--payment" aria-labelledby="prices-payment">

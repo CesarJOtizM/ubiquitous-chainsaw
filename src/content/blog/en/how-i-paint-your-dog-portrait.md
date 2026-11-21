@@ -9,7 +9,7 @@ tags: ["dog portraits", "acrylic", "Sac_Artx"]
 cover: "/img/cuadros-mascotas/12.jpg?tr=w-1200,f-auto,q-80"
 ---
 
-I paint your dog by hand, in acrylic, from the photo you send me on WhatsApp. Any breed or mix works, one dog or several on the same piece. The smallest canvas (12×18 cm, 1 dog) is COP 120,000. I ship cash on delivery to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia.
+I paint your dog by hand, in acrylic, from the photo you send me on WhatsApp. Any breed or mix works, one dog or several on the same piece. The smallest canvas (12×18 cm, 1 dog) is {canvas-12x18}. I ship cash on delivery to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia.
 
 ## What does a dog portrait look like on canvas and on a base?
 
@@ -41,16 +41,16 @@ The photo guide, with examples of what to avoid, is [what photo do I need to pai
 
 ## How much does a dog portrait cost, and how long does it take?
 
-Prices for 1 dog, in Colombian pesos. An extra pet on a canvas adds COP 30,000 to 50,000, depending on the size.
+Prices for 1 dog, in Colombian pesos. An extra pet on a canvas adds {extra-canvas-to}, depending on the size.
 
-- 12×18 cm canvas: COP 120,000
-- 20×25 cm canvas: COP 160,000
-- 28×35 cm canvas: COP 220,000
-- 40×50 cm canvas: COP 270,000
-- 20×20 cm heart: COP 150,000
-- 10×15 cm base: COP 130,000, with a heart keychain
-- 12×18 cm base: COP 150,000, with a heart keychain
-- Phone case with the dog: COP 100,000
+- 12×18 cm canvas: {canvas-12x18}
+- 20×25 cm canvas: {canvas-20x25}
+- 28×35 cm canvas: {canvas-28x35}
+- 40×50 cm canvas: {canvas-40x50}
+- 20×20 cm heart: {canvas-heart-20x20}
+- 10×15 cm base: {base-10x15}, with a heart keychain
+- 12×18 cm base: {base-12x18}, with a heart keychain
+- Phone case with the dog: {case-pet}
 
 Turnaround is 15 to 20 business days, and it starts when you approve the sketch. I send the sketch on WhatsApp in under 48 hours, and sketch changes are free. You pay 50% to start and 50% when I finish. You pay the carrier for shipping when the piece arrives at your home.
 

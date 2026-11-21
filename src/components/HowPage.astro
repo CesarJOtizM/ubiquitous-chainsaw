@@ -7,7 +7,7 @@ import { useTranslations } from '../i18n/utils';
 import { blogPostPath, catalogPath, homePath, intentPath, pricesPath, type Lang } from '../i18n/paths';
 import { business, makerSentence, paymentMethodLabels } from '../data/business';
 import { intentEntry } from '../data/intent-pages';
-import { LEAD_TIME_DAYS } from '../data/prices';
+import { LEAD_TIME_DAYS, PRICE_FROM_PUBLISHED } from '../data/prices';
 import { cop } from '../lib/price-text';
 
 export interface Props {
@@ -26,7 +26,7 @@ const alternateEn = `${SITE}${intentPath('how', 'en')}`;
 const markdownAlt = `${SITE}/info/${entry.slug}.md`;
 const homeUrl = `${SITE}${homePath(lang)}`;
 const waUrl = `https://wa.me/573016584401?text=${t('process.waMsg')}`;
-const fromPrice = cop(100_000, lang);
+const fromPrice = cop(PRICE_FROM_PUBLISHED, lang);
 const photoGuideHref = blogPostPath(
   lang === 'en' ? 'how-to-choose-the-best-photo' : 'como-elegir-la-mejor-foto-mascota',
   lang,

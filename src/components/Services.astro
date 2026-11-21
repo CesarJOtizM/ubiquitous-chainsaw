@@ -1,6 +1,7 @@
 ---
 import { useTranslations } from '../i18n/utils';
-import { canvasPrices, basePrices, casePrices } from '../data/prices';
+import { canvasPrices, basePrices, casePrices, magnetPrices, PRICE_CASE_PET, PRICE_FROM_CANVAS } from '../data/prices';
+import { priceCell } from '../lib/price-text';
 import { areaServed } from '../data/coverage';
 import { pricesPath, productKeys, productPath } from '../i18n/paths';
 import { productEntry } from '../data/product-pages';
@@ -17,7 +18,7 @@ const preciosHref = pricesPath(lang);
 
 const cuadros = canvasPrices.map((row) => ({
   size: row.nameKey ? t(row.nameKey as Parameters<typeof t>[0]) : row.size!,
-  price: row.priceLabel,
+  price: priceCell(row, lang),
   special: !!row.special,
 }));
 
@@ -143,6 +144,7 @@ const services = [
         <button type="button" class="pricing-tab is-active" id="tab-cuadros" data-tab="cuadros" role="tab" aria-selected="true" aria-controls="panel-cuadros">{t('services.tab.cuadros')}</button>
         <button type="button" class="pricing-tab" id="tab-bases" data-tab="bases" role="tab" aria-selected="false" aria-controls="panel-bases">{t('services.tab.bases')}</button>
         <button type="button" class="pricing-tab" id="tab-cases" data-tab="cases" role="tab" aria-selected="false" aria-controls="panel-cases">{t('services.tab.cases')}</button>
+        <button type="button" class="pricing-tab" id="tab-magnets" data-tab="magnets" role="tab" aria-selected="false" aria-controls="panel-magnets">{t('services.tab.magnets')}</button>
       </div>
 
       <!-- Cuadros panel -->
@@ -175,7 +177,7 @@ const services = [
             <li class="base-card">
               <h4 class="base-card__name">{t(row.nameKey as Parameters<typeof t>[0])}</h4>
               <span class="base-card__size">{row.size}</span>
-              <span class="base-card__price">{row.priceLabel}</span>
+              <span class="base-card__price">{priceCell(row, lang)}</span>
             </li>
           ))}
         </ul>
@@ -191,12 +193,25 @@ const services = [
           {casePrices.map((row, i) => (
             <li class={`case-card${i === casePrices.length - 1 ? ' case-card--highlight' : ''}`}>
               <h4 class="case-card__name">{t(row.nameKey as Parameters<typeof t>[0])}</h4>
-              <span class="case-card__price">{row.priceLabel}</span>
+              <span class="case-card__price">{priceCell(row, lang)}</span>
               <span class="case-card__desc">{t(`services.cases.desc${i + 1}` as Parameters<typeof t>[0])}</span>
             </li>
           ))}
         </ul>
         <p class="panel-note">{t('services.cases.addlPet')}</p>
+      </div>
+
+      <div class="pricing-panel" id="panel-magnets" data-panel="magnets" role="tabpanel" aria-labelledby="tab-magnets" hidden>
+        <ul class="bases-grid">
+          {magnetPrices.map((row) => (
+            <li class="base-card">
+              <h4 class="base-card__name">{t(row.nameKey as Parameters<typeof t>[0])}</h4>
+              <span class="base-card__size">{row.size}</span>
+              <span class="base-card__price">{priceCell(row, lang)}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="panel-note">{t('prices.magnetsNote')}</p>
       </div>
 
       <!-- Service + Offer JSON-LD for AI search / rich snippets -->
@@ -216,10 +231,10 @@ const services = [
               "offers": {
                 "@type": "Offer",
                 "priceCurrency": "COP",
-                "price": "120000",
+                "price": String(PRICE_FROM_CANVAS),
                 "priceSpecification": {
                   "@type": "PriceSpecification",
-                  "minPrice": "120000",
+                  "minPrice": String(PRICE_FROM_CANVAS),
                   "priceCurrency": "COP"
                 },
                 "availability": "https://schema.org/InStock",
@@ -266,7 +281,7 @@ const services = [
               "offers": {
                 "@type": "Offer",
                 "priceCurrency": "COP",
-                "price": "100000",
+                "price": String(PRICE_CASE_PET),
                 "availability": "https://schema.org/InStock",
                 "deliveryLeadTime": {
                   "@type": "QuantitativeValue",
@@ -488,6 +503,7 @@ const services = [
 
   .pricing-tabs {
     display: flex;
+    flex-wrap: wrap;
     gap: 0;
     border-bottom: 2px solid var(--color-border);
     margin-bottom: 28px;

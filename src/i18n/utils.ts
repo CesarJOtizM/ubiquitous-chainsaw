@@ -1,3 +1,4 @@
+import { applyPrices } from '../lib/price-text';
 import { ui, defaultLang } from './ui';
 
 type Lang = keyof typeof ui;
@@ -10,7 +11,8 @@ export function getLangFromUrl(url: URL): Lang {
 
 export function useTranslations(lang: Lang) {
   return function t(key: keyof typeof ui[typeof defaultLang]): string {
-    return (ui[lang] as any)[key] ?? ui[defaultLang][key];
+    const raw = (ui[lang] as any)[key] ?? ui[defaultLang][key];
+    return applyPrices(raw, lang);
   };
 }
 

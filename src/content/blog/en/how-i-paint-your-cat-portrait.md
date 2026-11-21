@@ -9,7 +9,7 @@ tags: ["cat portraits", "acrylic", "Sac_Artx"]
 cover: "/img/cuadros-mascotas/06.jpg?tr=w-1200,f-auto,q-80"
 ---
 
-I paint your cat by hand, in acrylic, from the photo you send me on WhatsApp. Short or long fur both work. The eyes, the whiskers, and the markings come from that photo, not from a generic breed. The smallest canvas (12×18 cm, 1 cat) is COP 120,000. I ship cash on delivery to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia.
+I paint your cat by hand, in acrylic, from the photo you send me on WhatsApp. Short or long fur both work. The eyes, the whiskers, and the markings come from that photo, not from a generic breed. The smallest canvas (12×18 cm, 1 cat) is {canvas-12x18}. I ship cash on delivery to Bogotá, Medellín, Cali, Barranquilla, and the rest of Colombia.
 
 ## How do I paint a cat’s markings and whiskers?
 
@@ -41,15 +41,15 @@ The general photo guide is [what photo do I need to paint my pet](/en/blog/how-t
 
 ## How much does a cat portrait cost?
 
-The price matches a dog portrait, because the piece is the canvas, the base, or the case, not the species. An extra pet on a canvas adds COP 30,000 to 50,000.
+The price matches a dog portrait, because the piece is the canvas, the base, or the case, not the species. An extra pet on a canvas adds {extra-canvas-to}.
 
-- 12×18 cm canvas: COP 120,000
-- 20×25 cm canvas: COP 160,000
-- 28×35 cm canvas: COP 220,000
-- 40×50 cm canvas: COP 270,000
-- 20×20 cm heart: COP 150,000
-- 10×15 cm base: COP 130,000, with a heart keychain
-- 12×18 cm base: COP 150,000, with a heart keychain
-- Phone case with the cat: COP 100,000
+- 12×18 cm canvas: {canvas-12x18}
+- 20×25 cm canvas: {canvas-20x25}
+- 28×35 cm canvas: {canvas-28x35}
+- 40×50 cm canvas: {canvas-40x50}
+- 20×20 cm heart: {canvas-heart-20x20}
+- 10×15 cm base: {base-10x15}, with a heart keychain
+- 12×18 cm base: {base-12x18}, with a heart keychain
+- Phone case with the cat: {case-pet}
 
 Turnaround is 15 to 20 business days from the moment you approve the sketch. You pay 50% to start and 50% when I finish. Message me at +57 301 658 4401 with the photo and the size. The service page is [cat portraits](/en/cat-portraits/). The dog version, with different photos, is [how I paint your dog’s portrait](/en/blog/how-i-paint-your-dog-portrait/).
