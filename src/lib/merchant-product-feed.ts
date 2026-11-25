@@ -6,7 +6,7 @@
  * and that cost is not a product price we can invent here.
  */
 import { business } from '../data/business';
-import { basePrices, canvasPrices, casePrices, CURRENCY, type PriceRow } from '../data/prices';
+import { basePrices, canvasPrices, casePrices, CURRENCY, magnetPrices, type PriceRow } from '../data/prices';
 import { productPath } from '../i18n/paths';
 
 const AVAILABILITY = {
@@ -81,8 +81,10 @@ interface CaseCopy {
 
 const CANVAS_IMAGE = '/images/cuadros-mascotas/12.jpg';
 const BASE_IMAGE = '/images/bases-acrilicas/16.jpg';
+const MAGNET_IMAGE = '/images/imanes/02.jpg';
 const CANVAS_TYPE = 'Arte > Retratos de mascotas > Cuadros en acrílico';
 const BASE_TYPE = 'Arte > Retratos de mascotas > Bases acrílicas';
+const MAGNET_TYPE = 'Arte > Retratos de mascotas > Minilienzos magnéticos';
 const CASE_TYPE = 'Accesorios > Fundas de celular';
 const CANVAS_GROUP_TITLE = 'Cuadro en acrílico de tu mascota';
 const BASE_GROUP_TITLE = 'Base acrílica con el retrato de tu mascota';
@@ -142,6 +144,7 @@ const PAGE = {
   PAINTINGS: 'paintings',
   BASES: 'bases',
   CASES: 'cases',
+  MAGNETS: 'magnets',
 } as const;
 
 type ProductPage = (typeof PAGE)[keyof typeof PAGE];
@@ -185,6 +188,7 @@ function buildRows(): MerchantRow[] {
   const canvasUrl = pageUrl(PAGE.PAINTINGS);
   const baseUrl = pageUrl(PAGE.BASES);
   const caseUrl = pageUrl(PAGE.CASES);
+  const magnetUrl = pageUrl(PAGE.MAGNETS);
 
   const canvas = canvasPrices.map((row) => {
     if (!row.size) throw new Error(`El cuadro ${row.id} no tiene tamaño`);
@@ -247,7 +251,28 @@ function buildRows(): MerchantRow[] {
     ];
   });
 
-  return [...canvas, ...bases, ...cases];
+  const magnets = magnetPrices.flatMap((row) => {
+    if (row.companion || row.published === false) return [];
+    if (!row.size) throw new Error(`El minilienzo ${row.id} no tiene tamaño`);
+    return [
+      sharedFields({
+        id: row.id,
+        title: `Minilienzo magnético con el retrato de tu mascota, ${row.size}`,
+        description: `Mini lienzo de ${row.size}, redondo o cuadrado, pintado a mano desde la foto de tu mascota, con imán para la nevera. Incluye 1 mascota. La forma no cambia el precio. El boceto por WhatsApp se ajusta sin costo.`,
+        link: magnetUrl,
+        image_link: absoluteImage(MAGNET_IMAGE),
+        price: feedMoney(row.price),
+        google_product_category: GOOGLE_CATEGORY.VISUAL_ARTWORK,
+        product_type: MAGNET_TYPE,
+        item_group_id: '',
+        item_group_title: '',
+        size: row.size,
+        material: 'Acrílico/lienzo/imán',
+      }),
+    ];
+  });
+
+  return [...canvas, ...bases, ...cases, ...magnets];
 }
 
 function assertRows(rows: MerchantRow[]): void {
@@ -276,7 +301,10 @@ function assertRows(rows: MerchantRow[]): void {
     for (const column of FEED_COLUMNS) {
       if (/[\t\r\n]/.test(row[column])) throw new Error(`El campo ${column} tiene un salto o tabulación: ${row.id}`);
     }
-    if (row.price !== feedMoney(requirePrice([...canvasPrices, ...basePrices, ...casePrices], row.id))) {
+    if (
+      row.price !==
+      feedMoney(requirePrice([...canvasPrices, ...basePrices, ...casePrices, ...magnetPrices], row.id))
+    ) {
       throw new Error(`El precio no coincide con prices.ts: ${row.id}`);
     }
     if (!row.item_group_id) continue;
@@ -301,6 +329,15 @@ function assertRows(rows: MerchantRow[]): void {
     const present = ids.has(row.id);
     if (row.from && present) throw new Error(`La funda cotizada ${row.id} no debe ir a Merchant Center`);
     if (!row.from && !present) throw new Error(`La funda ${row.id} no está en Merchant Center`);
+  }
+  for (const row of magnetPrices) {
+    const present = ids.has(row.id);
+    if (row.companion && present) {
+      throw new Error(`El precio acompañante ${row.id} no debe ir a Merchant Center`);
+    }
+    if (!row.companion && row.published !== false && !present) {
+      throw new Error(`El minilienzo ${row.id} no está en Merchant Center`);
+    }
   }
 }
 

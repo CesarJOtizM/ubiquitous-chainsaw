@@ -20,6 +20,7 @@ import {
   basePrices,
   canvasPrices,
   casePrices,
+  magnetPrices,
   type PriceRow,
 } from '../data/prices';
 import { ui } from '../i18n/ui';
@@ -70,6 +71,7 @@ const priceTables = {
   canvas: canvasPrices,
   base: basePrices,
   case: casePrices,
+  magnet: magnetPrices,
 } as const;
 
 function productMarkdown(product: ProductKey, lang: Lang): string {

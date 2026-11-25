@@ -2,6 +2,7 @@ import type { TranslationKey } from '../i18n/utils';
 
 export const catalogLineIds = [
   'cuadros-mascotas',
+  'minilienzos',
   'bases-acrilicas',
   'cuadros-personalizados',
   'case-mascotas',
@@ -31,6 +32,15 @@ export const catalogLines: LineCopy[] = [
     price: 'catalog.cat.pets.price',
     medium: 'catalog.cat.pets.medium',
     wa: 'catalog.cat.pets.wa',
+    featured: true,
+  },
+  {
+    id: 'minilienzos',
+    name: 'catalog.cat.magnets.name',
+    desc: 'catalog.cat.magnets.desc',
+    price: 'catalog.cat.magnets.price',
+    medium: 'catalog.cat.magnets.medium',
+    wa: 'catalog.cat.magnets.wa',
     featured: true,
   },
   {
@@ -90,6 +100,15 @@ export const catalogLines: LineCopy[] = [
 ];
 
 export const catalogItems: { src: string; line: CatalogLineId }[] = [
+  { src: '/images/imanes/01.jpg', line: 'minilienzos' },
+  { src: '/images/imanes/02.jpg', line: 'minilienzos' },
+  { src: '/images/imanes/03.jpg', line: 'minilienzos' },
+  { src: '/images/imanes/04.jpg', line: 'minilienzos' },
+  { src: '/images/imanes/05.jpg', line: 'minilienzos' },
+  { src: '/images/imanes/06.jpg', line: 'minilienzos' },
+  { src: '/images/imanes/07.jpg', line: 'minilienzos' },
+  { src: '/images/imanes/08.jpg', line: 'minilienzos' },
+  { src: '/images/imanes/09.jpg', line: 'minilienzos' },
   { src: '/images/bases-acrilicas/16.jpg', line: 'bases-acrilicas' },
   { src: '/images/bases-acrilicas/17.jpg', line: 'bases-acrilicas' },
   { src: '/images/bases-acrilicas/18.jpg', line: 'bases-acrilicas' },
