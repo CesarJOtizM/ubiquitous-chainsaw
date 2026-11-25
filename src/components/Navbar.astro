@@ -62,9 +62,9 @@ const groups: { title: string; links: NavLink[] }[] = [
   {
     title: t('nav.paintTitle'),
     links: [
-      { href: productPath('paintings', lang), label: t('nav.paintings'), key: 'paintings' },
-      { href: productPath('bases', lang), label: t('nav.bases'), key: 'bases' },
-      { href: productPath('cases', lang), label: t('nav.cases'), key: 'cases' },
+      { href: productPath('paintings', lang), label: t('nav.paintings'), hint: t('nav.paintingsHint'), key: 'paintings' },
+      { href: productPath('bases', lang), label: t('nav.bases'), hint: t('nav.basesHint'), key: 'bases' },
+      { href: productPath('cases', lang), label: t('nav.cases'), hint: t('nav.casesHint'), key: 'cases' },
       { href: productPath('sizes', lang), label: t('nav.sizes'), hint: t('nav.sizesHint'), key: 'sizes' },
       {
         href: productPath('magnets', lang),

@@ -11,6 +11,7 @@ import {
   casePrices,
   CURRENCY,
   LEAD_TIME_DAYS,
+  magnetPrices,
   type PriceRow,
 } from '../data/prices';
 import { productPath } from '../i18n/paths';
@@ -76,8 +77,16 @@ interface CaseFeedCopy {
 
 const CANVAS_IMAGE = '/images/cuadros-mascotas/12.jpg';
 const BASE_IMAGE = '/images/bases-acrilicas/16.jpg';
+const MAGNET_IMAGE = '/images/imanes/02.jpg';
+const MAGNET_EXTRA_IMAGES = [
+  '/images/imanes/01.jpg',
+  '/images/imanes/03.jpg',
+  '/images/imanes/06.jpg',
+  '/images/imanes/09.jpg',
+] as const;
 const CANVAS_CATEGORY = 'Arte > Retratos de mascotas > Cuadros en acrílico';
 const BASE_CATEGORY = 'Arte > Retratos de mascotas > Bases acrílicas';
+const MAGNET_CATEGORY = 'Arte > Retratos de mascotas > Minilienzos magnéticos';
 const CASE_CATEGORY = 'Accesorios > Fundas de celular';
 
 const BASE_NAMES: Record<string, string> = {
@@ -161,6 +170,7 @@ const FEED_PAGE = {
   PAINTINGS: 'paintings',
   BASES: 'bases',
   CASES: 'cases',
+  MAGNETS: 'magnets',
 } as const;
 
 type FeedPage = (typeof FEED_PAGE)[keyof typeof FEED_PAGE];
@@ -214,6 +224,7 @@ function buildRows(): ProductFeedFields[] {
   const canvasUrl = pageUrl(FEED_PAGE.PAINTINGS);
   const baseUrl = pageUrl(FEED_PAGE.BASES);
   const caseUrl = pageUrl(FEED_PAGE.CASES);
+  const magnetUrl = pageUrl(FEED_PAGE.MAGNETS);
   const tail = fulfillment();
 
   const canvas = canvasPrices.map((row) => {
@@ -286,7 +297,28 @@ function buildRows(): ProductFeedFields[] {
       return caseRow(id, copy, requirePrice(casePrices, copy.priceId));
     });
 
-  return [...canvas, ...bases, ...cases, ...extraCases];
+  const magnet = magnetPrices
+    .filter((row) => !row.companion && row.published !== false)
+    .map((row) => {
+      const size = row.size ?? '7,5×7,5 cm';
+      const fields = sharedFields({
+        item_id: row.id,
+        title: `Minilienzo magnético de tu mascota, ${size}`,
+        description: `Mini lienzo de ${size}, redondo o cuadrado, pintado a mano desde la foto de tu mascota, con imán para la nevera. Incluye 1 mascota. La forma no cambia el precio. El boceto por WhatsApp se ajusta sin costo. ${tail}`,
+        url: magnetUrl,
+        image_url: absoluteImage(MAGNET_IMAGE),
+        additional_image_urls: MAGNET_EXTRA_IMAGES.map((src) => absoluteImage(src)).join(','),
+        price: feedMoney(row.price),
+        group_id: 'mini-canvas',
+        variant_dict: JSON.stringify({ size }),
+        product_category: MAGNET_CATEGORY,
+        material: 'Acrílico sobre mini lienzo con imán',
+        size,
+      });
+      return { ...fields, listing_has_variations: 'false' };
+    });
+
+  return [...canvas, ...bases, ...cases, ...extraCases, ...magnet];
 }
 
 const FEED_KIND = {
@@ -294,6 +326,7 @@ const FEED_KIND = {
   CANVAS: 'canvas',
   BASES: 'bases',
   CASES: 'cases',
+  MAGNETS: 'magnets',
 } as const;
 
 type FeedKind = (typeof FEED_KIND)[keyof typeof FEED_KIND];
@@ -302,6 +335,7 @@ const FEED_GROUP = {
   [FEED_KIND.CANVAS]: 'canvas-pet',
   [FEED_KIND.BASES]: 'base-acrylic',
   [FEED_KIND.CASES]: 'phone-case',
+  [FEED_KIND.MAGNETS]: 'mini-canvas',
 } as const;
 
 function assertRows(rows: ProductFeedFields[], kind: FeedKind): void {
@@ -323,7 +357,10 @@ function assertRows(rows: ProductFeedFields[], kind: FeedKind): void {
     variants.add(variantKey);
     const copy = CASE_COPY[row.item_id];
     const priceId = copy?.priceId ?? row.item_id;
-    if (row.price !== feedMoney(requirePrice([...canvasPrices, ...basePrices, ...casePrices], priceId))) {
+    if (
+      row.price !==
+      feedMoney(requirePrice([...canvasPrices, ...basePrices, ...casePrices, ...magnetPrices], priceId))
+    ) {
       throw new Error(`El precio del feed no coincide con prices.ts: ${row.item_id}`);
     }
   }
@@ -334,11 +371,19 @@ function assertRows(rows: ProductFeedFields[], kind: FeedKind): void {
   const canvas = kind === FEED_KIND.ALL || kind === FEED_KIND.CANVAS;
   const bases = kind === FEED_KIND.ALL || kind === FEED_KIND.BASES;
   const cases = kind === FEED_KIND.ALL || kind === FEED_KIND.CASES;
+  const magnets = kind === FEED_KIND.ALL || kind === FEED_KIND.MAGNETS;
   for (const row of canvasPrices) expect(canvas, row.id);
   for (const row of basePrices) expect(bases, row.id);
   for (const row of casePrices) {
     if (row.from && !CASE_COPY[row.id]) continue;
     expect(cases, row.id);
+  }
+  for (const row of magnetPrices) {
+    if (row.companion) {
+      if (ids.has(row.id)) throw new Error(`El precio acompañante ${row.id} no debe ir al feed`);
+      continue;
+    }
+    expect(magnets, row.id);
   }
   if (cases) {
     for (const id of Object.keys(CASE_COPY)) expect(true, id);

@@ -134,6 +134,17 @@ export const catalogAnimals: Record<string, CatalogAnimal> = {
   'images/cuadros-personalizados/09.jpg': 'none', // pending
 
   'images/testimonials/01.jpg': 'none',
+
+  // minilienzos — 01 is the set on a fridge
+  'images/imanes/01.jpg': 'mixed',
+  'images/imanes/02.jpg': 'cat',
+  'images/imanes/03.jpg': 'dog',
+  'images/imanes/04.jpg': 'dog',
+  'images/imanes/05.jpg': 'dog',
+  'images/imanes/06.jpg': 'cat',
+  'images/imanes/07.jpg': 'cat',
+  'images/imanes/08.jpg': 'cat',
+  'images/imanes/09.jpg': 'cat',
 };
 
 export function animalForSrc(src: string): CatalogAnimal {
