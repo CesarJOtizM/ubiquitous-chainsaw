@@ -710,5 +710,77 @@
     "width": 986,
     "height": 1024,
     "size": 241866
+  },
+  "images/imanes/01.jpg": {
+    "path": "images/imanes/01.jpg",
+    "fileId": "6b0733b7ead997d09a80d9ab",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/imanes/01.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 91199
+  },
+  "images/imanes/02.jpg": {
+    "path": "images/imanes/02.jpg",
+    "fileId": "6b0733b7ead997d09a80dc58",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/imanes/02.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 48510
+  },
+  "images/imanes/03.jpg": {
+    "path": "images/imanes/03.jpg",
+    "fileId": "6b0733b8ead997d09a80de9a",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/imanes/03.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 42196
+  },
+  "images/imanes/04.jpg": {
+    "path": "images/imanes/04.jpg",
+    "fileId": "6b0733b8ead997d09a80e16d",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/imanes/04.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 50569
+  },
+  "images/imanes/05.jpg": {
+    "path": "images/imanes/05.jpg",
+    "fileId": "6b0733b8ead997d09a80e3ed",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/imanes/05.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 59714
+  },
+  "images/imanes/06.jpg": {
+    "path": "images/imanes/06.jpg",
+    "fileId": "6b0733b8ead997d09a80e501",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/imanes/06.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 48245
+  },
+  "images/imanes/07.jpg": {
+    "path": "images/imanes/07.jpg",
+    "fileId": "6b0733b9ead997d09a80e5f8",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/imanes/07.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 53504
+  },
+  "images/imanes/08.jpg": {
+    "path": "images/imanes/08.jpg",
+    "fileId": "6b0733b9ead997d09a80e7c5",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/imanes/08.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 48675
+  },
+  "images/imanes/09.jpg": {
+    "path": "images/imanes/09.jpg",
+    "fileId": "6b0733b9ead997d09a80e8c5",
+    "url": "https://ik.imagekit.io/ebovtw5ud/sacartx/images/imanes/09.jpg",
+    "width": 768,
+    "height": 1024,
+    "size": 45807
   }
 }
