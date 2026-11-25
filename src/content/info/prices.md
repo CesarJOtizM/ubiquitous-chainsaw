@@ -4,11 +4,11 @@ Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-pain
 
 ## What it is
 
-Sac_Artx offers acrylic portraits on canvas, magnetic mini canvases, acrylic bases with a keychain, personalized phone cases, and commissioned landscapes. Each piece is hand-painted from a photograph. HTML prices page: https://sacartx.art/en/prices/. Website: https://sacartx.art/en/
+Sac_Artx offers acrylic portraits on canvas, acrylic bases with a keychain, personalized phone cases, and commissioned landscapes. Each piece is hand-painted from a photograph. HTML prices page: https://sacartx.art/en/prices/. Website: https://sacartx.art/en/
 
 ## Who it is for
 
-Anyone pricing a dog, cat, or other pet portrait, a magnetic mini canvas, an acrylic base, a personalized phone case, or a landscape, with shipping within Colombia.
+Anyone pricing a dog, cat, or other pet portrait, an acrylic base, a personalized phone case, or a landscape, with shipping within Colombia.
 
 ## What is included
 
@@ -49,15 +49,6 @@ Extra pet on a base: {extra-base}. Suggested pets: 10×15 cm, 1 to 4; 12×18 cm,
 | Pet (1 included) | {case-pet} |
 
 Extra pet on a case: {extra-case}. Suggested pets: 1 to 3. For flower cases, ask which colors are available; all of them are protected by a resin coat.
-
-### Magnetic mini canvases
-
-A 7.5 × 7.5 cm mini canvas, round or square, with a magnet. Includes 1 pet.
-
-| How it is ordered | Price |
-|-------------------|-------|
-| On its own | {magnet} |
-| With a painting, a base, or a phone case | {magnet-addon} |
 
 ### Landscapes and custom commissions
 

@@ -13,7 +13,7 @@ import {
   productPath,
 } from '../i18n/paths';
 import { business, makerSentence } from '../data/business';
-import { canvasPrices, basePrices, casePrices, magnetPrices, extraPetPrices, type PriceRow } from '../data/prices';
+import { canvasPrices, basePrices, casePrices, extraPetPrices, type PriceRow } from '../data/prices';
 import { cop, priceLead, leadTimeText } from '../lib/price-text';
 import { itemsForLine } from '../data/catalog';
 import { animalAltEn, animalAltEs, animalForSrc } from '../data/catalog-animals';
@@ -42,7 +42,6 @@ const priceTables: Record<Exclude<ProductEntry['priceSource'], null>, PriceRow[]
   canvas: canvasPrices,
   base: basePrices,
   case: casePrices,
-  magnet: magnetPrices,
 };
 const priceRows = entry.priceSource ? priceTables[entry.priceSource] : [];
 const offerRows = priceRows.filter((row) => !row.companion);
@@ -322,7 +321,7 @@ const extraJsonLd = [
             <h2>{labels.gallery}</h2>
             <ul class="product-gallery" id="product-gallery">
               {gallery.map((item, index) => (
-                <li>
+                <li hidden={index >= 6}>
                   <img
                     src={item.src}
                     srcset={item.srcset || undefined}
@@ -581,10 +580,6 @@ const extraJsonLd = [
     background: #fff;
   }
 
-  .product-gallery:not(.is-expanded) > li:nth-child(n + 7) {
-    display: none;
-  }
-
   .product-gallery img {
     position: absolute;
     inset: 0;
@@ -595,13 +590,6 @@ const extraJsonLd = [
 
   .product-more {
     margin-top: 16px;
-    touch-action: manipulation;
-  }
-
-  @media (max-width: 760px) {
-    .product-more {
-      width: 100%;
-    }
   }
 
   .product-prices {
@@ -726,19 +714,14 @@ const extraJsonLd = [
       btn.dataset.bound = 'true';
       btn.addEventListener('click', () => {
         const list = document.getElementById(btn.getAttribute('aria-controls') || '');
-        if (!list) return;
-        const next = btn.getAttribute('aria-expanded') !== 'true';
-        list.classList.toggle('is-expanded', next);
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        list?.querySelectorAll('li').forEach((item, index) => {
+          if (index >= 6) item.hidden = open;
+        });
+        const next = !open;
         btn.setAttribute('aria-expanded', String(next));
         const template = next ? btn.dataset.less : btn.dataset.more;
         btn.textContent = (template || '').replace('{n}', btn.dataset.count || '');
-        if (!next) return;
-        list.querySelectorAll('img').forEach((img) => {
-          if (img.complete && img.naturalWidth > 0) return;
-          img.loading = 'eager';
-          const src = img.getAttribute('src');
-          if (src) img.src = src;
-        });
       });
     });
   }

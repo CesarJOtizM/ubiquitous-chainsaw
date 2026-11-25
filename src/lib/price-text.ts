@@ -10,7 +10,6 @@ import {
   canvasPrices,
   casePrices,
   extraPetPrices,
-  magnetPrices,
   PRICE_FROM_CANVAS,
   LEAD_TIME_DAYS,
   type PriceRow,
@@ -182,25 +181,6 @@ export function priceGroups(lang: Lang, noun: string, opts: { suggested?: boolea
       note: en
         ? `An extra pet costs ${caseExtra}.`
         : `La mascota adicional tiene un costo de ${caseExtra}.`,
-    },
-    {
-      title: en ? 'Magnetic mini canvas' : 'Minilienzo magnético',
-      lines: magnetPrices
-        .filter((row) => row.published !== false)
-        .map((row) => ({
-          label:
-            row.id === 'magnet'
-              ? en
-                ? 'On its own, 7.5×7.5 cm'
-                : 'Solo, 7,5×7,5 cm'
-              : en
-                ? 'With another product, 7.5×7.5 cm'
-                : 'Con otro producto, 7,5×7,5 cm',
-          value: cop(row.price, lang),
-        })),
-      note: en
-        ? 'Round or square, with a magnet. The lower price applies when it is ordered with a painting, a base, or a phone case.'
-        : 'Redondo o cuadrado, con imán. El precio menor aplica cuando se pide junto con un cuadro, una base o una funda.',
     },
   );
 

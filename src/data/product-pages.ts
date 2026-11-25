@@ -17,7 +17,7 @@ import type { CatalogLineId } from './catalog';
 import type { IntentTopic } from '../i18n/paths';
 
 /** Which canonical price table in prices.ts drives this product. */
-export type PriceSource = 'canvas' | 'base' | 'case' | 'magnet';
+export type PriceSource = 'canvas' | 'base' | 'case';
 
 export interface ProductFaq {
   q: string;
@@ -167,7 +167,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
   bases: {
     priceSource: 'base',
     lineIds: ['bases-acrilicas'],
-    relatedProducts: ['paintings', 'cases', 'magnets'],
+    relatedProducts: ['paintings', 'cases'],
     relatedIntents: ['pets', 'memorial'],
     content: {
       es: {
@@ -243,7 +243,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
   cases: {
     priceSource: 'case',
     lineIds: ['case-mascotas', 'case-flores', 'case-anime', 'case-personalizados'],
-    relatedProducts: ['paintings', 'bases', 'magnets'],
+    relatedProducts: ['paintings', 'bases'],
     relatedIntents: ['pets', 'memorial'],
     content: {
       es: {
@@ -325,7 +325,7 @@ const productConfig: Record<ProductKey, ProductConfig> = {
   sizes: {
     priceSource: 'canvas',
     lineIds: ['cuadros-personalizados'],
-    relatedProducts: ['paintings', 'bases', 'cases', 'magnets'],
+    relatedProducts: ['paintings', 'bases', 'cases'],
     relatedIntents: ['pets', 'memorial'],
     content: {
       es: {
@@ -411,9 +411,10 @@ const productConfig: Record<ProductKey, ProductConfig> = {
     },
   },
   magnets: {
-    priceSource: 'magnet',
-    lineIds: ['minilienzos'],
-    relatedProducts: ['paintings', 'bases', 'cases'],
+    priceSource: null,
+    lineIds: [],
+    posterSrc: '/images/imanes/proximamente.jpg',
+    relatedProducts: ['paintings', 'cases'],
     relatedIntents: ['pets', 'memorial'],
     content: {
       es: {
@@ -422,23 +423,21 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: 'Minilienzo magnético con el retrato de tu mascota',
         metaTitle: 'Minilienzo magnético con el retrato de tu mascota | Sac_Artx',
         metaDescription:
-          'Pinto a tu mascota en un mini lienzo de 7,5 cm, redondo o cuadrado, con imán. Cuesta {magnet}. Boceto antes de pintar y envío contra entrega en Colombia.',
-        lead: 'Pinto a tu mascota en un mini lienzo de 7,5 × 7,5 cm, redondo o cuadrado. Lleva un imán atrás para la nevera o cualquier superficie metálica.',
+          'Pinto a tu mascota en un mini lienzo de 7,5 cm, redondo o cuadrado, con imán. Próximamente: todavía no está a la venta.',
+        lead: 'Pinto a tu mascota en un mini lienzo de 7,5 × 7,5 cm, disponible en forma redonda o cuadrada. Incluye un imán en la parte trasera para que puedas decorar tu nevera o cualquier superficie metálica con un retrato único de tu mascota.',
+        posterAlt:
+          'Próximamente: minilienzos magnéticos redondos y cuadrados con retratos de perros y gatos.',
+        priceNote:
+          'Próximamente. Todavía no está a la venta, así que no tiene precio publicado. Cuando salga, el envío va contra entrega: lo pagas a la transportadora cuando llega a tu casa.',
         whatIncluded: [
           'Mini lienzo de 7,5 × 7,5 cm, redondo o cuadrado, pintado a mano desde la foto de tu mascota.',
-          'Incluye 1 mascota.',
           'Imán en la parte de atrás, para la nevera o cualquier superficie metálica.',
-          'Boceto por WhatsApp antes de pintar. Los cambios del boceto no se cobran.',
-          'Una foto del minilienzo terminado, antes de enviarlo.',
+          'Te llega pintado por mí.',
         ],
         faq: [
           {
             q: '¿De qué tamaño es?',
-            a: 'Mide 7,5 × 7,5 cm. Lo puedes pedir redondo o cuadrado. La forma no cambia el precio. Sirve para la nevera o cualquier superficie metálica.',
-          },
-          {
-            q: '¿Cuánto cuesta si lo pido con otro producto?',
-            a: 'Solo cuesta {magnet}. Junto con un cuadro, una base o una funda, cuesta {magnet-addon}.',
+            a: 'Mide 7,5 × 7,5 cm. Lo puedes pedir redondo o cuadrado. Sirve para la nevera o cualquier superficie metálica.',
           },
           {
             q: '¿Puedo pedir cualquier mascota?',
@@ -450,11 +449,11 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: '¿El precio incluye el envío?',
-            a: 'No. El precio es del minilienzo. El envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.',
+            a: 'Todavía no. Sigue en próximamente y no tiene precio publicado. Cuando salga, el envío va contra entrega con la transportadora: lo pagas cuando llega a tu casa.',
           },
           {
             q: '¿Cómo lo pido?',
-            a: 'Me escribes por WhatsApp con la foto y si lo quieres redondo o cuadrado. Te mando el boceto y lo ajustamos si hace falta.',
+            a: 'Me escribes por WhatsApp con la foto. Te mando el boceto y lo ajustamos si hace falta.',
           },
           {
             q: '¿Pintas mascotas que ya no están?',
@@ -472,23 +471,21 @@ const productConfig: Record<ProductKey, ProductConfig> = {
         h1: "Magnetic mini canvas with your pet's portrait",
         metaTitle: "Magnetic mini canvas with your pet's portrait | Sac_Artx",
         metaDescription:
-          'I paint your pet on a 7.5 cm mini canvas, round or square, with a magnet. It costs {magnet}. I send a sketch before I paint, and I ship across Colombia. Shipping is cash on delivery.',
-        lead: 'I paint your pet on a 7.5 × 7.5 cm mini canvas, round or square. A magnet on the back is for the fridge or any metal surface.',
+          'I paint your pet on a 7.5 cm mini canvas, round or square, with a magnet. Coming soon: it is not for sale yet.',
+        lead: 'I paint your pet on a 7.5 × 7.5 cm mini canvas, available round or square. A magnet on the back lets you decorate your fridge, or any metal surface, with a unique portrait of your pet.',
+        posterAlt:
+          'Coming soon: round and square magnetic mini canvases with dog and cat portraits.',
+        priceNote:
+          'Coming soon. It is not for sale yet, so there is no published price. When it is available, shipping is cash on delivery: you pay the carrier when it arrives at your home.',
         whatIncluded: [
           'A 7.5 × 7.5 cm mini canvas, round or square, hand-painted from a photo of your pet.',
-          'Includes 1 pet.',
           'A magnet on the back, for the fridge or any metal surface.',
-          'A WhatsApp sketch before I paint. Sketch changes are free.',
-          'A photo of the finished mini canvas before I ship it.',
+          'It arrives painted by me.',
         ],
         faq: [
           {
             q: 'How big is it?',
-            a: 'It measures 7.5 × 7.5 cm. You can order it round or square. The shape does not change the price. It works on the fridge or any metal surface.',
-          },
-          {
-            q: 'How much is it with another product?',
-            a: 'On its own it costs {magnet}. With a painting, a base, or a phone case, it costs {magnet-addon}.',
+            a: 'It measures 7.5 × 7.5 cm. You can order it round or square. It works on the fridge or any metal surface.',
           },
           {
             q: 'Can I ask for any pet?',
@@ -500,11 +497,11 @@ const productConfig: Record<ProductKey, ProductConfig> = {
           },
           {
             q: 'Does the price include shipping?',
-            a: 'No. The price is for the mini canvas. Shipping is cash on delivery with the carrier: you pay it when it arrives at your home.',
+            a: 'Not yet. It is still coming soon and has no published price. When it is available, shipping is cash on delivery with the carrier: you pay it when it arrives at your home.',
           },
           {
             q: 'How do I order one?',
-            a: 'Message me on WhatsApp with the photo and whether you want it round or square. I send the sketch, and we adjust it if it needs to.',
+            a: 'Message me on WhatsApp with the photo. I send the sketch, and we adjust it if it needs to.',
           },
           {
             q: 'Do you paint pets that have passed away?',

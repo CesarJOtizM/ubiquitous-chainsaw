@@ -1,7 +1,7 @@
 ---
 import { useTranslations } from '../i18n/utils';
 import { homePath } from '../i18n/paths';
-import { canvasPrices, basePrices, casePrices, magnetPrices } from '../data/prices';
+import { canvasPrices, basePrices, casePrices } from '../data/prices';
 import { priceCell } from '../lib/price-text';
 
 export interface Props {
@@ -24,15 +24,6 @@ const baseRows = basePrices.map((row) => ({
   size: row.size!,
   price: priceCell(row, lang),
 }));
-
-const magnetRows = magnetPrices
-  .filter((row) => row.published !== false)
-  .map((row) => ({
-    label: [row.nameKey ? t(row.nameKey as Parameters<typeof t>[0]) : '', row.size]
-      .filter(Boolean)
-      .join(' · '),
-    price: priceCell(row, lang),
-  }));
 
 const caseRows = casePrices.map((row, i) => ({
   name: t(row.nameKey as Parameters<typeof t>[0]),
@@ -134,29 +125,6 @@ const faqs = [
           {casePets.map((entry) => <li>{entry}</li>)}
         </ul>
       </div>
-    </section>
-
-    <section class="pricing-block" aria-labelledby="prices-magnets">
-      <h2 id="prices-magnets" class="pricing-block__title">{t('prices.magnetsTitle')}</h2>
-      <div class="table-wrap">
-        <table class="pricing-table">
-          <thead>
-            <tr>
-              <th scope="col">{t('prices.colProduct')}</th>
-              <th scope="col">{t('prices.colPrice')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {magnetRows.map((row) => (
-              <tr>
-                <td>{row.label}</td>
-                <td>{row.price}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p class="pricing-block__note">{t('prices.magnetsNote')}</p>
     </section>
 
     <section class="pricing-block pricing-block--payment" aria-labelledby="prices-payment">

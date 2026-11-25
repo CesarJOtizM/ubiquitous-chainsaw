@@ -105,8 +105,8 @@ const lines = catalogLines.map((line) => {
           </div>
 
           <ul class="catalog-grid" id={`${line.id}-grid`}>
-            {line.items.map((item) => (
-              <li>
+            {line.items.map((item, index) => (
+              <li hidden={index >= 6}>
                 <button
                   type="button"
                   class="catalog-card"
@@ -378,11 +378,6 @@ const lines = catalogLines.map((line) => {
     gap: 16px;
   }
 
-  /* Author CSS, not the hidden attribute: iOS ignores hidden on grid items. */
-  .catalog-grid:not(.is-expanded) > li:nth-child(n + 7) {
-    display: none;
-  }
-
   .catalog-more {
     margin-top: 16px;
     min-height: 44px;
@@ -394,7 +389,6 @@ const lines = catalogLines.map((line) => {
     font: inherit;
     font-size: 15px;
     cursor: pointer;
-    touch-action: manipulation;
   }
 
   .catalog-more:hover {
@@ -600,13 +594,6 @@ const lines = catalogLines.map((line) => {
     .catalog-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
-    .catalog-more {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-    }
   }
 
   @media (max-width: 640px) {
@@ -629,38 +616,22 @@ const lines = catalogLines.map((line) => {
 </style>
 
 <script>
-  function toggleCatalogMore(btn: HTMLButtonElement) {
-    const list = document.getElementById(btn.getAttribute('aria-controls') || '');
-    if (!list) return;
-    const next = btn.getAttribute('aria-expanded') !== 'true';
-    list.classList.toggle('is-expanded', next);
-    btn.setAttribute('aria-expanded', String(next));
-    const template = next ? btn.dataset.less : btn.dataset.more;
-    btn.textContent = (template || '').replace('{n}', btn.dataset.count || '');
-    if (!next) return;
-    list.querySelectorAll('img').forEach((img) => {
-      if (img.complete && img.naturalWidth > 0) return;
-      img.loading = 'eager';
-      const src = img.getAttribute('src');
-      if (src) img.src = src;
-    });
-  }
-
-  // One listener for the life of the tab. A per-button listener misses the tap
-  // when the phone opens the catalog through client-side navigation.
-  if (!document.documentElement.hasAttribute('data-catalog-more')) {
-    document.documentElement.setAttribute('data-catalog-more', '');
-    document.addEventListener('click', (event) => {
-      const target = event.target;
-      if (!(target instanceof Element)) return;
-      const btn = target.closest('.catalog-more');
-      if (!(btn instanceof HTMLButtonElement)) return;
-      toggleCatalogMore(btn);
-    });
-  }
-
   const page = document.querySelector<HTMLElement>('[data-catalog-page]');
   if (page) {
+    page.querySelectorAll<HTMLButtonElement>('.catalog-more').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const list = document.getElementById(btn.getAttribute('aria-controls') || '');
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        list?.querySelectorAll('li').forEach((item, index) => {
+          if (index >= 6) item.hidden = open;
+        });
+        const next = !open;
+        btn.setAttribute('aria-expanded', String(next));
+        const template = next ? btn.dataset.less : btn.dataset.more;
+        btn.textContent = (template || '').replace('{n}', btn.dataset.count || '');
+      });
+    });
+
     const cards = Array.from(page.querySelectorAll<HTMLButtonElement>('.catalog-card'));
     const jumpLinks = Array.from(page.querySelectorAll<HTMLAnchorElement>('.catalog-jump__link'));
     const sections = Array.from(page.querySelectorAll<HTMLElement>('.catalog-line'));

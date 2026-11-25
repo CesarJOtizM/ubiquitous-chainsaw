@@ -73,13 +73,14 @@ export const casePrices: PriceRow[] = [
   },
 ];
 
-/** Standalone price is the offer. The companion price is only with another product. */
+/** Not for sale yet. The page stays on "próximamente" until these rows are published. */
 export const magnetPrices: PriceRow[] = [
   {
     id: 'magnet',
     size: '7,5×7,5 cm',
     nameKey: 'prices.magnetAlone',
     price: 85_000,
+    published: false,
   },
   {
     id: 'magnet-addon',
@@ -87,6 +88,7 @@ export const magnetPrices: PriceRow[] = [
     nameKey: 'prices.magnetAddon',
     price: 72_000,
     companion: true,
+    published: false,
   },
 ];
 

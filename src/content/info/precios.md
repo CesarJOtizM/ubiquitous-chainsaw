@@ -4,11 +4,11 @@ Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de 
 
 ## Qué es
 
-Sac_Artx ofrece retratos en acrílico sobre lienzo, minilienzos magnéticos, bases acrílicas con llavero, fundas de celular personalizadas y paisajes por encargo. Cada pieza se pinta a mano a partir de una fotografía. Página de precios HTML: https://sacartx.art/precios/. Sitio: https://sacartx.art/
+Sac_Artx ofrece retratos en acrílico sobre lienzo, bases acrílicas con llavero, fundas de celular personalizadas y paisajes por encargo. Cada pieza se pinta a mano a partir de una fotografía. Página de precios HTML: https://sacartx.art/precios/. Sitio: https://sacartx.art/
 
 ## Para quién
 
-Quien busca cotizar un retrato de perro, gato u otra mascota, un minilienzo magnético, una base acrílica, una funda personalizada o un paisaje, con envío dentro de Colombia.
+Quien busca cotizar un retrato de perro, gato u otra mascota, una base acrílica, una funda personalizada o un paisaje, con envío dentro de Colombia.
 
 ## Qué incluye
 
@@ -49,15 +49,6 @@ Mascota adicional en una base: {extra-base}. Mascotas sugeridas: 10×15 cm, de 1
 | Mascota (1 incluida) | {case-pet} |
 
 Mascota adicional en una funda: {extra-case}. Mascotas sugeridas: de 1 a 3. En las fundas de flores, pregunta qué colores hay disponibles; todas van protegidas con una capa de resina.
-
-### Minilienzos magnéticos
-
-Mini lienzo de 7,5 × 7,5 cm, redondo o cuadrado, con imán. Incluye 1 mascota.
-
-| Cómo se pide | Precio |
-|--------------|--------|
-| Solo | {magnet} |
-| Con un cuadro, una base o una funda | {magnet-addon} |
 
 ### Paisajes y encargos a medida
 
