@@ -15,8 +15,8 @@ const url = (path: string) => `${SITE}${path}`;
 
 /** Intro summary blockquote per language (prose, no prices, no date). */
 const summary: Record<Lang, string> = {
-  es: `Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. También hace paisajes y fundas de celular personalizadas. Envía pedidos a ${coverageText('es')}.`,
-  en: `Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic, plus landscapes and personalized phone cases. Orders ship to ${coverageText('en')}.`,
+  es: `Sac_Artx es un estudio en Colombia, especializado en retratos personalizados de mascotas pintados a mano en acrílico. También hace minilienzos magnéticos, paisajes y fundas de celular personalizadas. Envía pedidos a ${coverageText('es')}.`,
+  en: `Sac_Artx is a studio in Colombia, specializing in custom pet portraits hand-painted in acrylic, plus magnetic mini canvases, landscapes and personalized phone cases. Orders ship to ${coverageText('en')}.`,
 };
 
 /** Business description paragraph per language, sourced from business + price-text. */
